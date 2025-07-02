@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Sun, Moon, ArrowUp } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, ArrowUp } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,28 +10,6 @@ const Header: React.FC = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const location = useLocation();
-
-  // Set light mode as default
-  const [theme, setTheme] = useState(() => {
-    // Check for saved theme preference, default to light
-    const savedTheme = typeof window !== 'undefined' ? window.sessionStorage?.getItem('theme') : null;
-    return savedTheme || 'light';
-  });
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    if (typeof window !== 'undefined' && window.sessionStorage) {
-      window.sessionStorage.setItem('theme', theme);
-    }
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -140,13 +118,6 @@ const Header: React.FC = () => {
             border: 1px solid rgba(255, 255, 255, 0.2);
           }
           
-          .glassmorphism-dark {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-          }
-          
           .gradient-text {
             background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);
             -webkit-background-clip: text;
@@ -222,8 +193,8 @@ const Header: React.FC = () => {
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
           isScrolled 
-            ? 'glassmorphism shadow-2xl shadow-pink-500/10 dark:glassmorphism-dark dark:shadow-fuchsia-500/20' 
-            : 'bg-white/90 backdrop-blur-sm dark:bg-gray-900/90'
+            ? 'glassmorphism shadow-2xl shadow-pink-500/10' 
+            : 'bg-white/90 backdrop-blur-sm'
         }`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -239,9 +210,11 @@ const Header: React.FC = () => {
             >
               <Link to="/" className="flex items-center space-x-3 group">
                 <div className="relative">
-                  <div className="h-16 w-16 bg-gray-300 rounded-lg flex items-center justify-center text-gray-600 font-bold text-xl">
-                    LOGO
-                  </div>
+                  <img 
+                    src="/HoHLogo.png"
+                    alt="House of Humanity Logo"
+                    className="h-16 w-auto"
+                  />
                 </div>
               </Link>
             </motion.div>
@@ -262,8 +235,8 @@ const Header: React.FC = () => {
                     to={item.path}
                     className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-sm font-medium header-font transition-all duration-300 ${
                       location.pathname === item.path 
-                        ? 'active text-pink-600 bg-gradient-to-r from-pink-50 to-rose-50 shadow-lg shadow-pink-500/20 dark:text-fuchsia-400 dark:bg-fuchsia-900/30 dark:shadow-fuchsia-500/30' 
-                        : 'text-slate-700 hover:text-slate-900 hover:bg-gradient-to-r hover:from-pink-50/50 hover:to-rose-50/50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-fuchsia-900/20'
+                        ? 'active text-pink-600 bg-gradient-to-r from-pink-50 to-rose-50 shadow-lg shadow-pink-500/20' 
+                        : 'text-slate-700 hover:text-slate-900 hover:bg-gradient-to-r hover:from-pink-50/50 hover:to-rose-50/50'
                     }`}
                   >
                     <span className="relative z-10">{item.name}</span>
@@ -279,44 +252,38 @@ const Header: React.FC = () => {
 
                   {/* Dropdown Menu */}
                   <AnimatePresence>
-                    {item.dropdown && dropdownOpen === item.name && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                        className="absolute top-full left-0 mt-2 w-72 glassmorphism dark:glassmorphism-dark rounded-2xl shadow-2xl border border-white/20 dark:border-fuchsia-700/20 py-3 z-50 overflow-hidden"
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-rose-500/5 dark:from-fuchsia-500/10 dark:to-purple-500/10"></div>
-                        {item.dropdown.map((subItem, subIndex) => (
-                          <motion.div
-                            key={subItem.name}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: subIndex * 0.05, duration: 0.3 }}
-                          >
-                            <Link
-                              to={subItem.path}
-                              className="dropdown-item block px-5 py-3 text-sm text-slate-800 hover:text-slate-900 font-medium header-font rounded-lg mx-2 relative z-10 dark:text-gray-200 dark:hover:text-white dark:hover:bg-fuchsia-800/20"
-                            >
-                              {subItem.name}
-                            </Link>
-                          </motion.div>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+  {item.dropdown && dropdownOpen === item.name && (
+    <motion.div
+      initial={{ opacity: 0, y: -20, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -20, scale: 0.95 }}
+      transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+      className="absolute top-full left-0 mt-2 w-72 glassmorphism rounded-2xl shadow-2xl border border-white/20 py-3 z-50 overflow-hidden"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-rose-500/5"></div>
+      {item.dropdown.map((subItem, subIndex) => (
+        <div key={subItem.name}>
+          <Link
+            to={subItem.path}
+            className="dropdown-item block px-5 py-3 text-sm text-black hover:text-black font-medium header-font rounded-lg mx-2 relative z-10"
+          >
+            {subItem.name}
+          </Link>
+        </div>
+      ))}
+    </motion.div>
+  )}
+</AnimatePresence>
                 </motion.div>
               ))}
               
               {/* Theme Toggle Button */}
               <motion.button
-                onClick={toggleTheme}
-                className="p-3 rounded-full bg-slate-200/80 dark:bg-slate-700/80 text-slate-700 dark:text-white shadow-sm hover:shadow-md dark:shadow-slate-900/50 transition-all duration-300 ease-in-out transform hover:scale-105"
+                className="p-3 rounded-full bg-slate-200/80 text-slate-700 shadow-sm hover:shadow-md transition-all duration-300 ease-in-out transform hover:scale-105"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                <Sun size={20} />
               </motion.button>
               
               {/* SITAARE Button */}
@@ -339,16 +306,15 @@ const Header: React.FC = () => {
             {/* Mobile Menu Button and Theme Toggle */}
             <div className="lg:hidden flex items-center space-x-4">
               <motion.button
-                onClick={toggleTheme}
-                className="p-2 rounded-full bg-slate-200/80 dark:bg-slate-700/80 text-slate-700 dark:text-white shadow-sm hover:shadow-md dark:shadow-slate-900/50 transition-all duration-300 ease-in-out transform hover:scale-105"
+                className="p-2 rounded-full bg-slate-200/80 text-slate-700 shadow-sm hover:shadow-md transition-all duration-300 ease-in-out transform hover:scale-105"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                <Sun size={20} />
               </motion.button>
               <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-slate-700 dark:text-white hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500 transition-all duration-200"
+                className="inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500 transition-all duration-200"
                 aria-expanded="false"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -390,7 +356,7 @@ const Header: React.FC = () => {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="lg:hidden glassmorphism dark:glassmorphism-dark shadow-xl dark:shadow-fuchsia-900/30 overflow-hidden"
+              className="lg:hidden glassmorphism shadow-xl overflow-hidden"
             >
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {menuItems.map((item) => (
@@ -399,7 +365,7 @@ const Header: React.FC = () => {
                       <>
                         <button
                           onClick={() => setDropdownOpen(dropdownOpen === item.name ? null : item.name)}
-                          className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-base font-medium header-font transition-colors duration-200 ${dropdownOpen === item.name ? 'bg-pink-100 text-pink-700 dark:bg-fuchsia-900/50 dark:text-fuchsia-300' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-gray-200 dark:hover:bg-slate-800 dark:hover:text-white'}`}
+                          className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-base font-medium header-font transition-colors duration-200 ${dropdownOpen === item.name ? 'bg-pink-100 text-pink-700' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'}`}
                         >
                           <span>{item.name}</span>
                           <motion.div
@@ -423,7 +389,7 @@ const Header: React.FC = () => {
                                   key={subItem.name}
                                   to={subItem.path}
                                   onClick={() => setIsOpen(false)}
-                                  className="block px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-gray-300 dark:hover:bg-slate-700 dark:hover:text-white transition-colors duration-200"
+                                  className="block px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition-colors duration-200"
                                 >
                                   {subItem.name}
                                 </Link>
@@ -436,7 +402,7 @@ const Header: React.FC = () => {
                       <Link
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className={`block px-3 py-2 rounded-md text-base font-medium header-font transition-colors duration-200 ${location.pathname === item.path ? 'bg-pink-100 text-pink-700 dark:bg-fuchsia-900/50 dark:text-fuchsia-300' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-gray-200 dark:hover:bg-slate-800 dark:hover:text-white'}`}
+                        className={`block px-3 py-2 rounded-md text-base font-medium header-font transition-colors duration-200 ${location.pathname === item.path ? 'bg-pink-100 text-pink-700' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'}`}
                       >
                         {item.name}
                       </Link>
@@ -469,9 +435,9 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.1, y: -5 }}
             whileTap={{ scale: 0.9 }}
           >
-            <div className="relative p-4 bg-gradient-to-r from-pink-500 to-rose-500 dark:from-fuchsia-500 dark:to-purple-500 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 float-animation group-hover:animate-none">
+            <div className="relative p-4 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 float-animation group-hover:animate-none">
               <ArrowUp className="w-6 h-6 text-white" />
-              <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-rose-600 dark:from-fuchsia-600 dark:to-purple-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-rose-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           </motion.button>
         )}

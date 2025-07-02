@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/layout/Header';
 import AboutUs from './components/pages/AboutUs';
 import OurTeam from './components/pages/OurTeam';
@@ -49,6 +51,7 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
+        <ToastContainer />
       </div>
     </Router>
   );
