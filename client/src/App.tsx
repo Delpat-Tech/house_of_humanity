@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 import AboutUs from './components/pages/AboutUs';
 import OurTeam from './components/pages/OurTeam';
 import Sitaare from './components/pages/Sitaare';
@@ -30,6 +31,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-white">
         <Header />
+      
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
@@ -52,6 +54,7 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
         <ToastContainer />
+        <Footer />
       </div>
     </Router>
   );
