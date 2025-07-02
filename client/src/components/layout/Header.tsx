@@ -295,7 +295,7 @@ const Header: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link
-                  to="/donate"
+                  to="/sitaare"
                   className="donate-btn relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white rounded-xl shadow-lg transition-all duration-300 overflow-hidden group"
                 >
                   <span className="relative z-10">SITAARE</span>
