@@ -2,7 +2,7 @@ import React from 'react';
 
 const Sitaare = () => {
   return (
-    <section className="px-6 py-12 bg-gradient-to-b from-white to-gray-50 text-gray-800">
+    <section className="pt-24 px-6 py-12 bg-gradient-to-b from-white to-gray-50 text-gray-800">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold mb-2 text-center">A Home Beyond Shelter</h2>
         <p className="text-sm text-center uppercase tracking-widest text-gray-500">P R E S E N T S</p>
@@ -12,7 +12,7 @@ const Sitaare = () => {
             <h3 className="text-2xl font-semibold mb-4">About Project Sitaare</h3>
             <p className="mb-4">
               Project Sitaare is a one-of-a-kind orphanage and shelter home for girls aged 6 to 18. 
-              More than just shelter—it’s a place where dreams take flight. With full education, safety, 
+              More than just shelter—it's a place where dreams take flight. With full education, safety, 
               and holistic development, it's the most empowering space for girls in Gujarat.
             </p>
 
@@ -57,7 +57,7 @@ const Sitaare = () => {
           <div className="bg-white p-6 rounded shadow">
             <h5 className="font-semibold mb-2">Individual Giving</h5>
             <p className="text-sm">
-              Sponsor a child’s education, healthcare, or donate hygiene kits, meals, and essentials.
+              Sponsor a child's education, healthcare, or donate hygiene kits, meals, and essentials.
             </p>
           </div>
           <div className="bg-white p-6 rounded shadow">

@@ -76,7 +76,7 @@ const DonateForACause: React.FC = () => {
         className="w-full h-auto object-cover]"
       />
 
-      <div className="max-w-7xl mx-auto py-16 px-4 grid md:grid-cols-2 gap-8">
+      <div className="pt-24 max-w-7xl mx-auto py-16 px-4 grid md:grid-cols-2 gap-8">
         <div>
           <h2 className="text-2xl font-bold text-dfPink mb-4">
             Help us cultivate dignity for women and children to Dream Beyond their circumstances.
