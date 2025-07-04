@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Sun, ArrowUp } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ChevronDown, Sun, ArrowUp } from "lucide-react";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,68 +14,72 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = (scrollTop / docHeight) * 100;
-      
+
       setIsScrolled(scrollTop > 10);
       setShowBackToTop(scrollTop > 300);
       setScrollProgress(scrollPercent);
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   };
 
   const menuItems = [
+    { name: "Home", path: "/" },
     {
-      name: 'Who We Are',
-      path: '/about',
+      name: "Who We Are",
+      path: "/about",
       dropdown: [
-        { name: 'About us', path: '/about-us' },
-        { name: 'Our Team', path: '/our-team' },
-      ]
+        { name: "About us", path: "/about-us" },
+        { name: "Our Team", path: "/our-team" },
+      ],
     },
     {
-      name: 'What We Do',
-      path: '/what-we-do',
+      name: "What We Do",
+      path: "/what-we-do",
       dropdown: [
-        { name: 'Sitaare', path: '/sitaare' },
-        { name: 'Health Care', path: '/health-care' },
-        { name: 'Sustianable Livelihood', path: '/sustainable-livelihood' },
-        { name: 'Education', path: '/education' },
-        { name: 'Nutrition', path: '/nutrition' },
-        { name: 'House of Happiness', path: '/house-of-happiness' },
-      ]
+        { name: "Projects", path: "/projects" },
+        { name: "Sitaare", path: "/sitaare" },
+        { name: "Health Care", path: "/health-care" },
+        { name: "Sustianable Livelihood", path: "/sustainable-livelihood" },
+        { name: "Education", path: "/education" },
+        { name: "Nutrition", path: "/nutrition" },
+        { name: "House of Happiness", path: "/house-of-happiness" },
+      ],
     },
-    { name: 'Impact',
-    path: '/milestones',
+    {
+      name: "Impact",
+      path: "/milestones",
       dropdown: [
-        { name: 'Milestones', path: '/milestones' },
-        { name: 'Success Stories', path: '/success-stories' },
-      ]
+        { name: "Milestones", path: "/milestones" },
+        { name: "Success Stories", path: "/success-stories" },
+      ],
     },
-    { name: 'Our Partners', path: '/our-partners' },
+    { name: "Our Partners", path: "/our-partners" },
 
     {
-      name: 'Collaborate',
-      path: '/donate-for-a-cause',
+      name: "Collaborate",
+      path: "/donate-for-a-cause",
       dropdown: [
-        { name: 'Donate for a Cause', path: '/donate-for-a-cause' },
-        { name: 'Get Involved', path: '/get-involved' },
-        { name: 'Partner With Us', path: '/partner-with-us' },
-        { name: 'Contribute Materials', path: '/contribute-materials' },
-      ]
+        { name: "Donate for a Cause", path: "/donate-for-a-cause" },
+        { name: "Get Involved", path: "/get-involved" },
+        { name: "Partner With Us", path: "/partner-with-us" },
+        { name: "Contribute Materials", path: "/contribute-materials" },
+      ],
     },
-    { name: 'News + Events', path: '/news-events' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Contact Us', path: '/contact-us' },
+    { name: "News + Events", path: "/news-events" },
+    { name: "Gallery", path: "/gallery" },
+    { name: "Contact Us", path: "/contact-us" },
   ];
 
   return (
@@ -185,16 +189,13 @@ const Header: React.FC = () => {
       </style>
 
       {/* Progress Bar */}
-      <div 
-        className="progress-bar" 
-        style={{ width: `${scrollProgress}%` }}
-      />
+      <div className="progress-bar" style={{ width: `${scrollProgress}%` }} />
 
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
-          isScrolled 
-            ? 'glassmorphism shadow-2xl shadow-pink-500/10' 
-            : 'bg-white/90 backdrop-blur-sm'
+          isScrolled
+            ? "glassmorphism shadow-2xl shadow-pink-500/10"
+            : "bg-white/90 backdrop-blur-sm"
         }`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -210,7 +211,7 @@ const Header: React.FC = () => {
             >
               <Link to="/" className="flex items-center space-x-3 group">
                 <div className="relative">
-                  <img 
+                  <img
                     src="/HoHLogo.png"
                     alt="House of Humanity Logo"
                     className="h-16 w-auto"
@@ -228,21 +229,25 @@ const Header: React.FC = () => {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
-                  onMouseEnter={() => item.dropdown && setDropdownOpen(item.name)}
+                  onMouseEnter={() =>
+                    item.dropdown && setDropdownOpen(item.name)
+                  }
                   onMouseLeave={() => setDropdownOpen(null)}
                 >
                   <Link
                     to={item.path}
                     className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-sm font-medium header-font transition-all duration-300 ${
-                      location.pathname === item.path 
-                        ? 'active text-pink-600 bg-gradient-to-r from-pink-50 to-rose-50 shadow-lg shadow-pink-500/20' 
-                        : 'text-slate-700 hover:text-slate-900 hover:bg-gradient-to-r hover:from-pink-50/50 hover:to-rose-50/50'
+                      location.pathname === item.path
+                        ? "active text-pink-600 bg-gradient-to-r from-pink-50 to-rose-50 shadow-lg shadow-pink-500/20"
+                        : "text-slate-700 hover:text-slate-900 hover:bg-gradient-to-r hover:from-pink-50/50 hover:to-rose-50/50"
                     }`}
                   >
                     <span className="relative z-10">{item.name}</span>
                     {item.dropdown && (
                       <motion.div
-                        animate={{ rotate: dropdownOpen === item.name ? 180 : 0 }}
+                        animate={{
+                          rotate: dropdownOpen === item.name ? 180 : 0,
+                        }}
                         transition={{ duration: 0.3 }}
                       >
                         <ChevronDown className="w-4 h-4" />
@@ -252,31 +257,34 @@ const Header: React.FC = () => {
 
                   {/* Dropdown Menu */}
                   <AnimatePresence>
-  {item.dropdown && dropdownOpen === item.name && (
-    <motion.div
-      initial={{ opacity: 0, y: -20, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -20, scale: 0.95 }}
-      transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-      className="absolute top-full left-0 mt-2 w-72 glassmorphism rounded-2xl shadow-2xl border border-white/20 py-3 z-50 overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-rose-500/5"></div>
-      {item.dropdown.map((subItem, subIndex) => (
-        <div key={subItem.name}>
-          <Link
-            to={subItem.path}
-            className="dropdown-item block px-5 py-3 text-sm text-black hover:text-black font-medium header-font rounded-lg mx-2 relative z-10"
-          >
-            {subItem.name}
-          </Link>
-        </div>
-      ))}
-    </motion.div>
-  )}
-</AnimatePresence>
+                    {item.dropdown && dropdownOpen === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                        transition={{
+                          duration: 0.3,
+                          ease: [0.25, 0.1, 0.25, 1],
+                        }}
+                        className="absolute top-full left-0 mt-2 w-72 glassmorphism rounded-2xl shadow-2xl border border-white/20 py-3 z-50 overflow-hidden"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-rose-500/5"></div>
+                        {item.dropdown.map((subItem, subIndex) => (
+                          <div key={subItem.name}>
+                            <Link
+                              to={subItem.path}
+                              className="dropdown-item block px-5 py-3 text-sm text-black hover:text-black font-medium header-font rounded-lg mx-2 relative z-10"
+                            >
+                              {subItem.name}
+                            </Link>
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               ))}
-              
+
               {/* Theme Toggle Button */}
               <motion.button
                 className="p-3 rounded-full bg-slate-200/80 text-slate-700 shadow-sm hover:shadow-md transition-all duration-300 ease-in-out transform hover:scale-105"
@@ -285,7 +293,7 @@ const Header: React.FC = () => {
               >
                 <Sun size={20} />
               </motion.button>
-              
+
               {/* SITAARE Button */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -353,9 +361,9 @@ const Header: React.FC = () => {
           {isOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
+              animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
               className="lg:hidden glassmorphism shadow-xl overflow-hidden"
             >
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
@@ -364,12 +372,22 @@ const Header: React.FC = () => {
                     {item.dropdown ? (
                       <>
                         <button
-                          onClick={() => setDropdownOpen(dropdownOpen === item.name ? null : item.name)}
-                          className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-base font-medium header-font transition-colors duration-200 ${dropdownOpen === item.name ? 'bg-pink-100 text-pink-700' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'}`}
+                          onClick={() =>
+                            setDropdownOpen(
+                              dropdownOpen === item.name ? null : item.name
+                            )
+                          }
+                          className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-base font-medium header-font transition-colors duration-200 ${
+                            dropdownOpen === item.name
+                              ? "bg-pink-100 text-pink-700"
+                              : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                          }`}
                         >
                           <span>{item.name}</span>
                           <motion.div
-                            animate={{ rotate: dropdownOpen === item.name ? 180 : 0 }}
+                            animate={{
+                              rotate: dropdownOpen === item.name ? 180 : 0,
+                            }}
                             transition={{ duration: 0.3 }}
                           >
                             <ChevronDown className="w-5 h-5" />
@@ -379,9 +397,9 @@ const Header: React.FC = () => {
                           {dropdownOpen === item.name && (
                             <motion.div
                               initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: 'auto', opacity: 1 }}
+                              animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.2, ease: 'easeInOut' }}
+                              transition={{ duration: 0.2, ease: "easeInOut" }}
                               className="pl-4 pr-2 mt-1 space-y-1"
                             >
                               {item.dropdown.map((subItem) => (
@@ -402,7 +420,11 @@ const Header: React.FC = () => {
                       <Link
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className={`block px-3 py-2 rounded-md text-base font-medium header-font transition-colors duration-200 ${location.pathname === item.path ? 'bg-pink-100 text-pink-700' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'}`}
+                        className={`block px-3 py-2 rounded-md text-base font-medium header-font transition-colors duration-200 ${
+                          location.pathname === item.path
+                            ? "bg-pink-100 text-pink-700"
+                            : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                        }`}
                       >
                         {item.name}
                       </Link>
@@ -448,7 +470,7 @@ const Header: React.FC = () => {
         {isOpen && (
           <div
             onKeyDown={(e) => {
-              if (e.key === 'Escape') {
+              if (e.key === "Escape") {
                 setIsOpen(false);
               }
             }}

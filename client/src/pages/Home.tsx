@@ -1,13 +1,14 @@
 import React from 'react';
 import HeroHome from '../components/Home/HeroHome';
 import WhatWeDo from '../components/Home/WhatWeDo';
+import About from '../components/Home/About';
 
 const Home: React.FC = () => {
   return (
     <div className="pt-24">
       <HeroHome/>
       <WhatWeDo />
-      
+      <About />
 
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4 text-center">

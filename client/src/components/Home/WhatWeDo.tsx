@@ -1,6 +1,6 @@
 import React from "react";
 import WorkCard from "../ui/WorkCard";
-import TrapeziumButton from "../ui/TrapeziumButton";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const CardData = [
@@ -43,11 +43,13 @@ const CardData = [
 ];
 
 const WhatWeDo: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="px-6 md:px-20 mt-10 py-20 bg-gray-50 overflow-hidden">
       {/* Section Heading */}
       <motion.h1
-        className="text-center text-3xl md:text-6xl font-bold text-slate-600 py-8 mb-12"
+        className="text-center text-4xl md:text-6xl font-bold text-slate-600 py-8 mb-12"
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -58,7 +60,7 @@ const WhatWeDo: React.FC = () => {
 
       {/* Cards Grid */}
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center w-full overflow-visible "
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
@@ -73,6 +75,8 @@ const WhatWeDo: React.FC = () => {
         {CardData.map((card, index) => (
           <motion.div
             key={index}
+            initial="hidden"
+            whileInView="visible"
             variants={{
               hidden: { opacity: 0, y: 40 },
               visible: { opacity: 1, y: 0 },
@@ -99,7 +103,7 @@ const WhatWeDo: React.FC = () => {
         <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-500 to-red-600 bg-clip-text text-transparent">
           Empowering with Purpose
         </h1>
-        <p className="text-xl w-2/3 font-semibold">
+        <p className="text-xl w-full md:w-2/3  font-semibold">
           We believe true change begins with empowerment — not temporary aid,
           but lasting impact. Rather than offering one-time support, we strive
           to equip individuals with the tools to build a life of dignity,
@@ -116,6 +120,7 @@ const WhatWeDo: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: false, amount: 0.3 }}
+        onClick={() => navigate("/projects")}
       >
         Know More
       </motion.button>
