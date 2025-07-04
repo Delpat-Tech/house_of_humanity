@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface DonationItem {
   title: string;
@@ -9,7 +10,7 @@ interface DonationItem {
 const donations: DonationItem[] = [
   {
     title: 'Custom Donation',
-    desc: 'No matter the amount, become a champion for women’s empowerment.',
+    desc: 'No matter the amount, become a champion for women\'s empowerment.',
     img: '/assets/ways/w1.jpg',
   },
   {
@@ -24,7 +25,7 @@ const donations: DonationItem[] = [
   },
   {
     title: 'Support Menstrual Equity',
-    desc: 'Whether it’s pad distribution, hygiene education, or eradicating stigma, become a crucial part in our menstrual equity initiative.',
+    desc: 'Whether it\'s pad distribution, hygiene education, or eradicating stigma, become a crucial part in our menstrual equity initiative.',
     img: '/assets/ways/w4.jpg',
   },
   {
@@ -47,15 +48,16 @@ const donations: DonationItem[] = [
 const WaysToDonate: React.FC = () => {
   return (
     <section className="py-12 px-4 md:px-12">
-      <h2 className="text-center text-2xl md:text-3xl font-semibold mb-10 tracking-wide">
+      <h2 className="text-center text-2xl md:text-3xl font-semibold mb-10 tracking-wide text-primary-blue">
         WAYS YOU CAN DONATE
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {donations.map((item, index) => (
-          <div
+          <motion.div
             key={index}
-            className="bg-white shadow-[0_8px_8px_rgba(0,0,0,0.1)] border-b-4"
-            style={{ borderBottomColor: '#D5006E' }}
+            className="bg-white shadow-[0_8px_8px_rgba(0,0,0,0.1)] border-b-4 hover:shadow-2xl transition-all duration-300 hover:scale-105"
+            style={{ borderBottomColor: '#0098DB' }}
+            whileHover={{ y: -5 }}
           >
             <img
               src={item.img}
@@ -63,20 +65,20 @@ const WaysToDonate: React.FC = () => {
               className="w-full h-52 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-center text-lg font-semibold mb-2">{item.title}</h3>
-              <p className="text-sm text-gray-700 text-center mb-4">{item.desc}</p>
+              <h3 className="text-center text-lg font-semibold mb-2 text-primary-blue">{item.title}</h3>
+              <p className="text-sm text-dark-gray text-center mb-4">{item.desc}</p>
               <div className="text-center">
                 <a
                   href="https://thegivingblock.com/donate/desai-foundation/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block rounded-full bg-[#D5006E] text-white border border-[#D5006E] px-6 py-2 text-sm font-semibold transition hover:bg-white hover:text-blue-500 hover:border-blue-400"
+                  className="inline-block rounded-full bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white border border-transparent px-6 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
                 >
                   DONATE &rarr;
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

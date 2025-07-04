@@ -5,35 +5,35 @@ const donationItems = [
   {
     title: 'Clothes',
     icon: (
-      <svg className="w-10 h-10 text-pink-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M16 3l2.29 2.29A1 1 0 0119 6.41V21a1 1 0 01-1 1H6a1 1 0 01-1-1V6.41a1 1 0 01.29-.71L7.59 3M9 21V9a3 3 0 016 0v12" /></svg>
+      <svg className="w-10 h-10 text-primary-blue mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M16 3l2.29 2.29A1 1 0 0119 6.41V21a1 1 0 01-1 1H6a1 1 0 01-1-1V6.41a1 1 0 01.29-.71L7.59 3M9 21V9a3 3 0 016 0v12" /></svg>
     ),
     desc: 'Gently used or new clothes for all ages.'
   },
   {
     title: 'Food',
     icon: (
-      <svg className="w-10 h-10 text-fuchsia-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 3v18m9-9H3" /></svg>
+      <svg className="w-10 h-10 text-fresh-green mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 3v18m9-9H3" /></svg>
     ),
     desc: 'Non-perishable food items, grains, pulses, snacks.'
   },
   {
     title: 'Toys',
     icon: (
-      <svg className="w-10 h-10 text-pink-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" /><path d="M8 12h8M12 8v8" /></svg>
+      <svg className="w-10 h-10 text-primary-blue mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" /><path d="M8 12h8M12 8v8" /></svg>
     ),
     desc: 'Clean, safe toys for children.'
   },
   {
     title: 'Utensils',
     icon: (
-      <svg className="w-10 h-10 text-fuchsia-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M9 9h6v6H9z" /></svg>
+      <svg className="w-10 h-10 text-fresh-green mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M9 9h6v6H9z" /></svg>
     ),
     desc: 'Plates, bowls, spoons, and other kitchenware.'
   },
   {
     title: 'Educational Materials',
     icon: (
-      <svg className="w-10 h-10 text-pink-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 20l9-5-9-5-9 5 9 5z" /><path d="M12 12V4m0 0L3 9m9-5l9 5" /></svg>
+      <svg className="w-10 h-10 text-primary-blue mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 20l9-5-9-5-9 5 9 5z" /><path d="M12 12V4m0 0L3 9m9-5l9 5" /></svg>
     ),
     desc: 'Books, notebooks, stationery, and school supplies.'
   },
@@ -60,25 +60,25 @@ const ContributeMaterials = () => {
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="mb-12 text-center bg-gradient-to-br from-pink-600 via-pink-500 to-rose-600 rounded-3xl py-10 shadow-xl"
+        className="mb-12 text-center bg-gradient-to-br from-primary-blue via-blue-600 to-fresh-green rounded-3xl py-10 shadow-xl"
       >
         <h1 className="text-5xl font-extrabold mb-4 text-white drop-shadow-lg">Contribute Materials</h1>
-        <p className="text-xl text-pink-100 font-medium max-w-2xl mx-auto">Your unused items can bring joy and dignity. Donate clothes, food, toys, utensils, and educational materials to help families in need.</p>
+        <p className="text-xl text-white/90 font-medium max-w-2xl mx-auto">Your unused items can bring joy and dignity. Donate clothes, food, toys, utensils, and educational materials to help families in need.</p>
       </motion.div>
 
       {/* What You Can Donate */}
       <div className="mb-16">
-        <h2 className="text-2xl font-bold text-pink-600 mb-4 text-center">What You Can Donate</h2>
+        <h2 className="text-2xl font-bold text-primary-blue mb-4 text-center">What You Can Donate</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {donationItems.map((item, idx) => (
             <motion.div
               key={idx}
-              whileHover={{ scale: 1.07, boxShadow: '0 8px 32px 0 rgba(236,72,153,0.15)' }}
-              className="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center text-center border border-pink-100 hover:shadow-2xl transition-all"
+              whileHover={{ scale: 1.07, boxShadow: '0 8px 32px 0 rgba(0,152,219,0.15)' }}
+              className="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center text-center border border-primary-blue/20 hover:shadow-2xl transition-all"
             >
               {item.icon}
-              <h3 className="text-xl font-bold text-pink-600 mb-2">{item.title}</h3>
-              <p className="text-pink-500 text-sm">{item.desc}</p>
+              <h3 className="text-xl font-bold text-primary-blue mb-2">{item.title}</h3>
+              <p className="text-dark-gray text-sm">{item.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -86,9 +86,9 @@ const ContributeMaterials = () => {
 
       {/* How to Contribute */}
       <div className="mb-16 text-center">
-        <h2 className="text-2xl font-bold text-pink-600 mb-4">How to Contribute</h2>
-        <p className="text-pink-500 max-w-2xl mx-auto mb-2">Drop off your items at our center, or request a pick-up for bulk donations. For questions, contact us at <a href="mailto:info@houseofhumanity.in" className="underline text-pink-600">info@houseofhumanity.in</a> or call +91 99741 91811.</p>
-        <p className="text-pink-500 max-w-2xl mx-auto">Address: B1/44 Somdutt park, Near Rajesh tower, Gotri road, Vadodara - 390023</p>
+        <h2 className="text-2xl font-bold text-primary-blue mb-4">How to Contribute</h2>
+        <p className="text-dark-gray max-w-2xl mx-auto mb-2">Drop off your items at our center, or request a pick-up for bulk donations. For questions, contact us at <a href="mailto:info@houseofhumanity.in" className="underline text-primary-blue">info@houseofhumanity.in</a> or call +91 99741 91811.</p>
+        <p className="text-dark-gray max-w-2xl mx-auto">Address: B1/44 Somdutt park, Near Rajesh tower, Gotri road, Vadodara - 390023</p>
       </div>
 
       {/* Material Donation Form */}
@@ -97,9 +97,9 @@ const ContributeMaterials = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="bg-white rounded-2xl shadow-2xl p-10 mb-16 max-w-2xl mx-auto border border-pink-100"
+        className="bg-white/90 backdrop-blur-lg rounded-2xl shadow-2xl p-10 mb-16 max-w-2xl mx-auto border border-primary-blue/20"
       >
-        <h2 className="text-3xl font-bold mb-4 text-pink-600">Material Donation Form</h2>
+        <h2 className="text-3xl font-bold mb-4 text-primary-blue">Material Donation Form</h2>
         {submitted ? (
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -118,7 +118,7 @@ const ContributeMaterials = () => {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="w-full border-2 border-pink-200 rounded px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="w-full border-2 border-primary-blue/30 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
               />
             </div>
             <div>
@@ -129,7 +129,7 @@ const ContributeMaterials = () => {
                 value={form.contact}
                 onChange={handleChange}
                 required
-                className="w-full border-2 border-pink-200 rounded px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="w-full border-2 border-primary-blue/30 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
               />
             </div>
             <div>
@@ -140,7 +140,7 @@ const ContributeMaterials = () => {
                 value={form.items}
                 onChange={handleChange}
                 placeholder="e.g. Clothes, Food, Toys"
-                className="w-full border-2 border-pink-200 rounded px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="w-full border-2 border-primary-blue/30 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
               />
             </div>
             <div>
@@ -150,7 +150,7 @@ const ContributeMaterials = () => {
                 value={form.method}
                 onChange={handleChange}
                 required
-                className="w-full border-2 border-pink-200 rounded px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="w-full border-2 border-primary-blue/30 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
               >
                 <option value="">Select...</option>
                 <option value="Drop-off">Drop-off</option>
@@ -163,13 +163,13 @@ const ContributeMaterials = () => {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                className="w-full border-2 border-pink-200 rounded px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="w-full border-2 border-primary-blue/30 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
                 rows={3}
               />
             </div>
             <button
               type="submit"
-              className="bg-gradient-to-r from-pink-600 to-rose-600 text-white px-8 py-2 rounded-lg font-bold shadow-lg hover:scale-105 transition-transform"
+              className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white px-8 py-2 rounded-lg font-bold shadow-lg hover:scale-105 transition-transform"
             >
               Submit
             </button>
@@ -179,8 +179,8 @@ const ContributeMaterials = () => {
 
       {/* Impact Statement */}
       <div className="mb-8 text-center">
-        <h2 className="text-2xl font-bold text-pink-600 mb-2">Your Impact</h2>
-        <p className="text-pink-500 max-w-2xl mx-auto">Last year, your contributions helped <span className="font-bold text-pink-600">500+ families</span> with essential materials and support. Thank you for making a difference!</p>
+        <h2 className="text-2xl font-bold text-primary-blue mb-2">Your Impact</h2>
+        <p className="text-dark-gray max-w-2xl mx-auto">Last year, your contributions helped <span className="font-bold text-primary-blue">500+ families</span> with essential materials and support. Thank you for making a difference!</p>
       </div>
     </div>
   );

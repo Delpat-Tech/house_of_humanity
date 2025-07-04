@@ -48,10 +48,9 @@ const Header: React.FC = () => {
       name: "What We Do",
       path: "/what-we-do",
       dropdown: [
-        { name: "Projects", path: "/projects" },
         { name: "Sitaare", path: "/sitaare" },
         { name: "Health Care", path: "/health-care" },
-        { name: "Sustianable Livelihood", path: "/sustainable-livelihood" },
+        { name: "Sustainable Livelihood", path: "/sustainable-livelihood" },
         { name: "Education", path: "/education" },
         { name: "Nutrition", path: "/nutrition" },
         { name: "House of Happiness", path: "/house-of-happiness" },
