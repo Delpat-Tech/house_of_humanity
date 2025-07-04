@@ -9,9 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#75ba75', // logo-green
-        'primary-dark': '#C71585', // Medium Violet Red, a darker shade for hover states or active elements
-        // Add more custom colors here as needed
+        'primary-blue': '#0098DB', // Headlines, CTAs, buttons
+        'fresh-green': '#70BF44', // Accents, success states, iconography
+        'warm-light-blue': '#E0F7FA', // Backgrounds, cards, sections
+        'off-white': '#F9F9F9', // Main background
+        'dark-gray': '#333333', // Text, footer
       },
     },
   },
