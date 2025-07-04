@@ -238,16 +238,17 @@ const Header: React.FC = () => {
                   }
                   onMouseLeave={() => setDropdownOpen(null)}
                 >
-                  <Link
-                    to={item.path}
-                    className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 ${
-                      location.pathname === item.path
-                        ? "active text-primary-blue bg-warm-light-blue shadow-lg shadow-primary-blue/20"
-                        : "text-dark-gray hover:text-primary-blue hover:bg-warm-light-blue/50"
-                    }`}
-                  >
-                    <span className="relative z-10">{item.name}</span>
-                    {item.dropdown && (
+                  {item.dropdown ? (
+                    <span
+                      className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 cursor-default select-none ${
+                        dropdownOpen === item.name
+                          ? "active text-primary-blue bg-warm-light-blue shadow-lg shadow-primary-blue/20"
+                          : "text-dark-gray hover:text-primary-blue hover:bg-warm-light-blue/50"
+                      }`}
+                      onMouseEnter={() => setDropdownOpen(item.name)}
+                      onMouseLeave={() => setDropdownOpen(null)}
+                    >
+                      <span className="relative z-10">{item.name}</span>
                       <motion.div
                         animate={{
                           rotate: dropdownOpen === item.name ? 180 : 0,
@@ -256,8 +257,19 @@ const Header: React.FC = () => {
                       >
                         <ChevronDown className="w-4 h-4 text-fresh-green" />
                       </motion.div>
-                    )}
-                  </Link>
+                    </span>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 ${
+                        location.pathname === item.path
+                          ? "active text-primary-blue bg-warm-light-blue shadow-lg shadow-primary-blue/20"
+                          : "text-dark-gray hover:text-primary-blue hover:bg-warm-light-blue/50"
+                      }`}
+                    >
+                      <span className="relative z-10">{item.name}</span>
+                    </Link>
+                  )}
 
                   {/* Dropdown Menu */}
                   <AnimatePresence>
