@@ -105,7 +105,7 @@ const Header: React.FC = () => {
             left: 50%;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #EC4899, #BE185D);
+            background: #0098DB;
             transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
             transform: translateX(-50%);
           }
@@ -116,18 +116,18 @@ const Header: React.FC = () => {
           }
           
           .glassmorphism {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(233, 247, 250, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(233, 247, 250, 0.2);
           }
           
           .gradient-text {
-            background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);
+            background: linear-gradient(135deg, #0098DB 0%, #70BF44 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: #EC4899;
+            color: #0098DB;
           }
           
           .donate-btn {
@@ -156,7 +156,11 @@ const Header: React.FC = () => {
             top: 0;
             left: 0;
             height: 3px;
-            background: linear-gradient(90deg, #EC4899, #BE185D, #8B5CF6);
+            background: linear-gradient(90deg, rgba(0,152,219,0.85) 0%, rgba(112,191,68,0.85) 100%);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.15);
             z-index: 1000;
             transition: width 0.1s ease;
           }
@@ -174,7 +178,7 @@ const Header: React.FC = () => {
           
           .dropdown-item:hover {
             transform: translateX(8px);
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(190, 24, 93, 0.1));
+            background: #E0F7FA;
           }
           
           @keyframes float {
@@ -194,8 +198,8 @@ const Header: React.FC = () => {
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
           isScrolled
-            ? "glassmorphism shadow-2xl shadow-pink-500/10"
-            : "bg-white/90 backdrop-blur-sm"
+            ? "glassmorphism shadow-2xl shadow-primary-blue/10"
+            : "bg-off-white/90 backdrop-blur-sm"
         }`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -238,8 +242,8 @@ const Header: React.FC = () => {
                     to={item.path}
                     className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-sm font-medium header-font transition-all duration-300 ${
                       location.pathname === item.path
-                        ? "active text-pink-600 bg-gradient-to-r from-pink-50 to-rose-50 shadow-lg shadow-pink-500/20"
-                        : "text-slate-700 hover:text-slate-900 hover:bg-gradient-to-r hover:from-pink-50/50 hover:to-rose-50/50"
+                        ? "active text-primary-blue bg-warm-light-blue shadow-lg shadow-primary-blue/20"
+                        : "text-dark-gray hover:text-primary-blue hover:bg-warm-light-blue/50"
                     }`}
                   >
                     <span className="relative z-10">{item.name}</span>
@@ -250,7 +254,7 @@ const Header: React.FC = () => {
                         }}
                         transition={{ duration: 0.3 }}
                       >
-                        <ChevronDown className="w-4 h-4" />
+                        <ChevronDown className="w-4 h-4 text-fresh-green" />
                       </motion.div>
                     )}
                   </Link>
@@ -266,14 +270,14 @@ const Header: React.FC = () => {
                           duration: 0.3,
                           ease: [0.25, 0.1, 0.25, 1],
                         }}
-                        className="absolute top-full left-0 mt-2 w-72 glassmorphism rounded-2xl shadow-2xl border border-white/20 py-3 z-50 overflow-hidden"
+                        className="absolute top-full left-0 mt-2 bg-white rounded-2xl shadow-2xl border border-warm-light-blue py-3 z-50 overflow-hidden"
                       >
-                        <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-rose-500/5"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/5 to-fresh-green/5"></div>
                         {item.dropdown.map((subItem, subIndex) => (
                           <div key={subItem.name}>
                             <Link
                               to={subItem.path}
-                              className="dropdown-item block px-5 py-3 text-sm text-black hover:text-black font-medium header-font rounded-lg mx-2 relative z-10"
+                              className="dropdown-item block px-5 py-3 text-sm text-dark-gray hover:text-primary-blue font-medium header-font rounded-lg mx-2 relative z-10"
                             >
                               {subItem.name}
                             </Link>
@@ -287,7 +291,7 @@ const Header: React.FC = () => {
 
               {/* Theme Toggle Button */}
               <motion.button
-                className="p-3 rounded-full bg-slate-200/80 text-slate-700 shadow-sm hover:shadow-md transition-all duration-300 ease-in-out transform hover:scale-105"
+                className="p-3 rounded-full bg-warm-light-blue text-primary-blue shadow-sm hover:shadow-md transition-all duration-300 ease-in-out transform hover:scale-105"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -314,7 +318,7 @@ const Header: React.FC = () => {
             {/* Mobile Menu Button and Theme Toggle */}
             <div className="lg:hidden flex items-center space-x-4">
               <motion.button
-                className="p-2 rounded-full bg-slate-200/80 text-slate-700 shadow-sm hover:shadow-md transition-all duration-300 ease-in-out transform hover:scale-105"
+                className="p-2 rounded-full bg-warm-light-blue text-primary-blue shadow-sm hover:shadow-md transition-all duration-300 ease-in-out transform hover:scale-105"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -322,7 +326,7 @@ const Header: React.FC = () => {
               </motion.button>
               <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500 transition-all duration-200"
+                className="inline-flex items-center justify-center p-2 rounded-md text-primary-blue hover:text-fresh-green hover:bg-warm-light-blue focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-blue transition-all duration-200"
                 aria-expanded="false"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -379,8 +383,8 @@ const Header: React.FC = () => {
                           }
                           className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-base font-medium header-font transition-colors duration-200 ${
                             dropdownOpen === item.name
-                              ? "bg-pink-100 text-pink-700"
-                              : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                              ? "bg-warm-light-blue text-primary-blue"
+                              : "text-dark-gray hover:bg-warm-light-blue hover:text-primary-blue"
                           }`}
                         >
                           <span>{item.name}</span>
@@ -407,7 +411,7 @@ const Header: React.FC = () => {
                                   key={subItem.name}
                                   to={subItem.path}
                                   onClick={() => setIsOpen(false)}
-                                  className="block px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition-colors duration-200"
+                                  className="block px-3 py-2 rounded-md text-sm font-medium text-dark-gray hover:bg-warm-light-blue hover:text-primary-blue transition-colors duration-200"
                                 >
                                   {subItem.name}
                                 </Link>
@@ -422,8 +426,8 @@ const Header: React.FC = () => {
                         onClick={() => setIsOpen(false)}
                         className={`block px-3 py-2 rounded-md text-base font-medium header-font transition-colors duration-200 ${
                           location.pathname === item.path
-                            ? "bg-pink-100 text-pink-700"
-                            : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                            ? "bg-warm-light-blue text-primary-blue"
+                            : "text-dark-gray hover:bg-warm-light-blue hover:text-primary-blue"
                         }`}
                       >
                         {item.name}
@@ -457,9 +461,9 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.1, y: -5 }}
             whileTap={{ scale: 0.9 }}
           >
-            <div className="relative p-4 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 float-animation group-hover:animate-none">
+            <div className="relative p-4 bg-primary-blue rounded-full shadow-lg hover:shadow-xl transition-all duration-300 float-animation group-hover:animate-none">
               <ArrowUp className="w-6 h-6 text-white" />
-              <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-rose-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-fresh-green rounded-full opacity-0 group-hover:opacity-80 transition-opacity duration-300 pointer-events-none"></div>
             </div>
           </motion.button>
         )}
