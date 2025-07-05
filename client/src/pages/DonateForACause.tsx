@@ -11,10 +11,9 @@ type FormData = {
   email: string;
 };
 
-type Errors = {
-  firstName?: string;
-  email?: string;
-};
+import { FormErrors } from '../types';
+
+type Errors = FormErrors;
 
 // Testimonial data and component
 const testimonials = [

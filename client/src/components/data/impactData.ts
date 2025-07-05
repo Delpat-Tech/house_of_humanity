@@ -15,6 +15,7 @@ import {
   FaFemale
 } from "react-icons/fa";
 import { IconType } from "react-icons";
+import { ImpactItem } from "../../types";
 
 // Icon mapping
 export const iconMap: Record<string, IconType> = {
@@ -31,13 +32,6 @@ export const iconMap: Record<string, IconType> = {
   users: FaUsers,
   running: FaRunning,
   music: FaMusic,
-};
-
-export type ImpactItem = {
-  icon: string;
-  project: string;
-  number: string;
-  impact: string;
 };
 
 export const impactData: ImpactItem[] = [

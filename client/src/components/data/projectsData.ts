@@ -1,4 +1,6 @@
-export const projects = [
+import { Project } from '../../types';
+
+export const projects: Project[] = [
   {
     title: "Project पोषण",
     image: "/Gallery/img1.webp",

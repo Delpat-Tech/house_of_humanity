@@ -1,11 +1,5 @@
 import React from 'react';
-
-type TrapeziumButtonProps = {
-  label: string;
-  onClick?: () => void;
-  className?: string;
-  variant?: 'default' | 'sitaare';
-};
+import { TrapeziumButtonProps } from '../../types';
 
 const TrapeziumButton: React.FC<TrapeziumButtonProps> = ({ 
   label, 

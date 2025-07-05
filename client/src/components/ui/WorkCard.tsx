@@ -2,17 +2,12 @@ import React from "react";
 import TrapeziumButton from "./TrapeziumButton";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { WorkCardProps } from "../../types";
 
-type CardProps = {
-  title: string;
-  subtitle: string;
-  description: string;
-};
-
-const WorkCard: React.FC<CardProps> = ({ title, subtitle, description }) => {
+const WorkCard: React.FC<WorkCardProps> = ({ title, subtitle, description, onClick, className }) => {
   const navigate = useNavigate();
   return (
-    <div className="w-full max-w-[25rem] h-[28rem] bg-white border-b-[6px] border-teal-500 shadow-2xl rounded-lg overflow-hidden flex flex-col items-center p-6">
+    <div className={`w-full max-w-[25rem] h-[28rem] bg-white border-b-[6px] border-teal-500 shadow-2xl rounded-lg overflow-hidden flex flex-col items-center p-6 ${className || ''}`}>
       {/* Title */}
       <motion.h2
         className="text-[24px] font-bold text-center mt-4 mb-2"
@@ -53,12 +48,12 @@ const WorkCard: React.FC<CardProps> = ({ title, subtitle, description }) => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
         viewport={{ once: false, amount: 0.3 }}
-        onClick={() => navigate("/projects")}
+        onClick={onClick || (() => navigate("/projects"))}
       >
         <TrapeziumButton
           className="uppercase"
           label="Read More"
-          onClick={() => console.log("Button clicked")}
+          onClick={onClick || (() => navigate("/projects"))}
         />
       </motion.div>
     </div>

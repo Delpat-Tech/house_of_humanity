@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
-interface Volunteer {
-  name: string;
-  img: string;
-  intro: string;
-}
+import { Volunteer } from '../types';
 
 const founders = [
   {
@@ -133,7 +128,12 @@ function PolaroidCollage({ volunteers }: { volunteers: Volunteer[] }) {
   );
 }
 
-type FlipCardProps = { volunteer: Volunteer; style?: React.CSSProperties; refProp?: React.Ref<HTMLDivElement>; visible?: boolean };
+interface FlipCardProps { 
+  volunteer: Volunteer; 
+  style?: React.CSSProperties; 
+  refProp?: React.Ref<HTMLDivElement>; 
+  visible?: boolean;
+}
 function FlipCard({ volunteer, style, refProp, visible }: FlipCardProps) {
   const [flipped, setFlipped] = useState(false);
   return (

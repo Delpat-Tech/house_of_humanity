@@ -1,10 +1,5 @@
 import React from 'react';
-
-interface StatsCardProps {
-  count: string | number;
-  label: string;
-  className?: string;
-}
+import { StatsCardProps } from '../../types';
 
 const StatsCard: React.FC<StatsCardProps> = ({ count, label, className = "" }) => {
   return (

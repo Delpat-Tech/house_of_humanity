@@ -5,6 +5,7 @@ interface Slide {
   image: string;
   amount: string;
   description: string;
+  id?: string;
 }
 
 const slides: Slide[] = [
