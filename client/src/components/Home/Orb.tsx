@@ -6,6 +6,8 @@ interface OrbProps {
   hoverIntensity?: number;
   rotateOnHover?: boolean;
   forceHoverState?: boolean;
+  className?: string;
+  size?: number;
 }
 
 export default function Orb({
