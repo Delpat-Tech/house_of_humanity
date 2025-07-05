@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Sun, ArrowUp } from "lucide-react";
+import TrapeziumButton from "../ui/TrapeziumButton";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -130,7 +131,7 @@ const Header: React.FC = () => {
           }
           
           .donate-btn {
-            background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);
+            background: linear-gradient(135deg, #70BF44 0%, #5A9E35 100%);
             position: relative;
             overflow: hidden;
           }
@@ -317,11 +318,12 @@ const Header: React.FC = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link
-                  to="/sitaare"
-                  className="donate-btn relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white rounded-xl shadow-lg transition-all duration-300 overflow-hidden group"
-                >
-                  <span className="relative z-10">SITAARE</span>
+                <Link to="/sitaare">
+                  <TrapeziumButton
+                    label="SITAARE"
+                    variant="sitaare"
+                    className="donate-btn relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white rounded-xl shadow-lg transition-all duration-300 overflow-hidden group"
+                  />
                 </Link>
               </motion.div>
             </div>
@@ -447,11 +449,15 @@ const Header: React.FC = () => {
                   </div>
                 ))}
                 <Link
-                  to="/donate"
+                  to="/sitaare"
                   onClick={() => setIsOpen(false)}
-                  className="donate-btn w-full text-center mt-4 relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white rounded-xl shadow-lg transition-all duration-300 overflow-hidden group"
+                  className="w-full text-center mt-4"
                 >
-                  <span className="relative z-10">SITAARE</span>
+                  <TrapeziumButton
+                    label="SITAARE"
+                    variant="sitaare"
+                    className="donate-btn w-full text-center relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white rounded-xl shadow-lg transition-all duration-300 overflow-hidden group"
+                  />
                 </Link>
               </div>
             </motion.div>

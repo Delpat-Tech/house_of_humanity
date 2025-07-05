@@ -32,21 +32,27 @@ const Gallery = () => {
 
   // import all images from public/Gallery
   const galleryFilenames = [
-    "IMG-4030.webp",
-    "IMG-4028-scaled.webp",
-    "IMG-0997-scaled.webp",
-    "edd707e5-5e9a-461b-ae8e-82cbdedbd241.webp",
-    "IMG-6474-scaled.webp",
-    "IMG-6313-2-scaled.webp",
-    "IMG-6310-scaled.webp",
-    "IMG-5807-1-scaled.webp",
-    "IMG-5797-scaled.webp",
-    "017f1cfc-91c0-4c03-8485-d4faf7ee8004.webp",
-    "9a99fc70-7259-4e80-b853-68469dda507e-1.webp",
-    "Pad-House-1.webp",
-    "Team-1.webp",
-    "WhatsApp-Image-2022-02-19-at-7.42.12-PM-1.webp",
-    "WhatsApp-Image-2021-12-09-at-7.16.53-PM.webp"
+    "image1.webp",
+    "image2.webp",
+    "image3.webp",
+    "image4.webp",
+    "image5.webp",
+    "image6.webp",
+    "image7.webp",
+    "image8.webp",
+    "image9.webp",
+    "image10.webp",
+    "image11.webp",
+    "image12.webp",
+    "image13.webp",
+    "image14.webp",
+    "image15.webp",
+    "image16.webp",
+    "image17.webp",
+    "image18.webp",
+    "image19.webp",
+    "image20.webp"
+    
   ];
 
   const images = galleryFilenames.map((filename, idx) => ({
