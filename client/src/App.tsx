@@ -8,6 +8,7 @@ import Footer from './components/layout/Footer';
 
 // Theme Provider
 import { ThemeProvider } from './shared/contexts/ThemeContext';
+import { ScrollToTop } from './shared/components/ScrollToTop';
 import AboutUs from './pages/AboutUs';
 import OurTeam from './pages/OurTeam';
 import Projects from "./pages/Projects"
@@ -33,6 +34,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
+        <ScrollToTop />
         <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
           <Header />
           <Routes>
