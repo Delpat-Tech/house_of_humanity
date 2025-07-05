@@ -1,6 +1,4 @@
 import React from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { IconType } from "react-icons";
 
 type ImpactCardProps = {
   iconName: string; 
@@ -12,7 +10,11 @@ const ImpactCard: React.FC<ImpactCardProps> = ({ iconName, count, title }) => {
   return (
     <div className="w-96 h-80 mb-12 pt-2 rounded-2xl bg-primary">
       <div className="w-96 h-80 bg-white rounded-xl shadow-xl p-6 flex flex-col items-center border-t-4 border-teal-600">
-        <IoMdArrowDropdown className=" -mt-[2.5rem] text-teal-600" size={40} />
+        <div className=" -mt-[2.5rem] text-teal-600">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7 10l5 5 5-5z"/>
+          </svg>
+        </div>
 
         {/* Heading */}
         <h3 className="text-[28px] mb-6 font-bold">{count}</h3>
