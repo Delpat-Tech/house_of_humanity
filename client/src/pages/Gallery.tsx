@@ -68,13 +68,13 @@ const Gallery = () => {
     : images.filter(image => image.category === selectedCategory);
 
   return (
-    <div className="container mx-auto px-4 py-12 pt-24">
+    <div className="container mx-auto px-4 py-12 pt-24 bg-white dark:bg-gray-900 min-h-screen">
       {/* Hero Section */}
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-extrabold text-primary-blue mb-4 tracking-tight">
           Our Gallery
         </h1>
-        <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
           A visual journey through our impact, events, and success stories.
         </p>
       </div>
@@ -93,7 +93,7 @@ const Gallery = () => {
             className={`px-4 py-2 rounded-md transition-colors duration-300 ${
               selectedCategory === category.id
                 ? 'bg-gradient-to-r from-primary-blue to-fresh-green text-white shadow-lg'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
             }`}
           >
             {category.name}
@@ -103,17 +103,17 @@ const Gallery = () => {
 
       {/* Filters */}
       <div className="mb-12">
-        <div className="bg-white/90 backdrop-blur-lg rounded-xl shadow-lg p-6 border border-primary-blue/20">
+        <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-xl shadow-lg p-6 border border-primary-blue/20 dark:border-gray-600">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Year Filter */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
                 Year
               </label>
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-primary-blue/30 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full px-4 py-2 rounded-lg border border-primary-blue/30 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
               >
                 {years.map(year => (
                   <option key={year} value={year}>
@@ -125,13 +125,13 @@ const Gallery = () => {
 
             {/* Month Filter */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
                 Month
               </label>
               <select
                 value={selectedMonth}
                 onChange={(e) => setSelectedMonth(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-primary-blue/30 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full px-4 py-2 rounded-lg border border-primary-blue/30 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
               >
                 {months.map(month => (
                   <option key={month.id} value={month.id}>
@@ -152,7 +152,7 @@ const Gallery = () => {
         className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
       >
         {filteredImages.map(image => (
-          <div key={image.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-primary-blue/10">
+          <div key={image.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-primary-blue/10 dark:border-gray-600">
             <div className="relative h-48">
               <img
                 src={image.src}
@@ -169,10 +169,10 @@ const Gallery = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="bg-white/90 backdrop-blur-lg rounded-lg shadow-md p-6 mt-12 text-center border border-primary-blue/20"
+        className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-lg shadow-md p-6 mt-12 text-center border border-primary-blue/20 dark:border-gray-600"
       >
         <h2 className="text-2xl font-semibold mb-4 text-primary-blue">Share Your Story</h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-gray-600 dark:text-gray-300 mb-6">
           Have photos or stories from our events? Share them with us to be featured in our gallery.
         </p>
         <button className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white px-6 py-2 rounded-md transition-all duration-300 hover:scale-105 shadow-lg">

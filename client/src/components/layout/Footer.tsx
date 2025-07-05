@@ -3,7 +3,7 @@ import { Facebook, Instagram, Linkedin, MapPin, Mail, Phone, ArrowRight } from '
 
 const Footer = () => {
   return (
-    <footer className="bg-dark-gray text-off-white relative overflow-hidden">
+    <footer className="bg-dark-gray dark:bg-gray-900 text-off-white dark:text-gray-200 relative overflow-hidden transition-colors duration-300">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-32 h-32 bg-primary-blue rounded-full blur-3xl"></div>
@@ -30,7 +30,7 @@ const Footer = () => {
             <div className="pt-4">
               <a
                 href="#donate"
-                className="inline-flex items-center bg-primary-blue text-off-white px-8 py-3 rounded-full font-semibold text-sm hover:bg-fresh-green hover:text-dark-gray hover:shadow-lg transform hover:scale-105 transition-all duration-300 group"
+                className="inline-flex items-center bg-primary-blue text-white px-8 py-3 rounded-full font-semibold text-sm hover:bg-fresh-green hover:text-dark-gray hover:shadow-lg transform hover:scale-105 transition-all duration-300 group"
               >
                 DONATE NOW
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200 text-fresh-green group-hover:text-dark-gray" />
@@ -129,9 +129,9 @@ const Footer = () => {
                 <input 
                   type="email" 
                   placeholder="Your email"
-                  className="flex-1 px-3 py-2 text-sm bg-warm-light-blue backdrop-blur-sm border border-primary-blue/20 rounded-lg text-dark-gray placeholder-dark-gray focus:outline-none focus:ring-2 focus:ring-primary-blue/30 focus:border-transparent"
+                  className="flex-1 px-3 py-2 text-sm bg-warm-light-blue dark:bg-gray-700 backdrop-blur-sm border border-primary-blue/20 dark:border-gray-600 rounded-lg text-dark-gray dark:text-gray-100 placeholder-dark-gray dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-blue/30 focus:border-transparent"
                 />
-                <button className="px-4 py-2 bg-fresh-green text-dark-gray rounded-lg text-sm font-semibold hover:bg-primary-blue hover:text-off-white transition-colors duration-200">
+                <button className="px-4 py-2 bg-fresh-green text-dark-gray rounded-lg text-sm font-semibold hover:bg-primary-blue hover:text-white transition-colors duration-200">
                   Subscribe
                 </button>
               </div>
