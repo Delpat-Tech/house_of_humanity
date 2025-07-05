@@ -43,7 +43,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen pt-24 bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <div className="relative h-[40vh] bg-cover bg-center" style={{ backgroundImage: "url('/Contact-us.jpg')" }}>
+      <div className="relative h-[40vh] bg-cover bg-center" style={{ backgroundImage: "url('/Contact-us.jpeg')" }}>
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
