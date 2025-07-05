@@ -6,7 +6,7 @@ const HeroHome: React.FC = () => {
   const navigate = useNavigate();
   return (
     <section
-      className="relative w-full min-h-screen bg-cover bg-center bg-no-repeat md:h-[50rem]"
+      className="relative w-full min-h-[70vh] bg-cover bg-center bg-no-repeat h-[38rem]"
       style={{ backgroundImage: "url('/images/HeroHOH.jpg')" }}
     >
       {/* Overlay */}
@@ -24,16 +24,16 @@ const HeroHome: React.FC = () => {
           <img
             src="/images/HeroSectionLogo.png"
             alt="logo"
-            className="w-64 sm:w-96 md:w-[44rem]  max-w-full"
+            className="w-full max-w-[20rem] sm:max-w-[24rem] md:max-w-[28rem] lg:max-w-[32rem]"
           />
         </motion.div>
-
+``
         {/* Bottom Row */}
-        <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mt-10 md:mt-auto">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end  gap-6 mt-6 md:mt-auto">
           {/* Heading Section */}
-          <div className="max-w-4xl">
+          <div className="max-w-[61rem]">
             <motion.p
-              className="text-xl sm:text-2xl md:text-4xl text-blue-500 font-semibold mb-2"
+              className="text-xl sm:text-2xl md:text-3xl text-blue-500 font-semibold mb-2"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
@@ -42,7 +42,7 @@ const HeroHome: React.FC = () => {
               Building a Better World
             </motion.p>
             <motion.h1
-              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold ... break-words max-w-full bg-gradient-to-r from-blue-700 via-teal-600 to-green-600 bg-clip-text text-transparent lg:leading-snug md:leading-snug tracking-normal"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold max-w-full bg-gradient-to-r from-blue-700 via-teal-600 to-green-600 bg-clip-text text-transparent  tracking-normal"
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.9, ease: "easeOut" }}

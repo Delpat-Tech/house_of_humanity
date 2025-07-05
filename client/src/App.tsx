@@ -7,6 +7,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import AboutUs from './pages/AboutUs';
 import OurTeam from './pages/OurTeam';
+import Projects from "./pages/Projects"
 import Sitaare from './pages/Sitaare';
 import HealthCare from './pages/HealthCare';
 import SustainableLivelihood from './pages/SustainableLivelihood';
@@ -35,6 +36,7 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/our-team" element={<OurTeam />} />
           <Route path="/sitaare" element={<Sitaare />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/health-care" element={<HealthCare />} />
           <Route path="/sustainable-livelihood" element={<SustainableLivelihood />} />
           <Route path="/education" element={<Education />} />

@@ -6,11 +6,11 @@ const About: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-20">
-      <div className="w-full flex md:flex-row flex-col gap-16 items-center">
+    <section className=" bg-gray-100 px-4 sm:px-6 py-16 sm:py-20 md:py-24">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16 items-center">
         {/* Left section Image */}
         <motion.div
-          className="md:w-1/2 w-full"
+          className="w-full md:w-1/2"
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -19,20 +19,20 @@ const About: React.FC = () => {
           <img
             src="/Gallery/Frame-33-1.webp"
             alt="About Image"
-            className="w-[44rem] max-w-full"
+            className="w-full max-w-[40rem] mx-auto"
           />
         </motion.div>
 
         {/* Right section content */}
         <motion.div
-          className="md:w-1/2 w-full"
+          className="w-full md:w-1/2"
           initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           viewport={{ once: false, amount: 0.3 }}
         >
           <motion.h1
-            className="md:text-7xl text-6xl bg-gradient-to-r from-teal-500 to-green-400 bg-clip-text text-transparent font-bold text-left"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-teal-500 to-green-400 bg-clip-text text-transparent text-left"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -42,7 +42,7 @@ const About: React.FC = () => {
           </motion.h1>
 
           <motion.p
-            className="my-6 text-xl font-medium"
+            className="mt-6 mb-4 text-base sm:text-lg md:text-xl font-medium text-justify"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
@@ -64,7 +64,7 @@ const About: React.FC = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="text-white text-xl font-semibold bg-blue-500 rounded-xl px-7 py-2 my-3 hover:bg-blue-600"
+            className="text-white text-sm sm:text-base md:text-xl font-semibold bg-blue-500 rounded-xl px-6 py-2 mt-4 hover:bg-blue-600 transition-colors duration-300"
             onClick={() => navigate("/about")}
           >
             About Us
