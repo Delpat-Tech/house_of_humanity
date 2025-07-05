@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { Facebook, Instagram, Linkedin, MapPin, Mail, Phone, ArrowRight } from 'lucide-react';
+import Button from '../ui/Button';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-pink-600 via-pink-500 to-rose-600 text-white relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-slate-900 via-primary-dark to-secondary-dark text-white relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
@@ -28,13 +30,13 @@ const Footer = () => {
             House of Humanity is a youth-led organization dedicated to empowering communities through education, humanitarian aid, and social impact initiatives that foster dignity, equality, and opportunity for all.
             </p>
             <div className="pt-4">
-              <a
-                href="#donate"
-                className="inline-flex items-center bg-white text-pink-600 px-8 py-3 rounded-full font-semibold text-sm hover:bg-pink-50 hover:shadow-lg transform hover:scale-105 transition-all duration-300 group"
+              <Button
+                className="inline-flex items-center bg-primary text-white px-8 py-3 rounded-full font-semibold text-sm hover:bg-primary-dark hover:shadow-lg transform hover:scale-105 transition-all duration-300 group"
+                onClick={() => window.location.href = '#donate'}
               >
                 DONATE NOW
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-              </a>
+              </Button>
             </div>
           </div>
 
@@ -131,9 +133,12 @@ const Footer = () => {
                   placeholder="Your email"
                   className="flex-1 px-3 py-2 text-sm bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-pink-200 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent"
                 />
-                <button className="px-4 py-2 bg-white text-pink-600 rounded-lg text-sm font-semibold hover:bg-pink-50 transition-colors duration-200">
+                <Button
+                  className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary-dark transition-colors duration-200"
+                  onClick={() => {/* handle subscribe logic here */}}
+                >
                   Subscribe
-                </button>
+                </Button>
               </div>
             </div>
           </div>

@@ -9,8 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#75ba75', // logo-green
-        'primary-dark': '#C71585', // Medium Violet Red, a darker shade for hover states or active elements
+        primary: '#4FC3F7', // Sky Blue
+        'primary-dark': '#0288D1', // Darker Sky Blue
+        secondary: '#81C784', // Light Green
+        'secondary-dark': '#388E3C', // Darker Green
         // Add more custom colors here as needed
       },
     },

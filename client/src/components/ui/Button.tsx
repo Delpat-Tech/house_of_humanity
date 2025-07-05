@@ -13,11 +13,15 @@ const Button: React.FC<ButtonProps> = ({
   type = 'button',
   className = '',
 }) => {
+  // If the className already contains a bg-*, don't apply the default bg-primary or bg-primary-dark
+  const hasBg = /bg-\w+(-\d+)?/.test(className);
+  // Use primary and primary-dark from tailwind config
+  const baseClasses = `px-5 py-2 rounded-lg text-white transition duration-200 cursor-pointer ${hasBg ? '' : 'bg-primary hover:bg-primary-dark'}`;
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-200 cursor-pointer ${className}`}
+      className={`${baseClasses} ${className}`}
     >
       {children}
     </button>

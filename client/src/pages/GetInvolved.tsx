@@ -235,7 +235,7 @@ const GetInvolved = () => {
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="text-green-600 font-semibold text-lg text-center"
+            className="text-secondary font-semibold text-lg text-center"
           >
             Thank you for signing up! We'll be in touch soon.
           </motion.div>

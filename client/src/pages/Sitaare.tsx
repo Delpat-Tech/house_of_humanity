@@ -17,14 +17,14 @@ const fadeInUp: Variants = {
 
 const Sitaare = () => {
   return (
-    <section className="pt-24 px-6 py-20 bg-gradient-to-br from-pink-50 via-white to-purple-100 text-gray-800">
+    <section className="pt-24 px-6 py-20 bg-gradient-to-br from-primary/5 via-white to-secondary/10 text-gray-800">
       <div className="max-w-6xl mx-auto text-center">
         <motion.h2
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
           custom={0}
-          className="text-5xl font-extrabold text-pink-700 drop-shadow-sm"
+          className="text-5xl font-extrabold text-primary-dark drop-shadow-sm"
         >
           A Home Beyond Shelter
         </motion.h2>
@@ -40,7 +40,7 @@ const Sitaare = () => {
 
         <div className="mt-16 grid md:grid-cols-2 gap-12 text-left">
           <motion.div initial="hidden" animate="visible" variants={fadeInUp} custom={2}>
-            <h3 className="text-2xl font-semibold text-pink-600 mb-4">About Project Sitaare</h3>
+            <h3 className="text-2xl font-semibold text-primary mb-4">About Project Sitaare</h3>
             <p className="text-gray-700 leading-relaxed mb-4">
               Project Sitaare is a one-of-a-kind orphanage and shelter home for girls aged 6 to 18.
               More than just shelter—it's a place where dreams take flight. With full education,
@@ -108,7 +108,7 @@ const Sitaare = () => {
               whileHover={{ scale: 1.03 }}
               className="bg-white/60 backdrop-blur-xl p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
             >
-              <h5 className="text-lg font-semibold text-pink-600 mb-2">{card.title}</h5>
+              <h5 className="text-lg font-semibold text-primary mb-2">{card.title}</h5>
               <p className="text-sm text-gray-700">{card.text}</p>
             </motion.div>
           ))}
@@ -122,14 +122,14 @@ const Sitaare = () => {
           className="mt-16 text-center"
         >
           <p className="mb-4 text-lg font-medium text-gray-700">
-            With just <span className="text-pink-700 font-bold">₹11,551/month</span>, you can virtually adopt a child and provide:
+            With just <span className="text-primary-dark font-bold">₹11,551/month</span>, you can virtually adopt a child and provide:
           </p>
           <p className="italic text-sm text-gray-500 mb-6">Education • Meals • Healthcare • Life Skills</p>
           <a
             href="https://sitaare.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-gradient-to-r from-pink-600 via-pink-500 to-purple-500 hover:brightness-110 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300"
+            className="inline-block bg-gradient-to-r from-primary-dark via-primary to-secondary-dark hover:brightness-110 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300"
           >
             Learn More on Sitaare.org
           </a>
