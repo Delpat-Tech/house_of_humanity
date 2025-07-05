@@ -1,11 +1,5 @@
 import React from 'react';
-
-interface ImagePlaceholderProps {
-  text: string;
-  width?: string;
-  height?: string;
-  className?: string;
-}
+import { ImagePlaceholderProps } from '../../types';
 
 const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
   text,

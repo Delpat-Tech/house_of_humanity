@@ -1,10 +1,5 @@
 import React from "react";
-
-type ImpactCardProps = {
-  iconName: string; 
-  count: string | number;
-  title: string;
-};
+import { ImpactCardProps } from "../../types";
 
 const ImpactCard: React.FC<ImpactCardProps> = ({ iconName, count, title }) => {
   return (

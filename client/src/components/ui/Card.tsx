@@ -1,10 +1,5 @@
 import React from "react";
-
-type CardProps = {
-  icon: string;
-  count: string | number;
-  title: string;
-};
+import { CardProps } from "../../types";
 
 const Card: React.FC<CardProps> = ({ icon, count, title }) => {
   return (

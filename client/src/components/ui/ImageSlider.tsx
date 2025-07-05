@@ -4,15 +4,7 @@ import Slider from "react-slick";
 import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-type Image = {
-  src: string;
-  alt?: string;
-};
-
-type ImageSliderProps = {
-  images: Image[];
-};
+import { ImageSliderProps } from "../../types";
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
   const settings = {
