@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Sun, ArrowUp } from "lucide-react";
+import TrapeziumButton from "../ui/TrapeziumButton";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,10 +49,9 @@ const Header: React.FC = () => {
       name: "What We Do",
       path: "/what-we-do",
       dropdown: [
-        { name: "Projects", path: "/projects" },
         { name: "Sitaare", path: "/sitaare" },
         { name: "Health Care", path: "/health-care" },
-        { name: "Sustianable Livelihood", path: "/sustainable-livelihood" },
+        { name: "Sustainable Livelihood", path: "/sustainable-livelihood" },
         { name: "Education", path: "/education" },
         { name: "Nutrition", path: "/nutrition" },
         { name: "House of Happiness", path: "/house-of-happiness" },
@@ -131,7 +131,7 @@ const Header: React.FC = () => {
           }
           
           .donate-btn {
-            background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);
+            background: linear-gradient(135deg, #70BF44 0%, #5A9E35 100%);
             position: relative;
             overflow: hidden;
           }
@@ -238,16 +238,17 @@ const Header: React.FC = () => {
                   }
                   onMouseLeave={() => setDropdownOpen(null)}
                 >
-                  <Link
-                    to={item.path}
-                    className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-sm font-medium header-font transition-all duration-300 ${
-                      location.pathname === item.path
-                        ? "active text-primary-blue bg-warm-light-blue shadow-lg shadow-primary-blue/20"
-                        : "text-dark-gray hover:text-primary-blue hover:bg-warm-light-blue/50"
-                    }`}
-                  >
-                    <span className="relative z-10">{item.name}</span>
-                    {item.dropdown && (
+                  {item.dropdown ? (
+                    <span
+                      className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 cursor-default select-none ${
+                        dropdownOpen === item.name
+                          ? "active text-primary-blue bg-warm-light-blue shadow-lg shadow-primary-blue/20"
+                          : "text-dark-gray hover:text-primary-blue hover:bg-warm-light-blue/50"
+                      }`}
+                      onMouseEnter={() => setDropdownOpen(item.name)}
+                      onMouseLeave={() => setDropdownOpen(null)}
+                    >
+                      <span className="relative z-10">{item.name}</span>
                       <motion.div
                         animate={{
                           rotate: dropdownOpen === item.name ? 180 : 0,
@@ -256,8 +257,19 @@ const Header: React.FC = () => {
                       >
                         <ChevronDown className="w-4 h-4 text-fresh-green" />
                       </motion.div>
-                    )}
-                  </Link>
+                    </span>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 ${
+                        location.pathname === item.path
+                          ? "active text-primary-blue bg-warm-light-blue shadow-lg shadow-primary-blue/20"
+                          : "text-dark-gray hover:text-primary-blue hover:bg-warm-light-blue/50"
+                      }`}
+                    >
+                      <span className="relative z-10">{item.name}</span>
+                    </Link>
+                  )}
 
                   {/* Dropdown Menu */}
                   <AnimatePresence>
@@ -277,7 +289,7 @@ const Header: React.FC = () => {
                           <div key={subItem.name}>
                             <Link
                               to={subItem.path}
-                              className="dropdown-item block px-5 py-3 text-sm text-dark-gray hover:text-primary-blue font-medium header-font rounded-lg mx-2 relative z-10"
+                              className="dropdown-item block px-5 py-3 text-xs text-dark-gray hover:text-primary-blue font-medium header-font rounded-lg mx-2 relative z-10"
                             >
                               {subItem.name}
                             </Link>
@@ -306,11 +318,12 @@ const Header: React.FC = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link
-                  to="/sitaare"
-                  className="donate-btn relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white rounded-xl shadow-lg transition-all duration-300 overflow-hidden group"
-                >
-                  <span className="relative z-10">SITAARE</span>
+                <Link to="/sitaare">
+                  <TrapeziumButton
+                    label="SITAARE"
+                    variant="sitaare"
+                    className="donate-btn relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white rounded-xl shadow-lg transition-all duration-300 overflow-hidden group"
+                  />
                 </Link>
               </motion.div>
             </div>
@@ -381,7 +394,7 @@ const Header: React.FC = () => {
                               dropdownOpen === item.name ? null : item.name
                             )
                           }
-                          className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-base font-medium header-font transition-colors duration-200 ${
+                          className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-sm font-medium header-font transition-colors duration-200 ${
                             dropdownOpen === item.name
                               ? "bg-warm-light-blue text-primary-blue"
                               : "text-dark-gray hover:bg-warm-light-blue hover:text-primary-blue"
@@ -411,7 +424,7 @@ const Header: React.FC = () => {
                                   key={subItem.name}
                                   to={subItem.path}
                                   onClick={() => setIsOpen(false)}
-                                  className="block px-3 py-2 rounded-md text-sm font-medium text-dark-gray hover:bg-warm-light-blue hover:text-primary-blue transition-colors duration-200"
+                                  className="block px-3 py-2 rounded-md text-xs font-medium text-dark-gray hover:bg-warm-light-blue hover:text-primary-blue transition-colors duration-200"
                                 >
                                   {subItem.name}
                                 </Link>
@@ -424,7 +437,7 @@ const Header: React.FC = () => {
                       <Link
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className={`block px-3 py-2 rounded-md text-base font-medium header-font transition-colors duration-200 ${
+                        className={`block px-3 py-2 rounded-md text-sm font-medium header-font transition-colors duration-200 ${
                           location.pathname === item.path
                             ? "bg-warm-light-blue text-primary-blue"
                             : "text-dark-gray hover:bg-warm-light-blue hover:text-primary-blue"
@@ -436,11 +449,15 @@ const Header: React.FC = () => {
                   </div>
                 ))}
                 <Link
-                  to="/donate"
+                  to="/sitaare"
                   onClick={() => setIsOpen(false)}
-                  className="donate-btn w-full text-center mt-4 relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white rounded-xl shadow-lg transition-all duration-300 overflow-hidden group"
+                  className="w-full text-center mt-4"
                 >
-                  <span className="relative z-10">SITAARE</span>
+                  <TrapeziumButton
+                    label="SITAARE"
+                    variant="sitaare"
+                    className="donate-btn w-full text-center relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white rounded-xl shadow-lg transition-all duration-300 overflow-hidden group"
+                  />
                 </Link>
               </div>
             </motion.div>

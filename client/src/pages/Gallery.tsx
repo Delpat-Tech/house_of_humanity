@@ -32,21 +32,27 @@ const Gallery = () => {
 
   // import all images from public/Gallery
   const galleryFilenames = [
-    "IMG-4030.webp",
-    "IMG-4028-scaled.webp",
-    "IMG-0997-scaled.webp",
-    "edd707e5-5e9a-461b-ae8e-82cbdedbd241.webp",
-    "IMG-6474-scaled.webp",
-    "IMG-6313-2-scaled.webp",
-    "IMG-6310-scaled.webp",
-    "IMG-5807-1-scaled.webp",
-    "IMG-5797-scaled.webp",
-    "017f1cfc-91c0-4c03-8485-d4faf7ee8004.webp",
-    "9a99fc70-7259-4e80-b853-68469dda507e-1.webp",
-    "Pad-House-1.webp",
-    "Team-1.webp",
-    "WhatsApp-Image-2022-02-19-at-7.42.12-PM-1.webp",
-    "WhatsApp-Image-2021-12-09-at-7.16.53-PM.webp"
+    "image1.webp",
+    "image2.webp",
+    "image3.webp",
+    "image4.webp",
+    "image5.webp",
+    "image6.webp",
+    "image7.webp",
+    "image8.webp",
+    "image9.webp",
+    "image10.webp",
+    "image11.webp",
+    "image12.webp",
+    "image13.webp",
+    "image14.webp",
+    "image15.webp",
+    "image16.webp",
+    "image17.webp",
+    "image18.webp",
+    "image19.webp",
+    "image20.webp"
+    
   ];
 
   const images = galleryFilenames.map((filename, idx) => ({
@@ -65,7 +71,7 @@ const Gallery = () => {
     <div className="container mx-auto px-4 py-12 pt-24">
       {/* Hero Section */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-pink-600 mb-4 tracking-tight">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-primary-blue mb-4 tracking-tight">
           Our Gallery
         </h1>
         <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
@@ -86,7 +92,7 @@ const Gallery = () => {
             onClick={() => setSelectedCategory(category.id)}
             className={`px-4 py-2 rounded-md transition-colors duration-300 ${
               selectedCategory === category.id
-                ? 'bg-pink-600 text-white'
+                ? 'bg-gradient-to-r from-primary-blue to-fresh-green text-white shadow-lg'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
           >
@@ -97,7 +103,7 @@ const Gallery = () => {
 
       {/* Filters */}
       <div className="mb-12">
-        <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="bg-white/90 backdrop-blur-lg rounded-xl shadow-lg p-6 border border-primary-blue/20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Year Filter */}
             <div>
@@ -107,7 +113,7 @@ const Gallery = () => {
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                className="w-full px-4 py-2 rounded-lg border border-primary-blue/30 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
               >
                 {years.map(year => (
                   <option key={year} value={year}>
@@ -125,7 +131,7 @@ const Gallery = () => {
               <select
                 value={selectedMonth}
                 onChange={(e) => setSelectedMonth(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                className="w-full px-4 py-2 rounded-lg border border-primary-blue/30 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
               >
                 {months.map(month => (
                   <option key={month.id} value={month.id}>
@@ -146,7 +152,7 @@ const Gallery = () => {
         className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
       >
         {filteredImages.map(image => (
-          <div key={image.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <div key={image.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-primary-blue/10">
             <div className="relative h-48">
               <img
                 src={image.src}
@@ -163,13 +169,13 @@ const Gallery = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="bg-white rounded-lg shadow-md p-6 mt-12 text-center"
+        className="bg-white/90 backdrop-blur-lg rounded-lg shadow-md p-6 mt-12 text-center border border-primary-blue/20"
       >
-        <h2 className="text-2xl font-semibold mb-4 text-pink-600">Share Your Story</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-primary-blue">Share Your Story</h2>
         <p className="text-gray-600 mb-6">
           Have photos or stories from our events? Share them with us to be featured in our gallery.
         </p>
-        <button className="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-md transition-colors duration-300">
+        <button className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white px-6 py-2 rounded-md transition-all duration-300 hover:scale-105 shadow-lg">
           Submit Photos
         </button>
       </motion.div>

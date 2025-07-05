@@ -24,9 +24,9 @@ const Sitaare = () => {
           animate="visible"
           variants={fadeInUp}
           custom={0}
-          className="text-5xl font-extrabold text-pink-700 drop-shadow-sm"
+          className="text-5xl font-extrabold text-pink-600 drop-shadow-sm"
         >
-          A Home Beyond Shelter
+          House of Humanity
         </motion.h2>
         <motion.p
           initial="hidden"
@@ -40,7 +40,7 @@ const Sitaare = () => {
 
         <div className="mt-16 grid md:grid-cols-2 gap-12 text-left">
           <motion.div initial="hidden" animate="visible" variants={fadeInUp} custom={2}>
-            <h3 className="text-2xl font-semibold text-pink-600 mb-4">About Project Sitaare</h3>
+            <h3 className="text-2xl font-semibold text-pink-600 mb-4">Project Sitaare</h3>
             <p className="text-gray-700 leading-relaxed mb-4">
               Project Sitaare is a one-of-a-kind orphanage and shelter home for girls aged 6 to 18.
               More than just shelter—it's a place where dreams take flight. With full education,
