@@ -5,9 +5,9 @@ import { Target, Rocket, Lightbulb, Star, Handshake, Heart, Users, BookOpen, Shi
 
 const ProjectsPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-off-white via-white to-warm-light-blue">
+    <div className="min-h-screen bg-gradient-to-br from-off-white via-white to-warm-light-blue dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 transition-colors duration-300">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 md:px-20 bg-gradient-to-r from-primary-blue/10 to-fresh-green/10">
+      <section className="pt-32 pb-20 px-4 md:px-20 bg-gradient-to-r from-primary-blue/10 to-fresh-green/10 dark:from-primary-blue/20 dark:to-fresh-green/20">
         <div className="max-w-7xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
@@ -35,7 +35,7 @@ const ProjectsPage: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-lg md:text-xl lg:text-2xl font-medium text-slate-700 text-center leading-relaxed"
+            className="max-w-4xl mx-auto text-lg md:text-xl lg:text-2xl font-medium text-slate-700 dark:text-gray-200 text-center leading-relaxed"
           >
             At House of Humanity, we are committed to change, powered by purpose.
             Each endeavor reflects our mission to create lasting impact — from
@@ -64,8 +64,8 @@ const ProjectsPage: React.FC = () => {
                 {/* Background Decoration */}
                 <div className={`absolute inset-0 -z-10 ${
                   index % 2 === 0 
-                    ? "bg-gradient-to-r from-primary-blue/5 to-transparent" 
-                    : "bg-gradient-to-l from-fresh-green/5 to-transparent"
+                    ? "bg-gradient-to-r from-primary-blue/5 to-transparent dark:from-primary-blue/10" 
+                    : "bg-gradient-to-l from-fresh-green/5 to-transparent dark:from-fresh-green/10"
                 } rounded-3xl transform -skew-y-1`} />
 
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
@@ -112,7 +112,7 @@ const ProjectsPage: React.FC = () => {
                       <div className="w-20 h-1 bg-gradient-to-r from-primary-blue to-fresh-green rounded-full" />
                     </div>
 
-                                         {/* Project Details */}
+                    {/* Project Details */}
                      <div className="space-y-6">
                        {[
                          { title: "Our Vision", content: project.content.vision, icon: Target, color: "text-blue-600" },
@@ -129,17 +129,17 @@ const ProjectsPage: React.FC = () => {
                              whileInView={{ opacity: 1, y: 0 }}
                              transition={{ duration: 0.6, delay: 0.7 + sectionIndex * 0.1 }}
                              viewport={{ once: true }}
-                             className="bg-white/60 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+                             className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600"
                            >
                              <div className="flex items-start gap-4">
-                               <div className={`flex-shrink-0 p-3 rounded-full bg-white shadow-md ${section.color}`}>
+                               <div className={`flex-shrink-0 p-3 rounded-full bg-white dark:bg-gray-700 shadow-md ${section.color}`}>
                                  <IconComponent size={24} className="text-current" />
                                </div>
                                <div className="flex-1">
-                                 <h3 className="font-bold text-xl text-teal-600 mb-2">
+                                 <h3 className="font-bold text-xl text-teal-600 dark:text-teal-400 mb-2">
                                    {section.title}
                                  </h3>
-                                 <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                                 <p className="text-gray-700 dark:text-gray-200 text-base sm:text-lg leading-relaxed">
                                    {section.content}
                                  </p>
                                </div>
@@ -198,10 +198,10 @@ const ProjectsPage: React.FC = () => {
             viewport={{ once: true }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <button className="bg-white text-primary-blue px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-              Get Involved Today
+            <button className="bg-white text-primary-blue px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
+              Get Involved
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-primary-blue transition-all duration-300 transform hover:scale-105">
+            <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-primary-blue transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
               Donate Now
             </button>
           </motion.div>

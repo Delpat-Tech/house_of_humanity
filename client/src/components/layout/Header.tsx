@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Sun, ArrowUp } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowUp } from "lucide-react";
 import TrapeziumButton from "../ui/TrapeziumButton";
+import { ThemeToggle } from "../../shared/components/ThemeToggle";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -123,6 +124,11 @@ const Header: React.FC = () => {
             border: 1px solid rgba(233, 247, 250, 0.2);
           }
           
+          .dark .glassmorphism {
+            background: rgba(17, 24, 39, 0.95);
+            border: 1px solid rgba(55, 65, 81, 0.2);
+          }
+          
           .gradient-text {
             background: linear-gradient(135deg, #0098DB 0%, #70BF44 100%);
             -webkit-background-clip: text;
@@ -200,7 +206,7 @@ const Header: React.FC = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
           isScrolled
             ? "glassmorphism shadow-2xl shadow-primary-blue/10"
-            : "bg-off-white/90 backdrop-blur-sm"
+            : "bg-off-white/90 dark:bg-gray-900/90 backdrop-blur-sm"
         }`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -243,8 +249,8 @@ const Header: React.FC = () => {
                     <span
                       className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 cursor-default select-none ${
                         dropdownOpen === item.name
-                          ? "active text-primary-blue bg-warm-light-blue shadow-lg shadow-primary-blue/20"
-                          : "text-dark-gray hover:text-primary-blue hover:bg-warm-light-blue/50"
+                          ? "active text-primary-blue bg-warm-light-blue dark:bg-gray-700 shadow-lg shadow-primary-blue/20 border border-primary-blue/20"
+                          : "text-dark-gray dark:text-gray-200 hover:text-primary-blue hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:border hover:border-primary-blue/20"
                       }`}
                       onMouseEnter={() => setDropdownOpen(item.name)}
                       onMouseLeave={() => setDropdownOpen(null)}
@@ -264,8 +270,8 @@ const Header: React.FC = () => {
                       to={item.path}
                       className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 ${
                         location.pathname === item.path
-                          ? "active text-primary-blue bg-warm-light-blue shadow-lg shadow-primary-blue/20"
-                          : "text-dark-gray hover:text-primary-blue hover:bg-warm-light-blue/50"
+                          ? "active text-primary-blue bg-warm-light-blue dark:bg-gray-700 shadow-lg shadow-primary-blue/20 border border-primary-blue/20"
+                          : "text-dark-gray dark:text-gray-200 hover:text-primary-blue hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:border hover:border-primary-blue/20"
                       }`}
                     >
                       <span className="relative z-10">{item.name}</span>
@@ -283,14 +289,14 @@ const Header: React.FC = () => {
                           duration: 0.3,
                           ease: [0.25, 0.1, 0.25, 1],
                         }}
-                        className="absolute top-full left-0 mt-2 bg-white rounded-2xl shadow-2xl border border-warm-light-blue py-3 z-50 overflow-hidden"
+                        className="absolute top-full left-0 mt-2 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-warm-light-blue dark:border-gray-600 py-3 z-50 overflow-hidden"
                       >
                         <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/5 to-fresh-green/5"></div>
                         {item.dropdown.map((subItem, subIndex) => (
                           <div key={subItem.name}>
                             <Link
                               to={subItem.path}
-                              className="dropdown-item block px-5 py-3 text-xs text-dark-gray hover:text-primary-blue font-medium header-font rounded-lg mx-2 relative z-10"
+                              className="dropdown-item block px-5 py-3 text-xs text-dark-gray dark:text-gray-200 hover:text-primary-blue font-medium header-font rounded-lg mx-2 relative z-10"
                             >
                               {subItem.name}
                             </Link>
@@ -303,13 +309,7 @@ const Header: React.FC = () => {
               ))}
 
               {/* Theme Toggle Button */}
-              <motion.button
-                className="p-3 rounded-full bg-warm-light-blue text-primary-blue shadow-sm hover:shadow-md transition-all duration-300 ease-in-out transform hover:scale-105"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Sun size={20} />
-              </motion.button>
+              <ThemeToggle size="md" variant="default" />
 
               {/* SITAARE Button */}
               <motion.div
@@ -331,13 +331,7 @@ const Header: React.FC = () => {
 
             {/* Mobile Menu Button and Theme Toggle */}
             <div className="lg:hidden flex items-center space-x-4">
-              <motion.button
-                className="p-2 rounded-full bg-warm-light-blue text-primary-blue shadow-sm hover:shadow-md transition-all duration-300 ease-in-out transform hover:scale-105"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Sun size={20} />
-              </motion.button>
+              <ThemeToggle size="sm" variant="default" />
               <motion.button
                 onClick={() => setIsOpen(!isOpen)}
                 className="inline-flex items-center justify-center p-2 rounded-md text-primary-blue hover:text-fresh-green hover:bg-warm-light-blue focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-blue transition-all duration-200"
@@ -397,8 +391,8 @@ const Header: React.FC = () => {
                           }
                           className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-sm font-medium header-font transition-colors duration-200 ${
                             dropdownOpen === item.name
-                              ? "bg-warm-light-blue text-primary-blue"
-                              : "text-dark-gray hover:bg-warm-light-blue hover:text-primary-blue"
+                              ? "bg-warm-light-blue dark:bg-gray-700 text-primary-blue"
+                              : "text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue"
                           }`}
                         >
                           <span>{item.name}</span>
@@ -425,7 +419,7 @@ const Header: React.FC = () => {
                                   key={subItem.name}
                                   to={subItem.path}
                                   onClick={() => setIsOpen(false)}
-                                  className="block px-3 py-2 rounded-md text-xs font-medium text-dark-gray hover:bg-warm-light-blue hover:text-primary-blue transition-colors duration-200"
+                                  className="block px-3 py-2 rounded-md text-xs font-medium text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue transition-colors duration-200"
                                 >
                                   {subItem.name}
                                 </Link>
@@ -440,8 +434,8 @@ const Header: React.FC = () => {
                         onClick={() => setIsOpen(false)}
                         className={`block px-3 py-2 rounded-md text-sm font-medium header-font transition-colors duration-200 ${
                           location.pathname === item.path
-                            ? "bg-warm-light-blue text-primary-blue"
-                            : "text-dark-gray hover:bg-warm-light-blue hover:text-primary-blue"
+                            ? "bg-warm-light-blue dark:bg-gray-700 text-primary-blue"
+                            : "text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue"
                         }`}
                       >
                         {item.name}
@@ -479,7 +473,7 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.1, y: -5 }}
             whileTap={{ scale: 0.9 }}
           >
-            <div className="relative p-4 bg-primary-blue rounded-full shadow-lg hover:shadow-xl transition-all duration-300 float-animation group-hover:animate-none">
+            <div className="relative p-4 bg-primary-blue dark:bg-primary-blue rounded-full shadow-lg hover:shadow-xl transition-all duration-300 float-animation group-hover:animate-none">
               <ArrowUp className="w-6 h-6 text-white" />
               <div className="absolute inset-0 bg-fresh-green rounded-full opacity-0 group-hover:opacity-80 transition-opacity duration-300 pointer-events-none"></div>
             </div>

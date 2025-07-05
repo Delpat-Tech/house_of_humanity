@@ -2,6 +2,206 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Dark mode transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dark mode overrides for common elements */
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+/* Header dark mode styles */
+.dark .glassmorphism {
+  background: rgba(17, 24, 39, 0.95);
+  border: 1px solid rgba(55, 65, 81, 0.2);
+}
+
+.dark .header-font {
+  color: #f9fafb;
+}
+
+/* Navigation dark mode */
+.dark .nav-item {
+  color: #d1d5db;
+}
+
+.dark .nav-item:hover {
+  color: #0098DB;
+  background-color: #374151;
+  box-shadow: 0 4px 12px rgba(0, 152, 219, 0.15), 0 0 0 1px rgba(0, 152, 219, 0.2);
+  transform: translateY(-1px);
+}
+
+.dark .nav-item.active {
+  color: #0098DB;
+  background-color: #374151;
+  box-shadow: 0 4px 12px rgba(0, 152, 219, 0.2), 0 0 0 1px rgba(0, 152, 219, 0.3);
+}
+
+/* Dropdown dark mode */
+.dark .dropdown-item {
+  color: #d1d5db;
+}
+
+.dark .dropdown-item:hover {
+  background-color: #374151;
+  color: #0098DB;
+}
+
+/* Button dark mode */
+.dark .donate-btn {
+  background: linear-gradient(135deg, #70BF44 0%, #5A9E35 100%);
+}
+
+/* Progress bar dark mode */
+.dark .progress-bar {
+  background: linear-gradient(90deg, rgba(0,152,219,0.85) 0%, rgba(112,191,68,0.85) 100%);
+}
+
+/* Back to top button dark mode - the button maintains its blue color in both themes for consistency */
+
+/* Text colors for dark mode */
+.dark .text-dark-gray {
+  color: #d1d5db;
+}
+
+.dark .text-primary-blue {
+  color: #0098DB;
+}
+
+.dark .text-fresh-green {
+  color: #70BF44;
+}
+
+/* Background colors for dark mode */
+.dark .bg-warm-light-blue {
+  background-color: #374151;
+}
+
+.dark .bg-off-white {
+  background-color: #111827;
+}
+
+/* Border colors for dark mode */
+.dark .border-primary-blue {
+  border-color: #0098DB;
+}
+
+.dark .border-gray-300 {
+  border-color: #4b5563;
+}
+
+/* Card and section backgrounds */
+.dark .bg-white {
+  background-color: #1f2937;
+}
+
+.dark .bg-gray-50 {
+  background-color: #374151;
+}
+
+.dark .bg-gray-100 {
+  background-color: #4b5563;
+}
+
+/* Form elements dark mode */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #f9fafb;
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: #0098DB;
+  box-shadow: 0 0 0 3px rgba(0, 152, 219, 0.1);
+}
+
+/* Select options dark mode */
+.dark select option {
+  background-color: #374151;
+  color: #f9fafb;
+}
+
+/* Toast notifications dark mode */
+.dark .Toastify__toast {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+.dark .Toastify__toast--success {
+  background-color: #065f46;
+}
+
+.dark .Toastify__toast--error {
+  background-color: #7f1d1d;
+}
+
+.dark .Toastify__toast--warning {
+  background-color: #92400e;
+}
+
+.dark .Toastify__toast--info {
+  background-color: #1e40af;
+}
+
+/* Modal dark mode */
+.dark .modal-content {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+/* Footer dark mode */
+.dark footer {
+  background-color: #111827;
+  color: #d1d5db;
+}
+
+/* Link colors for dark mode */
+.dark a {
+  color: #0098DB;
+}
+
+.dark a:hover {
+  color: #70BF44;
+}
+
+/* Shadow adjustments for dark mode */
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+.dark .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom scrollbar for dark mode */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
 
 body {
   margin: 0;
@@ -22,9 +222,16 @@ code {
   @apply bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent;
 }
 
+.dark .text-gradient-h1 {
+  @apply bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent;
+}
 
 .text-gradient-h2 {
   @apply bg-gradient-to-r from-blue-600 via-teal-400 to-green-600 bg-clip-text text-transparent;
+}
+
+.dark .text-gradient-h2 {
+  @apply bg-gradient-to-r from-blue-400 via-teal-300 to-green-400 bg-clip-text text-transparent;
 }
 
 .btn-primary {
