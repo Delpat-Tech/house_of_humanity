@@ -12,10 +12,10 @@ type CardProps = {
 const WorkCard: React.FC<CardProps> = ({ title, subtitle, description }) => {
   const navigate = useNavigate();
   return (
-    <div className="w-full max-w-[25rem] min-h-[28rem] bg-white border-b-[6px] border-teal-500 shadow-2xl rounded-lg overflow-hidden flex flex-col items-center p-6">
+    <div className="w-full max-w-[25rem] min-h-[28rem] bg-gray-100 border-b-[6px] border-teal-500 shadow-2xl rounded-lg overflow-hidden flex flex-col items-center p-6">
       {/* Title */}
       <motion.h2
-        className="text-[24px] font-bold text-center mt-4 mb-2"
+        className="text-[26px] font-bold text-primary-blue text-center mt-4 mb-2"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
@@ -26,7 +26,7 @@ const WorkCard: React.FC<CardProps> = ({ title, subtitle, description }) => {
 
       {/* Subtitle */}
       <motion.p
-        className="text-blue-500 font-semibold text-center mb-3 px-2 uppercase"
+        className="text-fresh-green font-semibold text-center mb-3 px-2 uppercase"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.4, ease: "easeOut" }}
@@ -37,7 +37,7 @@ const WorkCard: React.FC<CardProps> = ({ title, subtitle, description }) => {
 
       {/* Description */}
       <motion.p
-        className="text-dark-gray dark:text-gray-200 font-bold text-center mb-4 px-2"
+        className="text-dark-gray dark:text-gray-200 font-medium text-lg text-center mt-3 px-2"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
@@ -55,11 +55,12 @@ const WorkCard: React.FC<CardProps> = ({ title, subtitle, description }) => {
         viewport={{ once: false, amount: 0.3 }}
         onClick={() => navigate("/projects")}
       >
-        <TrapeziumButton
-          className="uppercase"
-          label="Read More"
+        <button
+          className="bg-primary-blue px-6 py-3 rounded-xl hover:bg-white hover:text-primary-blue font-medium uppercase"
           onClick={() => console.log("Button clicked")}
-        />
+        >
+          Read More
+        </button>
       </motion.div>
     </div>
   );
