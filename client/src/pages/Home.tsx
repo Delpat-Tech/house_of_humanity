@@ -22,16 +22,15 @@ const Home: React.FC<HomeProps> = ({ showLoader, loaderGone, onFadeOut }) => {
       gsap.fromTo(
         mainRef.current,
         { opacity: 0, y: 20, scale: 0.98 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power2.out" }
+        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power2.out",
+        delay: -0.2 }
       );
     }
   }, [loaderGone]);
 
   return (
     <>
-      {!loaderGone && (
-        <Loader show={showLoader} onFadeOut={onFadeOut} />
-      )}
+      {!loaderGone && <Loader show={showLoader} onFadeOut={onFadeOut} />}
       <div
         ref={mainRef}
         className="pt-14 bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen"
