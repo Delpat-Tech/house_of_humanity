@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Calendar, Clock, MapPin, Users } from 'lucide-react';
 import Button from './Button';
 import ImagePlaceholder from './ImagePlaceholder';
 
@@ -79,17 +80,17 @@ const EventCard: React.FC<EventCardProps> = ({
           
           <div className="space-y-2 mb-4 text-sm text-dark-gray">
             <div className="flex items-center gap-2">
-              <span className="font-semibold">📅</span>
+              <Calendar size={16} className="text-dark-gray" />
               <span>{date}</span>
             </div>
             {time && (
               <div className="flex items-center gap-2">
-                <span className="font-semibold">⏰</span>
+                <Clock size={16} className="text-dark-gray" />
                 <span>{time}</span>
               </div>
             )}
             <div className="flex items-center gap-2">
-              <span className="font-semibold">📍</span>
+              <MapPin size={16} className="text-dark-gray" />
               <span>{location}</span>
             </div>
           </div>
@@ -126,16 +127,16 @@ const EventCard: React.FC<EventCardProps> = ({
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
               <div className="flex items-center gap-2 text-sm text-dark-gray">
-                <span className="font-semibold">📅</span>
+                <Calendar size={16} className="text-dark-gray" />
                 <span>{date}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-dark-gray">
-                <span className="font-semibold">📍</span>
+                <MapPin size={16} className="text-dark-gray" />
                 <span>{location}</span>
               </div>
               {attendees && (
                 <div className="flex items-center gap-2 text-sm text-dark-gray">
-                  <span className="font-semibold">👥</span>
+                  <Users size={16} className="text-dark-gray" />
                   <span>{attendees} attendees</span>
                 </div>
               )}

@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { 
+  Newspaper, 
+  Monitor, 
+  Calendar, 
+  Clock, 
+  MapPin, 
+  Users, 
+  Eye,
+  ArrowRight
+} from 'lucide-react';
 import ImageSlider from '../components/ui/ImageSlider';
 import Button from '../components/ui/Button';
 import ImagePlaceholder from '../components/ui/ImagePlaceholder';
@@ -183,25 +193,27 @@ const NewsAndEvents: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setActiveTab('media')}
-                  className={`px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 ${
+                  className={`px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center gap-2 ${
                     activeTab === 'media'
                       ? 'bg-white text-primary-blue shadow-lg transform scale-105'
                       : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
                   }`}
                 >
-                  📰 Media Coverage
+                  <Newspaper size={20} />
+                  Media Coverage
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setActiveTab('events')}
-                  className={`px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 ${
+                  className={`px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center gap-2 ${
                     activeTab === 'events'
                       ? 'bg-white text-primary-blue shadow-lg transform scale-105'
                       : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
                   }`}
                 >
-                  📅 Events & Activities
+                  <Calendar size={20} />
+                  Events & Activities
                 </motion.button>
               </div>
 
@@ -225,7 +237,7 @@ const NewsAndEvents: React.FC = () => {
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div className="bg-gradient-to-r from-primary-blue to-blue-600 px-8 py-6">
               <div className="flex items-center gap-3">
-                <span className="text-3xl">📰</span>
+                <Newspaper size={32} className="text-white" />
                 <h2 className="text-3xl font-bold text-white">Print Media Coverage</h2>
               </div>
             </div>
@@ -255,7 +267,7 @@ const NewsAndEvents: React.FC = () => {
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div className="bg-gradient-to-r from-fresh-green to-green-600 px-8 py-6">
               <div className="flex items-center gap-3">
-                <span className="text-3xl">💻</span>
+                <Monitor size={32} className="text-white" />
                 <h2 className="text-3xl font-bold text-white">Digital Media Coverage</h2>
               </div>
             </div>
@@ -296,7 +308,7 @@ const NewsAndEvents: React.FC = () => {
             <div className="bg-gradient-to-r from-dark-gray to-gray-600 px-8 py-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <span className="text-3xl">📅</span>
+                  <Calendar size={32} className="text-white" />
                   <h2 className="text-3xl font-bold text-white">Past Events</h2>
                 </div>
                
@@ -329,7 +341,7 @@ const NewsAndEvents: React.FC = () => {
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div className="bg-gradient-to-r from-fresh-green to-green-600 px-8 py-6">
               <div className="flex items-center gap-3">
-                <span className="text-3xl">🗓️</span>
+                <Calendar size={32} className="text-white" />
                 <h2 className="text-3xl font-bold text-white">Upcoming Events</h2>
               </div>
             </div>

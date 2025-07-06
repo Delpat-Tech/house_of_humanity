@@ -45,8 +45,8 @@ const Footer = () => {
                 href="donate-for-a-cause"
                 className="inline-flex items-center bg-primary-blue text-white dark:text-gray-200 px-8 py-3 rounded-full font-semibold text-sm dark:hover:text-dark-gray hover:bg-fresh-green hover:text-dark-gray hover:shadow-lg transform hover:scale-105 transition-all duration-300 group"
               >
-                DONATE NOW
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200 text-fresh-green group-hover:text-dark-gray" />
+                <span className="!text-white">DONATE NOW</span>
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200 !text-white group-hover:text-dark-gray dark:group-hover:text-white" />
               </a>
             </div>
           </div>

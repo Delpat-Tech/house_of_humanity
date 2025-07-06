@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Eye } from 'lucide-react';
 import Button from './Button';
 import ImagePlaceholder from './ImagePlaceholder';
 
@@ -65,8 +66,9 @@ const MediaCard: React.FC<MediaCardProps> = ({
               </span>
             )}
             {views && (
-              <span className="text-dark-gray">
-                👁️ {views} views
+              <span className="text-dark-gray flex items-center gap-1">
+                <Eye size={14} />
+                {views} views
               </span>
             )}
           </div>

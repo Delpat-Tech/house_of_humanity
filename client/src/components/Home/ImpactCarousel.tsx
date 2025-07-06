@@ -17,15 +17,19 @@ const Impact = () => {
     autoplay: true,
     autoplaySpeed: 3000,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     rows: 2,
+    swipeToSlide: true,
+    touchMove: true,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           rows: 2,
+          arrows: true,
+          dots: false,
         },
       },
       {
@@ -33,7 +37,27 @@ const Impact = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          rows: 6,
+          rows: 1,
+          arrows: false,
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 4000,
+          centerMode: true,
+          centerPadding: "40px",
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          rows: 1,
+          arrows: false,
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 4000,
+          centerMode: true,
+          centerPadding: "20px",
         },
       },
     ],
@@ -85,6 +109,59 @@ const Impact = () => {
             </Slider>
           </div>
         </motion.div>
+
+        {/* Custom styles for mobile dots */}
+        <style>{`
+          .slick-dots {
+            bottom: -50px;
+          }
+          
+          .slick-dots li button:before {
+            font-size: 12px;
+            color: #cbd5e1;
+            opacity: 0.5;
+          }
+          
+          .slick-dots li.slick-active button:before {
+            color: #3b82f6;
+            opacity: 1;
+          }
+          
+          @media (max-width: 768px) {
+            .slick-dots {
+              bottom: -40px;
+            }
+            
+            .slick-dots li {
+              margin: 0 5px;
+            }
+          }
+          
+          /* Custom arrow styles for desktop */
+          .slick-prev:before,
+          .slick-next:before {
+            color: #3b82f6;
+            font-size: 24px;
+          }
+          
+          .slick-prev {
+            left: -50px;
+          }
+          
+          .slick-next {
+            right: -50px;
+          }
+          
+          @media (max-width: 1024px) {
+            .slick-prev {
+              left: -30px;
+            }
+            
+            .slick-next {
+              right: -30px;
+            }
+          }
+        `}</style>
       </div>
     </motion.section>
   );
