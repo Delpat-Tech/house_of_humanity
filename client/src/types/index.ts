@@ -56,6 +56,37 @@ export interface WorkCardProps {
   className?: string;
 }
 
+export interface EventCardProps {
+  title: string;
+  date: string;
+  time?: string;
+  location: string;
+  description: string;
+  image: string;
+  type?: string;
+  status?: string;
+  attendees?: string;
+  isUpcoming?: boolean;
+  onRegister?: () => void;
+  onViewDetails?: () => void;
+  className?: string;
+}
+
+export interface MediaCardProps {
+  title: string;
+  publication?: string;
+  platform?: string;
+  date: string;
+  excerpt?: string;
+  type?: string;
+  views?: string;
+  image: string;
+  isDigital?: boolean;
+  onReadMore?: () => void;
+  onViewContent?: () => void;
+  className?: string;
+}
+
 // Data Types
 export interface Project {
   title: string;
