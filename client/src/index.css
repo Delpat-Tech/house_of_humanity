@@ -206,11 +206,13 @@
 /* Smooth scrolling for the entire page */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Ensure proper scroll restoration */
 body {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 body {
@@ -220,6 +222,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  word-wrap: break-word; /* Prevent long words from causing overflow */
+  overflow-wrap: break-word; /* Modern browsers */
 }
 
 code {
@@ -246,4 +250,15 @@ code {
 
 .btn-primary {
   @apply bg-primary-blue text-white font-semibold rounded-xl px-6 py-2 transition-all duration-300 hover:text-primary-blue hover:bg-white border border-transparent hover:border-primary-blue;
+}
+
+/* Responsive container utilities */
+.container-responsive {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Prevent text overflow */
+.text-overflow-safe {
+  @apply break-words;
+  overflow-wrap: break-word;
 }

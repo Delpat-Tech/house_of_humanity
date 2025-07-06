@@ -62,7 +62,7 @@ const MediaWithText: React.FC<MediaWithTextProps> = ({
           <img
             src={mediaSrc}
             alt={mediaAlt}
-            className="w-[44rem] max-w-full rounded-xl"
+            className="w-full max-w-full rounded-xl"
           />
         </motion.div>
 
