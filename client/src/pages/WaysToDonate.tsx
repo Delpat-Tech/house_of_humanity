@@ -1,11 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
-interface DonationItem {
-  title: string;
-  desc: string;
-  img: string;
-}
+import { DonationItem } from '../types';
 
 const donations: DonationItem[] = [
   {

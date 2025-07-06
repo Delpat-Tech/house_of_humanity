@@ -1,9 +1,19 @@
-import React from 'react';
-import { Facebook, Instagram, Linkedin, MapPin, Mail, Phone, ArrowRight } from 'lucide-react';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  MapPin,
+  Mail,
+  Phone,
+  ArrowRight,
+} from "lucide-react";
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
-    <footer className="bg-dark-gray text-off-white relative overflow-hidden">
+    <footer className="bg-dark-gray dark:bg-gray-900 text-off-white dark:text-gray-200 relative overflow-hidden transition-colors duration-300">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-32 h-32 bg-primary-blue rounded-full blur-3xl"></div>
@@ -25,12 +35,15 @@ const Footer = () => {
               </a>
             </div>
             <p className="text-off-white text-sm leading-relaxed font-light">
-            House of Humanity is a youth-led organization dedicated to empowering communities through education, humanitarian aid, and social impact initiatives that foster dignity, equality, and opportunity for all.
+              House of Humanity is a youth-led organization dedicated to
+              empowering communities through education, humanitarian aid, and
+              social impact initiatives that foster dignity, equality, and
+              opportunity for all.
             </p>
             <div className="pt-4">
               <a
-                href="#donate"
-                className="inline-flex items-center bg-primary-blue text-off-white px-8 py-3 rounded-full font-semibold text-sm hover:bg-fresh-green hover:text-dark-gray hover:shadow-lg transform hover:scale-105 transition-all duration-300 group"
+                href="donate-for-a-cause"
+                className="inline-flex items-center bg-primary-blue text-white dark:text-gray-200 px-8 py-3 rounded-full font-semibold text-sm dark:hover:text-dark-gray hover:bg-fresh-green hover:text-dark-gray hover:shadow-lg transform hover:scale-105 transition-all duration-300 group"
               >
                 DONATE NOW
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200 text-fresh-green group-hover:text-dark-gray" />
@@ -51,7 +64,10 @@ const Footer = () => {
                 </div>
                 <div className="text-off-white text-sm leading-relaxed">
                   <p className="font-medium text-off-white mb-1">Address</p>
-                  <p>B1/44 Somdutt park, Near Rajesh tower, Gotri road, Vadodara - 390023</p>
+                  <p>
+                    B1/44 Somdutt park, Near Rajesh tower, Gotri road, Vadodara
+                    - 390023
+                  </p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
@@ -64,7 +80,10 @@ const Footer = () => {
                 <div className="p-2 bg-warm-light-blue rounded-lg backdrop-blur-sm">
                   <Mail className="w-5 h-5 text-primary-blue" />
                 </div>
-                <p className="text-off-white text-sm"> Info@houseofhumanity.in</p>
+                <p className="text-off-white text-sm">
+                  {" "}
+                  Info@houseofhumanity.in
+                </p>
               </div>
             </div>
           </div>
@@ -82,11 +101,11 @@ const Footer = () => {
                 { to: "/ways-to-donate", text: "Ways to Donate" },
                 { to: "/milestones", text: "Impact" },
                 { to: "/gallery", text: "Gallery" },
-                { to: "/contact-us", text: "Contact Us" }
+                { to: "/contact-us", text: "Contact Us" },
               ].map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.to} 
+                  <a
+                    href={link.to}
                     className="flex items-center space-x-2 text-off-white hover:text-primary-blue transition-all duration-200 text-sm group hover:translate-x-1"
                   >
                     <ArrowRight className="w-3 h-3 text-fresh-green group-hover:text-primary-blue transition-colors duration-200" />
@@ -105,13 +124,25 @@ const Footer = () => {
             </h3>
             <div className="space-y-4">
               {[
-                { Icon: Facebook, name: "Facebook", href: "https://www.facebook.com/houseofhumanityfoundation/" },
-                { Icon: Instagram, name: "Instagram", href: "https://www.instagram.com/houseofhumanitycharitabletrust/?hl=en" },
-                { Icon: Linkedin, name: "LinkedIn", href: "https://www.linkedin.com/company/house-of-humanity-charitable-trust/?originalSubdomain=in" }
+                {
+                  Icon: Facebook,
+                  name: "Facebook",
+                  href: "https://www.facebook.com/houseofhumanityfoundation/",
+                },
+                {
+                  Icon: Instagram,
+                  name: "Instagram",
+                  href: "https://www.instagram.com/houseofhumanitycharitabletrust/?hl=en",
+                },
+                {
+                  Icon: Linkedin,
+                  name: "LinkedIn",
+                  href: "https://www.linkedin.com/company/house-of-humanity-charitable-trust/?originalSubdomain=in",
+                },
               ].map(({ Icon, name, href }, index) => (
-                <a 
+                <a
                   key={index}
-                  href={href} 
+                  href={href}
                   className="flex items-center space-x-3 text-off-white hover:text-primary-blue transition-all duration-200 group hover:translate-x-1"
                 >
                   <div className="p-2 bg-warm-light-blue rounded-lg backdrop-blur-sm group-hover:bg-fresh-green transition-all duration-200">
@@ -121,17 +152,20 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-            
+
             {/* Newsletter Signup */}
             <div className="pt-4 space-y-3">
               <p className="text-off-white text-sm font-medium">Stay Updated</p>
               <div className="flex space-x-2">
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   placeholder="Your email"
-                  className="flex-1 px-3 py-2 text-sm bg-warm-light-blue backdrop-blur-sm border border-primary-blue/20 rounded-lg text-dark-gray placeholder-dark-gray focus:outline-none focus:ring-2 focus:ring-primary-blue/30 focus:border-transparent"
+                  className="flex-1 px-3 py-2 text-sm bg-warm-light-blue dark:bg-gray-700 backdrop-blur-sm border border-primary-blue/20 dark:border-gray-600 rounded-lg text-dark-gray dark:text-gray-100 placeholder-dark-gray dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-blue/30 focus:border-transparent"
                 />
-                <button className="px-4 py-2 bg-fresh-green text-dark-gray rounded-lg text-sm font-semibold hover:bg-primary-blue hover:text-off-white transition-colors duration-200">
+                <button
+                  onClick={() => navigate("/contact-us")}
+                  className="px-4 py-2 bg-fresh-green text-dark-gray rounded-lg text-sm font-semibold hover:bg-primary-blue hover:text-white transition-colors duration-200"
+                >
                   Subscribe
                 </button>
               </div>
@@ -148,11 +182,11 @@ const Footer = () => {
             {[
               { href: "#privacy", text: "Privacy Policy" },
               { href: "#terms", text: "Terms of Service" },
-              { href: "#cookies", text: "Cookie Policy" }
+              { href: "#cookies", text: "Cookie Policy" },
             ].map((link, index) => (
-              <a 
+              <a
                 key={index}
-                href={link.href} 
+                href={link.href}
                 className="text-fresh-green hover:text-primary-blue text-sm transition-colors duration-200"
               >
                 {link.text}

@@ -51,13 +51,14 @@ const WhatWeDo: React.FC = () => {
         {" "}
         {/* Section Heading */}
         <motion.h1
-          className="text-center text-4xl md:text-6xl font-bold text-slate-600 py-8 mb-12"
+          className="text-center text-4xl md:text-6xl font-bold text-primary-blue py-8 mb-12"
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: false, amount: 0.3 }}
         >
           Our Commitment to Communities
+          
         </motion.h1>
         {/* Cards Grid */}
         <motion.div

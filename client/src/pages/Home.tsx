@@ -3,12 +3,12 @@ import HeroHome from "../components/Home/HeroHome";
 import About from "../components/Home/About";
 import WhatWeDo from "../components/Home/WhatWeDo";
 import ImageGallery from "../components/Home/ImageGallery";
-import ImpactCarousel from "../components/Home/ImpactCarousel";
+import ImpactCarousel from "../components/Home/ImpactCarousel";;
 import DonateNow from "../components/Home/DonateNow";
 
 const Home: React.FC = () => {
   return (
-    <div className="pt-14">
+    <div className="pt-14 bg-white dark:bg-gray-900 transition-colors duration-300">
       <HeroHome />
       <About />
       <WhatWeDo />

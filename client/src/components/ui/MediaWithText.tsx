@@ -25,7 +25,7 @@ const MediaWithText: React.FC<MediaWithTextProps> = ({
   return (
     <section className="max-w-7xl mx-auto px-4 py-20">
       <motion.h1
-        className="md:text-6xl text-4xl font-bold text-gradient-h2 text-center mb-4"
+        className="md:text-6xl text-4xl font-bold text-primary-blue text-center mb-4"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -36,7 +36,7 @@ const MediaWithText: React.FC<MediaWithTextProps> = ({
 
       {subheading && (
         <motion.p
-          className="text-center text-base md:text-lg font-semibold uppercase mb-10"
+          className="text-center text-base md:text-lg text-fresh-green font-semibold uppercase mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -62,7 +62,7 @@ const MediaWithText: React.FC<MediaWithTextProps> = ({
           <img
             src={mediaSrc}
             alt={mediaAlt}
-            className="w-[44rem] max-w-full rounded-xl"
+            className="w-[36rem] max-w-full rounded-xl"
           />
         </motion.div>
 
@@ -74,7 +74,7 @@ const MediaWithText: React.FC<MediaWithTextProps> = ({
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <p className="my-6 text-lg md:text-xl font-medium whitespace-pre-line">
+          <p className="my-6 text-lg dark:text-gray-200 text-dark-gray md:text-xl font-medium whitespace-pre-line">
             {description}
           </p>
 
@@ -82,7 +82,7 @@ const MediaWithText: React.FC<MediaWithTextProps> = ({
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="text-white text-lg font-semibold bg-blue-500 rounded-xl px-7 py-2 my-3 hover:bg-blue-600"
+              className="text-white text-lg font-semibold bg-blue-500 rounded-xl px-7 py-2 my-3 hover:border hover:border-blue-500 hover:text-blue-500 hover:bg-white"
               onClick={onButtonClick}
             >
               {buttonText}

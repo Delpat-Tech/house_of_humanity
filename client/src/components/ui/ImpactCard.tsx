@@ -48,8 +48,8 @@ const ImpactCard: React.FC<ImpactCardProps> = ({
   const IconComponent = iconMap[icon.toLowerCase()] || FaGift;
 
   return (
-    <div className="w-80 h-72 mb-12 pt-2 rounded-2xl bg-primary">
-      <div className="w-80 h-72 bg-white rounded-xl shadow-xl p-6 flex flex-col items-center border-t-4 border-teal-600">
+    <div className="w-92 h-80 mb-12 pt-2 rounded-2xl bg-primary">
+      <div className="w-92 h-80 bg-white rounded-xl shadow-xl p-6 flex flex-col items-center border-t-4 border-teal-600">
         <div>
           <Triangle
             size={16}
@@ -70,7 +70,7 @@ const ImpactCard: React.FC<ImpactCardProps> = ({
         <p className="text-center mb-1 font-bold text-base ">{title}</p>
 
         {/* description */}
-        <div className="bg-gray-50 rounded-lg p-4 w-full">
+        <div className="rounded-lg p-4 w-full">
           <p className="text-center text-sm text-gray-600 leading-relaxed">
             {impact}
           </p>

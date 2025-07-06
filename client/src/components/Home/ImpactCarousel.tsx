@@ -11,7 +11,7 @@ import { fadeIn, staggerContainer } from "../../utils/motion";
 const Impact = () => {
   const settings = {
     dots: true,
-    arrows: true,
+    // arrows: true,
     infinite: true,
     speed: 1000,
     autoplay: true,

@@ -17,14 +17,14 @@ const fadeInUp: Variants = {
 
 const Sitaare = () => {
   return (
-    <section className="pt-24 px-6 py-20 bg-gradient-to-br from-pink-50 via-white to-purple-100 text-gray-800">
+    <section className="pt-24 px-6 py-20 bg-gradient-to-br from-pink-50 via-white to-purple-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 text-gray-800 dark:text-gray-200 transition-colors duration-300">
       <div className="max-w-6xl mx-auto text-center">
         <motion.h2
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
           custom={0}
-          className="text-5xl font-extrabold text-pink-600 drop-shadow-sm"
+          className="text-5xl font-extrabold text-pink-600 dark:text-pink-400 drop-shadow-sm"
         >
           House of Humanity
         </motion.h2>
@@ -33,21 +33,21 @@ const Sitaare = () => {
           animate="visible"
           variants={fadeInUp}
           custom={1}
-          className="uppercase tracking-widest text-sm text-gray-500 mt-2"
+          className="uppercase tracking-widest text-sm text-gray-500 dark:text-gray-400 mt-2"
         >
           P R E S E N T S
         </motion.p>
 
         <div className="mt-16 grid md:grid-cols-2 gap-12 text-left">
           <motion.div initial="hidden" animate="visible" variants={fadeInUp} custom={2}>
-            <h3 className="text-2xl font-semibold text-pink-600 mb-4">Project Sitaare</h3>
-            <p className="text-gray-700 leading-relaxed mb-4">
+            <h3 className="text-2xl font-semibold text-pink-600 dark:text-pink-400 mb-4">Project Sitaare</h3>
+            <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
               Project Sitaare is a one-of-a-kind orphanage and shelter home for girls aged 6 to 18.
               More than just shelter—it's a place where dreams take flight. With full education,
               safety, and holistic development, it's the most empowering space for girls in Gujarat.
             </p>
-            <h4 className="text-lg font-medium text-gray-800 mb-2">Why Project Sitaare?</h4>
-            <ul className="list-disc list-inside text-gray-600 space-y-1 text-sm">
+            <h4 className="text-lg font-medium text-gray-800 dark:text-gray-100 mb-2">Why Project Sitaare?</h4>
+            <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1 text-sm">
               <li>Full school support, digital literacy, and career guidance</li>
               <li>Nutritious meals, healthcare & emotional well-being</li>
               <li>Vocational training, sports & self-defense</li>
@@ -58,21 +58,21 @@ const Sitaare = () => {
           <motion.div initial="hidden" animate="visible" variants={fadeInUp} custom={3}>
             <div className="space-y-6">
               <div>
-                <h4 className="text-lg font-medium text-gray-800 mb-1">Our Vision</h4>
-                <p className="italic text-gray-600">
+                <h4 className="text-lg font-medium text-gray-800 dark:text-gray-100 mb-1">Our Vision</h4>
+                <p className="italic text-gray-600 dark:text-gray-300">
                   A world where every girl can dream, learn, and succeed—regardless of her past.
                 </p>
               </div>
               <div>
-                <h4 className="text-lg font-medium text-gray-800 mb-1">Our Mission</h4>
-                <p className="text-gray-700">
+                <h4 className="text-lg font-medium text-gray-800 dark:text-gray-100 mb-1">Our Mission</h4>
+                <p className="text-gray-700 dark:text-gray-200">
                   To empower orphaned girls with the tools to become strong, independent women who make a
                   positive difference in the world.
                 </p>
               </div>
               <div>
-                <h4 className="text-lg font-medium text-gray-800 mb-1">Impact Goals</h4>
-                <ul className="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                <h4 className="text-lg font-medium text-gray-800 dark:text-gray-100 mb-1">Impact Goals</h4>
+                <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1 text-sm">
                   <li>Safe, loving home for 30+ girls</li>
                   <li>100% education and career readiness</li>
                   <li>Financial independence through life skills</li>
@@ -106,10 +106,10 @@ const Sitaare = () => {
               variants={fadeInUp}
               custom={i + 4}
               whileHover={{ scale: 1.03 }}
-              className="bg-white/60 backdrop-blur-xl p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
+              className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-600 hover:shadow-xl transition-all duration-300"
             >
-              <h5 className="text-lg font-semibold text-pink-600 mb-2">{card.title}</h5>
-              <p className="text-sm text-gray-700">{card.text}</p>
+              <h5 className="text-lg font-semibold text-pink-600 dark:text-pink-400 mb-2">{card.title}</h5>
+              <p className="text-sm text-gray-700 dark:text-gray-200">{card.text}</p>
             </motion.div>
           ))}
         </div>
@@ -121,10 +121,10 @@ const Sitaare = () => {
           custom={8}
           className="mt-16 text-center"
         >
-          <p className="mb-4 text-lg font-medium text-gray-700">
-            With just <span className="text-pink-700 font-bold">₹11,551/month</span>, you can virtually adopt a child and provide:
+          <p className="mb-4 text-lg font-medium text-gray-700 dark:text-gray-200">
+            With just <span className="text-pink-700 dark:text-pink-300 font-bold">₹11,551/month</span>, you can virtually adopt a child and provide:
           </p>
-          <p className="italic text-sm text-gray-500 mb-6">Education • Meals • Healthcare • Life Skills</p>
+          <p className="italic text-sm text-gray-500 dark:text-gray-400 mb-6">Education • Meals • Healthcare • Life Skills</p>
           <a
             href="https://sitaare.vercel.app/"
             target="_blank"

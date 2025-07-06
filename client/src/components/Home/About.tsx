@@ -6,7 +6,7 @@ const About: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section className=" bg-gray-100 px-4 sm:px-6 py-16 sm:py-20 md:py-24">
+    <section className=" bg-white/80 dark:bg-gray-700/80 px-4 sm:px-6 py-16 sm:py-20 md:py-24">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16 items-center">
         {/* Left section Image */}
         <motion.div
@@ -17,9 +17,9 @@ const About: React.FC = () => {
           viewport={{ once: false, amount: 0.3 }}
         >
           <img
-            src="/Gallery/Frame-33-1.webp"
+            src="/Gallery/image4.png"
             alt="About Image"
-            className="w-full max-w-[40rem] mx-auto"
+            className="w-full max-w-[36rem] rounded-xl mt-4 mx-auto"
           />
         </motion.div>
 
@@ -32,8 +32,7 @@ const About: React.FC = () => {
           viewport={{ once: false, amount: 0.3 }}
         >
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-teal-500 to-green-400 bg-clip-text text-transparent text-left"
-            initial={{ opacity: 0, y: 30 }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center text-primary-blue"
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: false, amount: 0.3 }}
@@ -42,7 +41,7 @@ const About: React.FC = () => {
           </motion.h1>
 
           <motion.p
-            className="mt-6 mb-4 text-base sm:text-lg md:text-xl font-medium text-justify"
+            className="mt-6 mb-4 text-base text-dark-gray dark:text-gray-200 sm:text-lg md:text-xl font-medium text-justify"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
@@ -64,8 +63,8 @@ const About: React.FC = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="text-white text-sm sm:text-base md:text-xl font-semibold bg-blue-500 rounded-xl px-6 py-2 mt-4 hover:bg-blue-600 transition-colors duration-300"
-            onClick={() => navigate("/about")}
+            className="text-white text-sm sm:text-base md:text-xl font-semibold bg-blue-500 rounded-xl px-6 py-2 mt-4 hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500 transition-colors duration-300"
+            onClick={() => navigate("/about-us")}
           >
             About Us
           </motion.button>
