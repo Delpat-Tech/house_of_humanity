@@ -7,7 +7,7 @@ import { WorkCardProps } from "../../types";
 const WorkCard: React.FC<WorkCardProps> = ({ title, subtitle, description, onClick, className }) => {
   const navigate = useNavigate();
   return (
-    <div className={`w-full max-w-[25rem] h-[28rem] bg-white border-b-[6px] border-teal-500 shadow-2xl rounded-lg overflow-hidden flex flex-col items-center p-6 ${className || ''}`}>
+    <div className={`w-full max-w-[25rem] min-h-[20rem] h-auto bg-white border-b-[6px] border-teal-500 shadow-2xl rounded-lg overflow-hidden flex flex-col items-center p-6 ${className || ''}`}>
       {/* Title */}
       <motion.h2
         className="text-[24px] font-bold text-center mt-4 mb-2"

@@ -42,7 +42,7 @@ const About: React.FC = () => {
           </motion.h1>
 
           <motion.p
-            className="mt-6 mb-4 text-base sm:text-lg md:text-xl font-medium text-justify"
+            className="mt-6 mb-4 text-base sm:text-lg md:text-xl font-medium text-left sm:text-justify"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
