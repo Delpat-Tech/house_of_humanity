@@ -1,6 +1,7 @@
 import React from "react";
 import ImpactCard from "../ui/ImpactCard";
 import { impactData } from "../data/impactData";
+// import { iconMap } from "../data/impactData";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -67,15 +68,18 @@ const Impact = () => {
         >
           <div className="w-full max-w-full sm:max-w-2xl md:max-w-7xl">
             <Slider {...settings}>
-              {impactData.map((item, index: number) => (
-                <div key={index} className="px-2 flex justify-center">
-                  <ImpactCard
-                    iconName={item.icon}
-                    count={item.number}
-                    title={item.project}
-                  />
-                </div>
-              ))}
+              {impactData.map((item, index: number) => {
+                return (
+                  <div key={index} className="px-2 flex justify-center">
+                    <ImpactCard
+                      icon={item.icon}
+                      count={item.number}
+                      title={item.project}
+                      impact={item.impact}
+                    />
+                  </div>
+                );
+              })}
             </Slider>
           </div>
         </motion.div>

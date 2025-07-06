@@ -3,13 +3,15 @@
     "target": "ES2022",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "jsx": "react-jsx",
     "strict": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true,
+    "typeRoots": ["./node_modules/@types", "./types"],
+
+    // "allowImportingTsExtensions": true,
     // "verbatimModuleSyntax": true,
     "noEmit": true
   },
