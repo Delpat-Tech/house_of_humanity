@@ -47,7 +47,7 @@ const WhatWeDo: React.FC = () => {
 
   return (
     <section className="w-full bg-gray-100 py-20 px-4  overflow-hidden">
-      <div className=" md:max-w-[96rem] mx-auto px-6 md:px-20 mt-10 ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         {" "}
         {/* Section Heading */}
         <motion.h1

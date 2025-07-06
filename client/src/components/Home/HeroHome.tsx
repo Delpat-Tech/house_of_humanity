@@ -6,59 +6,50 @@ const HeroHome: React.FC = () => {
   const navigate = useNavigate();
   return (
     <section
-      className="relative w-full min-h-screen bg-cover bg-center bg-no-repeat flex items-center"
+      className="relative w-full min-h-[70vh] bg-cover bg-center bg-no-repeat h-[38rem]"
       style={{ backgroundImage: "url('/images/HeroHOH.jpg')" }}
     >
-      {/* Enhanced Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20 z-0"></div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-orange-300/20 z-0"></div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 sm:px-10 md:px-20 py-20">
-        <div className="max-w-6xl mx-auto">
-          {/* Logo Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="mb-12 md:mb-16 flex justify-center"
-          >
-            <div className="relative">
-              {/* Logo background for better visibility */}
-              <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-2xl -m-4"></div>
-              <img
-                src="/images/HeroSectionLogo.png"
-                alt="House of Humanity Logo"
-                className="relative z-10 w-full max-w-[20rem] sm:max-w-[28rem] md:max-w-[32rem] lg:max-w-[36rem] xl:max-w-[40rem] drop-shadow-2xl"
-              />
-            </div>
-          </motion.div>
-
-          {/* Main Content */}
-          <div className="text-center space-y-8 md:space-y-12">
-            {/* Tagline */}
+      <div className="relative z-10 flex flex-col justify-between h-full px-6 sm:px-10 md:px-20 md:py-10 py-6">
+        {/* Top Logo */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.3 }}
+        >
+          <img
+            src="/images/HeroSectionLogo.png"
+            alt="logo"
+            className="w-full max-w-[20rem] sm:max-w-[24rem] md:max-w-[28rem] lg:max-w-[32rem]"
+          />
+        </motion.div>
+``
+        {/* Bottom Row */}
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end  gap-6 mt-6 md:mt-auto">
+          {/* Heading Section */}
+          <div className="max-w-[61rem]">
             <motion.p
-              className="text-xl sm:text-2xl md:text-3xl text-primary-blue font-semibold"
+              className="text-xl sm:text-2xl md:text-3xl text-blue-500 font-semibold mb-2"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+              viewport={{ once: false, amount: 0.3 }}
             >
               Building a Better World
             </motion.p>
-
-            {/* Main Heading */}
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white drop-shadow-lg"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold max-w-full bg-gradient-to-r from-blue-700 via-teal-600 to-green-600 bg-clip-text text-transparent  tracking-normal"
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.9, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: 0.6, duration: 0.9, ease: "easeOut" }}
+              viewport={{ once: false, amount: 0.3 }}
             >
-              Empowering Today for a{" "}
-              <span className="text-fresh-green">Healthier Society</span>{" "}
-              and a{" "}
-              <span className="text-primary-blue">Sustainable Tomorrow</span>
+              Empowering Today for a Healthier Society and a Sustainable
+              Tomorrow.
             </motion.h1>
 
             {/* Description */}
@@ -120,27 +111,6 @@ const HeroHome: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.7, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 border-2 border-white rounded-full flex justify-center"
-        >
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1 h-3 bg-white rounded-full mt-2"
-          />
-        </motion.div>
-      </motion.div>
     </section>
   );
 };

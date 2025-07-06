@@ -1,5 +1,8 @@
 import React from "react";
 import { Triangle } from "lucide-react";
+import { IoMdBicycle, IoMdSchool } from "react-icons/io";
+import { BiSolidBlanket } from "react-icons/bi";
+import { MdFoodBank } from "react-icons/md";
 import {
   FaHandsHelping,
   FaHeartbeat,
@@ -32,15 +35,17 @@ const ImpactCard: React.FC<ImpactCardProps> = ({
   const iconMap: { [key: string]: React.ComponentType<any> } = {
     leaf: FaLeaf,
     female: FaFemale,
-    heartbeat: FaHeartbeat,
     tint: FaTint,
+    foodbank: MdFoodBank,
     handshelping: FaHandsHelping,
     gift: FaGift,
     hospitalalt: FaHospitalAlt,
     bookreader: FaBookReader,
-    school: FaSchool,
+    school: IoMdSchool,
+    bicycle: IoMdBicycle,
     car: FaCar,
     users: FaUsers,
+    blanket: BiSolidBlanket,
     running: FaRunning,
     music: FaMusic,
   };
@@ -48,8 +53,8 @@ const ImpactCard: React.FC<ImpactCardProps> = ({
   const IconComponent = iconMap[icon.toLowerCase()] || FaGift;
 
   return (
-    <div className="w-92 h-80 mb-12 pt-2 rounded-2xl bg-primary">
-      <div className="w-92 h-80 bg-white rounded-xl shadow-xl p-6 flex flex-col items-center border-t-4 border-teal-600">
+    <div className="w-[22rem] h-84 mb-12 pt-2 rounded-2xl bg-primary">
+      <div className="w-[22rem] h-84 bg-white rounded-xl shadow-xl p-6 flex flex-col items-center border-t-4 border-teal-600">
         <div>
           <Triangle
             size={16}
@@ -59,19 +64,23 @@ const ImpactCard: React.FC<ImpactCardProps> = ({
         </div>
 
         {/* Heading */}
-        <h3 className="text-[28px] mb-6 font-bold">{count}</h3>
+        <h3 className="text-[28px] text-dark-gray dark:text-gray-200 mb-6 font-bold">
+          {count}
+        </h3>
 
         {/* Impact icon */}
-        <div className="bg-teal-600 p-3 mb-6 text-4xl rounded-full text-white">
+        <div className="bg-teal-600 p-3 mb-6 text-4xl  rounded-full text-white">
           <IconComponent />
         </div>
 
         {/* Project Title */}
-        <p className="text-center mb-1 font-bold text-base ">{title}</p>
+        <p className="text-center mb-1 font-bold text-base text-dark-gray dark:text-gray-200">
+          {title}
+        </p>
 
         {/* description */}
         <div className="rounded-lg p-4 w-full">
-          <p className="text-center text-sm text-gray-600 leading-relaxed">
+          <p className="text-center text-smt text-dark-gray dark:text-gray-200leading-relaxed">
             {impact}
           </p>
         </div>

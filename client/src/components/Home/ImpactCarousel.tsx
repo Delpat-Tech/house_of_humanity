@@ -50,14 +50,14 @@ const Impact = () => {
       <div className="md:max-w-7xl mx-auto px-4">
         <motion.h2
           variants={fadeIn("down", 0.1)}
-          className="md:text-5xl text-gradient-h2 font-bold text-center mb-6 text-primary"
+          className="md:text-5xl text-3xl text-gradient-h2 font-bold text-center mb-6 text-primary uppercase"
         >
           Our Impact
         </motion.h2>
 
         <motion.h2
           variants={fadeIn("up", 0.2)}
-          className="text-2xl font-extrabold text-slate-700 text-center mb-20 uppercase"
+          className="md:text-2xl text-xl font-extrabold text-fresh-green text-center mb-20 uppercase"
         >
           Creating lasting impact
         </motion.h2>
@@ -71,12 +71,14 @@ const Impact = () => {
               {impactData.map((item, index: number) => {
                 return (
                   <div key={index} className="px-2 flex justify-center">
-                    <ImpactCard
-                      icon={item.icon}
-                      count={item.number}
-                      title={item.project}
-                      impact={item.impact}
-                    />
+                    <div className="flex justify-center w-full">
+                      <ImpactCard
+                        icon={item.icon}
+                        count={item.number}
+                        title={item.project}
+                        impact={item.impact}
+                      />
+                    </div>
                   </div>
                 );
               })}

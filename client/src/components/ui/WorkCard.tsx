@@ -2,12 +2,17 @@ import React from "react";
 import TrapeziumButton from "./TrapeziumButton";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { WorkCardProps } from "../../types";
 
-const WorkCard: React.FC<WorkCardProps> = ({ title, subtitle, description, onClick, className }) => {
+type CardProps = {
+  title: string;
+  subtitle: string;
+  description: string;
+};
+
+const WorkCard: React.FC<CardProps> = ({ title, subtitle, description }) => {
   const navigate = useNavigate();
   return (
-    <div className={`w-full max-w-[25rem] h-[22rem] bg-white border-t-[6px] border-teal-500 shadow-2xl rounded-2xl overflow-hidden flex flex-col items-center p-6 ${className || ''}`}>
+    <div className="w-full max-w-[25rem] min-h-[28rem] bg-white border-b-[6px] border-teal-500 shadow-2xl rounded-lg overflow-hidden flex flex-col items-center p-6">
       {/* Title */}
       <motion.h2
         className="text-[24px] font-bold text-center mt-4 mb-2"
@@ -32,7 +37,7 @@ const WorkCard: React.FC<WorkCardProps> = ({ title, subtitle, description, onCli
 
       {/* Description */}
       <motion.p
-        className="text-gray-700 font-bold text-center mb-4 px-2"
+        className="text-dark-gray dark:text-gray-200 font-bold text-center mb-4 px-2"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
@@ -48,12 +53,12 @@ const WorkCard: React.FC<WorkCardProps> = ({ title, subtitle, description, onCli
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
         viewport={{ once: false, amount: 0.3 }}
-        onClick={onClick || (() => navigate("/projects"))}
+        onClick={() => navigate("/projects")}
       >
         <TrapeziumButton
           className="uppercase"
           label="Read More"
-          onClick={onClick || (() => navigate("/projects"))}
+          onClick={() => console.log("Button clicked")}
         />
       </motion.div>
     </div>
