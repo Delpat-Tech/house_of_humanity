@@ -9,22 +9,26 @@ import { fadeIn, staggerContainer } from "../../utils/motion";
 
 const Impact = () => {
   const settings = {
-    dots: true,
+    dots: false,
     arrows: true,
     infinite: true,
     speed: 1000,
     autoplay: true,
     autoplaySpeed: 3000,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     rows: 2,
+    swipeToSlide: true,
+    touchMove: true,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           rows: 2,
+          arrows: true,
+          dots: false,
         },
       },
       {
@@ -32,7 +36,27 @@ const Impact = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          rows: 6,
+          rows: 1,
+          arrows: false,
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 4000,
+          centerMode: true,
+          centerPadding: '40px',
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          rows: 1,
+          arrows: false,
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 4000,
+          centerMode: true,
+          centerPadding: '20px',
         },
       },
     ],
@@ -67,7 +91,7 @@ const Impact = () => {
         >
           <div className="w-full max-w-full sm:max-w-2xl md:max-w-7xl">
             <Slider {...settings}>
-              {impactData.map((item, index: number) => (
+              {impactData.map((item, index) => (
                 <div key={index} className="px-2 flex justify-center">
                   <ImpactCard
                     iconName={item.icon}
@@ -79,6 +103,59 @@ const Impact = () => {
             </Slider>
           </div>
         </motion.div>
+
+        {/* Custom styles for mobile dots */}
+        <style jsx>{`
+          .slick-dots {
+            bottom: -50px;
+          }
+          
+          .slick-dots li button:before {
+            font-size: 12px;
+            color: #cbd5e1;
+            opacity: 0.5;
+          }
+          
+          .slick-dots li.slick-active button:before {
+            color: #3b82f6;
+            opacity: 1;
+          }
+          
+          @media (max-width: 768px) {
+            .slick-dots {
+              bottom: -40px;
+            }
+            
+            .slick-dots li {
+              margin: 0 5px;
+            }
+          }
+          
+          /* Custom arrow styles for desktop */
+          .slick-prev:before,
+          .slick-next:before {
+            color: #3b82f6;
+            font-size: 24px;
+          }
+          
+          .slick-prev {
+            left: -50px;
+          }
+          
+          .slick-next {
+            right: -50px;
+          }
+          
+          @media (max-width: 1024px) {
+            .slick-prev {
+              left: -30px;
+            }
+            
+            .slick-next {
+              right: -30px;
+            }
+          }
+        `}</style>
       </div>
     </motion.section>
   );

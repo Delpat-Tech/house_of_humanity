@@ -69,6 +69,9 @@ const Header: React.FC = () => {
     },
     { name: "Our Partners", path: "/our-partners" },
 
+   
+    { name: "News + Events", path: "/news-events" },
+    { name: "Gallery", path: "/gallery" },
     {
       name: "Collaborate",
       path: "/donate-for-a-cause",
@@ -77,11 +80,10 @@ const Header: React.FC = () => {
         { name: "Get Involved", path: "/get-involved" },
         { name: "Partner With Us", path: "/partner-with-us" },
         { name: "Contribute Materials", path: "/contribute-materials" },
+        { name: "Contact Us", path: "/contact-us" },
       ],
     },
-    { name: "News + Events", path: "/news-events" },
-    { name: "Gallery", path: "/gallery" },
-    { name: "Contact Us", path: "/contact-us" },
+    
   ];
 
   return (
@@ -220,7 +222,7 @@ const Header: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <Link to="/" className="flex items-center space-x-3 group">
+              <Link to="/" className="flex items-center space-x-3 group" onClick={scrollToTop}>
                 <div className="relative">
                   <img
                     src="/HoHLogo.png"
@@ -383,28 +385,36 @@ const Header: React.FC = () => {
                   <div key={item.name}>
                     {item.dropdown ? (
                       <>
-                        <button
-                          onClick={() =>
-                            setDropdownOpen(
-                              dropdownOpen === item.name ? null : item.name
-                            )
-                          }
-                          className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-sm font-medium header-font transition-colors duration-200 ${
-                            dropdownOpen === item.name
-                              ? "bg-warm-light-blue dark:bg-gray-700 text-primary-blue"
-                              : "text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue"
-                          }`}
-                        >
-                          <span>{item.name}</span>
-                          <motion.div
-                            animate={{
-                              rotate: dropdownOpen === item.name ? 180 : 0,
-                            }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <ChevronDown className="w-5 h-5" />
-                          </motion.div>
-                        </button>
+                        {/* Check if any sub-link is active */}
+                        {(() => {
+                          const isAnySubActive = item.dropdown.some(
+                            (subItem) => location.pathname === subItem.path
+                          );
+                          return (
+                            <button
+                              onClick={() =>
+                                setDropdownOpen(
+                                  dropdownOpen === item.name ? null : item.name
+                                )
+                              }
+                              className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-sm font-medium header-font transition-colors duration-200 ${
+                                dropdownOpen === item.name || isAnySubActive
+                                  ? "bg-primary-blue text-white"
+                                  : "text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue"
+                              }`}
+                            >
+                              <span>{item.name}</span>
+                              <motion.div
+                                animate={{
+                                  rotate: dropdownOpen === item.name ? 180 : 0,
+                                }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                <ChevronDown className="w-5 h-5" />
+                              </motion.div>
+                            </button>
+                          );
+                        })()}
                         <AnimatePresence>
                           {dropdownOpen === item.name && (
                             <motion.div
@@ -419,7 +429,11 @@ const Header: React.FC = () => {
                                   key={subItem.name}
                                   to={subItem.path}
                                   onClick={() => setIsOpen(false)}
-                                  className="block px-3 py-2 rounded-md text-xs font-medium text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue transition-colors duration-200"
+                                  className={`block px-3 py-2 rounded-md text-xs font-medium transition-colors duration-200 ${
+                                    location.pathname === subItem.path
+                                      ? "bg-primary-blue text-white"
+                                      : "text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue"
+                                  }`}
                                 >
                                   {subItem.name}
                                 </Link>
