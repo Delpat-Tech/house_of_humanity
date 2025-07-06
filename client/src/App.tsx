@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ToastContainer } from 'react-toastify';
@@ -31,14 +31,26 @@ import ContactUs from './pages/ContactUs';
 import Home from './pages/Home';
 
 function App() {
+  const [showLoader, setShowLoader] = useState(true);
+  const [loaderGone, setLoaderGone] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowLoader(false), 1500); 
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleFadeOut = useCallback(() => {
+    setLoaderGone(true);
+  }, []);
+
   return (
     <ThemeProvider>
       <Router>
         <ScrollToTop />
         <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 overflow-x-hidden">
-          <Header />
+          {loaderGone && <Header />}
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home showLoader={showLoader} loaderGone={loaderGone} onFadeOut={handleFadeOut} />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/our-team" element={<OurTeam />} />
             <Route path="/sitaare" element={<Sitaare />} />
@@ -60,7 +72,7 @@ function App() {
             <Route path="/contact-us" element={<ContactUs />} />
           </Routes>
           <ToastContainer />
-          <Footer />
+          {loaderGone && <Footer />}
         </div>
       </Router>
     </ThemeProvider>
