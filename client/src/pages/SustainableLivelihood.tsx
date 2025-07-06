@@ -67,14 +67,7 @@ const SustainableLivelihood: React.FC = () => {
                 <p className="text-xl text-green-100 mb-8 leading-relaxed">
                   Empowering Women Through Sustainable Livelihoods in Halol Taluka
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button className="px-8 py-4 text-lg font-semibold bg-white text-fresh-green hover:bg-gray-100 hover:scale-105 hover:shadow-lg transition-all duration-300 transform">
-                    Learn More
-                  </Button>
-                  <Button className="px-8 py-4 text-lg font-semibold bg-transparent border-2 border-white text-white hover:bg-white hover:text-fresh-green hover:scale-105 hover:shadow-lg transition-all duration-300 transform">
-                    Get Involved
-                  </Button>
-                </div>
+                
               </div>
               <div className="relative">
                 <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
