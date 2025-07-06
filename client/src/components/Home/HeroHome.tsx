@@ -1,9 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from '../../shared/contexts/ThemeContext';
 
 const HeroHome: React.FC = () => {
   const navigate = useNavigate();
+  const { theme } = useTheme();
   return (
     <section
       className="relative w-full h-screen bg-cover bg-center bg-no-repeat flex items-center"
@@ -11,9 +13,12 @@ const HeroHome: React.FC = () => {
     >
       {/* Enhanced Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20 z-0"></div>
-
+      {/* Dimming overlay for dark mode */}
+      {theme === 'dark' && (
+        <div className="absolute inset-0 bg-black/40 z-10 transition-all duration-500 pointer-events-none" />
+      )}
       {/* Content */}
-      <div className="relative z-10 w-full h-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-8">
+      <div className="relative z-20 w-full h-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-8">
         <div className="max-w-4xl mx-auto text-center">
           {/* Logo Section */}
           <motion.div
