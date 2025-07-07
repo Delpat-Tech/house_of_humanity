@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 interface Slide {
@@ -24,17 +24,36 @@ const GiftCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const cardsPerView = 2;
   const totalGroups = Math.ceil(slides.length / cardsPerView);
+  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
+  // Infinite next/prev
   const next = () => {
-    if (currentIndex < totalGroups - 1) setCurrentIndex(currentIndex + 1);
+    setCurrentIndex((prev) => (prev + 1) % totalGroups);
   };
 
   const prev = () => {
-    if (currentIndex > 0) setCurrentIndex(currentIndex - 1);
+    setCurrentIndex((prev) => (prev - 1 + totalGroups) % totalGroups);
   };
 
+  // Autoplay effect
+  useEffect(() => {
+    if (!isHovered) {
+      autoplayRef.current = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % totalGroups);
+      }, 3500);
+    }
+    return () => {
+      if (autoplayRef.current) clearInterval(autoplayRef.current);
+    };
+  }, [isHovered, totalGroups]);
+
   return (
-    <div className="relative py-10 bg-white/90 backdrop-blur-lg shadow-2xl rounded-3xl p-6 border border-primary-blue/20 text-center w-full">
+    <div
+      className="relative py-10 bg-white/90 backdrop-blur-lg shadow-2xl rounded-3xl p-6 border border-primary-blue/20 text-center w-full"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <h2 className="text-2xl font-bold mb-6 text-primary-blue">
         HOW YOUR GIFT CREATES IMPACT
       </h2>
@@ -44,7 +63,6 @@ const GiftCarousel: React.FC = () => {
         <button
           onClick={prev}
           className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-primary-blue hover:bg-blue-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105 shadow-lg z-10"
-          disabled={currentIndex === 0}
         >
           ❮
         </button>
@@ -53,7 +71,6 @@ const GiftCarousel: React.FC = () => {
         <button
           onClick={next}
           className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-primary-blue hover:bg-blue-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105 shadow-lg z-10"
-          disabled={currentIndex === totalGroups - 1}
         >
           ❯
         </button>
