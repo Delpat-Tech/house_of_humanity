@@ -22,8 +22,8 @@ const Home: React.FC<HomeProps> = ({ showLoader, loaderGone, onFadeOut }) => {
       gsap.fromTo(
         mainRef.current,
         { opacity: 0, y: 20, scale: 0.98 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power2.out",
-        delay: -0.2 }
+        { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power2.out",
+       }
       );
     }
   }, [loaderGone]);

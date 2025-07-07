@@ -6,7 +6,7 @@ const HeroHome: React.FC = () => {
   const navigate = useNavigate();
   return (
     <section
-      className="relative w-full h-screen bg-cover bg-center bg-no-repeat flex items-center"
+      className="relative w-full h-screen bg-cover bg-center bg-no-repeat flex items-center mt-10"
       style={{ backgroundImage: "url('/images/HeroHOH.jpg')" }}
     >
       {/* Enhanced Overlay */}

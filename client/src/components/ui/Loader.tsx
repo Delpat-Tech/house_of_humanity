@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 interface LoaderProps {
   show: boolean;
@@ -42,51 +42,85 @@ const Loader: React.FC<LoaderProps> = ({ show, onFadeOut }) => {
       const tl = gsap.timeline();
       timelineRef.current = tl;
 
-      gsap.set([logoRef.current, logoContainerRef.current, orbitRef.current, glowRef.current, backgroundRef.current, highlightRingRef.current], { opacity: 0, scale: 0 });
+      gsap.set(
+        [
+          logoRef.current,
+          logoContainerRef.current,
+          orbitRef.current,
+          glowRef.current,
+          backgroundRef.current,
+          highlightRingRef.current,
+        ],
+        { opacity: 0, scale: 0 }
+      );
 
-      tl.to(backgroundRef.current, { opacity: 1, duration: 0.8, ease: 'power2.out' });
-
-      tl.to(logoContainerRef.current, {
+      tl.to(backgroundRef.current, {
         opacity: 1,
-        scale: 1,
-        duration: 0.9,
-        ease: 'back.out(1.7)',
-      }, "-=0.3");
+        duration: 0.8,
+        ease: "power2.out",
+      });
 
-      tl.to(glowRef.current, {
-        opacity: 0.7,
-        scale: 1.2,
-        duration: 1.2,
-        ease: 'power3.out'
-      }, "-=0.6");
+      tl.to(
+        logoContainerRef.current,
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.9,
+          ease: "back.out(1.7)",
+        },
+        "-=0.3"
+      );
 
-      tl.to(logoRef.current, {
-        opacity: 1,
-        scale: 1,
-        duration: 1.2,
-        ease: 'back.out(1.7)'
-      }, "-=1");
+      tl.to(
+        glowRef.current,
+        {
+          opacity: 0.7,
+          scale: 1.2,
+          duration: 1.2,
+          ease: "power3.out",
+        },
+        "-=0.6"
+      );
 
-      tl.to(orbitRef.current, {
-        scale: 1,
-        opacity: 0.6,
-        duration: 1,
-        ease: 'power2.out'
-      }, "-=1");
+      tl.to(
+        logoRef.current,
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          ease: "back.out(1.7)",
+        },
+        "-=1"
+      );
 
-      tl.to(highlightRingRef.current, {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        ease: 'elastic.out(1, 0.5)',
-      }, "-=1.2");
+      tl.to(
+        orbitRef.current,
+        {
+          scale: 1,
+          opacity: 0.6,
+          duration: 1,
+          ease: "power2.out",
+        },
+        "-=1"
+      );
+
+      tl.to(
+        highlightRingRef.current,
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: "elastic.out(1, 0.5)",
+        },
+        "-=1.2"
+      );
 
       // Continuous animations
       gsap.to(orbitRef.current, {
         rotation: 360,
         duration: 10,
-        ease: 'none',
-        repeat: -1
+        ease: "none",
+        repeat: -1,
       });
 
       gsap.to(glowRef.current, {
@@ -95,7 +129,7 @@ const Loader: React.FC<LoaderProps> = ({ show, onFadeOut }) => {
         duration: 2,
         repeat: -1,
         yoyo: true,
-        ease: 'sine.inOut'
+        ease: "sine.inOut",
       });
 
       gsap.to(highlightRingRef.current, {
@@ -104,13 +138,13 @@ const Loader: React.FC<LoaderProps> = ({ show, onFadeOut }) => {
         duration: 2,
         repeat: -1,
         yoyo: true,
-        ease: 'sine.inOut'
+        ease: "sine.inOut",
       });
 
       gsap.to(logoRef.current, {
         y: -8,
         duration: 2,
-        ease: 'power1.inOut',
+        ease: "power1.inOut",
         repeat: -1,
         yoyo: true,
       });
@@ -129,38 +163,50 @@ const Loader: React.FC<LoaderProps> = ({ show, onFadeOut }) => {
         scale: 1.3,
         y: -40,
         duration: 0.6,
-        ease: 'power2.inOut',
+        ease: "power2.inOut",
       });
 
-      exitTl.to(logoContainerRef.current, {
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.4,
-        ease: 'power2.in'
-      }, "-=0.5");
+      exitTl.to(
+        logoContainerRef.current,
+        {
+          opacity: 0,
+          scale: 0.8,
+          duration: 0.4,
+          ease: "power2.in",
+        },
+        "-=0.5"
+      );
 
-      exitTl.to(backgroundRef.current, {
-        y: "-100%",
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power2.inOut'
-      }, "-=0.4");
+      exitTl.to(
+        backgroundRef.current,
+        {
+          y: "-100%",
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.inOut",
+        },
+        "-=0.4"
+      );
 
-      exitTl.to(loaderRef.current, {
-        y: "-100%",
-        duration: 0.8,
-        ease: 'power2.inOut',
-        onComplete: () => {
-          onFadeOut();
-          animatePageLoad(); // ✅ Immediately animate content
-        }
-      }, "-=0.6");
+      exitTl.to(
+        loaderRef.current,
+        {
+          y: "-100%",
+          duration: 0.8,
+          ease: "power2.inOut",
+          onComplete: () => {
+            onFadeOut();
+            animatePageLoad(); // ✅ Immediately animate content
+          },
+        },
+        "-=0.6"
+      );
     }
   }, [show, onFadeOut]);
 
   const animatePageLoad = () => {
     gsap.fromTo(
-      'header, main, .main-content, footer, [data-header], [data-main-content], [data-footer]',
+      "header, main, .main-content, footer, [data-header], [data-main-content], [data-footer]",
       {
         y: 40,
         opacity: 0,
@@ -169,8 +215,8 @@ const Loader: React.FC<LoaderProps> = ({ show, onFadeOut }) => {
         y: 0,
         opacity: 1,
         duration: 0.8,
-        ease: 'power2.out',
-        stagger: 0.05
+        ease: "power2.out",
+        stagger: 0.05,
       }
     );
   };
@@ -184,7 +230,9 @@ const Loader: React.FC<LoaderProps> = ({ show, onFadeOut }) => {
   return (
     <div
       ref={loaderRef}
-      className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-700 ${show ? '' : 'pointer-events-none'}`}
+      className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-700 ${
+        show ? "" : "pointer-events-none"
+      }`}
       style={{ opacity: show ? 1 : 0 }}
     >
       <div

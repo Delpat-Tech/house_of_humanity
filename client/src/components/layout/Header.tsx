@@ -225,9 +225,9 @@ const Header: React.FC = () => {
               <Link to="/" className="flex items-center space-x-3 group" onClick={scrollToTop}>
                 <div className="relative">
                   <img
-                    src="/HoHLogo.png"
+                    src="/HOHLogo.png"
                     alt="House of Humanity Logo"
-                    className="h-16 w-auto"
+                    className="h-24"
                   />
                 </div>
               </Link>
