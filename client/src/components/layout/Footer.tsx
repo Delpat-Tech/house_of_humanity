@@ -28,7 +28,7 @@ const Footer = () => {
             <div className="flex items-center space-x-4">
               <a href="/" className="flex items-center space-x-3 group">
                 <img
-                  src="/HOHLogo.png"
+                  src="/HoHLogo.png"
                   alt="House of Humanity Logo"
                   className="h-16 w-auto"
                 />

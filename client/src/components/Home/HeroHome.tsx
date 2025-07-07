@@ -29,7 +29,7 @@ const HeroHome: React.FC = () => {
               <img
                 src="/images/HeroSectionLogo.png"
                 alt="House of Humanity Logo"
-                className="relative z-10 w-full max-w-[8rem] sm:max-w-[10rem] md:max-w-[12rem] lg:max-w-[14rem] xl:max-w-[16rem] drop-shadow-2xl"
+                className="relative z-10 w-full max-w-[16rem] sm:max-w-[20rem] md:max-w-[24rem] lg:max-w-[28rem] xl:max-w-[32rem] drop-shadow-2xl"
               />
             </div>
           </motion.div>
