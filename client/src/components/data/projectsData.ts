@@ -260,7 +260,7 @@ export const projects: Project[] = [
   },
   {
     title: "Project Sanskruti",
-    image: "/Gallery/sanskruti.jpg",
+    image: "/Gallery/SHG Training Session.jpg",
     content: {
       vision: "To revive traditional, eco-friendly farming methods by empowering rural women to adopt organic composting.",
       mission: "To promote sustainable agriculture and reduce harmful farming practices by enabling women-led environmental action.",
