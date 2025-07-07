@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ImageSlider from "../ui/ImageSlider";
 import { motion } from "framer-motion";
+import { useTheme } from "../../shared/contexts/ThemeContext";
 
 type Image = {
   src: string;
@@ -10,6 +11,7 @@ type Image = {
 };
 
 const ImageGallery: React.FC = () => {
+  const { theme } = useTheme();
   const imageList: Image[] = [
     {
       src: "/Gallery/img1.webp",
@@ -60,10 +62,10 @@ const ImageGallery: React.FC = () => {
   ];
 
   return (
-   <section className="w-full px-4 sm:px-6 md:px-10 lg:px-20 py-16 bg-gray-50">
+   <section className={`w-full px-4 sm:px-6 md:px-10 lg:px-20 py-16 transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
       {/* Section Heading */}
       <motion.h2
-        className="text-2xl sm:text-4xl lg:text-5xl font-bold text-center mb-12 py-5 text-gradient-h2"
+        className={`text-2xl sm:text-4xl lg:text-5xl font-bold text-center mb-12 py-5 transition-colors duration-300 ${theme === 'dark' ? 'text-fresh-green' : 'text-gradient-h2'}`}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
