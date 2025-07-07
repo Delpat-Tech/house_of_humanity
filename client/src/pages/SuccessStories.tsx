@@ -226,6 +226,18 @@ const SuccessStories: React.FC = () => {
         </Button>
       </div>
 
+      {/* Add testimonial form CTA at the bottom */}
+      <div className="flex justify-center my-12">
+        <a
+          href="https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-primary-blue hover:bg-fresh-green text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all text-lg"
+        >
+          Want to share your story? Click here!
+        </a>
+      </div>
+
       {/* Testimonial Modal */}
       <AnimatePresence>
         {selected && (
