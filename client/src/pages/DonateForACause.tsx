@@ -164,7 +164,7 @@ const DonateForACause: React.FC = () => {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div className="relative w-full bg-gradient-to-br from-primary-blue via-blue-600 to-fresh-green py-20 flex flex-col items-center justify-center text-center overflow-hidden">
+      <div className="relative w-full bg-gradient-to-br from-primary-blue via-blue-600 to-fresh-green pt-32 pb-20 flex flex-col items-center justify-center text-center overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -172,7 +172,9 @@ const DonateForACause: React.FC = () => {
           className="z-10"
         >
           <div className="flex flex-col items-center mb-6">
-            <svg className="w-16 h-16 text-white mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 1.343-3 3 0 1.657 1.343 3 3 3s3-1.343 3-3c0-1.657-1.343-3-3-3zm0 0V4m0 16v-4m8-4h-4m-8 0H4" /></svg>
+            <svg className="w-20 h-20 text-white mb-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
             <h1 className="text-5xl font-extrabold text-white drop-shadow-lg mb-2">Donate for a Cause</h1>
             <p className="text-xl text-white/90 font-medium max-w-2xl">Help us cultivate dignity for women and children to Dream Beyond their circumstances. All individual donations are <span className="font-bold text-white">100% matched</span>.</p>
           </div>
@@ -346,43 +348,9 @@ const DonateForACause: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* How Your Gift Creates Impact Section */}
-      <div className="max-w-5xl mx-auto px-4 mt-20 mb-16">
-        <h2 className="text-3xl font-extrabold text-primary-blue mb-8 text-center">How Your Gift Creates Impact</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            {
-              img: 'https://placehold.co/200x140/0098DB/FFF?text=Health',
-              title: 'Health & Hygiene',
-              desc: 'Provides sanitary pads, health camps, and hygiene education for women and children.'
-            },
-            {
-              img: 'https://placehold.co/200x140/70BF44/FFF?text=Education',
-              title: 'Education',
-              desc: 'Funds school supplies, scholarships, and after-school programs for underprivileged kids.'
-            },
-            {
-              img: 'https://placehold.co/200x140/0098DB/FFF?text=Nutrition',
-              title: 'Nutrition',
-              desc: 'Delivers nutritious meals and supplements to malnourished children and families.'
-            },
-            {
-              img: 'https://placehold.co/200x140/70BF44/FFF?text=Livelihood',
-              title: 'Livelihood',
-              desc: 'Supports vocational training and micro-enterprise for women and youth.'
-            },
-          ].map((item, idx) => (
-            <div key={idx} className="bg-white rounded-2xl shadow-xl p-4 flex flex-col items-center text-center border border-primary-blue/20 hover:shadow-2xl transition-all">
-              <img src={item.img} alt={item.title} className="rounded-xl mb-4 w-full h-36 object-cover shadow" />
-              <h3 className="text-xl font-bold text-primary-blue mb-2">{item.title}</h3>
-              <p className="text-dark-gray text-sm">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Testimonial Carousel */}
-      <div className="max-w-5xl mx-auto px-4 mb-20">
+      <div className="max-w-5xl mx-auto px-4 mt-24 mb-20">
         <h2 className="text-3xl font-extrabold text-primary-blue mb-8 text-center">What Our Donors Say</h2>
         <TestimonialCarousel testimonials={testimonials} />
       </div>

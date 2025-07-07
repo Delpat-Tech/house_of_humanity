@@ -9,11 +9,6 @@ const donations: DonationItem[] = [
     img: '/assets/ways/w1.jpg',
   },
   {
-    title: 'Donate in Cryptocurrency',
-    desc: 'Donating cryptocurrency is a non-taxable event, meaning you can deduct it on your taxes. We use GivingBlock to help us accept coins!',
-    img: '/assets/ways/w2.jpg',
-  },
-  {
     title: 'Invest in Transforming Lives',
     desc: 'Empower the livelihood of women to gain new skills and excel in entrepreneurship.',
     img: '/assets/ways/w3.jpg',
@@ -67,7 +62,7 @@ const WaysToDonate: React.FC = () => {
                   href="https://thegivingblock.com/donate/desai-foundation/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block rounded-full bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white border border-transparent px-6 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
+                  className="inline-block rounded-full bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white dark:text-white border border-transparent px-6 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
                 >
                   DONATE &rarr;
                 </a>
