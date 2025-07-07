@@ -1,23 +1,10 @@
 import React from "react";
-import { Triangle } from "lucide-react";
-import { IoMdBicycle, IoMdSchool } from "react-icons/io";
-import { BiSolidBlanket } from "react-icons/bi";
+import { IconType } from "react-icons";
+import { FaLeaf, FaFemale, FaTint, FaHandsHelping, FaGift, FaHospitalAlt, FaBookReader, FaCar, FaUsers, FaRunning, FaMusic } from "react-icons/fa";
 import { MdFoodBank } from "react-icons/md";
-import {
-  FaHandsHelping,
-  FaHeartbeat,
-  FaBookReader,
-  FaLeaf,
-  FaGift,
-  FaUsers,
-  FaTint,
-  FaHospitalAlt,
-  FaSchool,
-  FaCar,
-  FaRunning,
-  FaMusic,
-  FaFemale,
-} from "react-icons/fa";
+import { IoMdSchool, IoMdBicycle } from "react-icons/io";
+import { BiSolidBlanket } from "react-icons/bi";
+import { Triangle } from "lucide-react"; // Add this import if Triangle is used
 
 type ImpactCardProps = {
   icon: string;
@@ -32,7 +19,7 @@ const ImpactCard: React.FC<ImpactCardProps> = ({
   title,
   impact,
 }) => {
-  const iconMap: { [key: string]: React.ComponentType<any> } = {
+  const iconMap: { [key: string]: IconType } = {
     leaf: FaLeaf,
     female: FaFemale,
     tint: FaTint,
@@ -50,7 +37,7 @@ const ImpactCard: React.FC<ImpactCardProps> = ({
     music: FaMusic,
   };
 
-  const IconComponent = iconMap[icon.toLowerCase()] || FaGift;
+  const IconComponent = iconMap[icon.toLowerCase()];
 
   return (
     <div className="w-full max-w-xs sm:max-w-sm md:w-[22rem] h-auto mb-8 pt-2 rounded-2xl bg-primary mx-auto">
@@ -70,7 +57,7 @@ const ImpactCard: React.FC<ImpactCardProps> = ({
 
         {/* Impact icon */}
         <div className="bg-teal-600 p-2 sm:p-3 mb-4 text-3xl sm:text-4xl rounded-full text-white">
-          <IconComponent />
+          {IconComponent ? React.createElement(IconComponent as React.ComponentType) : null}
         </div>
 
         {/* Project Title */}
