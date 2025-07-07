@@ -135,6 +135,16 @@ const Contact = () => {
                 </a>
               </div>
             </div>
+            <div className="mt-8 flex flex-col items-start">
+              <a
+                href="https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-primary-blue hover:bg-fresh-green text-white font-bold py-2 px-6 rounded-full shadow transition-all mt-4"
+              >
+                Want to leave a testimonial? Click here!
+              </a>
+            </div>
           </div>
           </motion.div>
 
