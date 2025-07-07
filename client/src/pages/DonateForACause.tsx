@@ -194,9 +194,8 @@ const DonateForACause: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       {/* Hero Section */}
-<<<<<<< HEAD
       <div className="relative w-full bg-gradient-to-br from-primary-blue via-blue-600 to-fresh-green pt-32 pb-20 flex flex-col items-center justify-center text-center overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: -30 }}
@@ -219,15 +218,15 @@ const DonateForACause: React.FC = () => {
       </div>
 
       {/* Donation Form Section */}
-      <div className="-mt-24 max-w-5xl mx-auto px-4 grid md:grid-cols-3 gap-8 relative z-20">
+      <div className="-mt-24 max-w-5xl mx-auto px-2 sm:px-4 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative z-20">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="bg-white/90 backdrop-blur-lg shadow-2xl rounded-3xl p-10 mt-12 border border-primary-blue/20 md:col-span-1"
+          className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-2xl rounded-3xl p-6 sm:p-10 mt-12 border border-primary-blue/20 dark:border-blue-900 md:col-span-1 transition-colors duration-300"
         >
-          <div className="w-full h-2 bg-gray-200 rounded mb-8 overflow-hidden">
+          <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded mb-8 overflow-hidden">
             <div className={`h-full bg-gradient-to-r from-primary-blue to-fresh-green transition-all duration-500 rounded ${getProgress()}`} />
           </div>
 
@@ -256,7 +255,7 @@ const DonateForACause: React.FC = () => {
                   setCustomAmount(e.target.value);
                   setAmount(e.target.value);
                 }}
-                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
               <Button
                 onClick={handleContinue}
@@ -277,7 +276,7 @@ const DonateForACause: React.FC = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setFormData({ ...formData, firstName: e.target.value })
                 }
-                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
               {errors.firstName && <p className="text-red-600 text-sm mb-2">{errors.firstName}</p>}
               <input
@@ -287,7 +286,7 @@ const DonateForACause: React.FC = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setFormData({ ...formData, lastName: e.target.value })
                 }
-                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
               <input
                 type="email"
@@ -304,7 +303,7 @@ const DonateForACause: React.FC = () => {
                     setErrors((prev) => ({ ...prev, email: '' }));
                   }
                 }}
-                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
               {errors.email && <p className="text-red-600 text-sm mb-2">{errors.email}</p>}
               <div className="flex justify-between mt-4">
@@ -327,11 +326,11 @@ const DonateForACause: React.FC = () => {
           {step === 2 && (
             <div>
               <p className="font-bold mb-4 text-primary-blue">Payment Details</p>
-              <div className="border-2 border-primary-blue/30 p-4 rounded-lg mb-4 bg-primary-blue/5">
+              <div className="border-2 border-primary-blue/30 p-4 rounded-lg mb-4 bg-primary-blue/5 dark:bg-blue-900/10">
                 <p><strong>Payment Amount:</strong> <span className="text-primary-blue">₹{amount}</span></p>
                 <p><strong>Giving Frequency:</strong> <span className="text-primary-blue">One time</span></p>
               </div>
-              <div className="border-2 border-primary-blue/30 p-4 rounded-lg mb-4 text-sm bg-primary-blue/5">Donate with Stripe Payment Element (placeholder)</div>
+              <div className="border-2 border-primary-blue/30 p-4 rounded-lg mb-4 text-sm bg-primary-blue/5 dark:bg-blue-900/10">Donate with Stripe Payment Element (placeholder)</div>
 
               {submitError && (
                 <div className="text-red-600 text-sm mb-4 whitespace-pre-wrap">
@@ -383,269 +382,24 @@ const DonateForACause: React.FC = () => {
 
 
       {/* Testimonial Carousel */}
-      <div className="max-w-5xl mx-auto px-4 mt-24 mb-20">
-        <h2 className="text-3xl font-extrabold text-primary-blue mb-8 text-center">What Our Donors Say</h2>
+      <div className="max-w-5xl mx-auto px-2 sm:px-4 mt-24 mb-20">
+        <h2 className="text-3xl font-extrabold text-primary-blue dark:text-blue-200 mb-8 text-center">What Our Donors Say</h2>
         <TestimonialCarousel testimonials={testimonials} />
-=======
-      <div className="relative bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-16 sm:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-blue rounded-2xl mb-6">
-              <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-              Make a Difference Today
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              Help us cultivate dignity for women and children to Dream Beyond their circumstances. 
-              All individual donations are <span className="font-semibold text-primary-blue">100% matched</span>.
-            </p>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Donation Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100"
-          >
-            <div className="mb-8">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold text-gray-900">Complete Your Donation</h2>
-                <span className="text-sm text-gray-500">Step {step + 1} of 3</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className={`h-2 bg-primary-blue rounded-full transition-all duration-500 ${getProgress()}`} />
-              </div>
-            </div>
-
-            {step === 0 && (
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Select donation amount
-                  </label>
-                  <div className="grid grid-cols-3 gap-3 mb-4">
-                    {amounts.map((amt) => (
-                      <button
-                        key={amt}
-                        className={`p-4 rounded-xl border-2 font-semibold transition-all duration-200 ${
-                          amount === amt 
-                            ? 'border-primary-blue bg-primary-blue text-white shadow-lg' 
-                            : 'border-gray-200 text-gray-700 hover:border-primary-blue hover:bg-blue-50'
-                        }`}
-                        onClick={() => {
-                          setAmount(amt);
-                          setCustomAmount('');
-                        }}
-                      >
-                        ₹{amt}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="relative">
-                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">₹</span>
-                    <input
-                      type="number"
-                      placeholder="Enter custom amount"
-                      value={customAmount}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        setCustomAmount(e.target.value);
-                        setAmount(e.target.value);
-                      }}
-                      className="w-full pl-8 pr-4 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent"
-                    />
-                  </div>
-                </div>
-                <Button
-                  onClick={handleContinue}
-                  className="w-full py-4 bg-primary-blue hover:bg-blue-700 text-white font-semibold rounded-xl transition-all duration-200"
-                >
-                  Continue to Details
-                </Button>
-              </div>
-            )}
-
-            {step === 1 && (
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Your information
-                  </label>
-                  <p className="text-sm text-gray-500 mb-4">
-                    We'll never share this information with anyone.
-                  </p>
-                  <div className="space-y-4">
-                    <div>
-                      <input
-                        type="text"
-                        placeholder="First name"
-                        value={formData.firstName}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                          setFormData({ ...formData, firstName: e.target.value })
-                        }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent"
-                      />
-                      {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
-                    </div>
-                    <div>
-                      <input
-                        type="text"
-                        placeholder="Last name"
-                        value={formData.lastName}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                          setFormData({ ...formData, lastName: e.target.value })
-                        }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent"
-                      />
-                    </div>
-                    <div>
-                      <input
-                        type="email"
-                        placeholder="Email address"
-                        value={formData.email}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                        onBlur={(e) => {
-                          const email = e.target.value;
-                          if (!validateEmail(email)) {
-                            setErrors((prev) => ({ ...prev, email: 'Invalid email format' }));
-                          } else {
-                            setErrors((prev) => ({ ...prev, email: '' }));
-                          }
-                        }}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent"
-                      />
-                      {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-between">
-                  <button 
-                    onClick={handleBack} 
-                    className="text-gray-600 hover:text-gray-800 font-medium transition-colors"
-                  >
-                    ← Back
-                  </button>
-                  <Button
-                    onClick={handleContinue}
-                    className="px-8 py-3 bg-primary-blue hover:bg-blue-700 text-white font-semibold rounded-xl transition-all duration-200"
-                  >
-                    Continue to Payment
-                  </Button>
-                </div>
-              </div>
-            )}
-
-            {step === 2 && (
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Payment summary
-                  </label>
-                  <div className="bg-gray-50 rounded-xl p-4 space-y-2">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Amount:</span>
-                      <span className="font-semibold text-primary-blue">₹{amount}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Frequency:</span>
-                      <span className="font-semibold">One time</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center text-gray-500">
-                  <div className="w-12 h-12 mx-auto mb-3 bg-gray-100 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                    </svg>
-                  </div>
-                  Stripe Payment Element will load here
-                </div>
-
-                {submitError && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700 text-sm">
-                    {submitError}
-                  </div>
-                )}
-
-                <div className="flex justify-between items-center">
-                  <button 
-                    onClick={handleBack} 
-                    disabled={isSubmitting}
-                    className="text-gray-600 hover:text-gray-800 font-medium transition-colors disabled:opacity-50"
-                  >
-                    ← Back
-                  </button>
-                  <Button
-                    onClick={handleSubmit}
-                    disabled={isSubmitting}
-                    className={`px-8 py-3 bg-primary-blue hover:bg-blue-700 text-white font-semibold rounded-xl transition-all duration-200 flex items-center gap-2 ${
-                      isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
-                    }`}
-                  >
-                    {isSubmitting && (
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-                      </svg>
-                    )}
-                    {isSubmitting ? 'Processing...' : 'Complete Donation'}
-                  </Button>
-                </div>
-              </div>
-            )}
-
-            <div className="mt-8 flex items-center justify-center gap-2 text-sm text-gray-500">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
-              100% Secure & Encrypted
-            </div>
-          </motion.div>
-
-          {/* Gift Carousel */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="lg:sticky lg:top-8"
-          >
-            <GiftCarousel />
-          </motion.div>
-        </div>
->>>>>>> 0ae371c4e1e834d0f238bdb99069dbc9bc6f7a99
       </div>
 
       {/* Impact Section */}
-      <div className="bg-white border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 py-8 sm:py-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-blue-200 mb-4">
               Your Impact in Action
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               See how your generous donation creates meaningful change in our community
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
               {
                 img: 'https://placehold.co/300x200/0098DB/FFF?text=Health+%26+Hygiene',
@@ -694,7 +448,7 @@ const DonateForACause: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300"
               >
                 <div className="aspect-video bg-gradient-to-br from-primary-blue to-fresh-green relative overflow-hidden">
                   <img 
@@ -702,15 +456,15 @@ const DonateForACause: React.FC = () => {
                     alt={item.title} 
                     className="w-full h-full object-cover" 
                   />
-                  <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
+                  <div className="absolute top-4 left-4 bg-white/20 dark:bg-gray-900/40 backdrop-blur-sm rounded-full p-2">
                     <div className="text-white">
                       {item.icon}
                     </div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                <div className="p-4 sm:p-6 bg-white dark:bg-gray-800 transition-colors duration-300">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-blue-200 mb-3">{item.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -719,13 +473,13 @@ const DonateForACause: React.FC = () => {
       </div>
 
       {/* Testimonials */}
-      <div className="bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 py-8 sm:py-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-blue-200 mb-4">
               Stories from Our Community
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-gray-300">
               Hear from those who've made a difference through their generous support
             </p>
           </div>
@@ -734,8 +488,8 @@ const DonateForACause: React.FC = () => {
       </div>
 
       {/* Additional Payment Options */}
-      <div className="bg-white border-t border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 py-16">
+      <div className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div className="max-w-4xl mx-auto px-2 sm:px-4 py-8 sm:py-16">
           <BhimQR />
           <WaysToDonate />
         </div>

@@ -399,7 +399,7 @@ const Header: React.FC = () => {
                               }
                               className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-sm font-medium header-font transition-colors duration-200 ${
                                 dropdownOpen === item.name || isAnySubActive
-                                  ? "bg-primary-blue text-white"
+                                  ? "bg-primary-blue text-white dark:text-white"
                                   : "text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue"
                               }`}
                             >
@@ -431,7 +431,7 @@ const Header: React.FC = () => {
                                   onClick={() => setIsOpen(false)}
                                   className={`block px-3 py-2 rounded-md text-xs font-medium transition-colors duration-200 ${
                                     location.pathname === subItem.path
-                                      ? "bg-primary-blue text-white"
+                                      ? "bg-primary-blue text-white dark:text-white"
                                       : "text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue"
                                   }`}
                                 >

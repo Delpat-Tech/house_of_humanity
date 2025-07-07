@@ -26,7 +26,7 @@ import { fadeIn, staggerContainer } from '../utils/motion';
 
 const NewsAndEvents: React.FC = () => {
   const [activeTab, setActiveTab] = useState('media');
-  const [selectedNews, setSelectedNews] = useState(null);
+  const [selectedNews, setSelectedNews] = useState<any>(null);
 
   const houseOfHumanityNews = [
     {
@@ -250,7 +250,7 @@ const NewsAndEvents: React.FC = () => {
     }
   ];
 
-  const NewsModal = ({ news, onClose }) => (
+  const NewsModal = ({ news, onClose }: { news: any; onClose: () => void }) => (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <motion.div 
         className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
@@ -299,7 +299,7 @@ const NewsAndEvents: React.FC = () => {
           </div>
             
             <div className="space-y-4">
-              {news.fullContent.details.map((detail, index) => (
+              {news.fullContent.details.map((detail: string, index: number) => (
                 <p key={index} className="text-gray-700 leading-relaxed">
                   {detail}
                 </p>
