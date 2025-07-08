@@ -19,7 +19,7 @@ const About: React.FC = () => {
           viewport={{ once: false, amount: 0.3 }}
         >
           <img
-            src="/Gallery/image4.png"
+            src="/Gallery/image4.webp"
             alt="About Image"
             className="w-full max-w-[36rem] rounded-xl mt-4 mx-auto"
           />
@@ -65,7 +65,7 @@ const About: React.FC = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`text-white text-sm sm:text-base md:text-xl font-semibold rounded-xl px-6 py-2 mt-4 transition-colors duration-300 border ${theme === 'dark' ? 'bg-fresh-green hover:bg-white hover:text-fresh-green hover:border-fresh-green border-fresh-green' : 'bg-blue-500 hover:bg-white hover:text-blue-500 hover:border-blue-500 border-blue-500'}`}
+            className={`text-white text-sm sm:text-base md:text-xl font-semibold rounded-xl px-6 py-2 mt-4 transition-colors duration-300 border ${theme === 'dark' ? 'bg-fresh-green hover:bg-white hover:text-fresh-green hover:border-fresh-green border-fresh-green' : 'bg-primary-blue hover:bg-white hover:text-primary-blue hover:border-primary-blue border-primary-blue'}`}
             onClick={() => navigate("/about-us")}
           >
             About Us

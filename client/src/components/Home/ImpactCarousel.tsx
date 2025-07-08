@@ -123,7 +123,7 @@ const Impact = () => {
           }
           
           .slick-dots li.slick-active button:before {
-            color: #3b82f6;
+            color:#176efc;
             opacity: 1;
           }
           
@@ -140,7 +140,7 @@ const Impact = () => {
           /* Custom arrow styles for desktop */
           .slick-prev:before,
           .slick-next:before {
-            color: #3b82f6;
+            color: #176efc;
             font-size: 24px;
           }
           
