@@ -1,11 +1,10 @@
 import React from 'react';
 import ImagePlaceholder from '../components/ui/ImagePlaceholder';
+import Button from '../components/ui/Button';
+import { useNavigate } from 'react-router-dom';
 
 const HealthCare: React.FC = () => {
-  const navigate = (path: string) => {
-    console.log('Navigate to:', path);
-    // Navigation logic would be implemented here
-  };
+  const navigate = useNavigate();
 
   const projects = [
     {
@@ -146,26 +145,26 @@ const HealthCare: React.FC = () => {
 
         <div className="space-y-16">
           {projects.map((project, index) => (
-            <div key={index} className="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div key={index} className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
               <div className={`grid md:grid-cols-2 gap-8 ${index % 2 === 0 ? '' : 'md:grid-cols-2'}`}>
                 <div className={`${index % 2 === 0 ? 'order-1' : 'order-2 md:order-1'}`}>
                   <div className="p-8 md:p-12">
                     <div className="flex items-center gap-4 mb-6">
                       <div className="text-4xl">{project.icon}</div>
                       <div>
-                        <h3 className="text-2xl font-bold text-primary-blue">{project.title}</h3>
-                        <p className="text-red-600 font-semibold">{project.subtitle}</p>
+                        <h3 className="text-2xl font-bold text-primary-blue dark:text-blue-300">{project.title}</h3>
+                        <p className="text-red-600 dark:text-pink-300 font-semibold">{project.subtitle}</p>
                       </div>
                     </div>
-                    <p className="text-dark-gray leading-relaxed mb-8">
+                    <p className="text-dark-gray dark:text-gray-100 leading-relaxed mb-8">
                       {project.description}
                     </p>
                     <div className="grid grid-cols-2 gap-4">
                       {project.stats.map((stat, statIndex) => (
-                        <div key={statIndex} className="text-center bg-gradient-to-br from-red-50 to-pink-50 rounded-lg p-4">
+                        <div key={statIndex} className="text-center bg-gradient-to-br from-red-50 to-pink-50 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 rounded-lg p-4">
                           <div className="text-2xl mb-2">{stat.icon}</div>
-                          <div className="text-2xl font-bold text-primary-blue">{stat.number}</div>
-                          <div className="text-sm text-dark-gray">{stat.label}</div>
+                          <div className="text-2xl font-bold text-primary-blue dark:text-blue-300">{stat.number}</div>
+                          <div className="text-sm text-dark-gray dark:text-gray-200">{stat.label}</div>
                         </div>
                       ))}
                     </div>
@@ -201,16 +200,16 @@ const HealthCare: React.FC = () => {
           {whatWeDoItems.map((item, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 group"
             >
               <div className="text-center">
                 <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-primary-blue mb-4">
+                <h3 className="text-xl font-bold text-primary-blue dark:text-blue-300 mb-4">
                   {item.title}
                 </h3>
-                <p className="text-dark-gray leading-relaxed">
+                <p className="text-dark-gray dark:text-gray-100 leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -220,7 +219,7 @@ const HealthCare: React.FC = () => {
       </div>
 
       {/* Impact Statistics */}
-      <div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-8 md:p-12 mb-16">
+      <div className="bg-gradient-to-br from-red-50 to-pink-50 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 md:p-12 mb-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
             Our Health Impact
@@ -235,11 +234,11 @@ const HealthCare: React.FC = () => {
           {impactStats.map((stat, index) => (
             <div 
               key={index} 
-              className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="text-center bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               <div className="text-4xl mb-3">{stat.icon}</div>
-              <div className="text-3xl font-bold text-primary-blue mb-2">{stat.number}</div>
-              <div className="text-dark-gray font-medium">{stat.label}</div>
+              <div className="text-3xl font-bold text-primary-blue dark:text-blue-300 mb-2">{stat.number}</div>
+              <div className="text-dark-gray dark:text-gray-200 font-medium">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -259,18 +258,18 @@ const HealthCare: React.FC = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {getInvolvedOptions.map((option, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
+            <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
               <div className={`bg-gradient-to-r ${option.accent} p-6`}>
                 <h3 className="text-2xl font-bold text-white mb-2">
                   {option.title}
                 </h3>
               </div>
               <div className="p-6">
-                <p className="text-dark-gray leading-relaxed mb-6">
+                <p className="text-dark-gray dark:text-gray-100 leading-relaxed mb-6">
                   {option.description}
                 </p>
-                <button 
-                  className={`w-full py-3 text-lg font-semibold bg-gradient-to-r ${option.accent} text-white hover:shadow-lg hover:scale-105 hover:brightness-110 transition-all duration-300 transform rounded-lg`}
+                <Button 
+                  className={`w-full py-3 text-lg font-semibold bg-gradient-to-r ${option.accent} text-white hover:shadow-lg hover:scale-105 hover:brightness-110 transition-all duration-300 transform`}
                   onClick={() => {
                     if (option.buttonText === "Become a Partner") {
                       navigate('/partner-with-us');
@@ -280,7 +279,7 @@ const HealthCare: React.FC = () => {
                   }}
                 >
                   {option.buttonText}
-                </button>
+                </Button>
               </div>
             </div>
           ))}

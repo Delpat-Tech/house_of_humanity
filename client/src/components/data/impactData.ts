@@ -50,7 +50,7 @@ export const impactData: ImpactItem[] = [
   },
   {
     icon: "bookReader",
-    project: "Bachpaan",
+    project: "Bachpan",
     number: "950+",
     impact:
       "Slum children served, 98 Anganwadis supported with education kits and storytelling volunteers weekly."

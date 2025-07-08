@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { projects } from "../components/data/projectsData";
 import {
@@ -13,10 +13,11 @@ import {
   Shield,
   Globe,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const ProjectsPage: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedProject, setSelectedProject] = useState(0);
   const detailsRef = useRef<HTMLDivElement>(null);
 
@@ -26,6 +27,14 @@ const ProjectsPage: React.FC = () => {
       detailsRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  // On mount, check for projectIndex in navigation state
+  useEffect(() => {
+    if (location.state && typeof location.state.projectIndex === 'number') {
+      setSelectedProject(location.state.projectIndex);
+      setTimeout(scrollToDetails, 200);
+    }
+  }, [location.state]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-off-white via-white to-warm-light-blue dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 transition-colors duration-300">
