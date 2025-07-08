@@ -28,7 +28,7 @@ const Footer = () => {
             <div className="flex items-center space-x-4">
               <a href="/" className="flex items-center space-x-3 group">
                 <img
-                  src="/HoHLogo.png"
+                  src="/HOHLogo-1.png"
                   alt="House of Humanity Logo"
                   className="h-16 w-auto"
                 />
@@ -102,7 +102,11 @@ const Footer = () => {
                 { to: "/milestones", text: "Impact" },
                 { to: "/gallery", text: "Gallery" },
                 { to: "/contact-us", text: "Contact Us" },
-                { to: "https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true", text: "Share Your Experience", external: true },
+                {
+                  to: "https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true",
+                  text: "Share Your Experience",
+                  external: true,
+                },
               ].map((link, index) => (
                 <li key={index}>
                   <a
