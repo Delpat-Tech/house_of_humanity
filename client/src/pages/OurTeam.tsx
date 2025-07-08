@@ -5,13 +5,13 @@ const founders = [
   {
     name: "Harsh Rao",
     title: "Founder",
-    img: "/images/founder.jpg",
+    img: "/images/founder-placeholder.jpg",
     intro: `The journey of the House of Humanity Charitable Trust started with a simple desire—to make a difference in the lives of those who needed it most. I, Harsh Rao, born on 9th December 1996, pursued Electronics and Communication Engineering, followed by a Master's in Human Resource Management. Before founding this NGO, I was actively engaged with various NGOs in Vadodara, learning the importance of compassion, action, and community.\n\nWhen we first began, this NGO was a small, informal initiative—created with a sense of purpose, yet driven by the joy of helping others. However, life took an unexpected turn in 2020, during the initial phase of our NGO, when I was diagnosed with Ewing's Sarcoma, a rare and aggressive cancer. It was during this deeply challenging time that I discovered a renewed sense of purpose.\n\nThis experience shifted my vision for the House of Humanity. What started as a modest effort has now grown into a mission much larger than any individual—a mission that has inspired me to work towards creating a Cancer Wellness Center for those facing the battles I have faced. The idea of offering support, care, and hope to cancer patients became the cornerstone of our organization.\n\nBut my role in this organization doesn't stop with the vision. As the founder, I am committed to overseeing all the activities of the NGO. From ensuring the smooth execution of our projects to fostering engagement with our volunteers, partners, and communities, I remain deeply involved in every aspect of the organization. I believe that building strong relationships with the people we serve and those who support our mission is key to driving meaningful change.\n\nBeyond the Cancer wellness center, another dream close to my heart is to open an orphanage, one that is more than just a shelter but a place of boundless possibility. I envision an orphanage where children are not just cared for, but where they are empowered to dream big. Whether they aspire to be doctors, lawyers, artists, or even models, this orphanage will provide them with the resources, education, and mentorship they need to pursue their goals. I want every child to see this space as a launchpad for their dreams—a place where their potential is nurtured and where every aspiration, no matter how grand, is encouraged and supported.\n\nThis orphanage will be a unique environment that goes beyond traditional care, aiming to cultivate ambition, resilience, and self-belief. It will be a home where every dream is valid, and every child is given the tools to succeed in whatever they choose. I believe that with the right support, every child, regardless of their background, can reach incredible heights. This vision is not just about providing care; it's about creating future leaders, innovators, and changemakers.\n\nMy work involves not just administration but staying connected with the very heartbeat of the organization—our team of passionate volunteers, supporters, and beneficiaries. Every day, I strive to ensure that our values of compassion, integrity, and service remain at the forefront of everything we do. Whether it's mobilizing resources for hunger relief, health and hygiene programs, or advocating for women's empowerment, I'm committed to leading our organization with empathy and determination.\n\nThe House of Humanity Charitable Trust is not just my vision—it belongs to everyone who believes in the power of community and humanity. Together, we are creating a future where people can live with dignity, have access to opportunities, and most importantly, find hope in the face of adversity.\n\nThank you for standing by us on this incredible journey. Your belief in our mission fuels our drive to reach even greater height`,
   },
   {
     name: "Manthan Shah",
     title: "Co-Founder",
-    img: "/images/person.webp",
+    img: "/images/cofounder-placeholder.jpg",
     intro: `Dear Supporters,\n\nIt has always been my belief that true harmony in society can only be achieved when we work together to uplift those in need. I, Manthan Shah, born on 13th June 1997, completed my Master's in Commerce (M.Com). Over the years, I have developed a deep passion for creating social impact, particularly through leveraging the potential of urban development and corporate social responsibility (CSR) initiatives.\n\nWhen we first began the House of Humanity Charitable Trust, it was a vision rooted in compassion and action. Today, our work spans several key areas—from hunger eradication and education to women's empowerment and healthcare access. As co-founder, my primary focus has been on tapping into CSR funding and partnerships to fuel these projects and expand our reach. I strongly believe that urban areas hold immense potential to drive resources and create sustainable change, and my goal is to channel those resources to where they are needed most.\n\nMy dream is to make CSR initiatives a powerful force for good by aligning corporate efforts with meaningful, community-driven projects. Through collaboration, I see endless possibilities to create employment opportunities, improve living conditions, and bring about positive change in urban environments. By doing so, we can bridge the gap between corporate responsibility and grassroots impact.\n\nWorking alongside Harsh Rao and our dedicated team, I am committed to ensuring that the House of Humanity grows into a beacon of hope and empowerment for all. Our aim is not just to provide aid but to create opportunities for growth and self-sufficiency, helping individuals and families break the cycle of poverty.\n\nThis journey has been incredibly fulfilling, and it wouldn't be possible without the support of people like you. Your involvement, whether through time, resources, or advocacy, enables us to push forward and make lasting change in the lives of those who need it most.\n\nThank you for being part of this mission. Together, we can build a future where every individual has the chance to thrive.`,
   },
 ];
@@ -19,22 +19,22 @@ const founders = [
 const baseVolunteers: Volunteer[] = [
   {
     name: "Aarav",
-    img: "/images/person.webp",
+    img: "/images/volunteer1.jpg",
     intro: "Loves teaching kids.",
   },
   {
     name: "Priya",
-    img: "/images/person.webp",
+    img: "/images/volunteer2.jpg",
     intro: "Community health advocate.",
   },
   {
     name: "Rohan",
-    img: "/images/person.webp",
+    img: "/images/volunteer3.jpg",
     intro: "Sports and youth mentor.",
   },
   {
     name: "Simran",
-    img: "/images/person.webp",
+    img: "/images/volunteer4.jpg",
     intro: "Nutrition and wellness lead.",
   },
 ];
