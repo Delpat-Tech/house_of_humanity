@@ -37,9 +37,9 @@ const MediaCard: React.FC<MediaCardProps> = ({
     <motion.div
       className={`group bg-gradient-to-br ${
         isDigital 
-          ? 'from-fresh-green/10 to-warm-light-blue/10' 
-          : 'from-warm-light-blue/10 to-primary-blue/5'
-      } rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105 ${className}`}
+          ? 'from-fresh-green/10 to-warm-light-blue/10 dark:from-gray-800 dark:to-gray-900' 
+          : 'from-warm-light-blue/10 to-primary-blue/5 dark:from-gray-900 dark:to-gray-800'
+      } rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105 border border-transparent dark:border-gray-700 ${className}`}
       whileHover={{ scale: 1.02 }}
     >
       {isDigital ? (
@@ -49,24 +49,24 @@ const MediaCard: React.FC<MediaCardProps> = ({
             text={image} 
             width="100%" 
             height="150px" 
-            className="rounded-lg shadow-md mb-4"
+            className="rounded-lg shadow-md mb-4 bg-white dark:bg-gray-700"
           />
-          <h3 className="text-lg font-bold text-primary-blue mb-2 group-hover:text-fresh-green transition-colors">
+          <h3 className="text-lg font-bold text-primary-blue dark:text-fresh-green mb-2 group-hover:text-fresh-green transition-colors">
             {title}
           </h3>
-          <div className="flex items-center justify-center gap-2 text-sm text-dark-gray mb-3">
+          <div className="flex items-center justify-center gap-2 text-sm text-dark-gray dark:text-gray-100 mb-3">
             <span className="font-semibold">{platform}</span>
             <span>•</span>
             <span>{date}</span>
           </div>
           <div className="flex items-center justify-between text-sm mb-4">
             {type && (
-              <span className="bg-warm-light-blue/20 px-3 py-1 rounded-full text-primary-blue font-medium">
+              <span className="bg-warm-light-blue/20 dark:bg-gray-700 px-3 py-1 rounded-full text-primary-blue dark:text-fresh-green font-medium">
                 {type}
               </span>
             )}
             {views && (
-              <span className="text-dark-gray flex items-center gap-1">
+              <span className="text-dark-gray dark:text-gray-100 flex items-center gap-1">
                 <Eye size={14} />
                 {views} views
               </span>
@@ -74,7 +74,7 @@ const MediaCard: React.FC<MediaCardProps> = ({
           </div>
           {onViewContent && (
             <Button 
-              className="w-full py-2 text-sm bg-fresh-green text-white hover:bg-green-700 transition-colors"
+              className="w-full py-2 text-sm bg-fresh-green text-white hover:bg-green-700 dark:bg-primary-blue dark:hover:bg-fresh-green dark:text-gray-100 transition-colors"
               onClick={onViewContent}
             >
               View Content
@@ -89,26 +89,26 @@ const MediaCard: React.FC<MediaCardProps> = ({
               text={image} 
               width="120px" 
               height="100px" 
-              className="rounded-lg shadow-md"
+              className="rounded-lg shadow-md bg-white dark:bg-gray-700"
             />
           </div>
           <div className="flex-1">
-            <h3 className="text-lg font-bold text-primary-blue mb-2 group-hover:text-fresh-green transition-colors">
+            <h3 className="text-lg font-bold text-primary-blue dark:text-fresh-green mb-2 group-hover:text-fresh-green transition-colors">
               {title}
             </h3>
-            <div className="flex items-center gap-2 text-sm text-dark-gray mb-3">
+            <div className="flex items-center gap-2 text-sm text-dark-gray dark:text-gray-100 mb-3">
               <span className="font-semibold">{publication}</span>
               <span>•</span>
               <span>{date}</span>
             </div>
             {excerpt && (
-              <p className="text-dark-gray text-sm leading-relaxed mb-4">
+              <p className="text-dark-gray dark:text-gray-200 text-sm leading-relaxed mb-4">
                 {excerpt}
               </p>
             )}
             {onReadMore && (
               <Button 
-                className="px-4 py-2 text-sm bg-primary-blue text-white hover:bg-blue-700 transition-colors"
+                className="px-4 py-2 text-sm bg-primary-blue text-white hover:bg-blue-700 dark:bg-fresh-green dark:hover:bg-primary-blue dark:text-gray-900 transition-colors"
                 onClick={onReadMore}
               >
                 Read Full Article

@@ -140,7 +140,7 @@ const Contact = () => {
                 href="https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-primary-blue hover:bg-fresh-green text-white font-bold py-2 px-6 rounded-full shadow transition-all mt-4"
+                className="w-full sm:w-auto block text-center bg-primary-blue hover:bg-fresh-green text-white font-bold py-3 px-4 sm:px-6 rounded-full shadow transition-all mt-4"
               >
                 Want to leave a testimonial? Click here!
               </a>

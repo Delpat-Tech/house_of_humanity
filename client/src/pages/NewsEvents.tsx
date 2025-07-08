@@ -271,12 +271,12 @@ const NewsAndEvents: React.FC = () => {
               <span className="px-3 py-1 bg-primary-blue text-white rounded-full text-sm">
                 {news.category}
               </span>
-              <span className="text-sm text-gray-500">{news.publication}</span>
-              <span className="text-sm text-gray-500">•</span>
-              <span className="text-sm text-gray-500">{news.date}</span>
+              <span className="text-sm text-gray-500 dark:text-gray-100">{news.publication}</span>
+              <span className="text-sm text-gray-500 dark:text-gray-100">•</span>
+              <span className="text-sm text-gray-500 dark:text-gray-100">{news.date}</span>
             </div>
             
-            <h2 className="text-3xl font-bold mb-6 text-gray-800">
+            <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
               {news.fullContent.headline}
             </h2>
             
@@ -300,7 +300,7 @@ const NewsAndEvents: React.FC = () => {
             
             <div className="space-y-4">
               {news.fullContent.details.map((detail: string, index: number) => (
-                <p key={index} className="text-gray-700 leading-relaxed">
+                <p key={index} className="text-gray-700 dark:text-gray-100 leading-relaxed">
                   {detail}
                 </p>
               ))}
@@ -430,17 +430,17 @@ const NewsAndEvents: React.FC = () => {
                     </div>
                     
                     <div className="p-6">
-                      <div className="flex items-center gap-2 mb-3 text-sm text-gray-500">
+                      <div className="flex items-center gap-2 mb-3 text-sm text-gray-500 dark:text-gray-100">
                         <span className="font-medium">{article.publication}</span>
                         <span>•</span>
                         <span>{article.date}</span>
                       </div>
                       
-                      <h3 className="text-xl font-bold mb-3 text-gray-800 leading-tight">
+                      <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white leading-tight">
                         {article.title}
                       </h3>
                       
-                      <p className="text-gray-600 mb-4 line-clamp-3">
+                      <p className="text-gray-600 dark:text-gray-100 mb-4 line-clamp-3">
                         {article.excerpt}
                       </p>
                       

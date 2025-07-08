@@ -23,9 +23,9 @@ const MediaWithText: React.FC<MediaWithTextProps> = ({
   onButtonClick,
 }) => {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-20">
+    <section className="max-w-7xl mx-auto px-4 py-20 bg-white dark:bg-gray-900 transition-colors duration-300 rounded-xl">
       <motion.h1
-        className="md:text-6xl text-4xl font-bold text-primary-blue text-center mb-4"
+        className="md:text-6xl text-4xl font-bold text-primary-blue dark:text-fresh-green text-center mb-4"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -36,7 +36,7 @@ const MediaWithText: React.FC<MediaWithTextProps> = ({
 
       {subheading && (
         <motion.p
-          className="text-center text-base md:text-lg text-fresh-green font-semibold uppercase mb-10"
+          className="text-center text-base md:text-lg text-fresh-green dark:text-blue-200 font-semibold uppercase mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -82,7 +82,7 @@ const MediaWithText: React.FC<MediaWithTextProps> = ({
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="text-white text-lg font-semibold bg-blue-500 rounded-xl px-7 py-2 my-3 hover:border hover:border-blue-500 hover:text-blue-500 hover:bg-white"
+              className="text-white text-lg font-semibold bg-blue-500 dark:bg-fresh-green rounded-xl px-7 py-2 my-3 hover:border hover:border-blue-500 hover:text-blue-500 hover:bg-white dark:hover:bg-primary-blue dark:hover:text-gray-100 transition-colors"
               onClick={onButtonClick}
             >
               {buttonText}
