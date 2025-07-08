@@ -56,7 +56,7 @@ const WorkCard: React.FC<CardProps> = ({ title, subtitle, description }) => {
         onClick={() => navigate("/projects")}
       >
         <button
-          className="bg-primary-blue px-6 py-3 rounded-xl hover:bg-white hover:text-primary-blue font-medium uppercase"
+          className="bg-primary-blue text-white px-6 py-3 rounded-xl hover:bg-white hover:text-primary-blue font-medium uppercase"
           onClick={() => console.log("Button clicked")}
         >
           Read More

@@ -219,20 +219,15 @@ const SuccessStories: React.FC = () => {
         </div>
       </motion.section>
 
-      {/* CTA Section */}
-      <div className="flex justify-center py-12">
-        <Button className="bg-primary-blue dark:bg-fresh-green hover:bg-blue-700 dark:hover:bg-green-700 text-white px-8 py-3 text-lg font-semibold rounded-xl shadow-lg transition-colors">
-          Share Your Story
-        </Button>
-      </div>
+  
 
       {/* Add testimonial form CTA at the bottom */}
-      <div className="flex justify-center my-12">
+      <div className="flex justify-center my-12 px-4">
         <a
           href="https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block bg-primary-blue hover:bg-fresh-green text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all text-lg"
+          className="w-full sm:w-auto inline-block bg-primary-blue hover:bg-fresh-green text-white dark:text-gray-900 hover:text-white font-bold py-3 px-4 sm:px-8 rounded-full shadow-lg transition-all text-base sm:text-lg text-center"
         >
           Want to share your story? Click here!
         </a>
