@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import galleryImageData from './gallery.json';
+
+type GalleryImageData = {
+  filename: string;
+  year: string;
+  month: string;
+};
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -13,7 +20,7 @@ const Gallery = () => {
     { id: 'success-stories', name: 'Success Stories' }
   ];
 
-  const years = ['all', '2024', '2023', '2022'];
+  const years = ['all', '2025', '2024', '2023', '2022'];
   const months = [
     { id: 'all', name: 'All Months' },
     { id: '01', name: 'January' },
@@ -30,42 +37,35 @@ const Gallery = () => {
     { id: '12', name: 'December' }
   ];
 
-  // import all images from public/Gallery
-  const galleryFilenames = [
-    "image1.webp",
-    "image2.webp",
-    "image3.webp",
-    "image4.webp",
-    "image5.webp",
-    "image6.webp",
-    "image7.webp",
-    "image8.webp",
-    "image9.webp",
-    "image10.webp",
-    "image11.webp",
-    "image12.webp",
-    "image13.webp",
-    "image14.webp",
-    "image15.webp",
-    "image16.webp",
-    "image17.webp",
-    "image18.webp",
-    "image19.webp",
-    "image20.webp"
-    
-  ];
+  type GalleryImage = {
+    id: number;
+    category: string;
+    src: string;
+    title: string;
+    description: string;
+    year: string;
+    month: string;
+  };
 
-  const images = galleryFilenames.map((filename, idx) => ({
+  const images: GalleryImage[] = (galleryImageData as GalleryImageData[]).map((data: GalleryImageData, idx: number) => ({
     id: idx + 1,
     category: 'gallery', // default category
-    src: `/Gallery/${filename}`,
-    title: filename,
-    description: ''
+    src: `/Gallery/${data.filename}`,
+    title: data.filename,
+    description: '',
+    year: data.year,
+    month: data.month,
   }));
 
-  const filteredImages = selectedCategory === 'all' 
-    ? images 
-    : images.filter(image => image.category === selectedCategory);
+  const filteredImages = images.filter(image => {
+    const categoryMatch = selectedCategory === 'all' || image.category === selectedCategory;
+    const yearMatch = selectedYear === 'all' || image.year === selectedYear;
+    const monthMatch = selectedMonth === 'all' || image.month === selectedMonth;
+    return categoryMatch && yearMatch && monthMatch;
+  });
+
+  // Lightbox state
+  const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
 
   return (
     <div className="container mx-auto px-4 py-12 pt-24 bg-white dark:bg-gray-900 min-h-screen">
@@ -80,25 +80,29 @@ const Gallery = () => {
       </div>
 
       {/* Category Filter */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex justify-center space-x-4 mb-8"
+        className="flex justify-center mb-8 overflow-x-auto scrollbar-thin scrollbar-thumb-primary-blue/40 scrollbar-track-transparent"
+        style={{ maxWidth: '100%' }}
       >
-        {categories.map(category => (
-          <button
-            key={category.id}
-            onClick={() => setSelectedCategory(category.id)}
-            className={`px-4 py-2 rounded-md transition-colors duration-300 ${
-              selectedCategory === category.id
-                ? 'bg-gradient-to-r from-primary-blue to-fresh-green text-white shadow-lg'
-                : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
-            }`}
-          >
-            {category.name}
-          </button>
-        ))}
+        <div className="flex w-full min-w-[320px] max-w-2xl mx-auto">
+          {categories.map(category => (
+            <button
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id)}
+              className={`flex-1 min-w-[120px] max-w-xs px-4 py-2 rounded-md transition-colors duration-300 text-center ${
+                selectedCategory === category.id
+                  ? 'bg-gradient-to-r from-primary-blue to-fresh-green text-white shadow-lg'
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
+              }`}
+              style={{ flex: '1 0 120px' }}
+            >
+              {category.name}
+            </button>
+          ))}
+        </div>
       </motion.div>
 
       {/* Filters */}
@@ -144,25 +148,68 @@ const Gallery = () => {
         </div>
       </div>
 
-      {/* Gallery Grid */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
-      >
-        {filteredImages.map(image => (
-          <div key={image.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-primary-blue/10 dark:border-gray-600">
-            <div className="relative h-48">
-              <img
-                src={image.src}
-                alt={`Gallery image ${image.id}`}
-                className="w-full h-full object-cover"
-              />
+      {/* Gallery Grid with animation and hover overlays */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={selectedCategory + selectedYear + selectedMonth}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -30 }}
+          transition={{ duration: 0.5 }}
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
+        >
+          {filteredImages.map(image => (
+            <div
+              key={image.id}
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-primary-blue/10 dark:border-gray-600 cursor-pointer group"
+              onClick={() => setLightboxImage(image)}
+            >
+              <div className="relative h-48 group">
+                <img
+                  src={image.src}
+                  alt={`Gallery image ${image.id}`}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 group-hover:brightness-75"
+                />
+              </div>
             </div>
-          </div>
-        ))}
-      </motion.div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {lightboxImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+            onClick={() => setLightboxImage(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              className="relative bg-white dark:bg-gray-900 rounded-lg shadow-2xl p-2 max-w-3xl w-full mx-4"
+              onClick={e => e.stopPropagation()}
+            >
+              <img
+                src={lightboxImage.src}
+                alt={lightboxImage.title}
+                className="w-full max-h-[70vh] object-contain rounded-lg"
+              />
+              <button
+                className="absolute top-2 right-2 bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-black/80 transition"
+                onClick={() => setLightboxImage(null)}
+                aria-label="Close preview"
+              >
+                &times;
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Share Your Story */}
       <motion.div 
