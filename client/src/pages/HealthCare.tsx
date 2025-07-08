@@ -1,7 +1,4 @@
 import React from "react";
-import PadHouse from "../components/Projects/PadHouse";
-import RaktSetu from "../components/Projects/RaktSetu";
-import Saharaa from "../components/Projects/Saharaa";
 import Button from "../components/ui/Button";
 import { useNavigate } from "react-router-dom";
 
@@ -72,11 +69,6 @@ const HealthCare: React.FC = () => {
           ))}
         </div>
       </div>
-
-      {/* Project Sections */}
-      <PadHouse />
-      <RaktSetu />
-      <Saharaa />
 
       {/* Get Involved Section */}
       <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-xl p-8 md:p-12 mb-16">

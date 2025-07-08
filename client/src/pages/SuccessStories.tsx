@@ -270,7 +270,7 @@ const SuccessStories: React.FC = () => {
         )}
       </AnimatePresence>
     </div>
-  );
-};
+  )
+}
 
 export default SuccessStories;

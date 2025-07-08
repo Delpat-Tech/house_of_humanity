@@ -7,28 +7,28 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
 // Theme Provider
-import { ThemeProvider } from './shared/contexts/ThemeContext';
-import { ScrollToTop } from './shared/components/ScrollToTop';
-import AboutUs from './pages/AboutUs';
-import OurTeam from './pages/OurTeam';
-import Projects from "./pages/Projects"
-import Sitaare from './pages/Sitaare';
-import HealthCare from './pages/HealthCare';
-import SustainableLivelihood from './pages/SustainableLivelihood';
-import Education from './pages/Education';
-import Nutrition from './pages/Nutrition';
-import HouseOfHappiness from './pages/HouseOfHappiness';
-import Milestones from './pages/Milestones';
-import SuccessStories from './pages/SuccessStories';
-import OurPartners from './pages/OurPartners';
-import DonateForACause from './pages/DonateForACause';
-import GetInvolved from './pages/GetInvolved';
-import PartnerWithUs from './pages/PartnerWithUs';
-import ContributeMaterials from './pages/ContributeMaterials';
-import NewsEvents from './pages/NewsEvents';
-import Gallery from './pages/Gallery';
-import ContactUs from './pages/ContactUs';
-import Home from './pages/Home';
+import { ThemeProvider } from "./shared/contexts/ThemeContext";
+import { ScrollToTop } from "./shared/components/ScrollToTop";
+import AboutUs from "./pages/AboutUs";
+import OurTeam from "./pages/OurTeam";
+import Projects from "./pages/Projects";
+import Sitaare from "./pages/Sitaare";
+import HealthCare from "./pages/HealthCare";
+import SustainableLivelihood from "./pages/SustainableLivelihood";
+import Education from "./pages/Education";
+import Nutrition from "./pages/Nutrition";
+import HouseOfHappiness from "./pages/HouseOfHappiness";
+import Milestones from "./pages/Milestones";
+import SuccessStories from "./pages/SuccessStories";
+import OurPartners from "./pages/OurPartners";
+import DonateForACause from "./pages/DonateForACause";
+import GetInvolved from "./pages/GetInvolved";
+import PartnerWithUs from "./pages/PartnerWithUs";
+import ContributeMaterials from "./pages/ContributeMaterials";
+import NewsEvents from "./pages/NewsEvents";
+import Gallery from "./pages/Gallery";
+import ContactUs from "./pages/ContactUs";
+import Home from "./pages/Home";
 
 function AppContent() {
   const [showLoader, setShowLoader] = useState(true);

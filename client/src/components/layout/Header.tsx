@@ -69,7 +69,6 @@ const Header: React.FC = () => {
     },
     { name: "Our Partners", path: "/our-partners" },
 
-   
     { name: "News + Events", path: "/news-events" },
     { name: "Gallery", path: "/gallery" },
     {
@@ -83,7 +82,6 @@ const Header: React.FC = () => {
         { name: "Contact Us", path: "/contact-us" },
       ],
     },
-    
   ];
 
   return (
@@ -222,10 +220,14 @@ const Header: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <Link to="/" className="flex items-center space-x-3 group" onClick={scrollToTop}>
+              <Link
+                to="/"
+                className="flex items-center space-x-3 group"
+                onClick={scrollToTop}
+              >
                 <div className="relative">
                   <img
-                    src="/HoHLogo.png"
+                    src="/HOHLogo-1.png"
                     alt="House of Humanity Logo"
                     className="h-24"
                   />
