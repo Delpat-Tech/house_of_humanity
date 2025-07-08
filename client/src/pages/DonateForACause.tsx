@@ -58,7 +58,7 @@ const TestimonialCarousel = ({ testimonials }: { testimonials: { quote: string; 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 flex-1 max-w-2xl"
+          className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700 flex-1 max-w-2xl"
         >
           <div className="flex items-start gap-4">
             <img 
@@ -67,7 +67,7 @@ const TestimonialCarousel = ({ testimonials }: { testimonials: { quote: string; 
               className="w-16 h-16 rounded-full object-cover border-2 border-gray-100" 
             />
             <div className="flex-1">
-              <p className="text-gray-700 text-lg leading-relaxed mb-4 italic">
+              <p className="text-gray-700 dark:text-gray-200 text-lg leading-relaxed mb-4 italic">
                 "{testimonials[index].quote}"
               </p>
               <div className="text-primary-blue font-semibold">
@@ -95,7 +95,7 @@ const TestimonialCarousel = ({ testimonials }: { testimonials: { quote: string; 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
+          className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700"
         >
           <div className="flex items-start gap-4">
             <img 
@@ -104,7 +104,7 @@ const TestimonialCarousel = ({ testimonials }: { testimonials: { quote: string; 
               className="w-14 h-14 rounded-full object-cover border-2 border-gray-100" 
             />
             <div className="flex-1">
-              <p className="text-gray-700 leading-relaxed mb-3 italic">
+              <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-3 italic">
                 "{testimonials[index].quote}"
               </p>
               <div className="text-primary-blue font-semibold">
@@ -218,13 +218,14 @@ const DonateForACause: React.FC = () => {
       </div>
 
       {/* Donation Form Section */}
-      <div className="-mt-24 max-w-5xl mx-auto px-2 sm:px-4 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative z-20">
+      <div className="-mt-24 max-w-5xl mx-auto px-2 sm:px-4 flex flex-col md:flex-row gap-6 md:gap-8 relative z-20 md:min-h-[520px]">
+        {/* Donation Steps */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-2xl rounded-3xl p-6 sm:p-10 mt-12 border border-primary-blue/20 dark:border-blue-900 md:col-span-1 transition-colors duration-300"
+          className="flex-1 min-h-[400px] flex flex-col bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-2xl rounded-3xl p-4 sm:p-6 md:p-10 border border-primary-blue/20 dark:border-blue-900 transition-colors duration-300"
         >
           <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded mb-8 overflow-hidden">
             <div className={`h-full bg-gradient-to-r from-primary-blue to-fresh-green transition-all duration-500 rounded ${getProgress()}`} />
@@ -369,12 +370,13 @@ const DonateForACause: React.FC = () => {
             🔒 100% Secure Donation
           </div>
         </motion.div>
+        {/* Gift Carousel */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="flex flex-col justify-center mt-12 md:col-span-2"
+          className="flex-1 min-h-[400px] flex flex-col bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-2xl rounded-3xl p-4 sm:p-6 md:p-10 border border-primary-blue/20 dark:border-blue-900 transition-colors duration-300"
         >
           <GiftCarousel />
         </motion.div>
@@ -388,21 +390,24 @@ const DonateForACause: React.FC = () => {
       </div>
 
       {/* Impact Section */}
-      <div className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+      <div className="bg-gradient-to-br from-white via-blue-50 to-fresh-green/10 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-2 sm:px-4 py-8 sm:py-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-blue-200 mb-4">
+            <h2 className="text-3xl font-extrabold text-primary-blue dark:text-blue-200 mb-4">
               Your Impact in Action
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              See how your generous donation creates meaningful change in our community
+            <p className="text-lg text-fresh-green dark:text-fresh-green/80 font-semibold mb-2">
+              Every donation plants a seed of hope.
+            </p>
+            <p className="text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6">
+              Thanks to your generosity, lives are being transformed every day. Here's how your support is making a real difference in our communities.
             </p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
               {
-                img: 'https://placehold.co/300x200/0098DB/FFF?text=Health+%26+Hygiene',
+                stat: '+500 Women Helped',
                 title: 'Health & Hygiene',
                 desc: 'Provides sanitary pads, health camps, and hygiene education for women and children.',
                 icon: (
@@ -412,7 +417,7 @@ const DonateForACause: React.FC = () => {
                 )
               },
               {
-                img: 'https://placehold.co/300x200/70BF44/FFF?text=Education',
+                stat: '120 Scholarships',
                 title: 'Education',
                 desc: 'Funds school supplies, scholarships, and after-school programs for underprivileged kids.',
                 icon: (
@@ -422,17 +427,17 @@ const DonateForACause: React.FC = () => {
                 )
               },
               {
-                img: 'https://placehold.co/300x200/0098DB/FFF?text=Nutrition',
+                stat: '10,000+ Meals Served',
                 title: 'Nutrition',
                 desc: 'Delivers nutritious meals and supplements to malnourished children and families.',
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
                   </svg>
                 )
               },
               {
-                img: 'https://placehold.co/300x200/70BF44/FFF?text=Livelihood',
+                stat: '75+ Women Entrepreneurs',
                 title: 'Livelihood',
                 desc: 'Supports vocational training and micro-enterprise for women and youth.',
                 icon: (
@@ -448,42 +453,22 @@ const DonateForACause: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300 ring-1 ring-inset ring-fresh-green/20 hover:ring-fresh-green/40 flex flex-col items-center text-center"
               >
-                <div className="aspect-video bg-gradient-to-br from-primary-blue to-fresh-green relative overflow-hidden">
-                  <img 
-                    src={item.img} 
-                    alt={item.title} 
-                    className="w-full h-full object-cover" 
-                  />
-                  <div className="absolute top-4 left-4 bg-white/20 dark:bg-gray-900/40 backdrop-blur-sm rounded-full p-2">
-                    <div className="text-white">
-                      {item.icon}
-                    </div>
-                  </div>
+                <div className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-primary-blue to-fresh-green mb-3 shadow mt-6">
+                  <span className="text-white text-2xl">{item.icon}</span>
                 </div>
+                <div className="text-fresh-green font-bold text-lg mb-1">{item.stat}</div>
                 <div className="p-4 sm:p-6 bg-white dark:bg-gray-800 transition-colors duration-300">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-blue-200 mb-3">{item.title}</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-blue-200 mb-2">{item.title}</h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* Testimonials */}
-      <div className="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 py-8 sm:py-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-blue-200 mb-4">
-              Stories from Our Community
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              Hear from those who've made a difference through their generous support
-            </p>
-          </div>
-          <TestimonialCarousel testimonials={testimonials} />
+          <p className="text-center text-primary-blue dark:text-blue-200 font-bold mt-8 text-lg">
+            Be the change. <span className="text-fresh-green">Your support matters.</span>
+          </p>
         </div>
       </div>
 
