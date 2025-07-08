@@ -86,60 +86,68 @@ const PartnerWithUs = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="bg-white/90 backdrop-blur-lg rounded-2xl shadow-2xl p-10 mb-16 max-w-2xl mx-auto border border-primary-blue/20"
+        className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg rounded-2xl shadow-2xl p-10 mb-16 max-w-2xl mx-auto border border-primary-blue/20 dark:border-blue-400/30"
       >
-        <h2 className="text-3xl font-bold mb-4 text-primary-blue">Become a Partner</h2>
+        <h2 className="text-3xl font-bold mb-4 text-primary-blue dark:text-blue-300">Become a Partner</h2>
         {submitted ? (
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="text-green-600 font-semibold text-lg text-center"
+            className="text-green-600 dark:text-green-400 font-semibold text-lg text-center"
           >
-            Thank you for your interest! We'll be in touch soon.
+            Thank you for your interest! We'll be in touch soon.<br />
+            <a
+              href="https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-4 bg-primary-blue hover:bg-fresh-green dark:bg-blue-700 dark:hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full shadow transition-all"
+            >
+              Tell us about your experience!
+            </a>
           </motion.div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-gray-600 font-medium">Your Name</label>
+              <label className="block text-gray-600 dark:text-gray-200 font-medium">Your Name</label>
               <input
                 type="text"
                 name="name"
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="w-full border-2 border-primary-blue/30 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
               />
             </div>
             <div>
-              <label className="block text-gray-600 font-medium">Organization</label>
+              <label className="block text-gray-600 dark:text-gray-200 font-medium">Organization</label>
               <input
                 type="text"
                 name="org"
                 value={form.org}
                 onChange={handleChange}
                 required
-                className="w-full border-2 border-primary-blue/30 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
               />
             </div>
             <div>
-              <label className="block text-gray-600 font-medium">Email</label>
+              <label className="block text-gray-600 dark:text-gray-200 font-medium">Email</label>
               <input
                 type="email"
                 name="email"
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="w-full border-2 border-primary-blue/30 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
               />
             </div>
             <div>
-              <label className="block text-gray-600 font-medium">Type of Partner</label>
+              <label className="block text-gray-600 dark:text-gray-200 font-medium">Type of Partner</label>
               <select
                 name="type"
                 value={form.type}
                 onChange={handleChange}
                 required
-                className="w-full border-2 border-primary-blue/30 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
               >
                 <option value="">Select...</option>
                 <option value="Corporate">Corporate</option>
@@ -149,18 +157,18 @@ const PartnerWithUs = () => {
               </select>
             </div>
             <div>
-              <label className="block text-gray-600 font-medium">Message (optional)</label>
+              <label className="block text-gray-600 dark:text-gray-200 font-medium">Message (optional)</label>
               <textarea
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                className="w-full border-2 border-primary-blue/30 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
                 rows={3}
               />
             </div>
             <button
               type="submit"
-              className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white px-8 py-2 rounded-lg font-bold shadow-lg hover:scale-105 transition-transform"
+              className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 dark:from-blue-700 dark:to-green-600 text-white px-8 py-2 rounded-lg font-bold shadow-lg hover:scale-105 transition-transform"
             >
               Submit
             </button>

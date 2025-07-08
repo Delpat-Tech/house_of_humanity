@@ -28,7 +28,7 @@ const Footer = () => {
             <div className="flex items-center space-x-4">
               <a href="/" className="flex items-center space-x-3 group">
                 <img
-                  src="/HOHLogo.png"
+                  src="/HoHLogo.png"
                   alt="House of Humanity Logo"
                   className="h-16 w-auto"
                 />
@@ -102,11 +102,14 @@ const Footer = () => {
                 { to: "/milestones", text: "Impact" },
                 { to: "/gallery", text: "Gallery" },
                 { to: "/contact-us", text: "Contact Us" },
+                { to: "https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true", text: "Share Your Experience", external: true },
               ].map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.to}
                     className="flex items-center space-x-2 text-off-white hover:text-primary-blue transition-all duration-200 text-sm group hover:translate-x-1"
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
                   >
                     <ArrowRight className="w-3 h-3 text-fresh-green group-hover:text-primary-blue transition-colors duration-200" />
                     <span>{link.text}</span>

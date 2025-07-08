@@ -11,7 +11,7 @@ const TrapeziumButton: React.FC<TrapeziumButtonProps> = ({
   
   const variantClasses = {
     default: "text-white px-8 py-3 bg-blue-500 hover:bg-blue-700",
-    sitaare: "text-white px-6 py-3 text-sm font-semibold rounded-xl shadow-lg bg-fresh-green hover:bg-green-600"
+    sitaare: "text-white px-6 py-3 text-sm font-semibold rounded-xl shadow-lg bg-fresh-green border-2 border-fresh-green hover:bg-white hover:text-white hover:shadow-xl transition-all duration-300"
   };
 
   return (

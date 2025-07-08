@@ -1,16 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../shared/contexts/ThemeContext";
 
 const HeroHome: React.FC = () => {
   const navigate = useNavigate();
+  const { theme } = useTheme();
   return (
     <section
       className="relative w-full h-screen bg-cover bg-center bg-no-repeat flex items-center mt-10"
       style={{ backgroundImage: "url('/images/HeroHOH.jpg')" }}
     >
       {/* Enhanced Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20 z-0"></div>
+      <div
+        className={`absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20 z-0 transition-all duration-300 ${theme === 'dark' ? 'bg-black/60' : ''}`}
+        style={theme === 'dark' ? { background: 'rgba(0,0,0,0.55)' } : {}}
+      ></div>
 
       {/* Content */}
       <div className="relative z-10 w-full h-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-8">
@@ -29,7 +34,7 @@ const HeroHome: React.FC = () => {
               <img
                 src="/images/HeroSectionLogo.png"
                 alt="House of Humanity Logo"
-                className="relative z-10 w-full max-w-[8rem] sm:max-w-[10rem] md:max-w-[12rem] lg:max-w-[14rem] xl:max-w-[16rem] drop-shadow-2xl"
+                className="relative z-10 w-full max-w-[16rem] sm:max-w-[20rem] md:max-w-[24rem] lg:max-w-[28rem] xl:max-w-[32rem] drop-shadow-2xl"
               />
             </div>
           </motion.div>

@@ -165,7 +165,7 @@ const Header: React.FC = () => {
             top: 0;
             left: 0;
             height: 3px;
-            background: linear-gradient(90deg, rgba(0,152,219,0.85) 0%, rgba(112,191,68,0.85) 100%);
+            background: linear-gradient(90deg, #1750A4 0%, #119A49 100%);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border-radius: 6px;
@@ -225,7 +225,7 @@ const Header: React.FC = () => {
               <Link to="/" className="flex items-center space-x-3 group" onClick={scrollToTop}>
                 <div className="relative">
                   <img
-                    src="/HOHLogo.png"
+                    src="/HoHLogo.png"
                     alt="House of Humanity Logo"
                     className="h-24"
                   />
@@ -399,7 +399,7 @@ const Header: React.FC = () => {
                               }
                               className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-sm font-medium header-font transition-colors duration-200 ${
                                 dropdownOpen === item.name || isAnySubActive
-                                  ? "bg-primary-blue text-white"
+                                  ? "bg-primary-blue text-white dark:text-white"
                                   : "text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue"
                               }`}
                             >
@@ -431,7 +431,7 @@ const Header: React.FC = () => {
                                   onClick={() => setIsOpen(false)}
                                   className={`block px-3 py-2 rounded-md text-xs font-medium transition-colors duration-200 ${
                                     location.pathname === subItem.path
-                                      ? "bg-primary-blue text-white"
+                                      ? "bg-primary-blue text-white dark:text-white"
                                       : "text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue"
                                   }`}
                                 >

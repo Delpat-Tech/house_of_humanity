@@ -38,72 +38,104 @@ const TestimonialCarousel = ({ testimonials }: { testimonials: { quote: string; 
   const [index, setIndex] = useState(0);
   const next = () => setIndex((i) => (i + 1) % testimonials.length);
   const prev = () => setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
+  
   return (
-    <>
-      {/* Desktop: arrows beside card, flex-row */}
-      <div className="hidden md:flex items-center justify-center w-full max-w-2xl mx-auto gap-6">
+    <div className="w-full max-w-4xl mx-auto">
+      {/* Desktop Layout */}
+      <div className="hidden md:flex items-center justify-between gap-6">
         <button
           onClick={prev}
-          className="flex items-center justify-center bg-primary-blue hover:bg-blue-700 text-white rounded-full w-14 h-14 shadow-lg text-3xl z-20 transition-all duration-200 hover:scale-105"
+          className="flex items-center justify-center bg-white hover:bg-gray-50 text-primary-blue border border-gray-200 rounded-full w-12 h-12 shadow-md hover:shadow-lg transition-all duration-200"
           aria-label="Previous testimonial"
         >
-          &#8592;
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
         </button>
+        
         <motion.div
           key={index}
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: -40, scale: 0.95 }}
-          transition={{ duration: 0.5 }}
-          className="bg-gradient-to-br from-primary-blue via-blue-600 to-fresh-green rounded-2xl p-10 shadow-2xl flex flex-col items-center relative overflow-hidden w-full border border-primary-blue/20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700 flex-1 max-w-2xl"
         >
-          {/* Decorative Quote Icon */}
-          <svg className="absolute top-6 left-6 w-10 h-10 text-white opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h.01M15 7h.01M7 11a5 5 0 015-5h0a5 5 0 015 5v1a5 5 0 01-5 5h-1a5 5 0 01-5-5v-1z" /></svg>
-          <img src={testimonials[index].img} alt={testimonials[index].name} className="w-20 h-20 rounded-full mb-4 border-4 border-white shadow-lg ring-4 ring-fresh-green/30" />
-          <p className="italic text-2xl text-white font-serif mb-4 text-center leading-relaxed z-10">"{testimonials[index].quote}"</p>
-          <div className="mt-2 text-white/90 font-bold text-lg z-10">— {testimonials[index].name}</div>
+          <div className="flex items-start gap-4">
+            <img 
+              src={testimonials[index].img} 
+              alt={testimonials[index].name} 
+              className="w-16 h-16 rounded-full object-cover border-2 border-gray-100" 
+            />
+            <div className="flex-1">
+              <p className="text-gray-700 dark:text-gray-200 text-lg leading-relaxed mb-4 italic">
+                "{testimonials[index].quote}"
+              </p>
+              <div className="text-primary-blue font-semibold">
+                {testimonials[index].name}
+              </div>
+            </div>
+          </div>
         </motion.div>
+        
         <button
           onClick={next}
-          className="flex items-center justify-center bg-primary-blue hover:bg-blue-700 text-white rounded-full w-14 h-14 shadow-lg text-3xl z-20 transition-all duration-200 hover:scale-105"
+          className="flex items-center justify-center bg-white hover:bg-gray-50 text-primary-blue border border-gray-200 rounded-full w-12 h-12 shadow-md hover:shadow-lg transition-all duration-200"
           aria-label="Next testimonial"
         >
-          &#8594;
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
         </button>
       </div>
-      {/* Mobile: card, then arrows below */}
-      <div className="md:hidden w-full max-w-2xl mx-auto">
+
+      {/* Mobile Layout */}
+      <div className="md:hidden">
         <motion.div
           key={index}
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: -40, scale: 0.95 }}
-          transition={{ duration: 0.5 }}
-          className="bg-gradient-to-br from-primary-blue via-blue-600 to-fresh-green rounded-2xl p-8 shadow-2xl flex flex-col items-center relative overflow-hidden w-full border border-primary-blue/20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700"
         >
-          <svg className="absolute top-6 left-6 w-10 h-10 text-white opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h.01M15 7h.01M7 11a5 5 0 015-5h0a5 5 0 015 5v1a5 5 0 01-5 5h-1a5 5 0 01-5-5v-1z" /></svg>
-          <img src={testimonials[index].img} alt={testimonials[index].name} className="w-20 h-20 rounded-full mb-4 border-4 border-white shadow-lg ring-4 ring-fresh-green/30" />
-          <p className="italic text-2xl text-white font-serif mb-4 text-center leading-relaxed z-10">"{testimonials[index].quote}"</p>
-          <div className="mt-2 text-white/90 font-bold text-lg z-10">— {testimonials[index].name}</div>
+          <div className="flex items-start gap-4">
+            <img 
+              src={testimonials[index].img} 
+              alt={testimonials[index].name} 
+              className="w-14 h-14 rounded-full object-cover border-2 border-gray-100" 
+            />
+            <div className="flex-1">
+              <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-3 italic">
+                "{testimonials[index].quote}"
+              </p>
+              <div className="text-primary-blue font-semibold">
+                {testimonials[index].name}
+              </div>
+            </div>
+          </div>
         </motion.div>
-        <div className="flex justify-between mt-4 w-full">
+        
+        <div className="flex justify-center gap-4 mt-4">
           <button
             onClick={prev}
-            className="bg-primary-blue hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg text-2xl z-20 transition-all duration-200 hover:scale-105"
+            className="flex items-center justify-center bg-white hover:bg-gray-50 text-primary-blue border border-gray-200 rounded-full w-10 h-10 shadow-md transition-all duration-200"
             aria-label="Previous testimonial"
           >
-            &#8592;
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
           </button>
           <button
             onClick={next}
-            className="bg-primary-blue hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg text-2xl z-20 transition-all duration-200 hover:scale-105"
+            className="flex items-center justify-center bg-white hover:bg-gray-50 text-primary-blue border border-gray-200 rounded-full w-10 h-10 shadow-md transition-all duration-200"
             aria-label="Next testimonial"
           >
-            &#8594;
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -162,9 +194,9 @@ const DonateForACause: React.FC = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       {/* Hero Section */}
-      <div className="relative w-full bg-gradient-to-br from-primary-blue via-blue-600 to-fresh-green py-20 flex flex-col items-center justify-center text-center overflow-hidden">
+      <div className="relative w-full bg-gradient-to-br from-primary-blue via-blue-600 to-fresh-green pt-32 pb-20 flex flex-col items-center justify-center text-center overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -172,7 +204,9 @@ const DonateForACause: React.FC = () => {
           className="z-10"
         >
           <div className="flex flex-col items-center mb-6">
-            <svg className="w-16 h-16 text-white mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 1.343-3 3 0 1.657 1.343 3 3 3s3-1.343 3-3c0-1.657-1.343-3-3-3zm0 0V4m0 16v-4m8-4h-4m-8 0H4" /></svg>
+            <svg className="w-20 h-20 text-white mb-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
             <h1 className="text-5xl font-extrabold text-white drop-shadow-lg mb-2">Donate for a Cause</h1>
             <p className="text-xl text-white/90 font-medium max-w-2xl">Help us cultivate dignity for women and children to Dream Beyond their circumstances. All individual donations are <span className="font-bold text-white">100% matched</span>.</p>
           </div>
@@ -184,15 +218,16 @@ const DonateForACause: React.FC = () => {
       </div>
 
       {/* Donation Form Section */}
-      <div className="-mt-24 max-w-5xl mx-auto px-4 grid md:grid-cols-3 gap-8 relative z-20">
+      <div className="-mt-24 max-w-5xl mx-auto px-2 sm:px-4 flex flex-col md:flex-row gap-6 md:gap-8 relative z-20 md:min-h-[520px]">
+        {/* Donation Steps */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="bg-white/90 backdrop-blur-lg shadow-2xl rounded-3xl p-10 mt-12 border border-primary-blue/20 md:col-span-1"
+          className="flex-1 min-h-[400px] flex flex-col bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-2xl rounded-3xl p-4 sm:p-6 md:p-10 border border-primary-blue/20 dark:border-blue-900 transition-colors duration-300"
         >
-          <div className="w-full h-2 bg-gray-200 rounded mb-8 overflow-hidden">
+          <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded mb-8 overflow-hidden">
             <div className={`h-full bg-gradient-to-r from-primary-blue to-fresh-green transition-all duration-500 rounded ${getProgress()}`} />
           </div>
 
@@ -221,7 +256,7 @@ const DonateForACause: React.FC = () => {
                   setCustomAmount(e.target.value);
                   setAmount(e.target.value);
                 }}
-                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
               <Button
                 onClick={handleContinue}
@@ -242,7 +277,7 @@ const DonateForACause: React.FC = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setFormData({ ...formData, firstName: e.target.value })
                 }
-                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
               {errors.firstName && <p className="text-red-600 text-sm mb-2">{errors.firstName}</p>}
               <input
@@ -252,7 +287,7 @@ const DonateForACause: React.FC = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setFormData({ ...formData, lastName: e.target.value })
                 }
-                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
               <input
                 type="email"
@@ -269,7 +304,7 @@ const DonateForACause: React.FC = () => {
                     setErrors((prev) => ({ ...prev, email: '' }));
                   }
                 }}
-                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue"
+                className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
               {errors.email && <p className="text-red-600 text-sm mb-2">{errors.email}</p>}
               <div className="flex justify-between mt-4">
@@ -292,11 +327,11 @@ const DonateForACause: React.FC = () => {
           {step === 2 && (
             <div>
               <p className="font-bold mb-4 text-primary-blue">Payment Details</p>
-              <div className="border-2 border-primary-blue/30 p-4 rounded-lg mb-4 bg-primary-blue/5">
+              <div className="border-2 border-primary-blue/30 p-4 rounded-lg mb-4 bg-primary-blue/5 dark:bg-blue-900/10">
                 <p><strong>Payment Amount:</strong> <span className="text-primary-blue">₹{amount}</span></p>
                 <p><strong>Giving Frequency:</strong> <span className="text-primary-blue">One time</span></p>
               </div>
-              <div className="border-2 border-primary-blue/30 p-4 rounded-lg mb-4 text-sm bg-primary-blue/5">Donate with Stripe Payment Element (placeholder)</div>
+              <div className="border-2 border-primary-blue/30 p-4 rounded-lg mb-4 text-sm bg-primary-blue/5 dark:bg-blue-900/10">Donate with Stripe Payment Element (placeholder)</div>
 
               {submitError && (
                 <div className="text-red-600 text-sm mb-4 whitespace-pre-wrap">
@@ -335,61 +370,114 @@ const DonateForACause: React.FC = () => {
             🔒 100% Secure Donation
           </div>
         </motion.div>
+        {/* Gift Carousel */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="flex flex-col justify-center mt-12 md:col-span-2"
+          className="flex-1 min-h-[400px] flex flex-col bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-2xl rounded-3xl p-4 sm:p-6 md:p-10 border border-primary-blue/20 dark:border-blue-900 transition-colors duration-300"
         >
           <GiftCarousel />
         </motion.div>
       </div>
 
-      {/* How Your Gift Creates Impact Section */}
-      <div className="max-w-5xl mx-auto px-4 mt-20 mb-16">
-        <h2 className="text-3xl font-extrabold text-primary-blue mb-8 text-center">How Your Gift Creates Impact</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            {
-              img: 'https://placehold.co/200x140/0098DB/FFF?text=Health',
-              title: 'Health & Hygiene',
-              desc: 'Provides sanitary pads, health camps, and hygiene education for women and children.'
-            },
-            {
-              img: 'https://placehold.co/200x140/70BF44/FFF?text=Education',
-              title: 'Education',
-              desc: 'Funds school supplies, scholarships, and after-school programs for underprivileged kids.'
-            },
-            {
-              img: 'https://placehold.co/200x140/0098DB/FFF?text=Nutrition',
-              title: 'Nutrition',
-              desc: 'Delivers nutritious meals and supplements to malnourished children and families.'
-            },
-            {
-              img: 'https://placehold.co/200x140/70BF44/FFF?text=Livelihood',
-              title: 'Livelihood',
-              desc: 'Supports vocational training and micro-enterprise for women and youth.'
-            },
-          ].map((item, idx) => (
-            <div key={idx} className="bg-white rounded-2xl shadow-xl p-4 flex flex-col items-center text-center border border-primary-blue/20 hover:shadow-2xl transition-all">
-              <img src={item.img} alt={item.title} className="rounded-xl mb-4 w-full h-36 object-cover shadow" />
-              <h3 className="text-xl font-bold text-primary-blue mb-2">{item.title}</h3>
-              <p className="text-dark-gray text-sm">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Testimonial Carousel */}
-      <div className="max-w-5xl mx-auto px-4 mb-20">
-        <h2 className="text-3xl font-extrabold text-primary-blue mb-8 text-center">What Our Donors Say</h2>
+      <div className="max-w-5xl mx-auto px-2 sm:px-4 mt-24 mb-20">
+        <h2 className="text-3xl font-extrabold text-primary-blue dark:text-blue-200 mb-8 text-center">What Our Donors Say</h2>
         <TestimonialCarousel testimonials={testimonials} />
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 mt-16">
-        <BhimQR />
-        <WaysToDonate />
+      {/* Impact Section */}
+      <div className="bg-gradient-to-br from-white via-blue-50 to-fresh-green/10 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 py-8 sm:py-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-extrabold text-primary-blue dark:text-blue-200 mb-4">
+              Your Impact in Action
+            </h2>
+            <p className="text-lg text-fresh-green dark:text-fresh-green/80 font-semibold mb-2">
+              Every donation plants a seed of hope.
+            </p>
+            <p className="text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6">
+              Thanks to your generosity, lives are being transformed every day. Here's how your support is making a real difference in our communities.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {[
+              {
+                stat: '+500 Women Helped',
+                title: 'Health & Hygiene',
+                desc: 'Provides sanitary pads, health camps, and hygiene education for women and children.',
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                )
+              },
+              {
+                stat: '120 Scholarships',
+                title: 'Education',
+                desc: 'Funds school supplies, scholarships, and after-school programs for underprivileged kids.',
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                )
+              },
+              {
+                stat: '10,000+ Meals Served',
+                title: 'Nutrition',
+                desc: 'Delivers nutritious meals and supplements to malnourished children and families.',
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
+                  </svg>
+                )
+              },
+              {
+                stat: '75+ Women Entrepreneurs',
+                title: 'Livelihood',
+                desc: 'Supports vocational training and micro-enterprise for women and youth.',
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6" />
+                  </svg>
+                )
+              },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300 ring-1 ring-inset ring-fresh-green/20 hover:ring-fresh-green/40 flex flex-col items-center text-center"
+              >
+                <div className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-primary-blue to-fresh-green mb-3 shadow mt-6">
+                  <span className="text-white text-2xl">{item.icon}</span>
+                </div>
+                <div className="text-fresh-green font-bold text-lg mb-1">{item.stat}</div>
+                <div className="p-4 sm:p-6 bg-white dark:bg-gray-800 transition-colors duration-300">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-blue-200 mb-2">{item.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <p className="text-center text-primary-blue dark:text-blue-200 font-bold mt-8 text-lg">
+            Be the change. <span className="text-fresh-green">Your support matters.</span>
+          </p>
+        </div>
+      </div>
+
+      {/* Additional Payment Options */}
+      <div className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div className="max-w-4xl mx-auto px-2 sm:px-4 py-8 sm:py-16">
+          <BhimQR />
+          <WaysToDonate />
+        </div>
       </div>
     </div>
   );

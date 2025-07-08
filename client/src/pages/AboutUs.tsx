@@ -128,7 +128,7 @@ const AboutUs = () => {
           </div>
           <div className="flex-1 flex flex-col items-center">
             <img src="/public/images/about-placeholder.jpg" alt="Volunteers helping community" className="rounded-2xl shadow-lg w-full max-w-xs mb-6 animate-fade-in" />
-            <img src="/public/images/about-team-placeholder.jpg" alt="House of Humanity team" className="rounded-2xl shadow-lg w-full max-w-xs animate-fade-in delay-200" />
+            <img src="./House of Humanity team.HEIC" alt="House of Humanity team" className="rounded-2xl shadow-lg w-full max-w-xs animate-fade-in delay-200" />
           </div>
         </div>
       </section>

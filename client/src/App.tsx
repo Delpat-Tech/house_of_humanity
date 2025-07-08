@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
+import React, { useState, useEffect, useCallback } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 
 // Theme Provider
 import { ThemeProvider } from "./shared/contexts/ThemeContext";
@@ -30,65 +30,65 @@ import Gallery from "./pages/Gallery";
 import ContactUs from "./pages/ContactUs";
 import Home from "./pages/Home";
 
-function App() {
+function AppContent() {
   const [showLoader, setShowLoader] = useState(true);
   const [loaderGone, setLoaderGone] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowLoader(false), 1500);
-    return () => clearTimeout(timer);
-  }, []);
+    if (isHomePage) {
+      // Show loader only on homepage
+      const timer = setTimeout(() => setShowLoader(false), 1500); 
+      return () => clearTimeout(timer);
+    } else {
+      // Skip loader for other pages
+      setShowLoader(false);
+      setLoaderGone(true);
+    }
+  }, [isHomePage]);
 
   const handleFadeOut = useCallback(() => {
     setLoaderGone(true);
   }, []);
 
   return (
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 overflow-x-hidden">
+      {loaderGone && <Header />}
+      <Routes>
+        <Route path="/" element={<Home showLoader={showLoader} loaderGone={loaderGone} onFadeOut={handleFadeOut} />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/our-team" element={<OurTeam />} />
+        <Route path="/sitaare" element={<Sitaare />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/health-care" element={<HealthCare />} />
+        <Route path="/sustainable-livelihood" element={<SustainableLivelihood />} />
+        <Route path="/education" element={<Education />} />
+        <Route path="/nutrition" element={<Nutrition />} />
+        <Route path="/house-of-happiness" element={<HouseOfHappiness />} />
+        <Route path="/milestones" element={<Milestones />} />
+        <Route path="/success-stories" element={<SuccessStories />} />
+        <Route path="/our-partners" element={<OurPartners />} />
+        <Route path="/donate-for-a-cause" element={<DonateForACause />} />
+        <Route path="/get-involved" element={<GetInvolved />} />
+        <Route path="/partner-with-us" element={<PartnerWithUs />} />
+        <Route path="/contribute-materials" element={<ContributeMaterials />} />
+        <Route path="/news-events" element={<NewsEvents />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+      </Routes>
+      <ToastContainer />
+      {loaderGone && <Footer />}
+    </div>
+  );
+}
+
+function App() {
+  return (
     <ThemeProvider>
       <Router>
         <ScrollToTop />
-        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 overflow-x-hidden">
-          {loaderGone && <Header />}
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Home
-                  showLoader={showLoader}
-                  loaderGone={loaderGone}
-                  onFadeOut={handleFadeOut}
-                />
-              }
-            />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/our-team" element={<OurTeam />} />
-            <Route path="/sitaare" element={<Sitaare />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/health-care" element={<HealthCare />} />
-            <Route
-              path="/sustainable-livelihood"
-              element={<SustainableLivelihood />}
-            />
-            <Route path="/education" element={<Education />} />
-            <Route path="/nutrition" element={<Nutrition />} />
-            <Route path="/house-of-happiness" element={<HouseOfHappiness />} />
-            <Route path="/milestones" element={<Milestones />} />
-            <Route path="/success-stories" element={<SuccessStories />} />
-            <Route path="/our-partners" element={<OurPartners />} />
-            <Route path="/donate-for-a-cause" element={<DonateForACause />} />
-            <Route path="/get-involved" element={<GetInvolved />} />
-            <Route path="/partner-with-us" element={<PartnerWithUs />} />
-            <Route
-              path="/contribute-materials"
-              element={<ContributeMaterials />}
-            />
-            <Route path="/news-events" element={<NewsEvents />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/contact-us" element={<ContactUs />} />
-          </Routes>
-          <ToastContainer />
-          {loaderGone && <Footer />}
-        </div>
+        <AppContent />
       </Router>
     </ThemeProvider>
   );

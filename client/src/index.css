@@ -93,11 +93,11 @@
 }
 
 .dark .text-primary-blue {
-  color: #0098DB;
+  color: #1750A4;
 }
 
 .dark .text-fresh-green {
-  color: #70BF44;
+  color: #119A49;
 }
 
 /* Background colors for dark mode */
@@ -111,7 +111,7 @@
 
 /* Border colors for dark mode */
 .dark .border-primary-blue {
-  border-color: #0098DB;
+  border-color: #1750A4;
 }
 
 .dark .border-gray-300 {
@@ -143,7 +143,7 @@
 .dark input:focus,
 .dark textarea:focus,
 .dark select:focus {
-  border-color: #0098DB;
+  border-color: #1750A4;
   box-shadow: 0 0 0 3px rgba(0, 152, 219, 0.1);
 }
 
@@ -189,11 +189,11 @@
 
 /* Link colors for dark mode */
 .dark a {
-  color: #0098DB;
+  color: #1750A4;
 }
 
 .dark a:hover {
-  color: #70BF44;
+  color: #119A49;
 }
 
 /* Shadow adjustments for dark mode */

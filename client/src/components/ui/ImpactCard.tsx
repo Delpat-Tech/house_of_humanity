@@ -1,23 +1,10 @@
 import React from "react";
-import { Triangle } from "lucide-react";
-import { IoMdBicycle, IoMdSchool } from "react-icons/io";
-import { BiSolidBlanket } from "react-icons/bi";
+import { IconType } from "react-icons";
+import { FaLeaf, FaFemale, FaTint, FaHandsHelping, FaGift, FaHospitalAlt, FaBookReader, FaCar, FaUsers, FaRunning, FaMusic } from "react-icons/fa";
 import { MdFoodBank } from "react-icons/md";
-import {
-  FaHandsHelping,
-  FaHeartbeat,
-  FaBookReader,
-  FaLeaf,
-  FaGift,
-  FaUsers,
-  FaTint,
-  FaHospitalAlt,
-  FaSchool,
-  FaCar,
-  FaRunning,
-  FaMusic,
-  FaFemale,
-} from "react-icons/fa";
+import { IoMdSchool, IoMdBicycle } from "react-icons/io";
+import { BiSolidBlanket } from "react-icons/bi";
+import { Triangle } from "lucide-react"; // Add this import if Triangle is used
 
 type ImpactCardProps = {
   icon: string;
@@ -32,7 +19,7 @@ const ImpactCard: React.FC<ImpactCardProps> = ({
   title,
   impact,
 }) => {
-  const iconMap: { [key: string]: React.ComponentType<any> } = {
+  const iconMap: { [key: string]: IconType } = {
     leaf: FaLeaf,
     female: FaFemale,
     tint: FaTint,
@@ -50,11 +37,11 @@ const ImpactCard: React.FC<ImpactCardProps> = ({
     music: FaMusic,
   };
 
-  const IconComponent = iconMap[icon.toLowerCase()] || FaGift;
+  const IconComponent = iconMap[icon.toLowerCase()];
 
   return (
-    <div className="w-[22rem] h-84 mb-12 pt-2 rounded-2xl bg-primary">
-      <div className="w-[22rem] h-84 bg-white rounded-xl shadow-xl p-6 flex flex-col items-center border-t-4 border-teal-600">
+    <div className="w-full max-w-xs sm:max-w-sm md:w-[22rem] h-auto mb-8 pt-2 rounded-2xl bg-primary mx-auto">
+      <div className="w-full bg-white rounded-xl shadow-xl p-4 sm:p-6 flex flex-col items-center border-t-4 border-teal-600">
         <div>
           <Triangle
             size={16}
@@ -64,23 +51,23 @@ const ImpactCard: React.FC<ImpactCardProps> = ({
         </div>
 
         {/* Heading */}
-        <h3 className="text-[28px] text-dark-gray dark:text-gray-200 mb-6 font-bold">
+        <h3 className="text-2xl sm:text-3xl text-dark-gray dark:text-gray-200 mb-4 font-bold">
           {count}
         </h3>
 
         {/* Impact icon */}
-        <div className="bg-teal-600 p-3 mb-6 text-4xl  rounded-full text-white">
-          <IconComponent />
+        <div className="bg-teal-600 p-2 sm:p-3 mb-4 text-3xl sm:text-4xl rounded-full text-white">
+          {IconComponent ? React.createElement(IconComponent as React.ComponentType) : null}
         </div>
 
         {/* Project Title */}
-        <p className="text-center mb-1 font-bold text-base text-dark-gray dark:text-gray-200">
+        <p className="text-center mb-1 font-bold text-base sm:text-lg text-dark-gray dark:text-gray-200">
           {title}
         </p>
 
         {/* description */}
-        <div className="rounded-lg p-4 w-full">
-          <p className="text-center text-smt text-dark-gray dark:text-gray-200leading-relaxed">
+        <div className="rounded-lg p-2 sm:p-4 w-full">
+          <p className="text-center text-sm sm:text-base text-dark-gray dark:text-gray-200 leading-relaxed">
             {impact}
           </p>
         </div>

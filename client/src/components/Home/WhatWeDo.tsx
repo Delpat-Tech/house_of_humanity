@@ -46,23 +46,21 @@ const WhatWeDo: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="w-full bg-gray-100 py-20 px-4  overflow-hidden">
+    <section className="w-full bg-gray-100 dark:bg-gray-900 py-20 px-4 overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-        {" "}
         {/* Section Heading */}
         <motion.h1
-          className="text-center text-4xl md:text-6xl font-bold text-primary-blue py-8 mb-12"
+          className="text-center text-4xl md:text-6xl font-bold text-primary-blue dark:text-blue-200 py-8 mb-12"
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: false, amount: 0.3 }}
         >
           Our Commitment to Communities
-          
         </motion.h1>
         {/* Cards Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center w-full overflow-visible "
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center w-full overflow-visible"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
@@ -101,10 +99,10 @@ const WhatWeDo: React.FC = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-500 to-red-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-primary-blue to-fresh-green bg-clip-text text-transparent dark:from-blue-200 dark:to-fresh-green">
             Empowering with Purpose
           </h1>
-          <p className="text-xl w-full md:w-2/3  font-semibold">
+          <p className="text-xl w-full md:w-2/3 font-semibold text-dark-gray dark:text-gray-200">
             We believe true change begins with empowerment — not temporary aid,
             but lasting impact. Rather than offering one-time support, we strive
             to equip individuals with the tools to build a life of dignity,
@@ -114,7 +112,7 @@ const WhatWeDo: React.FC = () => {
         </motion.div>
         {/* Button */}
         <motion.button
-          className="flex px-6 py-3 mt-20 mx-auto rounded-xl text-white font-semibold uppercase bg-blue-500 hover:bg-blue-600"
+          className="flex px-6 py-3 mt-20 mx-auto rounded-xl text-white font-semibold uppercase bg-primary-blue hover:bg-blue-600 dark:bg-primary-blue dark:hover:bg-blue-700"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}

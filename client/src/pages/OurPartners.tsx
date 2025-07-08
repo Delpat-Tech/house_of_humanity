@@ -104,12 +104,16 @@ const Partners: React.FC = () => {
               Collaborating with industry leaders, innovative NGOs, and forward-thinking government agencies to create meaningful change and sustainable impact across communities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="px-8 py-4 text-lg font-semibold bg-fresh-green text-white hover:bg-green-600 transition-colors">
-                View Our Impact
-              </Button>
-              <Button className="px-8 py-4 text-lg font-semibold bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-blue transition-colors">
-                Join Our Network
-              </Button>
+              <a href="/milestones">
+                <Button className="px-8 py-4 text-lg font-semibold bg-fresh-green text-white hover:bg-green-600 transition-colors">
+                  View Our Impact
+                </Button>
+              </a>
+              <a href="/getinvolved">
+                <Button className="px-8 py-4 text-lg font-semibold bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-blue transition-colors">
+                  Join Our Network
+                </Button>
+              </a>
             </div>
           </div>
         </div>

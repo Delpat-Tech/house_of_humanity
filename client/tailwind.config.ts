@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'primary-blue': '#0098DB', // Headlines, CTAs, buttons
-        'fresh-green': '#70BF44', // Accents, success states, iconography
+        'primary-blue': '#1750A4', // Headlines, CTAs, buttons
+        'fresh-green': '#119A49', // Accents, success states, iconography
         'warm-light-blue': '#E0F7FA', // Backgrounds, cards, sections
         'off-white': '#F9F9F9', // Main background
         'dark-gray': '#333333', // Text, footer
