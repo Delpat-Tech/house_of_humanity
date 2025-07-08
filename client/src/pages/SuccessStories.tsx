@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
 const SuccessStories = () => {
   return (
     <div>
-      <h1>Success Stories Page</h1>
+      
     </div>
-  );
-};
+  )
+}
 
-export default SuccessStories; 
+export default SuccessStories
