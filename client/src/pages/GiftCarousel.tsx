@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface Slide {
   image: string;
@@ -20,99 +20,109 @@ const slides: Slide[] = [
   { image: '/assets/donation-impact/i9.jpg', amount: '₹6,00,000', description: 'Sponsors community outreach campaigns in 3 villages' },
 ];
 
+const CARD_WIDTH = 240; // px
+const CARD_GAP = 0; // px (no gap needed for single card)
+
 const GiftCarousel: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const cardsPerView = 2;
-  const totalGroups = Math.ceil(slides.length / cardsPerView);
-  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Infinite next/prev
-  const next = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalGroups);
-  };
-
-  const prev = () => {
-    setCurrentIndex((prev) => (prev - 1 + totalGroups) % totalGroups);
-  };
+  const goNext = () => setCurrent((prev) => (prev + 1) % slides.length);
+  const goPrev = () => setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
 
   // Autoplay effect
   useEffect(() => {
-    if (!isHovered) {
-      autoplayRef.current = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % totalGroups);
-      }, 3500);
+    if (!isPaused) {
+      intervalRef.current = setInterval(goNext, 4000);
     }
     return () => {
-      if (autoplayRef.current) clearInterval(autoplayRef.current);
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [isHovered, totalGroups]);
+  }, [isPaused]);
+
+  // Calculate the offset for the sliding effect
+  const offset = -(CARD_WIDTH + CARD_GAP) * current;
 
   return (
     <div
-      className="relative py-10 bg-white/90 backdrop-blur-lg shadow-2xl rounded-3xl p-6 border border-primary-blue/20 text-center w-full"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
-      <h2 className="text-2xl font-bold mb-6 text-primary-blue">
-        HOW YOUR GIFT CREATES IMPACT
-      </h2>
-
-      <div className="relative w-full overflow-hidden">
+      {/* Heading */}
+      <div className="mb-4 text-center">
+        <h2 className="text-2xl font-bold text-primary-blue mb-1 tracking-tight">
+          How Your Gift Creates Impact
+        </h2>
+        <p className="text-base text-primary-blue/80 max-w-xs mx-auto">
+          Every contribution is a step towards a brighter, more humane world.
+        </p>
+      </div>
+      {/* Carousel */}
+      <div
+        className="relative flex items-center justify-center mx-auto"
+        style={{ width: CARD_WIDTH + 64 }} // 64px for two 32px arrow buttons
+      >
         {/* Prev Button */}
         <button
-          onClick={prev}
-          className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-primary-blue hover:bg-blue-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105 shadow-lg z-10"
+          onClick={goPrev}
+          aria-label="Previous"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-primary-blue/90 hover:text-white text-primary-blue w-8 h-8 rounded-full flex items-center justify-center shadow border border-primary-blue/20 transition-all duration-200"
         >
-          ❮
+          <span className="text-lg">❮</span>
         </button>
-
+        {/* Cards filmstrip */}
+        <div className="overflow-hidden" style={{ width: CARD_WIDTH }}>
+          <motion.div
+            className="flex items-center"
+            style={{ gap: `${CARD_GAP}px` }}
+            animate={{ x: offset }}
+            transition={{ type: 'tween', duration: 0.5, ease: 'easeInOut' }}
+          >
+            {slides.map((slide, idx) => {
+              const isCenter = idx === current;
+              return (
+                <div
+                  key={idx}
+                  className={`relative flex-shrink-0 bg-white/90 rounded-xl shadow-lg border border-primary-blue/10 overflow-hidden transition-all duration-300
+                    ${isCenter ? 'scale-100 opacity-100 z-20' : 'scale-75 opacity-0 pointer-events-none z-0'}
+                  `}
+                  style={{ width: CARD_WIDTH, minHeight: 320 }}
+                >
+                  <img
+                    src={slide.image}
+                    alt={slide.amount}
+                    className="w-full h-40 object-cover rounded-t-xl"
+                  />
+                  <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-white/90 to-transparent p-3">
+                    <div className="text-primary-blue font-bold text-lg">{slide.amount}</div>
+                    <div className="text-xs text-gray-700 font-medium">{slide.description}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </motion.div>
+        </div>
         {/* Next Button */}
         <button
-          onClick={next}
-          className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-primary-blue hover:bg-blue-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105 shadow-lg z-10"
+          onClick={goNext}
+          aria-label="Next"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-primary-blue/90 hover:text-white text-primary-blue w-8 h-8 rounded-full flex items-center justify-center shadow border border-primary-blue/20 transition-all duration-200"
         >
-          ❯
+          <span className="text-lg">❯</span>
         </button>
-
-        {/* Carousel Content with padding to avoid button overlap */}
-        <div className="px-10">
-          <div
-            className="flex transition-transform duration-500 ease-in-out justify-center"
-            style={{
-              width: `${(slides.length / cardsPerView) * 100}%`,
-              transform: `translateX(-${currentIndex * (100 / totalGroups)}%)`,
-            }}
-          >
-            {slides.map((slide, idx) => (
-              <div key={idx} className="w-1/2 px-2 box-border">
-                <motion.div 
-                  className="bg-white rounded-xl overflow-hidden shadow-lg h-full flex flex-col border border-primary-blue/20 hover:shadow-2xl transition-all duration-300 hover:scale-105"
-                  whileHover={{ y: -5 }}
-                >
-                  <img src={slide.image} alt={`Impact ${idx + 1}`} className="w-full h-48 object-cover" />
-                  <div className="p-4">
-                    <h3 className="text-xl font-bold mb-2 text-primary-blue">{slide.amount}</h3>
-                    <p className="text-sm text-dark-gray">{slide.description}</p>
-                  </div>
-                </motion.div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Dots */}
-        <div className="mt-6 flex justify-center">
-          {Array.from({ length: totalGroups }).map((_, i) => (
-            <div
-              key={i}
-              onClick={() => setCurrentIndex(i)}
-              className={`mx-1 w-3 h-3 rounded-full cursor-pointer transition-all duration-200 ${
-                i === currentIndex ? 'bg-primary-blue scale-125' : 'bg-gray-300 hover:bg-primary-blue/50'
-              }`}
-            ></div>
-          ))}
-        </div>
+      </div>
+      {/* Dots */}
+      <div className="mt-4 flex justify-center gap-1.5">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-200 border border-primary-blue/30
+              ${i === current ? 'bg-primary-blue scale-110' : 'bg-gray-200 hover:bg-primary-blue/40'}`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
