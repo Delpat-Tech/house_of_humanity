@@ -237,7 +237,7 @@ const Bachpan: React.FC = () => {
                 <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
                   {activity.icon}
                 </div>
-                <h4 className="text-xl font-bold text-primary-blue dark:text-white mb-4">
+                <h4 className="text-xl font-bold text-primary-blue mb-4">
                   {activity.title}
                 </h4>
                 <p className="text-dark-gray dark:text-gray-300">

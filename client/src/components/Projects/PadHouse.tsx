@@ -55,7 +55,7 @@ const PadHouse: React.FC = () => {
                 <div className="relative">
                   <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
                     <img
-                      src="/Gallery/123.png"
+                      src="/Gallery/pad-house.jpg"
                       alt="Girls receiving menstrual hygiene education"
                       width="100%"
                       className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
@@ -63,9 +63,9 @@ const PadHouse: React.FC = () => {
                   </div>
                   <div className="absolute -bottom-6 -left-6 transform -rotate-6">
                     <img
-                      src="/Gallery/pad-house.jpg"
+                      src="/Gallery/123.png"
                       alt="Menstrual hygiene awareness session"
-                      className="rounded-lg shadow-lg border-4 border-white/30 object-cover h-36 w-48"
+                      className="rounded-lg shadow-lg border-4 border-white/30 object-cover h-36 w-full"
                     />
                   </div>
                 </div>
@@ -104,7 +104,7 @@ const PadHouse: React.FC = () => {
                 </p>
                 <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6">
                   <h4 className="font-semibold mb-2">Our Mission</h4>
-                  <p className="text-primary-blue font-semibold text-lg">
+                  <p className="text-dark-gray font-semibold text-lg">
                     To improve menstrual hygiene by providing education,
                     counseling, and free sanitary pads to girls in rural areas,
                     helping them understand and embrace their bodies while
@@ -114,9 +114,9 @@ const PadHouse: React.FC = () => {
               </div>
               <div className="relative">
                 <img
-                  src="/Gallery/image15.webp"
+                  src="/pad-house-about.png"
                   alt="Pad House counseling session"
-                  className="rounded-xl shadow-lg w-[50rem] object-cover"
+                  className="rounded-xl shadow-lg w-[28rem] object-cover"
                 />
                 <div className="absolute -top-4 -right-4 bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
                   28,000+ Girls Helped

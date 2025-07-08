@@ -151,23 +151,6 @@ const Raah: React.FC = () => {
     },
   };
 
-  const getInvolvedOptions = [
-    {
-      title: "Support Migrant Education",
-      description:
-        "Partner with us to expand educational support for migrant children and help break the cycle of educational disadvantage.",
-      buttonText: "Become a Partner",
-      accent: "from-fresh-green to-primary-blue",
-    },
-    {
-      title: "Volunteer with Raah",
-      description:
-        "Join our team to provide direct educational support, language assistance, and mentorship to migrant children.",
-      buttonText: "Join as Volunteer",
-      accent: "from-primary-blue to-fresh-green",
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <section id="raah" className="mb-24">
@@ -283,7 +266,7 @@ const Raah: React.FC = () => {
           {/* What We Do section */}
           <div className="my-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary-blue dark:text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary-blue  mb-6">
                 What We Do
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
@@ -302,7 +285,7 @@ const Raah: React.FC = () => {
                   <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
                     {activity.icon}
                   </div>
-                  <h4 className="text-xl font-bold text-primary-blue dark:text-white mb-4">
+                  <h4 className="text-xl font-bold text-primary-blue mb-4">
                     {activity.title}
                   </h4>
                   <p className="text-dark-gray dark:text-gray-200">
@@ -316,7 +299,7 @@ const Raah: React.FC = () => {
           {/* Impact Stats */}
           <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-2xl p-8 md:p-12 mb-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary-blue dark:text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
                 Our Impact
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
@@ -334,7 +317,7 @@ const Raah: React.FC = () => {
                   className="text-center bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   <div className="text-3xl mb-3">{stat.icon}</div>
-                  <div className="text-3xl font-bold text-primary-blue dark:text-white mb-2">
+                  <div className="text-3xl font-bold text-primary-blue  mb-2">
                     {stat.number}
                   </div>
                   <div className="text-dark-gray dark:text-gray-200 font-medium">
@@ -349,7 +332,7 @@ const Raah: React.FC = () => {
           <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 md:p-12 mb-16">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-primary-blue dark:text-white mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-primary-blue  mb-6">
                   {raahData.vision.title}
                 </h2>
                 <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
@@ -375,7 +358,7 @@ const Raah: React.FC = () => {
           {/* Journey Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary-blue dark:text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
                 {raahData.journey.title}
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
@@ -387,10 +370,10 @@ const Raah: React.FC = () => {
                   className="text-center bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   <div className="text-6xl mb-6">{milestone.icon}</div>
-                  <div className="text-2xl font-bold text-primary-blue dark:text-white mb-2">
+                  <div className="text-2xl font-bold text-primary-blue mb-2">
                     {milestone.year}
                   </div>
-                  <h4 className="text-lg font-semibold text-primary-blue dark:text-white mb-3">
+                  <h4 className="text-lg font-semibold text-primary-blue mb-3">
                     {milestone.title}
                   </h4>
                   <p className="text-dark-gray dark:text-gray-200 text-sm leading-relaxed">
@@ -404,7 +387,7 @@ const Raah: React.FC = () => {
           {/* Impact Stories */}
           <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-2xl p-8 md:p-12 mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary-blue dark:text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
                 Success Stories
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
@@ -415,7 +398,7 @@ const Raah: React.FC = () => {
                   key={index}
                   className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300"
                 >
-                  <h4 className="text-lg font-semibold text-primary-blue dark:text-white mb-3">
+                  <h4 className="text-lg font-semibold text-primary-blue mb-3">
                     {story.title}
                   </h4>
                   <p className="text-dark-gray dark:text-gray-200 text-sm leading-relaxed">

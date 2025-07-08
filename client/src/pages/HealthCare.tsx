@@ -1,6 +1,9 @@
 import React from "react";
 import Button from "../components/ui/Button";
 import { useNavigate } from "react-router-dom";
+import PadHouse from "../components/Projects/PadHouse";
+import RaktSetu from "../components/Projects/RaktSetu";
+import Saharaa from "../components/Projects/Saharaa";
 
 const HealthCare: React.FC = () => {
   const navigate = useNavigate();
@@ -33,7 +36,9 @@ const HealthCare: React.FC = () => {
                 <span className="block text-blue-100">Community Health</span>
               </h1>
               <p className="text-xl text-blue-100 mb-8 font-semibold leading-relaxed max-w-3xl mx-auto">
-                From menstrual hygiene to emergency blood support and medical equipment - we're committed to making healthcare accessible to all.
+                From menstrual hygiene to emergency blood support and medical
+                equipment - we're committed to making healthcare accessible to
+                all.
               </p>
             </div>
           </div>
@@ -51,7 +56,9 @@ const HealthCare: React.FC = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-br from-green-500 via-teal-400 to-blue-600 mx-auto mb-6"></div>
           <p className="text-lg text-dark-gray max-w-3xl mx-auto font-medium">
-            Through our comprehensive healthcare initiatives, we've touched thousands of lives, providing essential services from menstrual hygiene to emergency medical support.
+            Through our comprehensive healthcare initiatives, we've touched
+            thousands of lives, providing essential services from menstrual
+            hygiene to emergency medical support.
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -70,6 +77,13 @@ const HealthCare: React.FC = () => {
         </div>
       </div>
 
+      {/* projects under healthcare */}
+      <div>
+        <PadHouse />
+        <RaktSetu />
+        <Saharaa />
+      </div>
+
       {/* Get Involved Section */}
       <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-xl p-8 md:p-12 mb-16">
         <div className="text-center mb-12">
@@ -78,7 +92,10 @@ const HealthCare: React.FC = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-pink-500 to-blue-600 mx-auto mb-6"></div>
           <p className="text-lg text-dark-gray max-w-3xl mx-auto">
-            Join us in making healthcare accessible to all. From menstrual hygiene to life-saving blood donations and recovery support - your involvement can make healthcare accessible to those who need it most.
+            Join us in making healthcare accessible to all. From menstrual
+            hygiene to life-saving blood donations and recovery support - your
+            involvement can make healthcare accessible to those who need it
+            most.
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-8">

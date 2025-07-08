@@ -149,7 +149,7 @@ const Saharaa: React.FC = () => {
               </p>
               <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6">
                 <h4 className="font-semibold  mb-2">Our Mission</h4>
-                <p className="text-primary-blue font-semibold text-lg">
+                <p className="text-dark-gray font-semibold text-lg">
                   To ensure everyone has access to necessary recovery equipment,
                   enhancing comfort, dignity, and healing during difficult
                   times.

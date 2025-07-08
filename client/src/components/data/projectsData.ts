@@ -3,7 +3,7 @@ import { Project } from '../../types';
 export const projects: Project[] = [
   {
     title: "Project पोषण",
-    image: "/Gallery/img1.webp",
+    image: "/Gallery/image1.webp",
     content: {
       vision: "A society where no one sleeps hungry and food is a right, not a privilege.",
       mission: "To ensure daily nutritious meals to patient caretakers who are often overlooked.",
