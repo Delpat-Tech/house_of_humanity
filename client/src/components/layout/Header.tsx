@@ -237,80 +237,85 @@ const Header: React.FC = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-2">
-              {menuItems.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  className="relative"
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  onMouseEnter={() =>
-                    item.dropdown && setDropdownOpen(item.name)
-                  }
-                  onMouseLeave={() => setDropdownOpen(null)}
-                >
-                  {item.dropdown ? (
-                    <span
-                      className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 cursor-default select-none ${
-                        dropdownOpen === item.name
-                          ? "active text-primary-blue bg-warm-light-blue dark:bg-gray-700 shadow-lg shadow-primary-blue/20 border border-primary-blue/20"
-                          : "text-dark-gray dark:text-gray-200 hover:text-primary-blue hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:border hover:border-primary-blue/20"
-                      }`}
-                      onMouseEnter={() => setDropdownOpen(item.name)}
-                      onMouseLeave={() => setDropdownOpen(null)}
-                    >
-                      <span className="relative z-10">{item.name}</span>
-                      <motion.div
-                        animate={{
-                          rotate: dropdownOpen === item.name ? 180 : 0,
-                        }}
-                        transition={{ duration: 0.3 }}
+              {menuItems.map((item, index) => {
+                // Determine if any sub-item is active (for dropdown parents)
+                const isAnySubActive = item.dropdown && item.dropdown.some(
+                  (subItem) => location.pathname === subItem.path
+                );
+                return (
+                  <motion.div
+                    key={item.name}
+                    className="relative"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    onMouseEnter={() => item.dropdown && setDropdownOpen(item.name)}
+                    onMouseLeave={() => setDropdownOpen(null)}
+                  >
+                    {item.dropdown ? (
+                      <span
+                        className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 cursor-default select-none ${
+                          dropdownOpen === item.name || isAnySubActive
+                            ? "active text-primary-blue bg-warm-light-blue dark:bg-gray-700 shadow-lg shadow-primary-blue/20 border border-primary-blue/20"
+                            : "text-dark-gray dark:text-gray-200 hover:text-primary-blue hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:border hover:border-primary-blue/20"
+                        }`}
+                        onMouseEnter={() => setDropdownOpen(item.name)}
+                        onMouseLeave={() => setDropdownOpen(null)}
                       >
-                        <ChevronDown className="w-4 h-4 text-fresh-green" />
-                      </motion.div>
-                    </span>
-                  ) : (
-                    <Link
-                      to={item.path}
-                      className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 ${
-                        location.pathname === item.path
-                          ? "active text-primary-blue bg-warm-light-blue dark:bg-gray-700 shadow-lg shadow-primary-blue/20 border border-primary-blue/20"
-                          : "text-dark-gray dark:text-gray-200 hover:text-primary-blue hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:border hover:border-primary-blue/20"
-                      }`}
-                    >
-                      <span className="relative z-10">{item.name}</span>
-                    </Link>
-                  )}
-
-                  {/* Dropdown Menu */}
-                  <AnimatePresence>
-                    {item.dropdown && dropdownOpen === item.name && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                        transition={{
-                          duration: 0.3,
-                          ease: [0.25, 0.1, 0.25, 1],
-                        }}
-                        className="absolute top-full left-0 mt-2 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-warm-light-blue dark:border-gray-600 py-3 z-50 overflow-hidden"
+                        <span className="relative z-10">{item.name}</span>
+                        <motion.div
+                          animate={{
+                            rotate: dropdownOpen === item.name ? 180 : 0,
+                          }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <ChevronDown className="w-4 h-4 text-fresh-green" />
+                        </motion.div>
+                      </span>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 ${
+                          location.pathname === item.path
+                            ? "active text-primary-blue bg-warm-light-blue dark:bg-gray-700 shadow-lg shadow-primary-blue/20 border border-primary-blue/20"
+                            : "text-dark-gray dark:text-gray-200 hover:text-primary-blue hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:border hover:border-primary-blue/20"
+                        }`}
                       >
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/5 to-fresh-green/5"></div>
-                        {item.dropdown.map((subItem, subIndex) => (
-                          <div key={subItem.name}>
-                            <Link
-                              to={subItem.path}
-                              className="dropdown-item block px-5 py-3 text-xs text-dark-gray dark:text-gray-200 hover:text-primary-blue font-medium header-font rounded-lg mx-2 relative z-10"
-                            >
-                              {subItem.name}
-                            </Link>
-                          </div>
-                        ))}
-                      </motion.div>
+                        <span className="relative z-10">{item.name}</span>
+                      </Link>
                     )}
-                  </AnimatePresence>
-                </motion.div>
-              ))}
+
+                    {/* Dropdown Menu */}
+                    <AnimatePresence>
+                      {item.dropdown && dropdownOpen === item.name && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                          transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                          className="absolute top-full left-0 mt-2 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-warm-light-blue dark:border-gray-600 py-3 z-50 overflow-hidden"
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/5 to-fresh-green/5"></div>
+                          {item.dropdown.map((subItem, subIndex) => (
+                            <div key={subItem.name}>
+                              <Link
+                                to={subItem.path}
+                                className={`dropdown-item block px-5 py-3 text-xs font-medium header-font rounded-lg mx-2 relative z-10 transition-colors duration-200 ${
+                                  location.pathname === subItem.path
+                                    ? "bg-primary-blue text-white dark:text-white"
+                                    : "text-dark-gray dark:text-gray-200 hover:text-primary-blue hover:bg-warm-light-blue dark:hover:bg-gray-700"
+                                }`}
+                              >
+                                {subItem.name}
+                              </Link>
+                            </div>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
 
               {/* Theme Toggle Button */}
               <ThemeToggle size="md" variant="default" />
