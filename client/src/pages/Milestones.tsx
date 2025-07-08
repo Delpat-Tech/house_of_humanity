@@ -5,6 +5,7 @@ import { useTheme } from '../shared/contexts/ThemeContext';
 import StatsCard from '../components/ui/StatsCard';
 import Card from '../components/ui/Card';
 import { Heart, Users, Award, Target, TrendingUp, Star, ArrowRight, Calendar, MapPin, Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface ProjectStat {
   name: string;
@@ -196,6 +197,7 @@ const CountUpAnimation: React.FC<{ end: number; duration: number }> = ({ end, du
 const Milestones: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'projects' | 'sectors'>('projects');
   const { theme } = useTheme();
+  const navigate = useNavigate();
 
   return (
     <div className={`min-h-screen transition-colors duration-300 pt-32 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50'}`}>
@@ -290,7 +292,8 @@ const Milestones: React.FC = () => {
                 <motion.div
                   key={index}
                   variants={fadeIn('up', index * 0.1)}
-                  className={`group relative rounded-2xl p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-2xl transition-all duration-500`}
+                  className={`group relative rounded-2xl p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-2xl transition-all duration-500 cursor-pointer`}
+                  onClick={() => navigate('/projects', { state: { projectIndex: index } })}
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className={`p-3 rounded-full bg-white shadow-lg ${proj.color}`}>{proj.icon}</div>

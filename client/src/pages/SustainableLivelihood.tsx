@@ -110,14 +110,14 @@ const SustainableLivelihood: React.FC = () => {
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-lg text-dark-gray leading-relaxed mb-6">
+              <p className="text-lg text-dark-gray leading-relaxed mb-6 text-justify">
                 Project Sanskruti is an initiative focused on empowering women in the Halol Taluka by developing Self-Help Groups (SHGs) and promoting sustainable livelihoods. Supported by Grasim Industries Limited and in collaboration with the Taluka Panchayat, this project has brought together 30 women to create a vermi-compost unit.
               </p>
-              <p className="text-lg text-dark-gray leading-relaxed mb-6">
+              <p className="text-lg text-dark-gray leading-relaxed mb-6 text-justify">
                 By equipping these women with the skills and resources needed to manage and operate the vermi-compost unit, Project Sanskruti helps them achieve financial independence, fosters community development, and promotes sustainable agricultural practices.
               </p>
-              <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6">
-                <p className="text-primary-blue font-semibold text-lg">
+              <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6 dark:bg-gray-800">
+                <p className="text-primary-blue font-semibold text-lg dark:text-gray-100">
                   "This project is not just about creating income opportunities but also about building confidence and leadership among the women involved."
                 </p>
               </div>

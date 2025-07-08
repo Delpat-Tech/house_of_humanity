@@ -118,13 +118,17 @@ const Impact = () => {
           
           .slick-dots li button:before {
             font-size: 12px;
-            color: #cbd5e1;
-            opacity: 0.5;
+            color: #e5e7eb; /* light gray */
+            opacity: 0.7;
           }
           
           .slick-dots li.slick-active button:before {
-            color:#176efc;
+            color: #1750A4; /* fresh green */
             opacity: 1;
+          }
+          .slick-dots li:hover button:before {
+            color: #1750A4;
+            opacity: 0.9;
           }
           
           @media (max-width: 768px) {
@@ -140,7 +144,7 @@ const Impact = () => {
           /* Custom arrow styles for desktop */
           .slick-prev:before,
           .slick-next:before {
-            color: #176efc;
+            color: #1750A4; 
             font-size: 24px;
           }
           

@@ -99,28 +99,29 @@ const WhatWeDo: React.FC = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-primary-blue to-fresh-green bg-clip-text text-transparent dark:from-blue-200 dark:to-fresh-green">
-            Empowering with Purpose
-          </h1>
-          <p className="text-xl w-full md:w-2/3 font-semibold text-dark-gray dark:text-gray-200">
-            We believe true change begins with empowerment — not temporary aid,
-            but lasting impact. Rather than offering one-time support, we strive
-            to equip individuals with the tools to build a life of dignity,
-            self-respect, and independence. Everyone deserves the chance to
-            thrive, not just survive.
-          </p>
+          <div className="flex-1 flex flex-col">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary-blue to-fresh-green bg-clip-text text-transparent dark:from-blue-200 dark:to-fresh-green">
+              Empowering with Purpose
+            </h1>
+            <p className="text-xl w-full md:w-2/3 font-semibold text-dark-gray dark:text-gray-200 mt-4">
+              We believe true change begins with empowerment — not temporary aid,
+              but lasting impact. Rather than offering one-time support, we strive
+              to equip individuals with the tools to build a life of dignity,
+              self-respect, and independence. Everyone deserves the chance to
+              thrive, not just survive.
+            </p>
+            <motion.button
+              className="flex px-6 py-3 mt-6 md:mt-8 w-full md:w-auto rounded-xl text-white font-semibold uppercase bg-primary-blue hover:bg-blue-600 dark:bg-primary-blue dark:hover:bg-blue-700 md:self-start self-center"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: false, amount: 0.3 }}
+              onClick={() => navigate("/projects")}
+            >
+              Know More
+            </motion.button>
+          </div>
         </motion.div>
-        {/* Button */}
-        <motion.button
-          className="flex px-6 py-3 mt-20 mx-auto rounded-xl text-white font-semibold uppercase bg-primary-blue hover:bg-blue-600 dark:bg-primary-blue dark:hover:bg-blue-700"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: false, amount: 0.3 }}
-          onClick={() => navigate("/projects")}
-        >
-          Know More
-        </motion.button>
       </div>
     </section>
   );
