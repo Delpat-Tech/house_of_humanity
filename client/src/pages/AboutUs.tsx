@@ -127,8 +127,8 @@ const AboutUs = () => {
             </p>
           </div>
           <div className="flex-1 flex flex-col items-center">
-            <img src="/public/images/about-placeholder.jpg" alt="Volunteers helping community" className="rounded-2xl shadow-lg w-full max-w-xs mb-6 animate-fade-in" />
-            <img src="./House of Humanity team.HEIC" alt="House of Humanity team" className="rounded-2xl shadow-lg w-full max-w-xs animate-fade-in delay-200" />
+            <img src="/public/images/we-fight-for-humanity.png" alt="Volunteers helping community" className="rounded-2xl shadow-lg w-full max-w-xs mb-6 animate-fade-in" />
+            <img src="/public/Gallery/image4.webp" alt="House of Humanity team" className="rounded-2xl shadow-lg w-full max-w-xs animate-fade-in delay-200" />
           </div>
         </div>
       </section>
