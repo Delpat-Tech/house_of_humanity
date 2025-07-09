@@ -1,289 +1,210 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../shared/contexts/ThemeContext";
 
-const About: React.FC = () => {
-  const navigate = useNavigate();
-  const [isHovered, setIsHovered] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+const About = () => {
+  const { theme } = useTheme();
 
-  useEffect(() => {
-    // Check if dark mode is active by looking at the document or body classes
-    const checkDarkMode = () => {
-      const isDark =
-        document.documentElement.classList.contains("dark") ||
-        document.body.classList.contains("dark") ||
-        document.documentElement.getAttribute("data-theme") === "dark";
-      setIsDarkMode(isDark);
-    };
-
-    checkDarkMode();
-
-    // Watch for theme changes
-    const observer = new MutationObserver(checkDarkMode);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class", "data-theme"],
-    });
-    observer.observe(document.body, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const floatingParticles = Array.from({ length: 8 }, (_, i) => i);
+  const stats = [
+    { number: "180+", label: "Volunteers Empowered", icon: "🙌" },
+    {
+      number: "200+",
+      label: "Meals Served Daily (COVID-19 Start)",
+      icon: "🍛",
+    },
+    { number: "6+", label: "Key Focus Areas", icon: "🎯" },
+    { number: "1", label: "Cancer Wellness Center Dream", icon: "🎗️" },
+  ];
 
   return (
-    <div className=" transition-all duration-500 bg-gray-50">
-      <section
-        className={`relative overflow-hidden mt-24 px-4 sm:px-6 py-16 sm:py-20 md:py-24 transition-all duration-500 ${
-          isDarkMode
-            ? "bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-md"
-            : "bg-gradient-to-br from-orange-50 via-red-50 to-pink-50"
-        }`}
-      >
-        {/* Floating Particles */}
-        {floatingParticles.map((particle) => (
+    <section
+      className={`py-24 ${
+        theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-800"
+      } py-16`}
+    >
+      {/* Hero */}
+      <div className="max-w-6xl mx-auto px-6 text-center">
+        <motion.h1
+          className="text-4xl sm:text-5xl font-extrabold mb-6 text-primary-blue"
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Who We Are
+        </motion.h1>
+        <p className="text-lg font-medium max-w-3xl mx-auto">
+          The <strong>House of Humanity Charitable Trust</strong> is a movement
+          of people who believe in the power of compassion, action, and dignity
+          — aiming to break cycles of poverty, hunger, and inequality through
+          holistic, sustainable community-led solutions.
+        </p>
+      </div>
+
+      {/* Stats */}
+      <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto px-6">
+        {stats.map((item, idx) => (
           <motion.div
-            key={particle}
-            className="absolute w-2 h-2 rounded-full bg-orange-500/40"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, Math.random() * 20 - 10, 0],
-              opacity: [0.3, 0.8, 0.3],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-              ease: "easeInOut",
-            }}
-          />
+            key={idx}
+            className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.1, duration: 0.4 }}
+          >
+            <div className="text-4xl mb-2">{item.icon}</div>
+            <h3 className="text-3xl font-bold text-primary-blue dark:text-fresh-green">
+              {item.number}
+            </h3>
+            <p className="font-medium text-gray-600 dark:text-gray-300">
+              {item.label}
+            </p>
+          </motion.div>
         ))}
+      </div>
 
-        {/* Animated Geometric Shapes */}
+      {/* Mission */}
+      <div className="max-w-6xl mx-auto mt-24 px-6">
         <motion.div
-          className="absolute top-[-100px] left-[-150px] w-[300px] h-[300px] bg-orange-300/20 rounded-xl z-0"
-          animate={{
-            x: [0, 20, -10, 0],
-            rotate: [0, 360],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut",
-            rotate: { duration: 60, repeat: Infinity, ease: "linear" },
-          }}
-        />
+          className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/30 dark:to-green-900/30 rounded-2xl p-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl font-bold text-primary-blue dark:text-white mb-4">
+            Our Mission
+          </h2>
+          <p className="text-lg font-medium dark:text-gray-300 mb-6">
+            We exist to create long-term, sustainable solutions for underserved
+            communities — not just offering aid, but building frameworks for
+            empowerment and dignity. Our approach is rooted in empathy,
+            inclusion, and community partnership.
+          </p>
+          <p className="text-lg font-medium dark:text-gray-300">
+            From addressing basic needs like hunger and hygiene to enabling
+            education, recovery, and livelihoods — we envision a society where
+            no one is left behind, and every person has the opportunity to live
+            with health, pride, and purpose.
+          </p>
 
-        <motion.div
-          className="absolute bottom-[-120px] right-[-140px] w-[400px] h-[400px] bg-red-300/20 rounded-xl z-0"
-          animate={{
-            x: [0, -30, 10, 0],
-            rotate: [0, -360],
-            scale: [1, 0.9, 1],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "easeInOut",
-            rotate: { duration: 45, repeat: Infinity, ease: "linear" },
-          }}
-        />
+          <div className="bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-900/20 dark:to-blue-900/20 mt-8 rounded-xl p-6 border-l-4 border-green-400 dark:border-green-600">
+            <p className="text-lg font-semibold text-primary-blue dark:text-fresh-green">
+              “We don’t work for communities. We work with them — hand in hand,
+              heart to heart.”
+            </p>
+          </div>
+        </motion.div>
+      </div>
 
-        {/* Morphing Background Blobs */}
-        <motion.div
-          className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full mix-blend-multiply filter blur-xl opacity-20 bg-gradient-to-r from-purple-300 to-pink-300"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, 50, -30, 0],
-            y: [0, -20, 40, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-
-        <div className="relative max-w-7xl mx-auto flex flex-col md:flex-row gap-14 md:gap-20 items-center z-10">
-          {/* Left Image with Advanced Effects */}
-          <motion.div
-            className="w-full md:w-1/2"
-            initial={{ opacity: 0, y: 30, scale: 1.2 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.4 }}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
-          >
+      {/* History Timeline */}
+      <div className="max-w-6xl mx-auto mt-24 px-6">
+        <h2 className="text-3xl font-bold text-primary-blue dark:text-white mb-10 text-center">
+          Our Story
+        </h2>
+        <div className="space-y-12 border-l-4 border-primary-blue dark:border-fresh-green pl-6">
+          {[
+            {
+              year: "2020",
+              title: "The Beginning",
+              text: "Amid COVID-19, our founders began feeding 200+ people daily — leading to the foundation of HoH.",
+            },
+            {
+              year: "2021",
+              title: "Growth into a Movement",
+              text: "Our small team grew rapidly — addressing hunger, hygiene, education, gender empowerment & more.",
+            },
+            {
+              year: "2022–2024",
+              title: "Expanding Reach",
+              text: "With 180+ volunteers, we evolved from relief to transformation: launching major education, health, and nutrition projects.",
+            },
+          ].map((item, idx) => (
             <motion.div
-              className="relative rounded-2xl shadow-2xl overflow-hidden group"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
+              key={idx}
+              className="relative"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.2, duration: 0.5 }}
             >
-              {/* Shimmer Overlay */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full z-10"
-                transition={{ duration: 0.6 }}
-              />
-
-              {/* Glowing Border */}
-              <motion.div
-                className="absolute inset-0 rounded-2xl p-1 bg-gradient-to-r from-orange-500 to-red-500"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 0.6 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="w-full h-full rounded-2xl bg-current" />
-              </motion.div>
-
-              <div className="relative w-full h-64 md:h-80 lg:h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-orange-100 to-red-100">
-                <motion.img
-                  src="/Gallery/image4.webp"
-                  alt="About Image"
-                  className="relative w-full h-full object-cover"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.5 }}
-                />
-
-                {/* Image Overlay Effects */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </div>
-
-              {/* Floating Icons */}
-              <motion.div
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-orange-500/80 flex items-center justify-center"
-                animate={{
-                  y: [0, -10, 0],
-                  rotate: [0, 360],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <span className="text-white text-sm">♥</span>
-              </motion.div>
+              <div className="absolute -left-3 top-1 w-6 h-6 rounded-full bg-primary-blue dark:bg-fresh-green border-4 border-white"></div>
+              <h3 className="text-xl font-bold mb-1 pl-4">
+                {item.year}: {item.title}
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300 pl-4">
+                {item.text}
+              </p>
             </motion.div>
-          </motion.div>
-
-          {/* Right Content with Enhanced Animations */}
-          <motion.div
-            className="w-full md:w-1/2 space-y-5"
-            initial="hidden"
-            whileInView="visible"
-            variants={{
-              hidden: {},
-              visible: { transition: { staggerChildren: 0.15 } },
-            }}
-            viewport={{ once: true, amount: 0.4 }}
-          >
-            {/* Animated Title with Gradient Text */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              <motion.h2 className="text-4xl sm:text-5xl text-primary-blue font-extrabold leading-tight">
-                About Us
-              </motion.h2>
-
-              {/* Underline Animation */}
-              <motion.div
-                className="h-1 rounded-full mt-2 bg-gradient-to-r from-blue-500 to-purple-500"
-                initial={{ width: 0 }}
-                whileInView={{ width: "100%" }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              />
-            </motion.div>
-
-            {/* Animated Text with Typewriter Effect */}
-            <motion.p
-              className="text-lg sm:text-xl font-medium text-justify leading-relaxed text-dark-gray"
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.1, delay: 0.6 }}
-              >
-                Providing a solution to the problem should be the ultimate goal
-                of life. The Coronavirus lockdown on March 22, 2020, left
-                millions of homeless families stranded. That moment sparked two
-                young individuals to take action — serving food to over 200
-                people daily. This small act of kindness grew into what is now
-                the House of Humanity Charitable Trust, a team of over 150
-                members driving sustainable impact through education, nutrition,
-                and care.
-              </motion.span>
-            </motion.p>
-
-            {/* Enhanced Button with Ripple Effect */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-            >
-              <motion.button
-                className="text-white bg-primary-blue font-semibold rounded-xl px-8 py-4 mt-2 border-2 border-blue-600 transition-all duration-300"
-                whileHover={{
-                  scale: 1.05,
-                  backgroundColor: "#ffffff",
-                  color: "#2563eb",
-                  borderColor: "#2563eb",
-                }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => navigate("/about-us")}
-              >
-                Learn More
-              </motion.button>
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Animated Progress Indicators */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-          {[0, 1, 2].map((dot) => (
-            <motion.div
-              key={dot}
-              className="w-2 h-2 rounded-full bg-orange-500/60"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                delay: dot * 0.2,
-              }}
-            />
           ))}
         </div>
-      </section>
-    </div>
+      </div>
+
+      {/* Focus Areas */}
+      <div className="max-w-6xl mx-auto mt-24 px-6">
+        <h2 className="text-3xl font-bold text-primary-blue dark:text-white mb-10 text-center">
+          Our Focus Areas
+        </h2>
+        <div className="grid md:grid-cols-3 gap-8 text-center">
+          {[
+            { icon: "🍛", title: "Hunger Eradication" },
+            { icon: "🚰", title: "Health, Hygiene & Sanitation" },
+            { icon: "📚", title: "Education for All" },
+            { icon: "🏃‍♂️", title: "Youth & Sports Empowerment" },
+            { icon: "💼", title: "Urban Livelihoods" },
+            { icon: "👩‍🦰", title: "Women Empowerment" },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="text-5xl mb-3">{item.icon}</div>
+              <h4 className="text-lg font-semibold text-primary-blue dark:text-white">
+                {item.title}
+              </h4>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Founders */}
+      <div className="max-w-6xl mx-auto mt-24 px-6">
+        <h2 className="text-3xl font-bold text-primary-blue dark:text-white mb-10 text-center">
+          From the Founders
+        </h2>
+        <div className="grid md:grid-cols-2 gap-12">
+          {[
+            {
+              name: "Harsh Rao",
+              title: "Founder",
+              quote:
+                "After surviving cancer, I made it my life’s purpose to build a Cancer Wellness Center and an empowering orphanage for children to dream big.",
+            },
+            {
+              name: "Manthan Shah",
+              title: "Co-Founder",
+              quote:
+                "I believe urban CSR funding can drive deep grassroots impact. My goal is to connect the dots between corporate responsibility and community upliftment.",
+            },
+          ].map((person, idx) => (
+            <motion.div
+              key={idx}
+              className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl p-6 shadow-md border-l-4 border-fresh-green"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.2, duration: 0.5 }}
+            >
+              <h4 className="text-xl font-bold text-primary-blue dark:text-fresh-green mb-2">
+                {person.name}
+              </h4>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                {person.title}
+              </p>
+              <p className="italic text-gray-700 dark:text-gray-300">
+                "{person.quote}"
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
