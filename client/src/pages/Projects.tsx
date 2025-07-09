@@ -24,7 +24,7 @@ const ProjectsPage: React.FC = () => {
   // Helper to scroll to details
   const scrollToDetails = () => {
     if (detailsRef.current) {
-      detailsRef.current.scrollIntoView({ behavior: "smooth" });
+      detailsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -36,8 +36,13 @@ const ProjectsPage: React.FC = () => {
     }
   }, [location.state]);
 
+  // Always scroll smoothly when selectedProject changes (after click)
+  useEffect(() => {
+    scrollToDetails();
+  }, [selectedProject]);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-off-white via-white to-warm-light-blue dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-off-white via-white to-warm-light-blue dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 transition-colors duration-300" style={{ scrollBehavior: 'smooth' }}>
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 md:px-20 bg-gradient-to-r from-primary-blue/10 to-fresh-green/10 dark:from-primary-blue/20 dark:to-fresh-green/20">
         <div className="max-w-7xl mx-auto">
@@ -123,7 +128,7 @@ const ProjectsPage: React.FC = () => {
                 }`}
                 onClick={() => {
                   setSelectedProject(index);
-                  setTimeout(scrollToDetails, 100); // ensure state updates first
+                  // No need for setTimeout, useEffect will handle scroll
                 }}
               >
                 <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg group-hover:shadow-2xl transition-all duration-500">
