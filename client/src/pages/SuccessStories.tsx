@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeIn, staggerContainer } from '../utils/motion';
 import ImpactCard from '../components/ui/ImpactCard';
@@ -8,7 +8,7 @@ import StatsCard from '../components/ui/StatsCard';
 import ImagePlaceholder from '../components/ui/ImagePlaceholder';
 import Button from '../components/ui/Button';
 import { useTheme } from '../shared/contexts/ThemeContext';
-import { Star, Target } from 'lucide-react';
+import { Star, Target, Play } from 'lucide-react';
 
 interface Testimonial {
   name: string;
@@ -24,12 +24,12 @@ interface Outcome {
   imageUrl?: string;
   videoUrl?: string;
 }
-const testimonials: Testimonial[] = [
 
+const testimonials: Testimonial[] = [
   {
     name: 'Rucha Shukla',
     role: 'Donor',
-    experience: 'I wanted to celebrate my birthday with some underprivileged kids. House of Humanity Charitable Trust helped me with that in the best possible way. Harsh, the founder was extremely prompt at making it possible by arranging everything well in advance. Have made other donations in the past and as per my experience the NGO is doing an incredible job as they are a team of selfless dedicated individuals striving to make someone’s day every day! If you ever wish to donate for a good cause or volunteer or do something good for the society in general then the House of Humanity Charitable Trust is the place to go to! ',
+    experience: "I wanted to celebrate my birthday with some underprivileged kids. House of Humanity Charitable Trust helped me with that in the best possible way. Harsh, the founder was extremely prompt at making it possible by arranging everything well in advance. Have made other donations in the past and as per my experience the NGO is doing an incredible job as they are a team of selfless dedicated individuals striving to make someone's day every day! If you ever wish to donate for a good cause or volunteer or do something good for the society in general then the House of Humanity Charitable Trust is the place to go to! ",
     impact: 'For my birthday celebration, Harsh helped me serve Chinese food to kids at 2 different rural primary schools, where it was a dream for the kids to have Chinese food. The joyous smiles on the faces of the kids was the best impact the NGO helped me create for these underprivileged kids! They really want to help those in actual need!',
     imageUrl: '/images/Rucha Shukla.png',
   },
@@ -72,7 +72,7 @@ const testimonials: Testimonial[] = [
     name: 'Preeti Sharma',
     role: 'Donor',
     experience: 'My experience with the House of Humanity Charitable Trust has been very fulfilling. Seeing children receive school supplies, free pad drives , or patients getting proper medical care brings happiness and hope to them. This list is long, and I hope we can work together to give them reasons to smile, even in difficult situations.',
-    impact: "My time with the HOH has really changed me. I've seen how tough life can be for some people, which has made me want to help even more. For the community, our projects have brought them access to education, healthcare, and other resources they need. It's great to know that we’re making a real difference in their lives.",
+    impact: "My time with the HOH has really changed me. I've seen how tough life can be for some people, which has made me want to help even more. For the community, our projects have brought them access to education, healthcare, and other resources they need. It's great to know that we're making a real difference in their lives.",
     imageUrl: '/images/Preeti Sharma.jpg',
   },
   {
@@ -100,26 +100,30 @@ const testimonials: Testimonial[] = [
 
 const outcomes: Outcome[] = [
   {
-    title: "Aarav's Recovery – Pediatric Aid",
-    summary: "Aarav was born with a congenital heart defect. With help from our pediatric program, he underwent successful surgery and is now attending school with joy.",
-    imageUrl: "https://example.com/images/aarav.jpg",
-    videoUrl: "https://www.youtube.com/embed/sample_video_1",
+    title: "Blessed with the Blessings as we undertake a Glorious Project.",
+    summary: "Sitaare - A Beautiful Shelter home for Orphaned Girls is all set for a grand launch making a way to become Gujarat’s Best Shelter Home for Girls where every girl child will be nurtured to their full potential.",
+    videoUrl: "/video1.mp4",
   },
   {
-    title: "SSG Hospital Meal Drive",
-    summary: "We provided over 300 free meals to underprivileged families in the SSG pediatric ward every weekend for 3 months.",
-    imageUrl: "https://example.com/images/ssg-meal-drive.jpg",
+    title: "Project RAAH Inauguration & Educational Kit Distribution",
+    summary: "Project RAAH was inaugurated at the Malu Village with a Beautiful #treeplantation followed by #educational Kits for 30 Beautiful Bunch of #kids which included School Bags, Water Bottles, Pencil Box and Notebooks.",
+    videoUrl: "/video2.mp4",
   },
   {
-    title: "Education Support for Reena",
-    summary: "Reena, an orphaned girl adopted under our child support scheme, topped her class this year. She's now enrolled in a private school with our scholarship.",
-    imageUrl: "https://example.com/images/reena.jpg",
+    title: "Celebrating 5 Years of Humanity & Impact",
+    summary: "5 years of kindness, impact, and humanity! ❤️✨ Grateful for every moment, every smile, and every life we’ve touched. Here’s to many more years of making a difference! #5YearsOfHumanity #HouseOfHumanity #Gratitude #vadodara #ngo #team #youth #dream #instagood",
+    videoUrl: "/video3.mp4",
   },
+  
 ];
 
 const SuccessStories: React.FC = () => {
   const [selected, setSelected] = useState<Testimonial | null>(null);
   const { theme } = useTheme();
+  // State to track which video is playing
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+  // Refs for each video
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   return (
     <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 mt-24 min-h-screen transition-colors duration-300">
@@ -169,60 +173,8 @@ const SuccessStories: React.FC = () => {
         </div>
       </motion.section>
 
-      {/* Outcomes Section */}
-      <motion.section
-        className="py-12 px-6 lg:px-20 bg-gray-50 dark:bg-gray-800"
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <h2 className="text-3xl font-semibold mb-6 text-center text-primary-blue dark:text-fresh-green flex items-center justify-center gap-2">
-          <Target className="inline-block text-fresh-green dark:text-primary-blue" size={32} /> Outcomes – Real Impact Stories
-        </h2>
-        <div className="space-y-10">
-          {outcomes.map((story, index) => (
-            <motion.div
-              key={index}
-              className="bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6 flex flex-col md:flex-row gap-6 border border-warm-light-blue dark:border-gray-700"
-              variants={fadeIn('up', index * 0.15)}
-              whileHover={{ scale: 1.01 }}
-            >
-              {story.imageUrl ? (
-                <img
-                  src={story.imageUrl}
-                  alt={story.title}
-                  className="w-full md:w-1/3 h-60 object-cover rounded-xl"
-                />
-              ) : (
-                <ImagePlaceholder text={story.title} width="100%" height="240px" />
-              )}
-              <div className="flex-1 flex flex-col justify-center">
-                <h3 className="text-2xl font-bold text-primary-blue dark:text-fresh-green">{story.title}</h3>
-                <p className="text-gray-700 dark:text-gray-200 mt-2">{story.summary}</p>
-                {story.videoUrl && (
-                  <div className="mt-4">
-                    <iframe
-                      width="100%"
-                      height="250"
-                      src={story.videoUrl}
-                      title="Outcome video"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="rounded-xl border border-primary-blue dark:border-fresh-green"
-                    ></iframe>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-  
-
-      {/* Add testimonial form CTA at the bottom */}
-      <div className="flex justify-center my-12 px-4">
+        {/* Add testimonial form CTA at the bottom */}
+        <div className="flex justify-center my-12 px-4">
         <a
           href="https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true"
           target="_blank"
@@ -232,6 +184,107 @@ const SuccessStories: React.FC = () => {
           Want to share your story? Click here!
         </a>
       </div>
+
+      {/* Outcomes Section */}
+      <motion.section
+        className="py-12 px-6 lg:px-20 bg-gray-50 dark:bg-gray-800"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <h2 className="text-3xl font-semibold mb-8 text-center text-primary-blue dark:text-fresh-green flex items-center justify-center gap-2">
+          <Target className="inline-block text-fresh-green dark:text-primary-blue" size={32} /> Our Impact in Action
+        </h2>
+        <p className="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+          Experience our real impact through these authentic stories from our community outreach programs
+        </p>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {outcomes.map((story, index) => (
+            <motion.div
+              key={index}
+              className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-4 border border-warm-light-blue dark:border-gray-700 group hover:shadow-xl transition-all duration-300"
+              variants={fadeIn('up', index * 0.1)}
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="flex flex-col h-full">
+                {/* Video Container */}
+                <div className="relative mb-4 mx-auto">
+                  {story.videoUrl ? (
+                    <div className="relative w-full max-w-[420px] mx-auto">
+                      <video
+                        ref={el => { videoRefs.current[index] = el; }}
+                        className="w-full h-[520px] object-cover rounded-xl border-2 border-primary-blue dark:border-fresh-green shadow-md"
+                        controls
+                        preload="metadata"
+                        style={{ aspectRatio: '9/16' }}
+                        onPlay={() => setPlayingIndex(index)}
+                        onPause={() => setPlayingIndex(null)}
+                      >
+                        <source src={story.videoUrl} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                      {/* Custom Play Overlay */}
+                      {playingIndex !== index && (
+                        <button
+                          className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 rounded-xl transition-opacity duration-200 z-10"
+                          onClick={() => {
+                            const vid = videoRefs.current[index];
+                            if (vid) {
+                              vid.play();
+                            }
+                          }}
+                          tabIndex={-1}
+                          type="button"
+                        >
+                          <Play className="text-white" size={64} />
+                        </button>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="w-full max-w-[420px] mx-auto">
+                      <ImagePlaceholder 
+                        text={story.title} 
+                        width="100%" 
+                        height="520px" 
+                        className="rounded-xl border-2 border-primary-blue dark:border-fresh-green" 
+                      />
+                    </div>
+                  )}
+                </div>
+                
+                {/* Content */}
+                <div className="flex-1 text-center px-2">
+                  <h3 className="text-lg font-bold text-primary-blue dark:text-fresh-green mb-2 leading-tight">
+                    {story.title}
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-200 text-sm leading-relaxed">
+                    {story.summary}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        
+        {/* Call to action */}
+        <div className="text-center mt-12">
+          <p className="text-gray-600 dark:text-gray-300 mb-4">
+            Want to be part of our impact stories?
+          </p>
+          <Button
+            className="bg-primary-blue hover:bg-fresh-green text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            <a href="/get-involved">
+              Join Our Mission
+            </a>
+          </Button>
+        </div>
+      </motion.section>
+
+    
 
       {/* Testimonial Modal */}
       <AnimatePresence>
@@ -264,7 +317,7 @@ const SuccessStories: React.FC = () => {
               <h3 className="text-2xl font-bold text-primary-blue dark:text-fresh-green">{selected.name}</h3>
               <p className="text-sm text-pink-600 dark:text-fresh-green">{selected.role}</p>
               <p className="mt-4 text-gray-700 dark:text-gray-200 whitespace-pre-line">{selected.experience}</p>
-              <p className="mt-2 text-gray-600 dark:text-gray-400 italic whitespace-pre-line">“{selected.impact}”</p>
+              <p className="mt-2 text-gray-600 dark:text-gray-400 italic whitespace-pre-line">"{selected.impact}"</p>
             </motion.div>
           </motion.div>
         )}

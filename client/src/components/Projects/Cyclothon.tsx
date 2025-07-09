@@ -23,17 +23,17 @@ const Cyclothon: React.FC = () => {
   ];
 
   return (
-    <section id="cyclothon" className="mb-24">
+    <section id="cyclothon" className="mb-24 dark:bg-gray-950 dark:text-gray-100">
       {/* Hero */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-green-500 via-blue-500 to-cyan-600 rounded-2xl mb-16">
-        <div className="absolute inset-0 bg-black bg-opacity-20" />
+      <div className="relative overflow-hidden bg-gradient-to-br from-green-500 via-blue-500 to-cyan-600 rounded-2xl mb-16 dark:from-gray-900 dark:via-blue-900 dark:to-cyan-900">
+        <div className="absolute inset-0 bg-black bg-opacity-20 dark:bg-opacity-60" />
         <div className="relative z-10 px-8 py-16 md:py-20">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold backdrop-blur-sm mb-6">
+              <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold backdrop-blur-sm mb-6 dark:bg-gray-800 dark:bg-opacity-40">
                 Youth Fitness Drive
               </span>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight dark:text-cyan-200">
                 Project
                 <span className="block text-cyan-100 text-5xl md:text-6xl mt-2">
                   Cyclothon
@@ -72,13 +72,13 @@ const Cyclothon: React.FC = () => {
       </div>
 
       {/* About Section */}
-      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 my-16">
+      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 my-16 dark:bg-gray-900 dark:border dark:border-gray-700">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6 dark:text-cyan-200">
               About Project Cyclothon
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
+            <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6 dark:from-cyan-700 dark:to-blue-700" />
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -121,7 +121,7 @@ const Cyclothon: React.FC = () => {
           {whatWeDo.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+              className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 group dark:bg-gray-900 dark:border dark:border-gray-700"
             >
               <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                 {item.icon}
@@ -151,7 +151,7 @@ const Cyclothon: React.FC = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 dark:bg-gray-900 dark:border dark:border-gray-700"
             >
               <div className="text-4xl mb-3">{stat.icon}</div>
               <div className="text-4xl font-bold text-primary-blue mb-2">

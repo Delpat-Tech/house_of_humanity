@@ -9,7 +9,10 @@ const BlanketDrive: React.FC = () => {
   ];
 
   return (
-    <section id="blanket-drive" className="mb-24">
+    <section
+      id="blanket-drive"
+      className="mb-24 dark:bg-gray-950 dark:text-gray-100"
+    >
       {/* Hero */}
       <div className="relative overflow-hidden bg-gradient-to-br from-yellow-700 via-orange-500 to-red-600 rounded-2xl mb-16">
         <div className="absolute inset-0 bg-black bg-opacity-20" />
@@ -17,13 +20,13 @@ const BlanketDrive: React.FC = () => {
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="mb-6">
-                <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold uppercase backdrop-blur-sm">
+                <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold uppercase backdrop-blur-sm dark:bg-gray-800 dark:bg-opacity-40">
                   Winter Relief Drive
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight dark:text-yellow-200">
                 Project
-                <span className="block text-yellow-100 text-5xl md:text-6xl mt-2">
+                <span className="block text-yellow-100 text-5xl md:text-6xl mt-2 dark:text-orange-200">
                   Blanket Drive
                 </span>
               </h1>
@@ -145,7 +148,7 @@ const BlanketDrive: React.FC = () => {
           ].map((item, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+              className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 group dark:bg-gray-900 dark:border dark:border-gray-700"
             >
               <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                 {item.icon}
@@ -175,7 +178,7 @@ const BlanketDrive: React.FC = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 dark:bg-gray-900 dark:border dark:border-gray-700"
             >
               <div className="text-3xl mb-3">{stat.icon}</div>
               <div className="text-3xl font-bold text-primary-blue mb-2">
