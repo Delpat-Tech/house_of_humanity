@@ -1,5 +1,4 @@
 import React from "react";
-import TrapeziumButton from "./TrapeziumButton";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -7,12 +6,13 @@ type CardProps = {
   title: string;
   subtitle: string;
   description: string;
+  className?: string;
 };
 
-const WorkCard: React.FC<CardProps> = ({ title, subtitle, description }) => {
+const WorkCard: React.FC<CardProps> = ({ title, subtitle, description,  className = "", }) => {
   const navigate = useNavigate();
   return (
-    <div className="w-full max-w-[25rem] min-h-[28rem] bg-gray-100 border-b-[6px] border-teal-500 shadow-2xl rounded-lg overflow-hidden flex flex-col items-center p-6">
+    <div className="w-full max-w-[25rem] min-h-[28rem] bg-white border-b-[6px] border-teal-500 shadow-2xl rounded-lg overflow-hidden flex flex-col items-center p-6">
       {/* Title */}
       <motion.h2
         className="text-[26px] font-bold text-primary-blue text-center mt-4 mb-2"

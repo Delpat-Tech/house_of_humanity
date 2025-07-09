@@ -131,7 +131,7 @@ const WhatWeDo: React.FC = () => {
           viewport={{ once: false, amount: 0.2 }}
         >
           <motion.h2
-            className="text-3xl font-bold text-center text-dark-gray dark:text-gray-200 mb-12"
+            className="text-3xl font-bold text-center text-primary-blue mb-12"
             variants={categoryVariants}
           >
             Our Impact Areas
@@ -197,7 +197,7 @@ const WhatWeDo: React.FC = () => {
         >
           <div className="text-center mb-12">
             <motion.h2
-              className="text-4xl font-bold text-dark-gray dark:text-gray-200 mb-4"
+              className="text-4xl font-bold text-primary-blue  mb-4"
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
@@ -223,7 +223,7 @@ const WhatWeDo: React.FC = () => {
               .map((project: any) => (
                 <motion.div
                   key={project.title}
-                  className="flex justify-center"
+                  className="flex justify-center text-dark-gray "
                   variants={cardVariants}
                   initial="hidden"
                   whileInView="visible"

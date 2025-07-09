@@ -1,35 +1,35 @@
 import React from "react";
 import ImagePlaceholder from "../ui/ImagePlaceholder";
 
-const BlanketDrive: React.FC = () => {
+const SweetDistribution: React.FC = () => {
   const stats = [
-    { number: "3,000+", label: "Individuals Reached", icon: "🧣" },
-    { number: "3", label: "Years of Operation", icon: "📅" },
-    { number: "7", label: "Nights of Giving (Dec 25–31)", icon: "🌙" },
+    { number: "2,500+", label: "Individuals Reached Every Year", icon: "🍬" },
+    { number: "1", label: "Night of Celebration", icon: "🪔" },
+    { number: "100+", label: "Volunteers Participating", icon: "🙏" },
   ];
 
   return (
-    <section id="blanket-drive" className="mb-24">
+    <section id="sweet-distribution" className="mb-24">
       {/* Hero */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-600 via-orange-500 to-red-600 rounded-2xl mb-16">
+      <div className="relative overflow-hidden bg-gradient-to-br from-purple-600 via-yellow-500 to-orange-500 rounded-2xl mb-16">
         <div className="absolute inset-0 bg-black bg-opacity-20" />
         <div className="relative z-10 px-8 py-16 md:py-20">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="mb-6">
                 <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold uppercase backdrop-blur-sm">
-                  Winter Relief Drive
+                  Diwali Drive
                 </span>
               </div>
               <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
                 Project
                 <span className="block text-yellow-100 text-5xl md:text-6xl mt-2">
-                  Blanket Drive
+                  Sweet Distribution
                 </span>
               </h1>
               <p className="text-xl text-yellow-100 mb-8 leading-relaxed">
-                Spreading warmth and dignity to Vadodara’s homeless during the
-                coldest nights of the year.
+                Spreading joy to Vadodara’s unsung heroes on Diwali night
+                through thoughtful gestures and sweets.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
                 {stats.map((s, i) => (
@@ -45,12 +45,59 @@ const BlanketDrive: React.FC = () => {
               </div>
             </div>
             <div className="relative">
-              <ImagePlaceholder
-                text="Blanket Distribution Image"
-                width="100%"
-                height="300px"
-                className="rounded-xl shadow-2xl border-4 border-white/20"
+              <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                <img
+                  src="sweet-drive-hero.webp"
+                  alt="sweet distribution"
+                  width="100%"
+                  className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* About project */}
+
+      <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 md:p-12 my-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue dark:text-white mb-6">
+              About Project Sweet Distribution
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-pink-500 mx-auto mb-6" />
+          </div>
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
+            <div>
+              <p className="text-lg text-dark-gray dark:text-gray-300 leading-relaxed mb-6">
+                Festivals are a time of joy — and with Sweet Distribution, we
+                make sure everyone shares in it. Our initiative focuses on
+                bringing festive cheer to underprivileged children by
+                distributing sweets like ladoos and chocolates during major
+                festivals, especially Diwali.
+              </p>
+              <div className="bg-gradient-to-r from-yellow-100/60 to-pink-100/40 dark:from-yellow-900/20 dark:to-pink-900/20 rounded-lg p-6">
+                <h4 className="font-semibold mb-2 text-primary-blue dark:text-white">
+                  Why It Matters
+                </h4>
+                <p className="text-primary-blue dark:text-pink-300 font-medium text-lg">
+                  Many children in slum communities don't get to enjoy simple
+                  joys like sweets during festivals. With this project, we
+                  ensure they feel seen, valued, and celebrated.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative">
+              <img
+                src="/Gallery/sweetdrive.jpg"
+                alt="Sweet Distribution"
+                className="rounded-xl shadow-2xl w-full h-[300px] object-cover"
               />
+              <div className="absolute -top-4 -right-4 bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                Diwali Sweet Drive
+              </div>
             </div>
           </div>
         </div>
@@ -64,25 +111,19 @@ const BlanketDrive: React.FC = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
         </div>
-        <div className="grid md:grid-cols-3 gap-8 text-center">
+        <div className="grid md:grid-cols-2 gap-8 text-center">
           {[
             {
-              title: "Blanket Distribution",
+              title: "Diwali Sweet Distribution",
               description:
-                "Provide blankets to those sleeping on the streets during winter nights.",
-              icon: "🧤",
+                "Distribute sweet boxes to night watchmen, cobblers, and rag pickers on Diwali night.",
+              icon: "🍱",
             },
             {
-              title: "Volunteer Engagement",
+              title: "Recognizing Unsung Heroes",
               description:
-                "Volunteers act as Santas, spreading festive cheer and warmth.",
-              icon: "🎅",
-            },
-            {
-              title: "Focus on Vulnerable",
-              description:
-                "Identify and reach the most exposed and vulnerable across the city.",
-              icon: "❤️",
+                "Celebrate and honor those who work quietly behind the scenes during festivities.",
+              icon: "🌟",
             },
           ].map((item, idx) => (
             <div
@@ -92,7 +133,7 @@ const BlanketDrive: React.FC = () => {
               <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                 {item.icon}
               </div>
-              <h4 className="text-xl font-bold text-red-600 mb-4">
+              <h4 className="text-xl font-bold text-primary-blue mb-4">
                 {item.title}
               </h4>
               <p className="text-dark-gray">{item.description}</p>
@@ -102,15 +143,15 @@ const BlanketDrive: React.FC = () => {
       </div>
 
       {/* Impact */}
-      <div className="bg-gradient-to-br from-orange-50 to-red-100 rounded-2xl p-8 md:p-12 mb-12">
+      <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-2xl p-8 md:p-12 mb-12">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
             Our Impact
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
           <p className="text-lg text-dark-gray max-w-3xl mx-auto">
-            Over 3,000 individuals reached in 3 years, receiving not just
-            blankets but dignity and care during cold nights.
+            Since inception, the drive has brought smiles to over 2,500
+            individuals every year, spreading joy and Diwali cheer.
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -119,8 +160,8 @@ const BlanketDrive: React.FC = () => {
               key={index}
               className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              <div className="text-3xl mb-3">{stat.icon}</div>
-              <div className="text-3xl font-bold text-red-700 mb-2">
+              <div className="text-4xl mb-3">{stat.icon}</div>
+              <div className="text-3xl font-bold text-primary-blue mb-2">
                 {stat.number}
               </div>
               <div className="text-dark-gray font-medium">{stat.label}</div>
@@ -132,4 +173,4 @@ const BlanketDrive: React.FC = () => {
   );
 };
 
-export default BlanketDrive;
+export default SweetDistribution;

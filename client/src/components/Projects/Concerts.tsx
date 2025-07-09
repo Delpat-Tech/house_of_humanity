@@ -48,12 +48,15 @@ const Concerts: React.FC = () => {
               </div>
             </div>
             <div className="relative">
-              <ImagePlaceholder
-                text="Concert Stage and Crowd"
-                width="100%"
-                height="300px"
-                className="rounded-xl shadow-xl border-4 border-white/20"
-              />
+              <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                    <img
+                      src="/concerts.jpg"
+                      alt="Concerts for kids"
+                      width="100%"
+                      className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
+                    />
+                  </div>
+                 
             </div>
           </div>
         </div>
@@ -82,12 +85,11 @@ const Concerts: React.FC = () => {
               </div>
             </div>
             <div className="relative">
-              <ImagePlaceholder
-                text="Audience enjoying live concert"
-                width="100%"
-                height="250px"
-                className="rounded-xl shadow-lg"
-              />
+              <img
+                  src="/concerts-about.jpg"
+                  alt="Live Concert"
+                  className="rounded-xl shadow-lg w-[28rem] object-cover"
+                />
             </div>
           </div>
         </div>
@@ -106,7 +108,7 @@ const Concerts: React.FC = () => {
               className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 group"
             >
               <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
-              <h4 className="text-xl font-bold text-purple-700 mb-4">{item.title}</h4>
+              <h4 className="text-xl font-bold text-primary-blue mb-4">{item.title}</h4>
               <p className="text-dark-gray">{item.description}</p>
             </div>
           ))}
@@ -114,7 +116,7 @@ const Concerts: React.FC = () => {
       </div>
 
       {/* Impact */}
-      <div className="bg-gradient-to-br from-pink-50 to-purple-100 rounded-2xl p-8 md:p-12 mb-12">
+      <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-2xl p-8 md:p-12 mb-12">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">Our Impact</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
@@ -128,8 +130,8 @@ const Concerts: React.FC = () => {
               key={index}
               className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              <div className="text-3xl mb-3">{stat.icon}</div>
-              <div className="text-3xl font-bold text-purple-700 mb-2">{stat.number}</div>
+              <div className="text-4xl mb-3">{stat.icon}</div>
+              <div className="text-3xl font-bold text-primary-blue mb-2">{stat.number}</div>
               <div className="text-dark-gray font-medium">{stat.label}</div>
             </div>
           ))}

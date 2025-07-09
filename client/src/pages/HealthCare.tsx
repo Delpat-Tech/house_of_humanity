@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import PadHouse from "../components/Projects/PadHouse";
 import RaktSetu from "../components/Projects/RaktSetu";
 import Saharaa from "../components/Projects/Saharaa";
+import ImagePlaceholder from "../components/ui/ImagePlaceholder";
 
 const HealthCare: React.FC = () => {
   const navigate = useNavigate();
@@ -16,6 +17,65 @@ const HealthCare: React.FC = () => {
     { number: "83", label: "Healthcare Facilities", icon: "🏥" },
     { number: "2,500+", label: "Blood Units Saved", icon: "🩸" },
     { number: "75+", label: "Institutions Covered", icon: "🏢" },
+  ];
+
+  const whyItMatters = [
+    {
+      step: "01",
+      title: "Poor Health",
+      description:
+        "Lack of access to menstrual hygiene products and education can lead to poor health among girls.",
+      image: "Health impact illustration",
+    },
+    {
+      step: "02",
+      title: "Educational Barriers for Girls",
+      description:
+        "Girls miss school and even drop out due to lack of proper menstrual hygiene products and education.",
+      image: "Educational impact on girls",
+    },
+    {
+      step: "03",
+      title: "Cultural Taboos & Social Isolation",
+      description:
+        "Long-held taboos around menstruation and health issues lead to social isolation and delayed medical interventions.",
+      image: "Cultural barriers in healthcare",
+    },
+    {
+      step: "04",
+      title: "Emergency Blood Shortages",
+      description:
+        "Patients in emergencies often suffer due to lack of access to immediate blood supply.",
+      image: "Emergency need illustration",
+    },
+    {
+      step: "05",
+      title: "Awareness Gap",
+      description:
+        "There’s limited awareness around regular blood donation and its life-saving importance.",
+      image: "Awareness campaign visual",
+    },
+    {
+      step: "06",
+      title: "Chronic Illness Burden",
+      description:
+        "Chronic conditions like thalassemia demand frequent transfusions, which can be life-threatening without timely supply.",
+      image: "Chronic illness support needs",
+    },
+    {
+      step: "76",
+      title: "Limited Recovery Mobility",
+      description:
+        "Injured individuals without proper support equipment face limited movement, significantly delaying their recovery process.",
+      image: "Recovery mobility challenges",
+    },
+    {
+      step: "08",
+      title: "Financial Strain on Families",
+      description:
+        "Recovering families often can't afford essential equipment like beds and walkers, impacting their healing journey.",
+      image: "Healthcare financial burden",
+    },
   ];
 
   return (
@@ -84,11 +144,64 @@ const HealthCare: React.FC = () => {
         <Saharaa />
       </div>
 
-      {/* Get Involved Section */}
-      <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-xl p-8 md:p-12 mb-16">
+      {/* Why It Matters Section */}
+      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
-            Get Involved in Healthcare
+            Why It Matters
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
+          <p className="text-lg text-dark-gray max-w-3xl mx-auto">
+            Understanding the critical healthcare challenges that drive our
+            mission to create lasting impact in communities.
+          </p>
+        </div>
+
+        <div className="relative">
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-fresh-green to-primary-blue rounded-full hidden md:block"></div>
+
+          <div className="space-y-12">
+            {whyItMatters.map((matter, index) => (
+              <div
+                key={index}
+                className={`flex items-center gap-8 ${
+                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
+              >
+                <div className="flex-1">
+                  <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="bg-gradient-to-r from-fresh-green to-primary-blue text-white rounded-full w-12 h-12 flex items-center justify-center font-bold">
+                        {matter.step}
+                      </div>
+                      <h3 className="text-xl font-bold text-primary-blue">
+                        {matter.title}
+                      </h3>
+                    </div>
+                    <p className="text-dark-gray leading-relaxed">
+                      {matter.description}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <ImagePlaceholder
+                    text={matter.image}
+                    width="100%"
+                    height="200px"
+                    className="rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Get Involved Section */}
+      <div className="p-8 md:p-12 mb-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
+            Every Life Matters
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-pink-500 to-blue-600 mx-auto mb-6"></div>
           <p className="text-lg text-dark-gray max-w-3xl mx-auto">

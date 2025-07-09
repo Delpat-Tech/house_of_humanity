@@ -34,8 +34,9 @@ const HouseOfHappiness = () => {
               </span>
             </h1>
             <p className="text-xl text-yellow-100 mb-8 font-medium leading-relaxed max-w-3xl mx-auto">
-              From sweet distribution and blanket drives to concerts and
-              gift-giving — we build moments of joy for underserved communities.
+              From sweet distribution and blanket drives to concerts,
+              gift-giving, cyclothons, and marathons — we build moments of joy
+              and togetherness for underserved communities.
             </p>
           </div>
         </div>
@@ -45,13 +46,13 @@ const HouseOfHappiness = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
       </div>
 
-      <div className="bg-gradient-to-br from-yellow-100/50 to-pink-100/50 rounded-2xl p-8 md:p-12 mb-16">
+      <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20  rounded-2xl p-8 md:p-12 mb-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-yellow-700 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
             Our Happiness Impact
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-pink-500 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg text-dark-gray max-w-3xl mx-auto">
             Through joyful initiatives like gifting, concerts, and celebrations,
             we've touched thousands of lives—spreading warmth, smiles, and
             unforgettable moments.
@@ -65,10 +66,10 @@ const HouseOfHappiness = () => {
               className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               <div className="text-4xl mb-3">{stat.icon}</div>
-              <div className="text-3xl font-bold text-yellow-600 mb-2">
+              <div className="text-3xl font-bold text-primary-blue mb-2">
                 {stat.number}
               </div>
-              <div className="text-gray-700 font-medium">{stat.label}</div>
+              <div className="text-dark-gray font-medium">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -84,10 +85,10 @@ const HouseOfHappiness = () => {
       <GiftingToy />
 
       {/* 🤝 Get Involved Section */}
-      <div className="bg-gradient-to-br from-yellow-100 via-rose-100 to-orange-100 rounded-xl p-8 md:p-12 my-16 shadow-xl">
+      <div className="p-8 md:p-12 my-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
-            Be Part of the Happiness
+            Be a Part of the Happiness
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-pink-500 mx-auto mb-6"></div>
           <p className="text-lg text-dark-gray max-w-3xl mx-auto font-medium">
@@ -112,7 +113,7 @@ const HouseOfHappiness = () => {
                 "Contribute new toys, sweets, or festival items to bring smiles to children and families.",
               buttonText: "Donate Now",
               color: "from-pink-500 to-red-500",
-              route: "/donate",
+              route: "/donate-for-a-cause",
             },
             {
               title: "Sponsor a Celebration",

@@ -1,149 +1,290 @@
-// import React from "react";
-// import { useNavigate } from "react-router-dom";
-// import { motion } from "framer-motion";
-// import { useTheme } from "../../shared/contexts/ThemeContext";
-
-// const About: React.FC = () => {
-//   const navigate = useNavigate();
-//   const { theme } = useTheme();
-
-//   return (
-//     <section className="bg-white/80 dark:bg-gray-700/80 px-4 sm:px-6 py-16 sm:py-20 md:py-24 transition-colors duration-300">
-//       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16 items-center">
-//         {/* Left section Image */}
-//         <motion.div
-//           className="w-full md:w-1/2"
-//           initial={{ opacity: 0, x: -60 }}
-//           whileInView={{ opacity: 1, x: 0 }}
-//           transition={{ duration: 0.8, ease: "easeOut" }}
-//           viewport={{ once: false, amount: 0.3 }}
-//         >
-//           <img
-//             src="/Gallery/image4.webp"
-//             alt="About Image"
-//             className="w-full max-w-[36rem] rounded-xl mt-4 mx-auto"
-//           />
-//         </motion.div>
-
-//         {/* Right section content */}
-//         <motion.div
-//           className="w-full md:w-1/2"
-//           initial={{ opacity: 0, x: 60 }}
-//           whileInView={{ opacity: 1, x: 0 }}
-//           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-//           viewport={{ once: false, amount: 0.3 }}
-//         >
-//           <motion.h1
-//             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center text-primary-blue dark:text-fresh-green transition-colors duration-300"
-//             whileInView={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.6 }}
-//             viewport={{ once: false, amount: 0.3 }}
-//           >
-//             About Us
-//           </motion.h1>
-
-//           <motion.p
-//             className="mt-6 mb-4 text-base text-dark-gray dark:text-gray-200 sm:text-lg md:text-xl font-medium text-justify transition-colors duration-300"
-//             initial={{ opacity: 0, y: 30 }}
-//             whileInView={{ opacity: 1, y: 0 }}
-//             transition={{ delay: 0.3, duration: 0.8 }}
-//             viewport={{ once: false, amount: 0.3 }}
-//           >
-//             Providing a solution to the problem should be the ultimate goal of
-//             life. The Corona Virus and the immediate lockdown that was imposed
-//             on the 22nd of March, 2020 left the entire nation locked down in
-//             their respective homes. But wait!! What about the millions of
-//             homeless families out there? That’s what made a pathway for 2 young
-//             guys who teamed up to serve the homeless families near their
-//             locality. That indeed was the beginning of a new era which we now
-//             call the House of Humanity Charitable Trust. Starting with serving
-//             food to 200 people daily amidst the lockdown, the team has now grown
-//             from 2 members to around 150 and has seen exponential growth over
-//             the past one and a half years.
-//           </motion.p>
-
-//           <motion.button
-//             whileHover={{ scale: 1.05 }}
-//             whileTap={{ scale: 0.95 }}
-//             className={`text-white text-sm sm:text-base md:text-xl font-semibold rounded-xl px-6 py-2 mt-4 transition-colors duration-300 border ${theme === 'dark' ? 'bg-fresh-green hover:bg-white hover:text-fresh-green hover:border-fresh-green border-fresh-green' : 'bg-primary-blue hover:bg-white hover:text-primary-blue hover:border-primary-blue border-primary-blue'}`}
-//             onClick={() => navigate("/about-us")}
-//           >
-//             About Us
-//           </motion.button>
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default About;
-
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useTheme } from "../../shared/contexts/ThemeContext";
+import { useNavigate } from "react-router-dom";
 
 const About: React.FC = () => {
   const navigate = useNavigate();
-  const { theme } = useTheme();
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Check if dark mode is active by looking at the document or body classes
+    const checkDarkMode = () => {
+      const isDark =
+        document.documentElement.classList.contains("dark") ||
+        document.body.classList.contains("dark") ||
+        document.documentElement.getAttribute("data-theme") === "dark";
+      setIsDarkMode(isDark);
+    };
+
+    checkDarkMode();
+
+    // Watch for theme changes
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class", "data-theme"],
+    });
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const floatingParticles = Array.from({ length: 8 }, (_, i) => i);
 
   return (
-    <section className="relative overflow-hidden rounded-2xl px-4 sm:px-6 py-16 sm:py-20 md:py-24 bg-gradient-to-br from-orange-100 to-red-100 dark:from-orange-900/40 dark:to-red-900/30 transition-colors duration-300">
-      {/* Decorative Gradient Blobs */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-orange-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
+    <div className=" transition-all duration-500 bg-gray-50">
+      <section
+        className={`relative overflow-hidden mt-24 px-4 sm:px-6 py-16 sm:py-20 md:py-24 transition-all duration-500 ${
+          isDarkMode
+            ? "bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-md"
+            : "bg-gradient-to-br from-orange-50 via-red-50 to-pink-50"
+        }`}
+      >
+        {/* Floating Particles */}
+        {floatingParticles.map((particle) => (
+          <motion.div
+            key={particle}
+            className="absolute w-2 h-2 rounded-full bg-orange-500/40"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              x: [0, Math.random() * 20 - 10, 0],
+              opacity: [0.3, 0.8, 0.3],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
 
-      <div className="relative max-w-7xl mx-auto flex flex-col md:flex-row gap-14 md:gap-20 items-center z-10">
-        {/* Left Image */}
+        {/* Animated Geometric Shapes */}
         <motion.div
-          className="w-full md:w-1/2"
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: false, amount: 0.3 }}
-        >
-          <div className="relative rounded-2xl shadow-2xl overflow-hidden">
-            <img
-              src="/Gallery/image4.webp"
-              alt="About Image"
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        </motion.div>
+          className="absolute top-[-100px] left-[-150px] w-[300px] h-[300px] bg-orange-300/20 rounded-xl z-0"
+          animate={{
+            x: [0, 20, -10, 0],
+            rotate: [0, 360],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+            rotate: { duration: 60, repeat: Infinity, ease: "linear" },
+          }}
+        />
 
-        {/* Right Content */}
         <motion.div
-          className="w-full md:w-1/2"
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: false, amount: 0.3 }}
-        >
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-primary-blue dark:text-white leading-tight mb-6">
-            About Us
-          </h2>
+          className="absolute bottom-[-120px] right-[-140px] w-[400px] h-[400px] bg-red-300/20 rounded-xl z-0"
+          animate={{
+            x: [0, -30, 10, 0],
+            rotate: [0, -360],
+            scale: [1, 0.9, 1],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut",
+            rotate: { duration: 45, repeat: Infinity, ease: "linear" },
+          }}
+        />
 
-          <p className="text-lg sm:text-xl font-medium text-dark-gray dark:text-gray-200 text-justify leading-relaxed">
-            Providing a solution to the problem should be the ultimate goal of life. The Coronavirus lockdown on March 22, 2020, left millions of homeless families stranded. That moment sparked two young individuals to take action — serving food to over 200 people daily. This small act of kindness grew into what is now the House of Humanity Charitable Trust, a team of over 150 members driving sustainable impact through education, nutrition, and care.
-          </p>
+        {/* Morphing Background Blobs */}
+        <motion.div
+          className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full mix-blend-multiply filter blur-xl opacity-20 bg-gradient-to-r from-purple-300 to-pink-300"
+          animate={{
+            scale: [1, 1.3, 1],
+            x: [0, 50, -30, 0],
+            y: [0, -20, 40, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className={`text-white font-semibold rounded-xl px-6 py-3 mt-6 border transition-all duration-300 ${
-              theme === "dark"
-                ? "bg-fresh-green hover:bg-white hover:text-fresh-green border-fresh-green"
-                : "bg-primary-blue hover:bg-white hover:text-primary-blue border-primary-blue"
-            }`}
-            onClick={() => navigate("/about-us")}
+        <div className="relative max-w-7xl mx-auto flex flex-col md:flex-row gap-14 md:gap-20 items-center z-10">
+          {/* Left Image with Advanced Effects */}
+          <motion.div
+            className="w-full md:w-1/2"
+            initial={{ opacity: 0, y: 30, scale: 1.2 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.4 }}
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
           >
-            Learn More
-          </motion.button>
-        </motion.div>
-      </div>
-    </section>
+            <motion.div
+              className="relative rounded-2xl shadow-2xl overflow-hidden group"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Shimmer Overlay */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full z-10"
+                transition={{ duration: 0.6 }}
+              />
+
+              {/* Glowing Border */}
+              <motion.div
+                className="absolute inset-0 rounded-2xl p-1 bg-gradient-to-r from-orange-500 to-red-500"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 0.6 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="w-full h-full rounded-2xl bg-current" />
+              </motion.div>
+
+              <div className="relative w-full h-64 md:h-80 lg:h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-orange-100 to-red-100">
+                <motion.img
+                  src="/Gallery/image4.webp"
+                  alt="About Image"
+                  className="relative w-full h-full object-cover"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.5 }}
+                />
+
+                {/* Image Overlay Effects */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </div>
+
+              {/* Floating Icons */}
+              <motion.div
+                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-orange-500/80 flex items-center justify-center"
+                animate={{
+                  y: [0, -10, 0],
+                  rotate: [0, 360],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <span className="text-white text-sm">♥</span>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Content with Enhanced Animations */}
+          <motion.div
+            className="w-full md:w-1/2 space-y-5"
+            initial="hidden"
+            whileInView="visible"
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.15 } },
+            }}
+            viewport={{ once: true, amount: 0.4 }}
+          >
+            {/* Animated Title with Gradient Text */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <motion.h2 className="text-4xl sm:text-5xl text-primary-blue font-extrabold leading-tight">
+                About Us
+              </motion.h2>
+
+              {/* Underline Animation */}
+              <motion.div
+                className="h-1 rounded-full mt-2 bg-gradient-to-r from-blue-500 to-purple-500"
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              />
+            </motion.div>
+
+            {/* Animated Text with Typewriter Effect */}
+            <motion.p
+              className="text-lg sm:text-xl font-medium text-justify leading-relaxed text-dark-gray"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.1, delay: 0.6 }}
+              >
+                Providing a solution to the problem should be the ultimate goal
+                of life. The Coronavirus lockdown on March 22, 2020, left
+                millions of homeless families stranded. That moment sparked two
+                young individuals to take action — serving food to over 200
+                people daily. This small act of kindness grew into what is now
+                the House of Humanity Charitable Trust, a team of over 150
+                members driving sustainable impact through education, nutrition,
+                and care.
+              </motion.span>
+            </motion.p>
+
+            {/* Enhanced Button with Ripple Effect */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            >
+              <motion.button
+                className="text-white bg-primary-blue font-semibold rounded-xl px-8 py-4 mt-2 border-2 border-blue-600 transition-all duration-300"
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: "#ffffff",
+                  color: "#2563eb",
+                  borderColor: "#2563eb",
+                }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate("/about-us")}
+              >
+                Learn More
+              </motion.button>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Animated Progress Indicators */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+          {[0, 1, 2].map((dot) => (
+            <motion.div
+              key={dot}
+              className="w-2 h-2 rounded-full bg-orange-500/60"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                delay: dot * 0.2,
+              }}
+            />
+          ))}
+        </div>
+      </section>
+    </div>
   );
 };
 
 export default About;
-

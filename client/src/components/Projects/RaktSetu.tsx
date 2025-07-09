@@ -49,37 +49,6 @@ const RaktSetu: React.FC = () => {
     },
   ];
 
-  const whyItMatters = [
-    {
-      step: "01",
-      title: "Emergency Shortages",
-      description:
-        "Patients in emergencies often suffer due to lack of access to immediate blood supply.",
-      image: "Emergency need illustration",
-    },
-    {
-      step: "02",
-      title: "Awareness Gap",
-      description:
-        "There’s limited awareness around regular blood donation and its life-saving importance.",
-      image: "Awareness campaign visual",
-    },
-    {
-      step: "03",
-      title: "Chronic Illness Burden",
-      description:
-        "Chronic conditions like thalassemia demand frequent transfusions, which can be life-threatening without timely supply.",
-      image: "Chronic illness support",
-    },
-    {
-      step: "04",
-      title: "Volunteer Dependency",
-      description:
-        "Having an active and responsive volunteer network can mean the difference between life and death.",
-      image: "Volunteer impact",
-    },
-  ];
-
   return (
     <section id="rakt-setu" className="mb-24">
       {/* Hero Section */}
@@ -155,8 +124,13 @@ const RaktSetu: React.FC = () => {
                 emergency blood supply. With hundreds of volunteers and
                 consistent donation drives, we ensure no one is left helpless in
                 times of crisis.
-                <br/>
-                Over time, Rakt Setu has evolved into a structured support system—connecting donors, hospitals, and patients through an efficient volunteer network. Alongside emergency response, we focus on education, chronic case adoption, and building long-term partnerships with healthcare providers to strengthen the city’s blood ecosystem.
+                <br />
+                Over time, Rakt Setu has evolved into a structured support
+                system—connecting donors, hospitals, and patients through an
+                efficient volunteer network. Alongside emergency response, we
+                focus on education, chronic case adoption, and building
+                long-term partnerships with healthcare providers to strengthen
+                the city’s blood ecosystem.
               </p>
               <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6">
                 <h4 className="font-semibold mb-2">Our Mission</h4>
@@ -238,53 +212,6 @@ const RaktSetu: React.FC = () => {
               <div className="text-dark-gray font-medium">{stat.label}</div>
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* Why It Matters */}
-      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
-            Why It Matters
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
-        </div>
-        <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-fresh-green to-primary-blue rounded-full hidden md:block" />
-          <div className="space-y-12">
-            {whyItMatters.map((item, index) => (
-              <div
-                key={index}
-                className={`flex items-center gap-8 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                <div className="flex-1">
-                  <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-xl p-6">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="bg-gradient-to-r from-fresh-green to-primary-blue text-white rounded-full w-12 h-12 flex items-center justify-center font-bold">
-                        {item.step}
-                      </div>
-                      <h3 className="text-xl font-bold text-primary-blue">
-                        {item.title}
-                      </h3>
-                    </div>
-                    <p className="text-dark-gray leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <ImagePlaceholder
-                    text={item.image}
-                    width="100%"
-                    height="200px"
-                    className="rounded-xl shadow-lg"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

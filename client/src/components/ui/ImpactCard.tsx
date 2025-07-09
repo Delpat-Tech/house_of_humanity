@@ -1,6 +1,18 @@
 import React from "react";
 import { IconType } from "react-icons";
-import { FaLeaf, FaFemale, FaTint, FaHandsHelping, FaGift, FaHospitalAlt, FaBookReader, FaCar, FaUsers, FaRunning, FaMusic } from "react-icons/fa";
+import {
+  FaLeaf,
+  FaFemale,
+  FaTint,
+  FaHandsHelping,
+  FaGift,
+  FaHospitalAlt,
+  FaBookReader,
+  FaCar,
+  FaUsers,
+  FaRunning,
+  FaMusic,
+} from "react-icons/fa";
 import { MdFoodBank } from "react-icons/md";
 import { IoMdSchool, IoMdBicycle } from "react-icons/io";
 import { BiSolidBlanket } from "react-icons/bi";
@@ -51,17 +63,19 @@ const ImpactCard: React.FC<ImpactCardProps> = ({
         </div>
 
         {/* Heading */}
-        <h3 className="text-2xl sm:text-3xl text-dark-gray dark:text-gray-200 mb-4 font-bold">
+        <h3 className="text-2xl sm:text-3xl text-primary-blue dark:text-gray-200 mb-4 font-bold">
           {count}
         </h3>
 
         {/* Impact icon */}
         <div className="bg-teal-600 p-2 sm:p-3 mb-4 text-3xl sm:text-4xl rounded-full text-white">
-          {IconComponent ? React.createElement(IconComponent as React.ComponentType) : null}
+          {IconComponent
+            ? React.createElement(IconComponent as React.ComponentType)
+            : null}
         </div>
 
         {/* Project Title */}
-        <p className="text-center mb-1 font-bold text-base sm:text-lg text-dark-gray dark:text-gray-200">
+        <p className="text-center mb-1 font-bold text-base sm:text-lg text-primary-blue dark:text-gray-200">
           {title}
         </p>
 

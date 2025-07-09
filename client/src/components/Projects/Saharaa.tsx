@@ -30,36 +30,7 @@ const Saharaa: React.FC = () => {
     },
   ];
 
-  const whyItMatters = [
-    {
-      step: "01",
-      title: "Limited Mobility",
-      description:
-        "Injured individuals without proper support equipment face limited movement, delaying recovery.",
-      image: "Mobility challenges",
-    },
-    {
-      step: "02",
-      title: "Financial Strain",
-      description:
-        "Recovering families often can't afford essential equipment like beds and walkers.",
-      image: "Economic burden visual",
-    },
-    {
-      step: "03",
-      title: "Mental Wellbeing",
-      description:
-        "Lack of proper recovery equipment can lead to emotional distress and reduced confidence.",
-      image: "Emotional support needed",
-    },
-    {
-      step: "04",
-      title: "Inclusive Healing",
-      description:
-        "Everyone deserves equal support during recovery, regardless of economic background.",
-      image: "Inclusive recovery symbol",
-    },
-  ];
+ ;
 
   return (
     <section id="sahara" className="mb-24">
@@ -230,52 +201,6 @@ const Saharaa: React.FC = () => {
         </div>
       </div>
 
-      {/* Why It Matters */}
-      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
-            Why It Matters
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
-        </div>
-        <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-fresh-green to-primary-blue rounded-full hidden md:block" />
-          <div className="space-y-12">
-            {whyItMatters.map((item, index) => (
-              <div
-                key={index}
-                className={`flex items-center gap-8 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                <div className="flex-1">
-                  <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-xl p-6">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="bg-gradient-to-r from-fresh-green to-primary-blue text-white rounded-full w-12 h-12 flex items-center justify-center font-bold">
-                        {item.step}
-                      </div>
-                      <h3 className="text-xl font-bold text-primary-blue">
-                        {item.title}
-                      </h3>
-                    </div>
-                    <p className="text-dark-gray leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <ImagePlaceholder
-                    text={item.image}
-                    width="100%"
-                    height="200px"
-                    className="rounded-xl shadow-lg"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 };

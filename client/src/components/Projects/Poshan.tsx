@@ -58,7 +58,7 @@ const Poshan: React.FC = () => {
                 <div className="relative">
                   <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
                     <img
-                      src="/poshan-hero.jpg"
+                      src="/Poshan-hero-1.jpg"
                       alt="Children receiving care"
                       className="rounded-xl shadow-2xl h-[28rem] object-cover"
                     />
@@ -112,9 +112,9 @@ const Poshan: React.FC = () => {
               </div>
               <div className="relative">
                 <img
-                  src="/Gallery/maya-children.jpg"
+                  src="/poshan-about.jpg"
                   alt="Children receiving care"
-                  className="rounded-xl shadow-2xl w-full h-[300px] object-cover"
+                  className="rounded-xl shadow-2xl w-full h-[400px] object-cover"
                 />
 
                 <div className="absolute -top-4 -right-4 bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold">

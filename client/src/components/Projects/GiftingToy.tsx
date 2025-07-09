@@ -36,26 +36,36 @@ const GiftingToy: React.FC = () => {
               </span>
               <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
                 Project
-                <span className="block text-yellow-100 text-5xl md:text-6xl mt-2">Joyful Gifting</span>
+                <span className="block text-yellow-100 text-5xl md:text-6xl mt-2">
+                  Joyful Gifting
+                </span>
               </h1>
               <p className="text-xl text-yellow-100 mb-8 leading-relaxed">
-                Bringing smiles to underserved children by sharing toys, books, clothes, and festive cheer.
+                Bringing smiles to underserved children by sharing toys, books,
+                clothes, and festive cheer.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
                 {stats.map((stat, i) => (
-                  <div key={i} className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2">
-                    <span className="text-white font-semibold">{stat.number} {stat.label}</span>
+                  <div
+                    key={i}
+                    className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2"
+                  >
+                    <span className="text-white font-semibold">
+                      {stat.number} {stat.label}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
             <div className="relative">
-              <ImagePlaceholder
-                text="Children receiving gifts"
-                width="100%"
-                height="300px"
-                className="rounded-xl shadow-xl border-4 border-white/20"
-              />
+              <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                <img
+                  src="/gifting-toys.png"
+                  alt="Childeren receiving gifts"
+                  width="100%"
+                  className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -73,23 +83,29 @@ const GiftingToy: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-lg text-dark-gray leading-relaxed mb-6">
-                Joyful Gifting is an initiative that brings smiles to children who often go unnoticed during celebrations. 
-                We collect and distribute toys, books, clothes, and seasonal gifts to ensure every child experiences the joy of being remembered.
+                Joyful Gifting is an initiative that brings smiles to children
+                who often go unnoticed during celebrations. We collect and
+                distribute toys, books, clothes, and seasonal gifts to ensure
+                every child experiences the joy of being remembered.
               </p>
               <div className="bg-gradient-to-r from-yellow-50 to-orange-100 rounded-lg p-6">
-                <h4 className="font-semibold text-orange-800 mb-2">Our Mission</h4>
+                <h4 className="font-bold text-orange-800 mb-2">Our Mission</h4>
                 <p className="text-primary-blue font-semibold text-lg">
-                  To create moments of happiness for underserved children through gifting drives that celebrate generosity and emotional connection.
+                  To create moments of happiness for underserved children
+                  through gifting drives that celebrate generosity and emotional
+                  connection.
                 </p>
               </div>
             </div>
             <div className="relative">
-              <ImagePlaceholder
-                text="Toy drive event image"
-                width="100%"
-                height="250px"
-                className="rounded-xl shadow-lg"
+              <img
+                src="/gifting-toy-about.png"
+                alt="Toy Drive evnet"
+                className="rounded-xl shadow-lg w-[28rem] object-cover"
               />
+              <div className="absolute -top-4 -right-4 bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                1,000+ People Reached Annually
+              </div>
             </div>
           </div>
         </div>
@@ -98,7 +114,9 @@ const GiftingToy: React.FC = () => {
       {/* What We Do */}
       <div className="my-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">What We Do</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
+            What We Do
+          </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
         </div>
         <div className="grid md:grid-cols-2 gap-8 text-center">
@@ -107,8 +125,12 @@ const GiftingToy: React.FC = () => {
               key={idx}
               className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 group"
             >
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
-              <h4 className="text-xl font-bold text-orange-700 mb-4">{item.title}</h4>
+              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                {item.icon}
+              </div>
+              <h4 className="text-xl font-bold text-primary-blue mb-4">
+                {item.title}
+              </h4>
               <p className="text-dark-gray">{item.description}</p>
             </div>
           ))}
@@ -116,12 +138,15 @@ const GiftingToy: React.FC = () => {
       </div>
 
       {/* Impact */}
-      <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-2xl p-8 md:p-12 mb-12">
+      <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20  rounded-2xl p-8 md:p-12 mb-12">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">Our Impact</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
+            Our Impact
+          </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
           <p className="text-lg text-dark-gray max-w-3xl mx-auto">
-            Each year, over 1,000 children and families receive thoughtful gifts that brighten their lives and foster joy during festivals.
+            Each year, over 1,000 children and families receive thoughtful gifts
+            that brighten their lives and foster joy during festivals.
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -131,7 +156,9 @@ const GiftingToy: React.FC = () => {
               className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               <div className="text-3xl mb-3">{stat.icon}</div>
-              <div className="text-3xl font-bold text-orange-700 mb-2">{stat.number}</div>
+              <div className="text-3xl font-bold text-primary-blue mb-2">
+                {stat.number}
+              </div>
               <div className="text-dark-gray font-medium">{stat.label}</div>
             </div>
           ))}

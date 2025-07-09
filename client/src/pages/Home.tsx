@@ -22,8 +22,7 @@ const Home: React.FC<HomeProps> = ({ showLoader, loaderGone, onFadeOut }) => {
       gsap.fromTo(
         mainRef.current,
         { opacity: 0, y: 20, scale: 0.98 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power2.out",
-       }
+        { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power2.out" }
       );
     }
   }, [loaderGone]);
@@ -44,8 +43,8 @@ const Home: React.FC<HomeProps> = ({ showLoader, loaderGone, onFadeOut }) => {
         <About />
         <WhatWeDo />
         <ImageGallery />
-        <DonateNow />
         <ImpactCarousel />
+        <DonateNow />
       </div>
     </>
   );

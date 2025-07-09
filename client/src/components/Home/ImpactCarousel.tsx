@@ -10,7 +10,7 @@ import { fadeIn, staggerContainer } from "../../utils/motion";
 
 const Impact = () => {
   const settings = {
-    dots: true,
+    // dots: true,
     // arrows: true,
     infinite: true,
     speed: 1000,
@@ -74,7 +74,7 @@ const Impact = () => {
       <div className="md:max-w-7xl mx-auto px-4">
         <motion.h2
           variants={fadeIn("down", 0.1)}
-          className="md:text-5xl text-3xl text-gradient-h2 font-bold text-center mb-6 text-primary uppercase"
+          className="md:text-5xl text-3xl text-primary-blue font-bold text-center mb-6 text-primary uppercase"
         >
           Our Impact
         </motion.h2>
