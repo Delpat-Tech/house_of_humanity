@@ -14,36 +14,85 @@ const overallImpact = [
   { number: "2,800+", label: "Marathon Participants", icon: "🏃‍♂️" },
 ];
 
+const projects = [
+  { name: "Blanket Drive", id: "blanket-drive", icon: "🧣" },
+  { name: "Sweet Distribution", id: "sweet-distribution", icon: "🍬" },
+  { name: "Cyclothon", id: "cyclothon", icon: "🚴‍♂️" },
+  { name: "Marathon", id: "marathon", icon: "🏃‍♂️" },
+  { name: "Grooming", id: "grooming", icon: "✨" },
+  { name: "Concerts", id: "concerts", icon: "🎤" },
+  { name: "Gifting Toy", id: "gifting-toy", icon: "🎁" },
+];
+
 const HouseOfHappiness = () => {
+  const scrollToProject = (projectId: string) => {
+    // Add a small delay to ensure component is fully rendered
+    setTimeout(() => {
+      const element = document.getElementById(projectId);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest'
+        });
+      } else {
+        console.warn(`Element with id "${projectId}" not found`);
+      }
+    }, 100);
+  };
+
   return (
-    <div className="container mx-auto px-4 py-12 mt-24 dark:bg-gray-950 dark:text-gray-100">
+    <div className="container mx-auto px-4 py-12 mt-24 dark:text-gray-100">
       {/* 🌈 Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-yellow-400 via-pink-500 to-red-500 rounded-2xl mb-16 dark:from-yellow-700 dark:via-pink-700 dark:to-red-700">
         <div className="absolute inset-0 bg-black bg-opacity-20 dark:bg-black dark:bg-opacity-30"></div>
-        <div className="relative z-10 px-8 py-16 md:py-24">
+        <div className="relative z-20 px-8 py-16 md:py-20">
           <div className="max-w-6xl mx-auto text-center">
-            <div className="mb-6">
+            <div className="mb-4">
               <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm dark:bg-white dark:bg-opacity-10">
                 Celebrating Community Joy
               </span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight dark:text-yellow-100">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight dark:text-yellow-100">
               House of Happiness
               <span className="block text-yellow-100 dark:text-pink-200">
                 Spreading Smiles & Festive Cheer
               </span>
             </h1>
-            <p className="text-xl text-yellow-100 mb-8 font-medium leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl text-yellow-100 mb-6 font-medium leading-relaxed max-w-3xl mx-auto">
               From sweet distribution and blanket drives to concerts,
               gift-giving, cyclothons, and marathons — we build moments of joy
               and togetherness for underserved communities.
             </p>
+
+            {/* Project Navigation Buttons */}
+            <div className="mt-8">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Explore Our Projects
+              </h3>
+              <div className="flex flex-wrap justify-center gap-3 md:gap-4 relative z-30">
+                {projects.map((project, index) => (
+                  <button
+                    key={index}
+                    onClick={() => scrollToProject(project.id)}
+                    className="group flex items-center gap-2 px-4 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white border-opacity-30 hover:border-opacity-50 relative z-30"
+                  >
+                    <span className="text-lg group-hover:scale-110 transition-transform duration-300">
+                      {project.icon}
+                    </span>
+                    <span className="font-semibold text-sm md:text-base">
+                      {project.name}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Decorative Bubbles */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse dark:bg-pink-700"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000 dark:bg-yellow-700"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse dark:bg-pink-700 z-0"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000 dark:bg-yellow-700 z-0"></div>
       </div>
 
       <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20  rounded-2xl p-8 md:p-12 mb-16">
@@ -76,13 +125,27 @@ const HouseOfHappiness = () => {
       </div>
 
       {/* 💡 Projects Section */}
-      <BlanketDrive />
-      <SweetDistribution />
-      <Cyclothon />
-      <Marathon />
-      <Grooming />
-      <Concerts />
-      <GiftingToy />
+      <section id="blanket-drive" className="scroll-mt-24">
+        <BlanketDrive />
+      </section>
+      <section id="sweet-distribution" className="scroll-mt-24">
+        <SweetDistribution />
+      </section>
+      <section id="cyclothon" className="scroll-mt-24">
+        <Cyclothon />
+      </section>
+      <section id="marathon" className="scroll-mt-24">
+        <Marathon />
+      </section>
+      <section id="grooming" className="scroll-mt-24">
+        <Grooming />
+      </section>
+      <section id="concerts" className="scroll-mt-24">
+        <Concerts />
+      </section>
+      <section id="gifting-toy" className="scroll-mt-24">
+        <GiftingToy />
+      </section>
 
       {/* 🤝 Get Involved Section */}
       <div className="p-8 md:p-12 my-16">

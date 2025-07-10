@@ -24,10 +24,10 @@ const Marathon: React.FC = () => {
   ];
 
   return (
-    <section id="marathon" className="mb-24 dark:bg-gray-950 dark:text-gray-100">
+    <section id="marathon" className="mb-24 dark:text-gray-100">
       {/* Hero */}
       <div className="relative overflow-hidden bg-gradient-to-br from-orange-500 via-pink-500 to-red-600 rounded-2xl mb-16 dark:from-gray-900 dark:via-pink-900 dark:to-red-900">
-        <div className="absolute inset-0 bg-black bg-opacity-20 dark:bg-opacity-60" />
+        <div className="absolute inset-0" />
         <div className="relative z-10 px-8 py-16 md:py-20">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -72,7 +72,7 @@ const Marathon: React.FC = () => {
       </div>
 
       {/* About */}
-      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 my-16 dark:bg-gray-900 dark:border dark:border-gray-700">
+      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 my-16 ">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6 dark:text-orange-200">

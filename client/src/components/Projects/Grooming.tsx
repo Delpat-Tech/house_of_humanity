@@ -24,7 +24,7 @@ const Grooming: React.FC = () => {
   ];
 
   return (
-    <section id="grooming" className="mb-24 dark:bg-gray-950 dark:text-gray-100">
+    <section id="grooming" className="mb-24 dark:text-gray-100">
       {/* Hero */}
       <div className="relative overflow-hidden bg-gradient-to-br from-pink-500 via-rose-400 to-purple-500 rounded-2xl mb-16 dark:from-gray-900 dark:via-pink-900 dark:to-purple-900">
         <div className="absolute inset-0 bg-black bg-opacity-20 dark:bg-opacity-60" />
@@ -72,10 +72,12 @@ const Grooming: React.FC = () => {
       </div>
 
       {/* About */}
-      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 my-16 dark:bg-gray-900 dark:border dark:border-gray-700">
+      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 my-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6 dark:text-pink-200">About Project Grooming</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6 dark:text-pink-200">
+              About Project Grooming
+            </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6 dark:from-pink-700 dark:to-purple-700" />
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-center">

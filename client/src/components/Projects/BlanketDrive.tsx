@@ -11,11 +11,11 @@ const BlanketDrive: React.FC = () => {
   return (
     <section
       id="blanket-drive"
-      className="mb-24 dark:bg-gray-950 dark:text-gray-100"
+      className="mb-24 dark:text-gray-100"
     >
       {/* Hero */}
       <div className="relative overflow-hidden bg-gradient-to-br from-yellow-700 via-orange-500 to-red-600 rounded-2xl mb-16">
-        <div className="absolute inset-0 bg-black bg-opacity-20" />
+        <div className="absolute inset-0" />
         <div className="relative z-10 px-8 py-16 md:py-20">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>

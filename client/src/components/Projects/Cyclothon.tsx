@@ -23,7 +23,7 @@ const Cyclothon: React.FC = () => {
   ];
 
   return (
-    <section id="cyclothon" className="mb-24 dark:bg-gray-950 dark:text-gray-100">
+    <section id="cyclothon" className="mb-24 dark:text-gray-100">
       {/* Hero */}
       <div className="relative overflow-hidden bg-gradient-to-br from-green-500 via-blue-500 to-cyan-600 rounded-2xl mb-16 dark:from-gray-900 dark:via-blue-900 dark:to-cyan-900">
         <div className="absolute inset-0 bg-black bg-opacity-20 dark:bg-opacity-60" />
@@ -72,7 +72,7 @@ const Cyclothon: React.FC = () => {
       </div>
 
       {/* About Section */}
-      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 my-16 dark:bg-gray-900 dark:border dark:border-gray-700">
+      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 my-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6 dark:text-cyan-200">

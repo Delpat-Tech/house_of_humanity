@@ -65,7 +65,8 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ theme = "light" }) => {
     { src: "/Gallery/sweetdrive.jpg", alt: "Sweet Drive" },
   ];
 
-  // Auto-play functionality
+  //   // Auto-play functionality
+
   useEffect(() => {
     if (isAutoPlay) {
       intervalRef.current = setInterval(() => {
@@ -147,45 +148,50 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ theme = "light" }) => {
   const getImageStyle = (index: number) => {
     const offset = index - currentImage;
     const totalImages = imageList.length;
-    const normalizedOffset =
-      ((offset % totalImages) + totalImages) % totalImages;
-    const adjustedOffset =
-      normalizedOffset > totalImages / 2
-        ? normalizedOffset - totalImages
-        : normalizedOffset;
+
+    // Simple offset calculation without complex wrapping
+    let adjustedOffset = offset;
+    if (adjustedOffset > totalImages / 2) {
+      adjustedOffset -= totalImages;
+    } else if (adjustedOffset < -totalImages / 2) {
+      adjustedOffset += totalImages;
+    }
 
     const isMobile = window.innerWidth < 768;
     const isTablet = window.innerWidth < 1024;
 
-    let scale, translateX, translateZ, rotateY, opacity;
+    let scale, translateX, translateZ, rotateY, opacity, zIndex;
 
     if (isMobile) {
       // Mobile: Simple side-by-side layout
       scale = adjustedOffset === 0 ? 1 : 0.8;
-      translateX = adjustedOffset * 100;
-      translateZ = adjustedOffset === 0 ? 0 : -100;
-      rotateY = adjustedOffset * 15;
+      translateX = adjustedOffset * 120;
+      translateZ = adjustedOffset === 0 ? 0 : -80;
+      rotateY = adjustedOffset * 20;
       opacity = Math.abs(adjustedOffset) > 1 ? 0 : 1;
+      zIndex = adjustedOffset === 0 ? 10 : 10 - Math.abs(adjustedOffset);
     } else if (isTablet) {
       // Tablet: Medium 3D effect
       scale = adjustedOffset === 0 ? 1 : 0.85;
-      translateX = adjustedOffset * 180;
-      translateZ = adjustedOffset === 0 ? 0 : -150;
+      translateX = adjustedOffset * 200;
+      translateZ = adjustedOffset === 0 ? 0 : -120;
       rotateY = adjustedOffset * 25;
       opacity = Math.abs(adjustedOffset) > 1 ? 0 : 1;
+      zIndex = adjustedOffset === 0 ? 10 : 10 - Math.abs(adjustedOffset);
     } else {
-      // Desktop: Full 3D carousel
+      // Desktop: Full 3D carousel with better spacing
       scale = adjustedOffset === 0 ? 1 : 0.8;
-      translateX = adjustedOffset * 200;
-      translateZ = adjustedOffset === 0 ? 0 : -200;
-      rotateY = adjustedOffset * 30;
+      translateX = adjustedOffset * 250;
+      translateZ = adjustedOffset === 0 ? 0 : -150;
+      rotateY = adjustedOffset * 35;
       opacity = Math.abs(adjustedOffset) > 2 ? 0 : 1;
+      zIndex = adjustedOffset === 0 ? 10 : 10 - Math.abs(adjustedOffset);
     }
 
     return {
       transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
       opacity,
-      zIndex: adjustedOffset === 0 ? 10 : 5 - Math.abs(adjustedOffset),
+      zIndex,
     };
   };
 
@@ -229,21 +235,12 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ theme = "light" }) => {
               return (
                 <motion.div
                   key={index}
-                  className={`absolute cursor-pointer transition-all duration-700 ease-out ${
+                  className={`absolute transition-all duration-700 ease-out ${
                     isActive ? "z-10" : "z-0"
                   }`}
                   style={style}
-                  onClick={() => {
-                    if (isActive) {
-                      openLightbox(image);
-                    } else {
-                      setCurrentImage(index);
-                    }
-                  }}
-                  whileHover={{
-                    scale: isActive ? 1.05 : 0.85,
-                    transition: { duration: 0.3 },
-                  }}
+                  // Simplified hover effect - only slight scale on active image
+                  whileHover={isActive ? { scale: 1.05 } : {}}
                 >
                   <div
                     className={`relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-2xl overflow-hidden shadow-2xl ${
@@ -263,25 +260,6 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ theme = "light" }) => {
                         isActive ? "opacity-0" : "opacity-30"
                       }`}
                     />
-
-                    {/* Zoom icon for active image */}
-                    {isActive && (
-                      <motion.div
-                        className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2"
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation(); // Prevents the lightbox from opening
-                            navigate("/gallery");
-                          }}
-                        >
-                          <ZoomIn className="w-5 h-5 text-white" />
-                        </button>
-                      </motion.div>
-                    )}
 
                     {/* Image title */}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
@@ -311,25 +289,6 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ theme = "light" }) => {
           >
             <ChevronLeft className="w-6 h-6" />
           </motion.button>
-
-          {/* Dots Indicator */}
-          {/* <div className="flex space-x-2 max-w-xs overflow-x-auto scrollbar-hide">
-            {imageList.map((_, index) => (
-              <motion.button
-                key={index}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentImage
-                    ? "bg-blue-500 w-6"
-                    : theme === "dark"
-                    ? "bg-gray-600 hover:bg-gray-500"
-                    : "bg-gray-300 hover:bg-gray-400"
-                }`}
-                onClick={() => setCurrentImage(index)}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.8 }}
-              />
-            ))}
-          </div> */}
 
           {/* Auto-play Toggle */}
           <div className="flex justify-center mt-6">
@@ -404,5 +363,4 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ theme = "light" }) => {
     </section>
   );
 };
-
 export default ImageGallery;

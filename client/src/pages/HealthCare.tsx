@@ -7,6 +7,22 @@ import Saharaa from "../components/Projects/Saharaa";
 import ImagePlaceholder from "../components/ui/ImagePlaceholder";
 
 const HealthCare: React.FC = () => {
+  const scrollToProject = (projectId: string) => {
+    // Add a small delay to ensure component is fully rendered
+    setTimeout(() => {
+      const element = document.getElementById(projectId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      } else {
+        console.warn(`Element with id "${projectId}" not found`);
+      }
+    }, 100);
+  };
+
   const navigate = useNavigate();
   const handleNavigation = (route: string) => {
     navigate(route);
@@ -17,6 +33,12 @@ const HealthCare: React.FC = () => {
     { number: "83", label: "Healthcare Facilities", icon: "🏥" },
     { number: "2,500+", label: "Blood Units Saved", icon: "🩸" },
     { number: "75+", label: "Institutions Covered", icon: "🏢" },
+  ];
+
+  const projects = [
+    { name: "Pad House", id: "pad-house" },
+    { name: "Rakt Setu", id: "rakt-setu" },
+    { name: "Sahara", id: "sahara" },
   ];
 
   const whyItMatters = [
@@ -52,7 +74,7 @@ const HealthCare: React.FC = () => {
       step: "05",
       title: "Awareness Gap",
       description:
-        "There’s limited awareness around regular blood donation and its life-saving importance.",
+        "There's limited awareness around regular blood donation and its life-saving importance.",
       image: "Awareness campaign visual",
     },
     {
@@ -63,7 +85,7 @@ const HealthCare: React.FC = () => {
       image: "Chronic illness support needs",
     },
     {
-      step: "76",
+      step: "07",
       title: "Limited Recovery Mobility",
       description:
         "Injured individuals without proper support equipment face limited movement, significantly delaying their recovery process.",
@@ -100,6 +122,26 @@ const HealthCare: React.FC = () => {
                 equipment - we're committed to making healthcare accessible to
                 all.
               </p>
+            </div>
+
+            {/* Project Navigation Buttons */}
+            <div className="mt-8">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Explore Our Projects
+              </h3>
+              <div className="flex flex-wrap justify-center gap-3 md:gap-4 relative z-30">
+                {projects.map((project, index) => (
+                  <button
+                    key={index}
+                    onClick={() => scrollToProject(project.id)}
+                    className="group flex items-center gap-2 px-4 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-xl backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white border-opacity-30 hover:border-opacity-50 relative z-30"
+                  >
+                    <span className="font-semibold text-sm md:text-base">
+                      {project.name}
+                    </span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -138,11 +180,15 @@ const HealthCare: React.FC = () => {
       </div>
 
       {/* projects under healthcare */}
-      <div>
+      <section id="pad-house" className="scroll-mt-24">
         <PadHouse />
+      </section>
+      <section id="rakt-setu" className="scroll-mt-24">
         <RaktSetu />
+      </section>
+      <section id="sahara" className="scroll-mt-24">
         <Saharaa />
-      </div>
+      </section>
 
       {/* Why It Matters Section */}
       <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">

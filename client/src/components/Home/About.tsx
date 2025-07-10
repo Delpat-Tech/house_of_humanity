@@ -33,10 +33,10 @@ const About = () => {
           Who We Are
         </motion.h1>
         <p className="text-lg font-medium max-w-3xl mx-auto">
-          The <strong>House of Humanity Charitable Trust</strong> is a movement
-          of people who believe in the power of compassion, action, and dignity
-          — aiming to break cycles of poverty, hunger, and inequality through
-          holistic, sustainable community-led solutions.
+          The <strong>House of Humanity</strong> is a movement of people who
+          believe in the power of compassion, action, and dignity — aiming to
+          break cycles of poverty, hunger, and inequality through holistic,
+          sustainable community-led solutions.
         </p>
       </div>
 
