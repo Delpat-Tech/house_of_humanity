@@ -82,7 +82,7 @@ const Grooming: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-lg text-dark-gray leading-relaxed mb-6">
+              <p className="text-lg text-dark-gray text-justify leading-relaxed mb-6">
                 Project Grooming with Dignity was launched to uplift
                 underprivileged girls through self-care, grooming, and hygiene
                 support. We believe dignity begins with how one feels about
@@ -131,7 +131,7 @@ const Grooming: React.FC = () => {
               <h4 className="text-xl font-bold text-primary-blue mb-4">
                 {item.title}
               </h4>
-              <p className="text-dark-gray">{item.description}</p>
+              <p className="text-dark-gray text-justify">{item.description}</p>
             </div>
           ))}
         </div>
@@ -144,22 +144,20 @@ const Grooming: React.FC = () => {
             Our Impact
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
-          <p className="text-lg text-dark-gray max-w-3xl mx-auto">
+          <p className="text-lg text-dark-gray text-justify max-w-3xl mx-auto">
             More than 400 girls have experienced festive grooming and self-care
             with dignity, supported by over 30 compassionate volunteers.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 dark:bg-gray-900 dark:border dark:border-gray-700"
+              className="text-center bg-white rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 dark:bg-gray-900 dark:border dark:border-gray-700"
             >
-              <div className="text-3xl mb-3">{stat.icon}</div>
-              <div className="text-3xl font-bold text-primary-blue mb-2">
-                {stat.number}
-              </div>
-              <div className="text-dark-gray font-medium">{stat.label}</div>
+              <div className="text-2xl md:text-3xl mb-2">{stat.icon}</div>
+              <div className="text-base md:text-2xl font-bold text-primary-blue mb-1">{stat.number}</div>
+              <div className="text-xs md:text-base text-dark-gray font-medium">{stat.label}</div>
             </div>
           ))}
         </div>

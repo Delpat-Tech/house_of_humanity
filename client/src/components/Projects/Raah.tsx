@@ -230,7 +230,7 @@ const Raah: React.FC = () => {
               </div>
               <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
                 <div>
-                  <p className="text-lg text-dark-gray dark:text-gray-200 leading-relaxed mb-6">
+                  <p className="text-lg text-dark-gray dark:text-gray-200 leading-relaxed mb-6 text-justify">
                     {raahData.about.content}
                   </p>
                   <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6">
@@ -270,7 +270,7 @@ const Raah: React.FC = () => {
                 What We Do
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
-              <p className="text-lg text-dark-gray dark:text-gray-200 max-w-2xl mx-auto">
+              <p className="text-lg text-dark-gray dark:text-gray-200 max-w-2xl mx-auto text-justify">
                 Through comprehensive support systems, we ensure migrant
                 children receive quality education and maintain continuity in
                 their learning despite geographical mobility.
@@ -288,7 +288,7 @@ const Raah: React.FC = () => {
                   <h4 className="text-xl font-bold text-primary-blue mb-4">
                     {activity.title}
                   </h4>
-                  <p className="text-dark-gray dark:text-gray-200">
+                  <p className="text-dark-gray dark:text-gray-200 text-justify">
                     {activity.description}
                   </p>
                 </div>
@@ -303,7 +303,7 @@ const Raah: React.FC = () => {
                 Our Impact
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
-              <p className="text-lg text-dark-gray dark:text-gray-200 max-w-3xl mx-auto">
+              <p className="text-lg text-dark-gray dark:text-gray-200 max-w-3xl mx-auto text-justify">
                 Supporting the education of children from migrant worker
                 families across villages of Mallu, Waghodia, and Chhota Udaipur
                 talukas.
@@ -338,7 +338,7 @@ const Raah: React.FC = () => {
                 <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
               </div>
               <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-8 md:p-12">
-                <p className="text-lg text-dark-gray dark:text-gray-200 leading-relaxed mb-8">
+                <p className="text-lg text-dark-gray dark:text-gray-200 leading-relaxed mb-8 text-justify">
                   {raahData.vision.content}
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -376,7 +376,7 @@ const Raah: React.FC = () => {
                   <h4 className="text-lg font-semibold text-primary-blue mb-3">
                     {milestone.title}
                   </h4>
-                  <p className="text-dark-gray dark:text-gray-200 text-sm leading-relaxed">
+                  <p className="text-dark-gray dark:text-gray-200 text-sm leading-relaxed text-justify">
                     {milestone.description}
                   </p>
                 </div>
@@ -401,7 +401,7 @@ const Raah: React.FC = () => {
                   <h4 className="text-lg font-semibold text-primary-blue mb-3">
                     {story.title}
                   </h4>
-                  <p className="text-dark-gray dark:text-gray-200 text-sm leading-relaxed">
+                  <p className="text-dark-gray dark:text-gray-200 text-sm leading-relaxed text-justify">
                     {story.description}
                   </p>
                 </div>
@@ -415,7 +415,7 @@ const Raah: React.FC = () => {
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 Support Migrant Children's Education Today
               </h3>
-              <p className="text-lg mb-6 opacity-90">
+              <p className="text-lg mb-6 opacity-90 text-justify">
                 Every child deserves quality education, regardless of their
                 family's mobility. Join Project Raah in creating educational
                 opportunities that travel with migrant families.

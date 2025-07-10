@@ -141,7 +141,7 @@ const PadHouse: React.FC = () => {
               menstrual health.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center">
             {[
               {
                 title: "Counseling & Education",
@@ -164,15 +164,15 @@ const PadHouse: React.FC = () => {
             ].map((activity, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+                className="bg-white rounded-xl shadow-lg p-4 md:p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 group"
               >
-                <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-4xl md:text-6xl mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
                   {activity.icon}
                 </div>
-                <h4 className="text-xl font-bold text-primary-blue mb-4">
+                <h4 className="text-lg md:text-xl font-bold text-primary-blue mb-2 md:mb-4">
                   {activity.title}
                 </h4>
-                <p className="text-dark-gray">{activity.description}</p>
+                <p className="text-sm md:text-base text-dark-gray text-justify">{activity.description}</p>
               </div>
             ))}
           </div>
@@ -199,11 +199,9 @@ const PadHouse: React.FC = () => {
                 key={index}
                 className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
-                <div className="text-3xl mb-3">{stat.icon}</div>
-                <div className="text-3xl font-bold text-primary-blue mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-dark-gray font-medium">{stat.label}</div>
+                <div className="text-2xl md:text-3xl mb-2">{stat.icon}</div>
+                <div className="text-base md:text-lg font-bold text-primary-blue mb-1">{stat.number}</div>
+                <div className="text-xs md:text-base text-dark-gray font-medium">{stat.label}</div>
               </div>
             ))}
           </div>

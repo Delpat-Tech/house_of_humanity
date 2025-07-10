@@ -299,7 +299,7 @@ const SustainableLivelihood: React.FC = () => {
             ].map((process, index) => (
               <div
                 key={index}
-                className={`flex items-center gap-8 ${
+                className={`flex flex-col items-center gap-4 md:gap-8 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >

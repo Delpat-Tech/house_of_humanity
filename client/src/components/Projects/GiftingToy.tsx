@@ -149,17 +149,15 @@ const GiftingToy: React.FC = () => {
             that brighten their lives and foster joy during festivals.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 dark:bg-gray-900 dark:border dark:border-gray-700"
+              className="text-center bg-white rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 dark:bg-gray-900 dark:border dark:border-gray-700"
             >
-              <div className="text-3xl mb-3">{stat.icon}</div>
-              <div className="text-3xl font-bold text-primary-blue mb-2">
-                {stat.number}
-              </div>
-              <div className="text-dark-gray font-medium">{stat.label}</div>
+              <div className="text-2xl md:text-3xl mb-2">{stat.icon}</div>
+              <div className="text-base md:text-2xl font-bold text-primary-blue mb-1">{stat.number}</div>
+              <div className="text-xs md:text-base text-dark-gray font-medium">{stat.label}</div>
             </div>
           ))}
         </div>
