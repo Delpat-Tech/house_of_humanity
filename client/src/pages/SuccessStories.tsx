@@ -179,7 +179,7 @@ const SuccessStories: React.FC = () => {
           href="https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full sm:w-auto inline-block bg-primary-blue hover:bg-fresh-green text-white dark:text-gray-900 hover:text-white font-bold py-3 px-4 sm:px-8 rounded-full shadow-lg transition-all text-base sm:text-lg text-center"
+          className="w-full sm:w-auto inline-block bg-primary-blue hover:bg-fresh-green text-white dark:text-white hover:text-white font-bold py-3 px-4 sm:px-8 rounded-full shadow-lg transition-all text-base sm:text-lg text-center"
         >
           Want to share your story? Click here!
         </a>
@@ -275,9 +275,9 @@ const SuccessStories: React.FC = () => {
             Want to be part of our impact stories?
           </p>
           <Button
-            className="bg-primary-blue hover:bg-fresh-green text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="bg-primary-blue hover:bg-fresh-green text-white dark:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            <a href="/get-involved">
+            <a href="/get-involved" className="text-inherit dark:text-white dark:hover:text-white block w-full h-full">
               Join Our Mission
             </a>
           </Button>

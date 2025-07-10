@@ -87,7 +87,7 @@ const Gallery = () => {
         className="flex justify-center mb-8 overflow-x-auto scrollbar-thin scrollbar-thumb-primary-blue/40 scrollbar-track-transparent"
         style={{ maxWidth: '100%' }}
       >
-        <div className="flex w-full min-w-[320px] max-w-2xl mx-auto">
+        <div className="flex gap-2 w-full min-w-[320px] max-w-2xl mx-auto">
           {categories.map(category => (
             <button
               key={category.id}
