@@ -21,8 +21,8 @@ const Maya: React.FC = () => {
           <div className="absolute inset-0 bg-black bg-opacity-20"></div>
           <div className="relative z-10 px-8 py-16 md:py-20">
             <div className="max-w-5xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="mt-20 md:mt-0">
                   <div className="mb-6">
                     <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">
                       Child Care
@@ -57,18 +57,28 @@ const Maya: React.FC = () => {
                 </div>
                 <div className="relative">
                   <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                    <img
-                      src="/maya-hero.jpg"
-                      alt="Children receiving care"
-                      className="rounded-xl shadow-2xl w-full  object-cover"
-                    />
+                    {"/maya-hero.jpg" ? (
+                      <img
+                        src="/maya-hero.jpg"
+                        alt="Children receiving care"
+                        className="rounded-xl shadow-2xl w-full h-auto max-h-72 md:max-h-none object-cover"
+                        onError={e => { e.currentTarget.style.display = 'none'; e.currentTarget.parentElement.appendChild(document.createElement('div')); }}
+                      />
+                    ) : (
+                      <ImagePlaceholder text="Maya Hero" width="100%" height="288px" className="rounded-xl shadow-2xl" />
+                    )}
                   </div>
-                  <div className="absolute -bottom-12 -left-12 transform -rotate-6">
-                    <img
-                      src="/maya-thumbnail.png"
-                      alt="Children receiving care"
-                      className="rounded-xl shadow-2xl w-1/2  object-cover"
-                    />
+                  <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 md:-bottom-12 md:-left-12 md:translate-x-0 transform -rotate-6 w-24 h-16 md:w-1/2 md:h-auto">
+                    {"/maya-thumbnail.png" ? (
+                      <img
+                        src="/maya-thumbnail.png"
+                        alt="Children receiving care"
+                        className="rounded-xl shadow-2xl w-full h-full object-cover"
+                        onError={e => { e.currentTarget.style.display = 'none'; e.currentTarget.parentElement.appendChild(document.createElement('div')); }}
+                      />
+                    ) : (
+                      <ImagePlaceholder text="Maya Thumbnail" width="100%" height="64px" className="rounded-xl shadow-2xl" />
+                    )}
                   </div>
                 </div>
               </div>
@@ -89,9 +99,9 @@ const Maya: React.FC = () => {
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
             </div>
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
               <div>
-                <p className="text-lg text-dark-gray dark:text-gray-200 leading-relaxed mb-6">
+                <p className="text-lg text-dark-gray text-justify">
                   Providing holistic care for children in pediatric wards of
                   government hospitals. We provide milk, biscuits, fruits, and
                   other nutritious items to over 200 children daily in pediatric
@@ -101,7 +111,7 @@ const Maya: React.FC = () => {
                 </p>
                 <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6">
                   <h4 className="font-semibold mb-2">Our Mission</h4>
-                  <p className="text-primary-blue font-semibold text-lg">
+                  <p className="text-primary-blue font-semibold text-lg dark:text-gray-100">
                     At Project Maya, our mission is to provide holistic care for
                     children in pediatric wards by addressing their nutritional,
                     emotional, and psychological needs. We believe that every
@@ -111,12 +121,16 @@ const Maya: React.FC = () => {
                 </div>
               </div>
               <div className="relative">
-                <img
-                  src="/maya-about.jpg"
-                  alt="Children receiving care"
-                  className="rounded-xl shadow-2xl w-[36rem] object-cover"
-                />
-
+                {"/maya-about.jpg" ? (
+                  <img
+                    src="/maya-about.jpg"
+                    alt="Children receiving care"
+                    className="rounded-xl shadow-2xl w-full h-auto max-h-72 md:max-h-[400px] object-cover"
+                    onError={e => { e.currentTarget.style.display = 'none'; e.currentTarget.parentElement.appendChild(document.createElement('div')); }}
+                  />
+                ) : (
+                  <ImagePlaceholder text="Maya About" width="100%" height="288px" className="rounded-xl shadow-2xl" />
+                )}
                 <div className="absolute -top-4 -right-4 bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
                   200+ Children Daily
                 </div>

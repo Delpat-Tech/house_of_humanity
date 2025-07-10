@@ -50,7 +50,7 @@ const Education: React.FC = () => {
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="relative z-10 px-8 py-16 md:py-24">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
                 <div className="mb-6">
                   <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">
@@ -91,15 +91,14 @@ const Education: React.FC = () => {
                   <img
                     src="/education-hero.jpg"
                     alt="Education Programs"
-                    width="100%"
-                    className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
+                    className="rounded-xl shadow-2xl border-4 border-white/20 object-cover w-full h-auto max-h-72 md:max-h-none"
                   />
                 </div>
-                <div className="absolute -bottom-12 -left-16 transform -rotate-6">
+                <div className="absolute -bottom-6 left-0 md:-bottom-12 md:-left-16 transform -rotate-6 w-32 h-28 md:w-auto md:h-[11rem]">
                   <img
                     src="/thumbnail.jpeg"
                     alt="Education thumbnail"
-                    className="rounded-lg shadow-lg border-4 border-white/30 object-cover h-[11rem] w-full"
+                    className="rounded-lg shadow-lg border-4 border-white/30 object-cover w-full h-full"
                   />
                 </div>
               </div>
@@ -126,17 +125,15 @@ const Education: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {overallImpact.map((stat, index) => (
             <div
               key={index}
-              className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="text-center bg-white rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              <div className="text-4xl mb-3">{stat.icon}</div>
-              <div className="text-3xl font-bold text-primary-blue mb-2">
-                {stat.number}
-              </div>
-              <div className="text-dark-gray font-medium">{stat.label}</div>
+              <div className="text-2xl md:text-4xl mb-2">{stat.icon}</div>
+              <div className="text-base md:text-2xl font-bold text-primary-blue mb-1">{stat.number}</div>
+              <div className="text-xs md:text-base text-dark-gray font-medium">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -191,7 +188,7 @@ const Education: React.FC = () => {
             ].map((process, index) => (
               <div
                 key={index}
-                className={`flex items-center gap-8 ${
+                className={`flex flex-col items-center gap-4 md:gap-8 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
