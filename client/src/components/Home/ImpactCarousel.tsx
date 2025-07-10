@@ -56,8 +56,8 @@ const Impact = () => {
           dots: true,
           autoplay: true,
           autoplaySpeed: 4000,
-          centerMode: true,
-          centerPadding: "20px",
+          // centerMode: true,
+          // centerPadding: "20px",
         },
       },
     ],
@@ -66,7 +66,7 @@ const Impact = () => {
   return (
     <motion.section
       variants={staggerContainer}
-      initial="hidden"
+      initial="hidden" 
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       className="py-16"

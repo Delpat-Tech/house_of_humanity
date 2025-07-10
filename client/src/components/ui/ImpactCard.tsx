@@ -53,17 +53,17 @@ const ImpactCard: React.FC<ImpactCardProps> = ({
 
   return (
     <div className="w-full max-w-xs sm:max-w-sm md:w-[22rem] h-auto mb-8 pt-2 rounded-2xl bg-primary mx-auto">
-      <div className="w-full bg-white rounded-xl shadow-xl p-4 sm:p-6 flex flex-col items-center border-t-4 border-teal-600">
-        <div>
+      <div className="w-full bg-white rounded-xl shadow-xl p-4 sm:p-6 flex flex-col items-center border-t-4 border-teal-600 relative">
+        <div className="absolute -top-1 left-1/2 transform -translate-x-1/2">
           <Triangle
             size={16}
             fill="currentColor"
-            className="rotate-180 -mt-[1.7rem] text-teal-600"
+            className="rotate-180 text-teal-600"
           />
         </div>
 
         {/* Heading */}
-        <h3 className="text-2xl sm:text-3xl text-primary-blue dark:text-gray-200 mb-4 font-bold">
+        <h3 className="text-2xl sm:text-3xl text-primary-blue dark:text-gray-200 mb-4 font-bold mt-2">
           {count}
         </h3>
 
