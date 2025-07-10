@@ -45,7 +45,7 @@ const WaysToDonate: React.FC = () => {
         {donations.map((item, index) => (
           <motion.div
             key={index}
-            className="bg-white shadow-[0_8px_8px_rgba(0,0,0,0.1)] border-b-4 hover:shadow-2xl transition-all duration-300 hover:scale-105"
+            className="bg-white shadow-[0_8px_8px_rgba(0,0,0,0.1)] border-b-4 hover:shadow-2xl transition-all duration-300 hover:scale-105 flex flex-col h-full"
             style={{ borderBottomColor: '#0098DB' }}
             whileHover={{ y: -5 }}
           >
@@ -54,14 +54,12 @@ const WaysToDonate: React.FC = () => {
               alt={item.title}
               className="w-full h-52 object-cover"
             />
-            <div className="p-4">
+            <div className="p-4 flex flex-col flex-1">
               <h3 className="text-center text-lg font-semibold mb-2 text-primary-blue">{item.title}</h3>
               <p className="text-sm text-dark-gray text-center mb-4">{item.desc}</p>
-              <div className="text-center">
+              <div className="text-center mt-auto">
                 <a
-                  href="https://thegivingblock.com/donate/desai-foundation/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/donate-for-a-cause"
                   className="inline-block rounded-full bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white dark:text-white border border-transparent px-6 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
                 >
                   DONATE &rarr;

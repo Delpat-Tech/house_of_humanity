@@ -277,7 +277,7 @@ const SuccessStories: React.FC = () => {
           <Button
             className="bg-primary-blue hover:bg-fresh-green text-white dark:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            <a href="/get-involved" className="text-white dark:text-white">
+            <a href="/get-involved" className="text-inherit dark:text-white dark:hover:text-white block w-full h-full">
               Join Our Mission
             </a>
           </Button>
