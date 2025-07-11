@@ -2,12 +2,12 @@ import { Schema, model, Document } from 'mongoose';
 import { Program as ProgramType } from '../types';
 
 // Extend the Program interface to include Mongoose Document methods
-export interface ProgramDocument extends ProgramType, Document {
+export interface ProgramDocument extends Document {
   toJSON(): ProgramType;
 }
 
 // Program Schema
-const programSchema = new Schema<ProgramDocument>({
+const programSchema = new Schema({
   title: {
     type: String,
     required: [true, 'Title is required'],
@@ -207,6 +207,3 @@ programSchema.pre('save', function(next) {
 
 // Export the model
 export const Program = model<ProgramDocument>('Program', programSchema);
-
-// Export types
-export type { ProgramDocument };

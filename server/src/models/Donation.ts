@@ -2,12 +2,12 @@ import { Schema, model, Document } from 'mongoose';
 import { Donation as DonationType } from '../types';
 
 // Extend the Donation interface to include Mongoose Document methods
-export interface DonationDocument extends DonationType, Document {
+export interface DonationDocument extends Document {
   toJSON(): DonationType;
 }
 
 // Donation Schema
-const donationSchema = new Schema<DonationDocument>({
+const donationSchema = new Schema({
   donorId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
@@ -141,6 +141,3 @@ donationSchema.pre('save', function(next) {
 
 // Export the model
 export const Donation = model<DonationDocument>('Donation', donationSchema);
-
-// Export types
-export type { DonationDocument };

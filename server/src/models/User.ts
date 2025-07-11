@@ -2,13 +2,13 @@ import { Schema, model, Document } from 'mongoose';
 import { User as UserType } from '../types';
 
 // Extend the User interface to include Mongoose Document methods
-export interface UserDocument extends UserType, Document {
+export interface UserDocument extends Document {
   comparePassword(candidatePassword: string): Promise<boolean>;
   toJSON(): UserType;
 }
 
 // User Schema
-const userSchema = new Schema<UserDocument>({
+const userSchema = new Schema({
   name: {
     type: String,
     required: [true, 'Name is required'],
@@ -126,6 +126,3 @@ userSchema.pre('findOneAndUpdate', async function(next) {
 
 // Export the model
 export const User = model<UserDocument>('User', userSchema);
-
-// Export types
-export type { UserDocument };

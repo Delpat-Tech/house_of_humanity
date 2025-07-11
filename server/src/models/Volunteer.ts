@@ -2,12 +2,12 @@ import { Schema, model, Document } from 'mongoose';
 import { Volunteer as VolunteerType } from '../types';
 
 // Extend the Volunteer interface to include Mongoose Document methods
-export interface VolunteerDocument extends VolunteerType, Document {
+export interface VolunteerDocument extends Document {
   toJSON(): VolunteerType;
 }
 
 // Volunteer Schema
-const volunteerSchema = new Schema<VolunteerDocument>({
+const volunteerSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
@@ -210,6 +210,3 @@ volunteerSchema.pre('save', function(next) {
 
 // Export the model
 export const Volunteer = model<VolunteerDocument>('Volunteer', volunteerSchema);
-
-// Export types
-export type { VolunteerDocument };
