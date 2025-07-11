@@ -105,7 +105,7 @@ const HealthCare: React.FC = () => {
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-green-500 via-teal-400 to-blue-600 rounded-2xl mb-16">
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div className="relative z-10 px-8 py-16 md:py-24">
+        <div className="relative z-10 px-4 py-8 md:px-8 md:py-24">
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
               <div className="mb-8">
@@ -163,17 +163,19 @@ const HealthCare: React.FC = () => {
             hygiene to emergency medical support.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {overallImpact.map((stat, index) => (
             <div
               key={index}
-              className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="text-center bg-white rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              <div className="text-4xl mb-3">{stat.icon}</div>
-              <div className="text-3xl font-bold text-primary-blue mb-2">
+              <div className="text-2xl md:text-4xl mb-2">{stat.icon}</div>
+              <div className="text-lg md:text-2xl font-bold text-primary-blue mb-1">
                 {stat.number}
               </div>
-              <div className="text-dark-gray font-medium">{stat.label}</div>
+              <div className="text-xs md:text-base text-dark-gray font-medium">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
@@ -210,7 +212,7 @@ const HealthCare: React.FC = () => {
             {whyItMatters.map((matter, index) => (
               <div
                 key={index}
-                className={`flex  flex-col items-center gap-8 ${
+                className={`flex flex-col items-center gap-8 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
@@ -244,7 +246,7 @@ const HealthCare: React.FC = () => {
       </div>
 
       {/* Get Involved Section */}
-      <div className="p-8 md:p-12 mb-16">
+      <div className="p-4 md:p-12 mb-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
             Every Life Matters

@@ -182,7 +182,7 @@ const Bachpan: React.FC = () => {
             </div>
             <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
               <div>
-                <p className="text-lg text-dark-gray dark:text-gray-300 leading-relaxed mb-6">
+                <p className="text-lg text-dark-gray dark:text-gray-300 leading-relaxed mb-6 text-justify">
                   {bachpanData.about.content}
                 </p>
                 <div className="bg-gradient-to-r from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20 rounded-lg p-6">
@@ -222,7 +222,7 @@ const Bachpan: React.FC = () => {
               What We Do
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto mb-6"></div>
-            <p className="text-lg text-dark-gray dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg text-dark-gray dark:text-gray-300 max-w-2xl mx-auto text-justify">
               Through comprehensive educational programs, creative development
               activities, and sustained support, we're transforming early
               childhood education in Anganwadis.
@@ -240,7 +240,7 @@ const Bachpan: React.FC = () => {
                 <h4 className="text-xl font-bold text-primary-blue mb-4">
                   {activity.title}
                 </h4>
-                <p className="text-dark-gray dark:text-gray-300">
+                <p className="text-dark-gray dark:text-gray-300 text-justify">
                   {activity.description}
                 </p>
               </div>
@@ -255,7 +255,7 @@ const Bachpan: React.FC = () => {
               Our Impact
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-pink-300 to-purple-400 mx-auto mb-6"></div>
-            <p className="text-lg text-dark-gray dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-dark-gray dark:text-gray-300 max-w-3xl mx-auto text-justify">
               Fostering creativity and enhancing educational opportunities for
               children in Anganwadis across Vadodara region through educational
               and creative kits.
@@ -287,7 +287,7 @@ const Bachpan: React.FC = () => {
               {bachpanData.vision.title}
             </h3>
             <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 rounded-2xl p-8 md:p-12">
-              <p className="text-lg text-dark-gray dark:text-gray-300 leading-relaxed mb-8">
+              <p className="text-lg text-dark-gray dark:text-gray-300 leading-relaxed mb-8 text-justify">
                 {bachpanData.vision.content}
               </p>
               <div className="grid md:grid-cols-2 gap-4">
@@ -323,7 +323,7 @@ const Bachpan: React.FC = () => {
                   <h4 className="text-lg font-semibold text-primary-blue dark:text-white mb-3">
                     {milestone.title}
                   </h4>
-                  <p className="text-dark-gray dark:text-gray-300 text-sm leading-relaxed">
+                  <p className="text-dark-gray dark:text-gray-300 text-sm leading-relaxed text-justify">
                     {milestone.description}
                   </p>
                 </div>

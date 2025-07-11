@@ -13,6 +13,11 @@ const Maya: React.FC = () => {
     { number: "∞", label: "Hope & Healing", icon: "💫" },
   ];
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = "/placeholder-image.jpg"; // fallback image
+    // Or you could hide the image or show a placeholder component
+  };
+
   return (
     <section id="maya" className="mb-24">
       <div>
@@ -21,8 +26,8 @@ const Maya: React.FC = () => {
           <div className="absolute inset-0 bg-black bg-opacity-20"></div>
           <div className="relative z-10 px-8 py-16 md:py-20">
             <div className="max-w-5xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="mt-20 md:mt-0">
                   <div className="mb-6">
                     <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">
                       Child Care
@@ -61,6 +66,7 @@ const Maya: React.FC = () => {
                       src="/maya-hero.jpg"
                       alt="Children receiving care"
                       className="rounded-xl shadow-2xl w-full object-cover"
+                      onError={handleImageError}
                     />
                   </div>
                   <div className="absolute md:-bottom-12 md:-left-12 -left-4 -bottom-6 transform -rotate-6">
@@ -68,6 +74,7 @@ const Maya: React.FC = () => {
                       src="/maya-thumbnail.png"
                       alt="Children receiving care"
                       className="rounded-xl shadow-2xl w-1/2  object-cover"
+                      onError={handleImageError}
                     />
                   </div>
                 </div>
@@ -89,9 +96,9 @@ const Maya: React.FC = () => {
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
             </div>
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
               <div>
-                <p className="text-lg text-dark-gray dark:text-gray-200 leading-relaxed mb-6">
+                <p className="text-lg text-dark-gray text-justify">
                   Providing holistic care for children in pediatric wards of
                   government hospitals. We provide milk, biscuits, fruits, and
                   other nutritious items to over 200 children daily in pediatric
@@ -114,9 +121,9 @@ const Maya: React.FC = () => {
                 <img
                   src="/maya-about.jpg"
                   alt="Children receiving care"
-                  className="rounded-xl shadow-2xl w-[36rem] object-cover"
+                  className="rounded-xl shadow-2xl w-full h-auto max-h-72 md:max-h-[400px] object-cover"
+                  onError={handleImageError}
                 />
-
                 <div className="absolute -top-4 -right-4 bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
                   200+ Children Daily
                 </div>

@@ -21,7 +21,7 @@ const Poshan: React.FC = () => {
           <div className="absolute inset-0 bg-black bg-opacity-20"></div>
           <div className="relative z-10 px-8 py-16 md:py-20">
             <div className="max-w-5xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                   <div className="mb-6">
                     <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">
@@ -60,14 +60,14 @@ const Poshan: React.FC = () => {
                     <img
                       src="/Poshan-hero-1.jpg"
                       alt="Children receiving care"
-                      className="rounded-xl shadow-2xl h-[28rem] object-cover"
+                      className="rounded-xl shadow-2xl w-full h-auto max-h-72 md:max-h-none object-cover"
                     />
                   </div>
-                  <div className="absolute md:-bottom-12 md:-left-28 -left-4 -bottom-8 transform -rotate-6">
+                  <div className="absolute -bottom-6 left-0 md:-bottom-12 md:-left-28 transform -rotate-6 w-32 h-20 md:w-[16rem] md:h-[10rem]">
                     <img
                       src="/poshan-thumbnail.jpeg"
                       alt="Children receiving care"
-                      className="rounded-xl shadow-2xl h-[10rem] md:w-[16rem] w-[13rem]  object-cover"
+                      className="rounded-xl shadow-2xl w-full h-full object-cover"
                     />
                   </div>
                 </div>
@@ -89,9 +89,9 @@ const Poshan: React.FC = () => {
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
             </div>
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
               <div>
-                <p className="text-lg text-dark-gray dark:text-gray-200 leading-relaxed mb-6">
+                <p className="text-lg text-dark-gray text-justify">
                   Providing nutritious meals to families supporting patients in
                   government hospitals. We serve rice-based meals daily to over
                   300 individuals supporting patients in government hospitals,
@@ -116,9 +116,8 @@ const Poshan: React.FC = () => {
                 <img
                   src="/poshan-about.jpg"
                   alt="Children receiving care"
-                  className="rounded-xl shadow-2xl w-full h-[400px] object-cover"
+                  className="rounded-xl shadow-2xl w-full h-auto max-h-72 md:max-h-[400px] object-cover"
                 />
-
                 <div className="absolute -top-4 -right-4 bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
                   300+ Daily Beneficiaries
                 </div>

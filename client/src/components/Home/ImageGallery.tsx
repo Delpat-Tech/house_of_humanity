@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
+import { useTheme } from "../../shared/contexts/ThemeContext";
 
 type Image = {
   src: string;
@@ -12,7 +13,8 @@ interface ImageGalleryProps {
   theme?: "light" | "dark";
 }
 
-const ImageGallery: React.FC<ImageGalleryProps> = ({ theme = "light" }) => {
+const ImageGallery: React.FC = () => {
+  const { theme } = useTheme();
   const navigate = useNavigate();
   const [currentImage, setCurrentImage] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -280,12 +282,13 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ theme = "light" }) => {
           <motion.button
             className={`flex items-center justify-center w-12 h-12 rounded-full shadow-lg transition-all duration-300 ${
               theme === "dark"
-                ? "bg-gray-700 hover:bg-gray-600 text-white"
-                : "bg-white hover:bg-gray-50 text-gray-800"
+                ? "bg-gray-700 hover:bg-gray-600 text-white border border-white/30"
+                : "bg-white hover:bg-gray-50 text-gray-800 border border-gray-300"
             }`}
             onClick={previousImage}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
+            aria-label="Previous image"
           >
             <ChevronLeft className="w-6 h-6" />
           </motion.button>
@@ -312,12 +315,13 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ theme = "light" }) => {
           <motion.button
             className={`flex items-center justify-center w-12 h-12 rounded-full shadow-lg transition-all duration-300 ${
               theme === "dark"
-                ? "bg-gray-700 hover:bg-gray-600 text-white"
-                : "bg-white hover:bg-gray-50 text-gray-800"
+                ? "bg-gray-700 hover:bg-gray-600 text-white border border-white/30"
+                : "bg-white hover:bg-gray-50 text-gray-800 border border-gray-300"
             }`}
             onClick={nextImage}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
+            aria-label="Next image"
           >
             <ChevronRight className="w-6 h-6" />
           </motion.button>

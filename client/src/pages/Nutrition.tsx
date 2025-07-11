@@ -50,7 +50,7 @@ const Nutrition: React.FC = () => {
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="relative z-10 px-8 py-16 md:py-24">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
                 <div className="mb-6">
                   <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">
@@ -90,15 +90,14 @@ const Nutrition: React.FC = () => {
                   <img
                     src="/Nutrition hero.jpg"
                     alt="Nutrition Programs"
-                    width="100%"
-                    className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
+                    className="rounded-xl shadow-2xl border-4 border-white/20 object-cover w-full h-auto max-h-72 md:max-h-none"
                   />
                 </div>
                 <div className="absolute md:-bottom-12 md:-left-12 -bottom-6 -left-4 transform -rotate-6">
                   <img
                     src="/Nutrition thumbnail.png"
                     alt="Nutrition thumbnail"
-                    className="rounded-lg shadow-lg border-4 border-white/30 object-cover h-[7.5rem] w-full"
+                    className="rounded-lg shadow-lg border-4 border-white/30 object-cover w-full h-full"
                   />
                 </div>
               </div>
@@ -126,17 +125,15 @@ const Nutrition: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {overallImpact.map((stat, index) => (
             <div
               key={index}
-              className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="text-center bg-white rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              <div className="text-4xl mb-3">{stat.icon}</div>
-              <div className="text-3xl font-bold text-primary-blue mb-2">
-                {stat.number}
-              </div>
-              <div className="text-dark-gray font-medium">{stat.label}</div>
+              <div className="text-2xl md:text-4xl mb-2">{stat.icon}</div>
+              <div className="text-base md:text-2xl font-bold text-primary-blue mb-1">{stat.number}</div>
+              <div className="text-xs md:text-base text-dark-gray font-medium">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -190,7 +187,7 @@ const Nutrition: React.FC = () => {
             ].map((process, index) => (
               <div
                 key={index}
-                className={`flex flex-col items-center gap-8 ${
+                className={`flex flex-col items-center gap-4 md:gap-8 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
@@ -241,19 +238,19 @@ const Nutrition: React.FC = () => {
           {getInvolvedOptions.map((option, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 p-4 md:p-6"
             >
               <div className={`bg-gradient-to-r ${option.accent} p-6`}>
-                <h3 className="text-2xl font-bold text-white mb-2">
+                <h3 className="text-base md:text-xl font-bold text-white mb-2">
                   {option.title}
                 </h3>
               </div>
-              <div className="p-6">
-                <p className="text-dark-gray leading-relaxed mb-6">
+              <div className="p-4 md:p-6">
+                <p className="text-sm md:text-base text-dark-gray leading-relaxed mb-4 md:mb-6">
                   {option.description}
                 </p>
                 <Button
-                  className={`w-full py-3 text-lg font-semibold bg-gradient-to-r ${option.accent} text-white hover:shadow-lg hover:scale-105 hover:brightness-110 transition-all duration-300 transform`}
+                  className={`w-full py-2 md:py-3 text-sm md:text-lg font-semibold bg-gradient-to-r ${option.accent} text-white hover:shadow-lg hover:scale-105 hover:brightness-110 transition-all duration-300 transform`}
                   onClick={() => {
                     if (option.buttonText === "Become a Partner") {
                       navigate("/partner-with-us");
