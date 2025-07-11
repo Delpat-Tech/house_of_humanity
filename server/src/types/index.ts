@@ -442,18 +442,18 @@ export interface CacheEntry<T = any> {
 // EXPORT ALL TYPES
 // ============================================================================
 
-export type {
-  // Re-export commonly used types
-  User,
-  Donation,
-  Program,
-  Volunteer,
-  Event,
-  Contact,
-  ApiResponse,
-  PaginatedResponse,
-  AuthenticatedRequest,
-  AppConfig,
-  AppError,
-  LogEntry,
-}; 
+// export type {
+//   // Re-export commonly used types
+//   User,
+//   Donation,
+//   Program,
+//   Volunteer,
+//   Event,
+//   Contact,
+//   ApiResponse,
+//   PaginatedResponse,
+//   AuthenticatedRequest,
+//   AppConfig,
+//   AppError,
+//   LogEntry,
+// }; 
