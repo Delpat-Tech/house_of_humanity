@@ -92,7 +92,7 @@ const BlanketDrive: React.FC = () => {
                 most.
               </p>
               <div className="bg-gradient-to-r from-orange-100/50 to-red-100/30 rounded-lg p-6">
-                <h4 className="font-bold mb-2 text-primary-blue">
+                <h4 className="font-bold mb-2 text-primary-blue dark:text-warm-light-blue">
                   Our Mission
                 </h4>
                 <p className="text-dark-gray font-semibold text-lg">
@@ -125,7 +125,7 @@ const BlanketDrive: React.FC = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
         </div>
-        <div className="grid md:grid-cols-3 gap-8 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {[
             {
               title: "Blanket Distribution",
@@ -174,7 +174,7 @@ const BlanketDrive: React.FC = () => {
             blankets but dignity and care during cold nights.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}

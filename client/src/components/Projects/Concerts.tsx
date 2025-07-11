@@ -89,8 +89,8 @@ const Concerts: React.FC = () => {
                 it’s a garba night or a hip-hop concert, the goal is to use
                 entertainment as a bridge for social good.
               </p>
-              <div className="bg-gradient-to-r from-purple-50 to-pink-100 rounded-lg p-6 dark:from-gray-800 dark:to-pink-900">
-                <h4 className="font-semibold text-purple-800 mb-2 dark:text-purple-200">
+              <div className="bg-gradient-to-r from-purple-50 to-pink-100 rounded-lg p-6 dark:from-gray-700 dark:to-pink-900/40">
+                <h4 className="font-semibold text-purple-800 mb-2 dark:text-purple-100">
                   Our Mission
                 </h4>
                 <p className="text-primary-blue font-semibold text-lg dark:text-purple-100">
@@ -103,7 +103,7 @@ const Concerts: React.FC = () => {
               <img
                 src="/concerts-about.jpg"
                 alt="Live Concert"
-                className="rounded-xl shadow-lg w-[28rem] object-cover"
+                className="rounded-xl shadow-lg w-[36rem] object-cover"
               />
             </div>
           </div>
@@ -149,7 +149,7 @@ const Concerts: React.FC = () => {
             experience world-class performances.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}

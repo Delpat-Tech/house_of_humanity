@@ -163,7 +163,7 @@ const HealthCare: React.FC = () => {
             hygiene to emergency medical support.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {overallImpact.map((stat, index) => (
             <div
               key={index}
@@ -210,7 +210,7 @@ const HealthCare: React.FC = () => {
             {whyItMatters.map((matter, index) => (
               <div
                 key={index}
-                className={`flex items-center gap-8 ${
+                className={`flex  flex-col items-center gap-8 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
@@ -220,7 +220,7 @@ const HealthCare: React.FC = () => {
                       <div className="bg-gradient-to-r from-fresh-green to-primary-blue text-white rounded-full w-12 h-12 flex items-center justify-center font-bold">
                         {matter.step}
                       </div>
-                      <h3 className="text-xl font-bold text-primary-blue">
+                      <h3 className="text-xl font-bold text-primary-blue dark:text-warm-light-blue">
                         {matter.title}
                       </h3>
                     </div>
@@ -229,7 +229,7 @@ const HealthCare: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 w-full">
                   <ImagePlaceholder
                     text={matter.image}
                     width="100%"
@@ -257,7 +257,7 @@ const HealthCare: React.FC = () => {
             most.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid:cols-1 md:grid-cols-3 gap-8">
           {[
             {
               title: "Volunteer",

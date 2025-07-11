@@ -91,15 +91,14 @@ const Education: React.FC = () => {
                   <img
                     src="/education-hero.jpg"
                     alt="Education Programs"
-                    width="100%"
                     className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-12 -left-16 transform -rotate-6">
+                <div className="absolute -bottom-4 -left-4 md:-bottom-12 md:-left-16 transform -rotate-6">
                   <img
                     src="/thumbnail.jpeg"
                     alt="Education thumbnail"
-                    className="rounded-lg shadow-lg border-4 border-white/30 object-cover h-[11rem] w-full"
+                    className="rounded-lg shadow-lg border-4 border-white/30 object-cover h-[8rem] md:h-[11rem] w-full"
                   />
                 </div>
               </div>
@@ -116,7 +115,7 @@ const Education: React.FC = () => {
       <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-2xl p-8 md:p-12 mb-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
-           Changing Lives Through Education
+            Changing Lives Through Education
           </h2>
           <div className="w-24 h-1 bg-gradient-to-br from-green-500 via-teal-400 to-blue-600 mx-auto mb-6"></div>
           <p className="text-lg text-dark-gray max-w-3xl mx-auto">
@@ -126,7 +125,7 @@ const Education: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {overallImpact.map((stat, index) => (
             <div
               key={index}
@@ -191,7 +190,7 @@ const Education: React.FC = () => {
             ].map((process, index) => (
               <div
                 key={index}
-                className={`flex items-center gap-8 ${
+                className={`flex flex-col items-center gap-8 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
@@ -201,7 +200,7 @@ const Education: React.FC = () => {
                       <div className="bg-gradient-to-r from-fresh-green to-primary-blue text-white rounded-full w-12 h-12 flex items-center justify-center font-bold">
                         {process.step}
                       </div>
-                      <h3 className="text-xl font-bold text-primary-blue">
+                      <h3 className="text-xl font-bold text-primary-blue  dark:text-warm-light-blue">
                         {process.title}
                       </h3>
                     </div>
@@ -210,7 +209,7 @@ const Education: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 w-full">
                   <ImagePlaceholder
                     text={process.image}
                     width="100%"

@@ -3,8 +3,18 @@ import ImagePlaceholder from "../ui/ImagePlaceholder";
 
 const Cyclothon: React.FC = () => {
   const stats = [
-    { number: "2", label: "Events Conducted - We have inspired a wave of excitememnt around fitness and active living", icon: "🚴‍♂️" },
-    { number: "1,800+", label: "Youth Participants - Bringing together the youth of vadodara in a positive and energetic environment ", icon: "👥" },
+    {
+      number: "2",
+      label:
+        "Events Conducted - We have inspired a wave of excitememnt around fitness and active living",
+      icon: "🚴‍♂️",
+    },
+    {
+      number: "1,800+",
+      label:
+        "Youth Participants - Bringing together the youth of vadodara in a positive and energetic environment ",
+      icon: "👥",
+    },
   ];
 
   const whatWeDo = [
@@ -65,7 +75,6 @@ const Cyclothon: React.FC = () => {
                   className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
                 />
               </div>
-             
             </div>
           </div>
         </div>
@@ -75,7 +84,7 @@ const Cyclothon: React.FC = () => {
       <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 my-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6 dark:text-cyan-200">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
               About Project Cyclothon
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6 dark:from-cyan-700 dark:to-blue-700" />
@@ -88,11 +97,9 @@ const Cyclothon: React.FC = () => {
                 cycling events, we offer youth an exciting way to stay fit and
                 connect with their community.
               </p>
-              <div className="bg-gradient-to-r from-green-50 to-blue-100 rounded-lg p-6">
-                <h4 className="font-semibold mb-2 text-green-800">
-                  Our Vision
-                </h4>
-                <p className="text-primary-blue font-semibold text-lg">
+              <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-xl p-6">
+                <h4 className="font-bold mb-2 text-primary-blue dark:text-blue-200">Our Vision</h4>
+                <p className="text-dark-gray font-semibold text-lg">
                   To inspire a generation of fitness-first, community-focused
                   youth through cycling.
                 </p>
@@ -100,10 +107,10 @@ const Cyclothon: React.FC = () => {
             </div>
             <div className="relative">
               <img
-                  src="/cyclothon-about.jpg"
-                  alt="Cyclothon Riders"
-                  className="rounded-xl shadow-lg w-[28rem] object-cover"
-                />
+                src="/cyclothon-about.jpg"
+                alt="Cyclothon Riders"
+                className="rounded-xl shadow-lg w-[35rem] object-cover"
+              />
             </div>
           </div>
         </div>
@@ -138,7 +145,7 @@ const Cyclothon: React.FC = () => {
       {/* Impact */}
       <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20  rounded-2xl p-8 md:p-12 mb-12">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary-blue dark:text-gray-200 mb-6">
             Our Impact
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
@@ -147,7 +154,7 @@ const Cyclothon: React.FC = () => {
             events, sparking a movement of fun, fitness, and fellowship.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}
@@ -157,7 +164,9 @@ const Cyclothon: React.FC = () => {
               <div className="text-4xl font-bold text-primary-blue mb-2">
                 {stat.number}
               </div>
-              <div className="text-dark-gray px-2 font-medium">{stat.label}</div>
+              <div className="text-dark-gray px-2 font-medium">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>

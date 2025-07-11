@@ -154,11 +154,11 @@ const Bachpan: React.FC = () => {
                       className="rounded-xl shadow-2xl  h-[17rem] object-cover"
                     />
                   </div>
-                  <div className="absolute -bottom-6 -left-8 transform -rotate-6">
+                  <div className="absolute md:-bottom-6 md:-left-8 -bottom-4 -left-4 transform -rotate-6">
                     <img
                       src="/thumbnail-1.png"
                       alt="Educational activities"
-                      className="rounded-xl shadow-2xl w-[14rem] object-cover"
+                      className="rounded-xl shadow-2xl md:w-[13rem] w-[10rem] object-cover"
                     />
                   </div>
                 </div>
@@ -262,7 +262,7 @@ const Bachpan: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             {bachpanStats.map((stat, index) => (
               <div
                 key={index}

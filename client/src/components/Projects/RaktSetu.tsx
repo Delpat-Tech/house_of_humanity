@@ -97,7 +97,7 @@ const RaktSetu: React.FC = () => {
                 <img
                   src="/blood-donate.jpg"
                   alt="Blood camp"
-                  className="rounded-lg shadow-lg border-4 border-white/30 object-cover h-36"
+                  className="rounded-lg shadow-lg border-4 border-white/30 object-cover h-[6rem]"
                 />
               </div>
             </div>
@@ -168,7 +168,7 @@ const RaktSetu: React.FC = () => {
             community engagement.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
           {whatWeDo.map((item, index) => (
             <div
               key={index}
@@ -199,7 +199,7 @@ const RaktSetu: React.FC = () => {
             round the clock.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           {raktSetuStats.map((stat, index) => (
             <div
               key={index}

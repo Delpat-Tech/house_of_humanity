@@ -65,7 +65,7 @@ const PadHouse: React.FC = () => {
                     <img
                       src="/Gallery/123.png"
                       alt="Menstrual hygiene awareness session"
-                      className="rounded-lg shadow-lg border-4 border-white/30 object-cover h-36 w-full"
+                      className="rounded-lg shadow-lg border-4 border-white/30 object-cover md:h-32 h-24 w-full"
                     />
                   </div>
                 </div>
@@ -193,7 +193,7 @@ const PadHouse: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             {padHouseStats.map((stat, index) => (
               <div
                 key={index}

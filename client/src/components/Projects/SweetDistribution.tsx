@@ -33,8 +33,13 @@ const SweetDistribution: React.FC = () => {
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
                 {stats.map((s, i) => (
-                  <div key={i} className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 dark:bg-gray-800 dark:bg-opacity-40">
-                    <span className="text-white font-semibold">{s.number} {s.label}</span>
+                  <div
+                    key={i}
+                    className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 dark:bg-gray-800 dark:bg-opacity-40"
+                  >
+                    <span className="text-white font-semibold">
+                      {s.number} {s.label}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -58,7 +63,7 @@ const SweetDistribution: React.FC = () => {
       <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 md:p-12 my-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue dark:text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
               About Project Sweet Distribution
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-pink-500 mx-auto mb-6" />
@@ -101,10 +106,12 @@ const SweetDistribution: React.FC = () => {
       {/* What We Do */}
       <div className="my-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6 dark:text-orange-200">What We Do</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
+            What We Do
+          </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6 dark:from-orange-700 dark:to-yellow-700" />
         </div>
-        <div className="grid md:grid-cols-2 gap-8 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
           {[
             {
               title: "Diwali Sweet Distribution",
@@ -147,7 +154,7 @@ const SweetDistribution: React.FC = () => {
             individuals every year, spreading joy and Diwali cheer.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}

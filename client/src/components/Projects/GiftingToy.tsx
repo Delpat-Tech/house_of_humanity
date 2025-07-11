@@ -101,7 +101,7 @@ const GiftingToy: React.FC = () => {
               <img
                 src="/gifting-toy-about.png"
                 alt="Toy Drive evnet"
-                className="rounded-xl shadow-lg w-[28rem] object-cover"
+                className="rounded-xl shadow-lg w-[36rem] object-cover"
               />
               <div className="absolute -top-4 -right-4 bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
                 1,000+ People Reached Annually
@@ -149,7 +149,7 @@ const GiftingToy: React.FC = () => {
             that brighten their lives and foster joy during festivals.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}

@@ -15,13 +15,13 @@ const overallImpact = [
 ];
 
 const projects = [
-  { name: "Blanket Drive", id: "blanket-drive", icon: "🧣" },
-  { name: "Sweet Distribution", id: "sweet-distribution", icon: "🍬" },
-  { name: "Cyclothon", id: "cyclothon", icon: "🚴‍♂️" },
-  { name: "Marathon", id: "marathon", icon: "🏃‍♂️" },
-  { name: "Grooming", id: "grooming", icon: "✨" },
-  { name: "Concerts", id: "concerts", icon: "🎤" },
-  { name: "Gifting Toy", id: "gifting-toy", icon: "🎁" },
+  { name: "Blanket Drive", id: "blanket-drive" },
+  { name: "Sweet Distribution", id: "sweet-distribution" },
+  { name: "Cyclothon", id: "cyclothon" },
+  { name: "Marathon", id: "marathon" },
+  { name: "Grooming", id: "grooming" },
+  { name: "Concerts", id: "concerts" },
+  { name: "Joyful Gifting", id: "gifting-toy" },
 ];
 
 const HouseOfHappiness = () => {
@@ -30,10 +30,10 @@ const HouseOfHappiness = () => {
     setTimeout(() => {
       const element = document.getElementById(projectId);
       if (element) {
-        element.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start',
-          inline: 'nearest'
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
         });
       } else {
         console.warn(`Element with id "${projectId}" not found`);
@@ -75,11 +75,8 @@ const HouseOfHappiness = () => {
                   <button
                     key={index}
                     onClick={() => scrollToProject(project.id)}
-                    className="group flex items-center gap-2 px-4 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white border-opacity-30 hover:border-opacity-50 relative z-30"
+                    className="group flex items-center gap-2 px-4 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-xl backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:border-opacity-50 relative z-30"
                   >
-                    <span className="text-lg group-hover:scale-110 transition-transform duration-300">
-                      {project.icon}
-                    </span>
                     <span className="font-semibold text-sm md:text-base">
                       {project.name}
                     </span>
@@ -108,7 +105,7 @@ const HouseOfHappiness = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {overallImpact.map((stat, index) => (
             <div
               key={index}
@@ -166,7 +163,8 @@ const HouseOfHappiness = () => {
               description:
                 "Help organize events, distribute sweets, or assist at concerts and gifting drives.",
               buttonText: "Become a Volunteer",
-              color: "from-yellow-400 to-orange-500 dark:from-yellow-700 dark:to-orange-700",
+              color:
+                "from-yellow-400 to-orange-500 dark:from-yellow-700 dark:to-orange-700",
               route: "/get-involved",
             },
             {
@@ -182,7 +180,8 @@ const HouseOfHappiness = () => {
               description:
                 "Support a full-scale concert, gifting drive, or festive event for underprivileged communities.",
               buttonText: "Sponsor Now",
-              color: "from-purple-500 to-pink-500 dark:from-purple-700 dark:to-pink-700",
+              color:
+                "from-purple-500 to-pink-500 dark:from-purple-700 dark:to-pink-700",
               route: "/partner-with-us",
             },
           ].map((option, index) => (

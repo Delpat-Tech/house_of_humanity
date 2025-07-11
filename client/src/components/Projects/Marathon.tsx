@@ -100,7 +100,7 @@ const Marathon: React.FC = () => {
               <img
                 src="/marathon-about.jpeg"
                 alt="Inclusive Running group"
-                className="rounded-xl shadow-lg w-[28rem] object-cover"
+                className="rounded-xl shadow-lg w-[36rem] object-cover"
               />
             </div>
           </div>
@@ -146,7 +146,7 @@ const Marathon: React.FC = () => {
             of movement to all.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}

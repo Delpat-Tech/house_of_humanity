@@ -94,7 +94,7 @@ const Nutrition: React.FC = () => {
                     className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-12 -left-12 transform -rotate-6">
+                <div className="absolute md:-bottom-12 md:-left-12 -bottom-6 -left-4 transform -rotate-6">
                   <img
                     src="/Nutrition thumbnail.png"
                     alt="Nutrition thumbnail"
@@ -126,7 +126,7 @@ const Nutrition: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {overallImpact.map((stat, index) => (
             <div
               key={index}
@@ -190,7 +190,7 @@ const Nutrition: React.FC = () => {
             ].map((process, index) => (
               <div
                 key={index}
-                className={`flex items-center gap-8 ${
+                className={`flex flex-col items-center gap-8 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
@@ -201,7 +201,7 @@ const Nutrition: React.FC = () => {
                         {process.step}
                       </div>
                       <div className="text-4xl">{process.icon}</div>
-                      <h3 className="text-xl font-bold text-primary-blue">
+                      <h3 className="text-xl font-bold text-primary-blue dark:text-warm-light-blue">
                         {process.title}
                       </h3>
                     </div>
@@ -210,7 +210,7 @@ const Nutrition: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 w-full">
                   <ImagePlaceholder
                     text={process.image}
                     width="100%"

@@ -185,7 +185,7 @@ const Saharaa: React.FC = () => {
             95% of our beneficiaries through their toughest times.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           {saharaStats.map((stat, index) => (
             <div
               key={index}

@@ -60,10 +60,10 @@ const Maya: React.FC = () => {
                     <img
                       src="/maya-hero.jpg"
                       alt="Children receiving care"
-                      className="rounded-xl shadow-2xl w-full  object-cover"
+                      className="rounded-xl shadow-2xl w-full object-cover"
                     />
                   </div>
-                  <div className="absolute -bottom-12 -left-12 transform -rotate-6">
+                  <div className="absolute md:-bottom-12 md:-left-12 -left-4 -bottom-6 transform -rotate-6">
                     <img
                       src="/maya-thumbnail.png"
                       alt="Children receiving care"
@@ -100,8 +100,8 @@ const Maya: React.FC = () => {
                   engaging activities.
                 </p>
                 <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6">
-                  <h4 className="font-semibold mb-2">Our Mission</h4>
-                  <p className="text-primary-blue font-semibold text-lg">
+                  <h4 className="font-semibold mb-2 dark:text-warm-light-blue">Our Mission</h4>
+                  <p className="text-primary-blue dark:text-gray-200 font-semibold text-lg">
                     At Project Maya, our mission is to provide holistic care for
                     children in pediatric wards by addressing their nutritional,
                     emotional, and psychological needs. We believe that every
@@ -190,7 +190,7 @@ const Maya: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             {mayaStats.map((stat, index) => (
               <div
                 key={index}

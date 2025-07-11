@@ -63,11 +63,11 @@ const Poshan: React.FC = () => {
                       className="rounded-xl shadow-2xl h-[28rem] object-cover"
                     />
                   </div>
-                  <div className="absolute -bottom-12 -left-28 transform -rotate-6">
+                  <div className="absolute md:-bottom-12 md:-left-28 -left-4 -bottom-8 transform -rotate-6">
                     <img
                       src="/poshan-thumbnail.jpeg"
                       alt="Children receiving care"
-                      className="rounded-xl shadow-2xl h-[10rem] w-[16rem]  object-cover"
+                      className="rounded-xl shadow-2xl h-[10rem] md:w-[16rem] w-[13rem]  object-cover"
                     />
                   </div>
                 </div>
@@ -100,8 +100,10 @@ const Poshan: React.FC = () => {
                   variety and balance.
                 </p>
                 <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6">
-                  <h4 className="font-semibold mb-2">Our Mission</h4>
-                  <p className="text-primary-blue font-semibold text-lg">
+                  <h4 className="font-bold mb-2 text-primary-blue dark:text-warm-light-blue">
+                    Our Mission
+                  </h4>
+                  <p className="text-dark-gray font-semibold text-lg">
                     At Poshan, we are committed to ensuring that no family
                     supporting a patient in a government hospital goes hungry.
                     We offer balanced, nutritious meals to these individuals at
@@ -190,7 +192,7 @@ const Poshan: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             {poshanStats.map((stat, index) => (
               <div
                 key={index}

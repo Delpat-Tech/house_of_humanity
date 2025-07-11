@@ -62,8 +62,7 @@ const Grooming: React.FC = () => {
                 <img
                   src="/grooming-about.jpg"
                   alt="Grooming session"
-                  width="100%"
-                  className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
+                  className="rounded-xl shadow-2xl h-[28rem] border-4 border-white/20 object-cover"
                 />
               </div>
             </div>
@@ -104,7 +103,7 @@ const Grooming: React.FC = () => {
               <img
                 src="/grooming.webp"
                 alt="Girls grooming session"
-                className="rounded-xl shadow-lg w-[28rem] object-cover"
+                className="rounded-xl shadow-lg w-[36rem] object-cover"
               />
             </div>
           </div>
@@ -149,7 +148,7 @@ const Grooming: React.FC = () => {
             with dignity, supported by over 30 compassionate volunteers.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}

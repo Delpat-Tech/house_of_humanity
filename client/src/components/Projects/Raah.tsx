@@ -199,14 +199,14 @@ const Raah: React.FC = () => {
                       <img
                         src="/Raah-hero.png"
                         alt="Migrant children in educational activities"
-                        className="rounded-xl shadow-2xl w-[32rem] object-cover"
+                        className="rounded-xl shadow-2xl w-[32rem object-cover"
                       />
                     </div>
-                    <div className="absolute -bottom-8 -left-32 transform -rotate-6">
+                    <div className="absolute -bottom-8 md:-left-32 -left-4 transform -rotate-6">
                       <img
                         src="/education-thumbnail.webp"
                         alt="Educational support activities"
-                        className="rounded-xl shadow-2xl h-[10rem] w-[15rem] object-cover"
+                        className="rounded-xl shadow-2xl md:h-[10rem] md:w-[15rem] h-[6rem] w-[10rem] object-cover"
                       />
                     </div>
                   </div>
@@ -310,7 +310,7 @@ const Raah: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
               {raahStats.map((stat, index) => (
                 <div
                   key={index}
@@ -392,7 +392,7 @@ const Raah: React.FC = () => {
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {raahData.impact.stories.map((story, index) => (
                 <div
                   key={index}
