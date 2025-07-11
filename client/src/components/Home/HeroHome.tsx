@@ -8,13 +8,13 @@ const HeroHome: React.FC = () => {
   const { theme } = useTheme();
   return (
     <section
-      className="relative w-full h-screen bg-cover bg-center bg-no-repeat flex items-center mt-10"
+      className="relative w-full h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center overflow-hidden"
       style={{ backgroundImage: "url('/images/HeroHOH.jpg')" }}
     >
       {/* Enhanced Overlay */}
       <div
         className={`absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20 z-0 transition-all duration-300 ${theme === 'dark' ? 'bg-black/60' : ''}`}
-        style={theme === 'dark' ? { background: 'rgba(0,0,0,0.55)' } : {}}
+        style={theme === 'dark' ? { background: 'rgba(0,0,0,0.55)' } : undefined}
       ></div>
 
       {/* Content */}
@@ -26,7 +26,7 @@ const HeroHome: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
-            className="mb-3 sm:mb-4 md:mb-6 flex justify-center"
+            className="mb-2 sm:mb-3 md:mb-4 flex justify-center"
           >
             <div className="relative">
               {/* Logo background for better visibility */}
@@ -40,10 +40,10 @@ const HeroHome: React.FC = () => {
           </motion.div>
 
           {/* Main Content */}
-          <div className="space-y-2 sm:space-y-3 md:space-y-4">
+          <div className="space-y-4 sm:space-y-6 md:space-y-8">
             {/* Tagline */}
             <motion.p
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-blue font-semibold"
+              className="text-base sm:text-lg md:text-xl text-primary-blue font-semibold"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
@@ -54,21 +54,18 @@ const HeroHome: React.FC = () => {
 
             {/* Main Heading */}
             <motion.h1
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight text-white drop-shadow-lg"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-white drop-shadow-lg"
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.9, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              Empowering Today for a{" "}
-              <span className="text-fresh-green">Healthier Society</span>{" "}
-              and a{" "}
-              <span className="text-primary-blue">Sustainable Tomorrow</span>
+              Empowering Today for a <span className="text-fresh-green">Healthier Society</span> and a <span className="text-primary-blue">Sustainable Tomorrow</span>
             </motion.h1>
 
             {/* Description */}
             <motion.p
-              className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed"
+              className="text-sm sm:text-base md:text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed mt-2"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
@@ -78,45 +75,18 @@ const HeroHome: React.FC = () => {
               and sustainable development initiatives that transform lives and communities.
             </motion.p>
 
-            {/* Enhanced Buttons */}
+            {/* Single CTA Button - Centered, prominent */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center items-center mt-3 sm:mt-4"
+              className="flex justify-center items-center mt-4"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.9, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.3 }}
             >
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-xl bg-primary-blue text-white text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-primary-blue hover:bg-white hover:text-primary-blue"
-                onClick={() => navigate("/about-us")}
-              >
-                Who We Are
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-xl bg-transparent text-white text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white hover:bg-white hover:text-dark-gray"
-                onClick={() => navigate("/contact-us")}
-              >
-                Contact Us
-              </motion.button>
-            </motion.div>
-
-            {/* Call to Action */}
-            <motion.div
-              className="mt-2 sm:mt-3 md:mt-4"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0, duration: 0.7, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 rounded-xl bg-fresh-green text-white text-lg font-bold shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-fresh-green hover:bg-white hover:text-fresh-green"
+                whileHover={{ scale: 1.07, y: -2 }}
+                whileTap={{ scale: 0.96 }}
+                className="px-8 py-4 rounded-2xl bg-fresh-green text-white text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-fresh-green hover:bg-white hover:text-fresh-green focus:outline-none focus:ring-4 focus:ring-fresh-green/30"
                 onClick={() => navigate("/donate-for-a-cause")}
               >
                 Make a Difference Today
@@ -128,7 +98,7 @@ const HeroHome: React.FC = () => {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-12 sm:bottom-12 md:bottom-10 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-10"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.7, ease: "easeOut" }}

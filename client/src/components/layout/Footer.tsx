@@ -183,7 +183,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="mt-16 pt-8 border-t border-primary-blue/20 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-off-white text-sm">
-            © 2024 House of Humanity. All rights reserved.
+            © 2025 House of Humanity. All rights reserved.
           </p>
           <div className="flex space-x-6">
             {[
