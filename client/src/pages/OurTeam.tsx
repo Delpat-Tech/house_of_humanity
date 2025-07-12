@@ -52,6 +52,19 @@ const OurTeam = () => {
   const [showModal, setShowModal] = useState(false);
   return (
     <div className="bg-off-white min-h-screen pt-0">
+      {/* Hero Section - match AboutUs */}
+      <section className="relative overflow-hidden bg-warm-light-blue dark:bg-gray-800 py-20 px-4 md:px-0 flex flex-col items-center text-center">
+        {/* Animated gradient blobs */}
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary-blue opacity-20 rounded-full filter blur-3xl animate-pulse-slow z-0" />
+        <div className="absolute top-1/2 right-0 w-80 h-80 bg-fresh-green opacity-20 rounded-full filter blur-2xl animate-pulse-slower z-0" />
+        <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-primary-blue opacity-10 rounded-full filter blur-2xl animate-pulse-slow z-0" />
+        <div className="relative z-10 flex flex-col items-center w-full">
+          <h1 className="pt-16 text-4xl md:text-5xl font-extrabold text-primary-blue mb-4 header-font drop-shadow-sm">Meet Our Team</h1>
+          <p className="max-w-2xl mx-auto text-lg md:text-xl text-dark-gray dark:text-gray-200 mb-6 font-medium">
+            The heart and soul of House of Humanity—our dedicated founders, passionate volunteers, and everyone who makes our mission possible.
+          </p>
+        </div>
+      </section>
       {/* Founders Desk */}
       <section className="max-w-5xl mx-auto py-16 px-4 md:px-0 pt-32">
         <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-10 header-font text-center">

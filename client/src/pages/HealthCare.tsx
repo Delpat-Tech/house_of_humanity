@@ -102,51 +102,75 @@ const HealthCare: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-12 mt-24">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-green-500 via-teal-400 to-blue-600 rounded-2xl mb-16">
+      {/* Hero Section - match Nutrition */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-fresh-green via-green-600 to-primary-blue rounded-2xl mb-16">
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div className="relative z-10 px-4 py-8 md:px-8 md:py-24">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center">
-              <div className="mb-8">
-                <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">
-                  Healthcare & Wellness
-                </span>
-              </div>
-              <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-                Caring for
-                <span className="block text-blue-100">Community Health</span>
-              </h1>
-              <p className="text-xl text-blue-100 mb-8 font-semibold leading-relaxed max-w-3xl mx-auto">
-                From menstrual hygiene to emergency blood support and medical
-                equipment - we're committed to making healthcare accessible to
-                all.
-              </p>
-            </div>
-
-            {/* Project Navigation Buttons */}
-            <div className="mt-8">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Explore Our Projects
-              </h3>
-              <div className="flex flex-wrap justify-center gap-3 md:gap-4 relative z-30">
-                {projects.map((project, index) => (
+        <div className="relative z-10 px-8 py-16 md:py-24">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="mb-6">
+                  <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">
+                    Healthcare & Wellness
+                  </span>
+                </div>
+                <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                  Healthcare
+                  <span className="block text-warm-light-blue text-5xl md:text-6xl">
+                    Initiatives
+                  </span>
+                </h1>
+                <p className="text-xl text-green-100 mb-8 leading-relaxed capitalize">
+                  Making healthcare accessible for all: menstrual hygiene, emergency blood support, and medical equipment for those in need.
+                </p>
+                <div className="flex flex-wrap gap-4 mb-8">
                   <button
-                    key={index}
-                    onClick={() => scrollToProject(project.id)}
-                    className="group flex items-center gap-2 px-4 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-xl backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white border-opacity-30 hover:border-opacity-50 relative z-30"
+                    onClick={() => scrollToProject("pad-house")}
+                    className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 hover:bg-opacity-30 transition-all duration-300 hover:scale-105 cursor-pointer"
                   >
-                    <span className="font-semibold text-sm md:text-base">
-                      {project.name}
+                    <span className="text-white font-semibold">
+                      Pad House
                     </span>
                   </button>
-                ))}
+                  <button
+                    onClick={() => scrollToProject("rakt-setu")}
+                    className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 hover:bg-opacity-30 transition-all duration-300 hover:scale-105 cursor-pointer"
+                  >
+                    <span className="text-white font-semibold">
+                      Rakt Setu
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => scrollToProject("sahara")}
+                    className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 hover:bg-opacity-30 transition-all duration-300 hover:scale-105 cursor-pointer"
+                  >
+                    <span className="text-white font-semibold">
+                      Sahara
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div className="relative">
+                <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                  <img
+                    src="/medical-equipment-donate.jpeg"
+                    alt="Healthcare Initiatives"
+                    className="rounded-xl shadow-2xl border-4 border-white/20 object-cover w-full h-auto max-h-72 md:max-h-none"
+                  />
+                </div>
+                <div className="absolute md:-bottom-12 md:-left-12 -bottom-6 -left-4 transform -rotate-6">
+                  <img
+                    src="/medical-equipment.jpg"
+                    alt="Healthcare thumbnail"
+                    className="rounded-lg shadow-lg border-4 border-white/30 object-cover w-44 h-28 md:w-56 md:h-36"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
         {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-warm-light-blue rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
       </div>
 

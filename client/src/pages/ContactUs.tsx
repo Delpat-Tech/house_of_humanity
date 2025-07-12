@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
+import HeroStatsSection from '../components/ui/HeroStatsSection';
+import { Sparkles } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -41,20 +43,15 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-24 bg-gradient-to-b from-off-white to-warm-light-blue dark:from-gray-900 dark:to-slate-900 transition-colors duration-300">
-      {/* Hero Section */}
-      <div className="relative h-[40vh] bg-cover bg-center" style={{ backgroundImage: "url('/Contact-Us.jpg')" }}>
-        <div className="absolute inset-0 bg-primary-blue/80 dark:bg-black dark:bg-opacity-70 flex items-center justify-center transition-all duration-300">
-          <motion.h1 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold text-white text-center"
-          >
-            Get in Touch
-          </motion.h1>
-        </div>
-      </div>
+    <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 mt-24 min-h-screen transition-colors duration-300">
+      <HeroStatsSection
+        title={<span>Contact Us</span>}
+        subtitle={"We'd love to hear from you! Reach out for questions, collaborations, or to get involved."}
+        stats={[]}
+        badge={<><Sparkles className="w-5 h-5 text-yellow-300 mr-2" /><span className="text-white font-medium">Let's Connect</span></>}
+      />
+      {/* Padding between hero and cards */}
+      <div className="py-12" />
 
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">

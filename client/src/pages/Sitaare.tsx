@@ -17,40 +17,53 @@ const fadeInUp: Variants = {
 
 const Sitaare = () => {
   return (
-    <section className="pt-24 px-6 py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-slate-800 dark:to-slate-900 text-slate-800 dark:text-slate-200 transition-all duration-300">
-      <div className="max-w-6xl mx-auto">
-        {/* Header Section */}
-        <div className="text-center mb-16">
-          <motion.h2
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            custom={0}
-            className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-slate-100 mb-3"
-          >
-            House of Humanity
-          </motion.h2>
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            custom={1}
-            className="uppercase tracking-wider text-sm text-teal-600 dark:text-teal-400 mb-8"
-          >
-            P R E S E N T S
-          </motion.p>
-          
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            custom={2}
-            className="inline-block bg-gradient-to-r from-pink-500 to-rose-500 dark:from-pink-600 dark:to-rose-600 text-white px-8 py-4 rounded-2xl shadow-lg mb-12"
-          >
-            <h3 className="text-2xl md:text-3xl font-bold">Project Sitaare</h3>
-            <p className="text-pink-100 text-sm mt-1">Empowering dreams, one girl at a time</p>
-          </motion.div>
+    <div className={`min-h-screen transition-colors duration-300 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-800 dark:to-slate-900`}>
+      {/* Hero Section  */}
+      <section className="pt-32 pb-20 px-4 md:px-20 bg-gradient-to-r from-pink-500/10 to-rose-500/10 dark:from-pink-900/80 dark:to-rose-900/80 dark:shadow-pink-900/40 dark:shadow-2xl border-b border-pink-100 dark:border-pink-900 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Subtle overlay for dark mode pop */}
+          <div className="hidden dark:block w-full h-full bg-gradient-to-br from-pink-900/40 via-rose-900/30 to-indigo-900/30" />
         </div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-h2 text-center uppercase mb-6 leading-tight dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-pink-400 dark:via-rose-400 dark:to-fuchsia-400"
+          >
+            Project Sitaare
+          </motion.h1>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-gradient-h1 text-center mb-8 max-w-5xl mx-auto leading-relaxed dark:text-pink-200"
+          >
+            Empowering dreams, one girl at a time
+            <br />
+            <span className="text-pink-600 dark:text-rose-300">
+              A home for hope, growth, and opportunity.
+            </span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto text-lg md:text-xl lg:text-2xl font-medium text-slate-700 dark:text-pink-100 text-center leading-relaxed"
+          >
+            Project Sitaare is a one-of-a-kind orphanage and shelter home for girls aged 6 to 18. More than just shelter—it's a place where dreams take flight. With full education, safety, and holistic development, it's the most empowering space for girls in Gujarat.
+          </motion.p>
+        </div>
+      </section>
+      <div className="mb-12 md:mb-20" />
+      {/* The rest of the Sitaare content remains unchanged */}
+        <div className="max-w-6xl mx-auto">
+        
 
         {/* Main Content Grid */}
         <div className="grid md:grid-cols-2 gap-12 mb-16">
@@ -222,8 +235,9 @@ const Sitaare = () => {
             Learn More on Sitaare.org
           </a>
         </motion.div>
+      <div className="mt-16 md:mt-24" />
       </div>
-    </section>
+    </div>
   );
 };
 

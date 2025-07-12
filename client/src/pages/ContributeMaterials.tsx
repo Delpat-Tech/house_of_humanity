@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import HeroStatsSection from '../components/ui/HeroStatsSection';
+import { Sparkles } from 'lucide-react';
 
 const donationItems = [
   {
@@ -54,17 +56,15 @@ const ContributeMaterials = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto py-12 px-4 mt-24">
-      {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="mb-12 text-center bg-gradient-to-br from-primary-blue via-blue-600 to-fresh-green rounded-3xl py-10 shadow-xl"
-      >
-        <h1 className="text-5xl font-extrabold mb-4 text-white drop-shadow-lg">Contribute Materials</h1>
-        <p className="text-xl text-white/90 font-medium max-w-2xl mx-auto">Your unused items can bring joy and dignity. Donate clothes, food, toys, utensils, and educational materials to help families in need.</p>
-      </motion.div>
+    <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 mt-24 min-h-screen transition-colors duration-300">
+      <HeroStatsSection
+        title={<span>Contribute Materials</span>}
+        subtitle={"Your unused items can bring joy and dignity. Donate clothes, food, toys, utensils, and educational materials to help families in need."}
+        stats={[]}
+        badge={<><Sparkles className="w-5 h-5 text-yellow-300 mr-2" /><span className="text-white font-medium">Give with Love</span></>}
+      />
+      {/* Padding between hero and cards */}
+      <div className="py-12" />
 
       {/* What You Can Donate */}
       <div className="mb-16">

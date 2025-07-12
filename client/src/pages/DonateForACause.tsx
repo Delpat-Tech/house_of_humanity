@@ -4,6 +4,8 @@ import BhimQR from './BhimQR';
 import WaysToDonate from './WaysToDonate';
 import { motion } from 'framer-motion';
 import Button from '../components/ui/Button';
+import HeroStatsSection from '../components/ui/HeroStatsSection';
+import { Sparkles } from 'lucide-react';
 
 type FormData = {
   firstName: string;
@@ -194,28 +196,15 @@ const DonateForACause: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      {/* Hero Section */}
-      <div className="relative w-full bg-gradient-to-br from-primary-blue via-blue-600 to-fresh-green pt-32 pb-20 flex flex-col items-center justify-center text-center overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="z-10"
-        >
-          <div className="flex flex-col items-center mb-6">
-            <svg className="w-20 h-20 text-white mb-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-            </svg>
-            <h1 className="text-5xl font-extrabold text-white drop-shadow-lg mb-2">Donate for a Cause</h1>
-            <p className="text-xl text-white/90 font-medium max-w-2xl">Help us cultivate dignity for women and children to Dream Beyond their circumstances. All individual donations are <span className="font-bold text-white">100% matched</span>.</p>
-          </div>
-        </motion.div>
-        {/* Decorative blurred circles */}
-        <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl opacity-10"></div>
-        <div className="absolute bottom-20 right-20 w-40 h-40 bg-white rounded-full blur-3xl opacity-10"></div>
-        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-white rounded-full blur-2xl opacity-10"></div>
-      </div>
+    <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 mt-24 min-h-screen transition-colors duration-300">
+      <HeroStatsSection
+        title={<span>Donate For A Cause</span>}
+        subtitle={"Your support powers our mission. Make a difference by donating to a cause you care about!"}
+        stats={[]}
+        badge={<><Sparkles className="w-5 h-5 text-yellow-300 mr-2" /><span className="text-white font-medium">Support & Empower</span></>}
+      />
+      {/* Increased padding between hero and cards */}
+      <div className="py-16" />
 
       {/* Donation Form Section */}
       <div className="-mt-24 max-w-5xl mx-auto px-2 sm:px-4 flex flex-col md:flex-row gap-6 md:gap-8 relative z-20 md:min-h-[520px]">

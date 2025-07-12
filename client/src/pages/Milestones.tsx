@@ -6,6 +6,7 @@ import StatsCard from '../components/ui/StatsCard';
 import Card from '../components/ui/Card';
 import { Heart, Users, Award, Target, TrendingUp, Star, ArrowRight, Calendar, MapPin, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import HeroStatsSection, { HeroStat } from '../components/ui/HeroStatsSection';
 
 interface ProjectStat {
   name: string;
@@ -194,6 +195,29 @@ const CountUpAnimation: React.FC<{ end: number; duration: number }> = ({ end, du
   return <span>{count.toLocaleString()}</span>;
 };
 
+const heroStats: HeroStat[] = [
+  {
+    label: 'Lives Impacted',
+    value: 150000,
+    duration: 3,
+    suffix: '+',
+    cardClassName: '',
+  },
+  {
+    label: 'Active Projects',
+    value: 16,
+    duration: 2,
+    suffix: '+',
+    cardClassName: '',
+  },
+  {
+    label: 'Key Sectors',
+    value: 5,
+    duration: 1,
+    cardClassName: '',
+  },
+];
+
 const Milestones: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'projects' | 'sectors'>('projects');
   const { theme } = useTheme();
@@ -202,48 +226,12 @@ const Milestones: React.FC = () => {
   return (
     <div className={`min-h-screen transition-colors duration-300 pt-32 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50'}`}>
       {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 opacity-90 dark:opacity-80"></div>
-        <div className="absolute inset-0 bg-black opacity-10"></div>
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-4 -left-4 w-72 h-72 bg-white opacity-5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-8 -right-8 w-96 h-96 bg-yellow-300 opacity-10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-        <div className="relative z-10 text-center py-20 px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center bg-white bg-opacity-20 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
-              <Sparkles className="w-5 h-5 text-yellow-300 mr-2" />
-              <span className="text-white font-medium">Our Impact Story</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
-              Our <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">Milestones</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
-              Transformative numbers. Real impact. Empowered lives.
-            </p>
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              animate="show"
-              className="flex flex-wrap justify-center gap-8 text-center"
-            >
-              <div className="text-center bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 min-w-[200px]">
-                <div className="text-3xl font-bold text-primary-blue mb-2"><CountUpAnimation end={150000} duration={3} />+</div>
-                <div className="text-dark-gray dark:text-gray-200 font-medium">Lives Impacted</div>
-              </div>
-              <div className="text-center bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 min-w-[200px]">
-                <div className="text-3xl font-bold text-primary-blue mb-2"><CountUpAnimation end={16} duration={2} />+</div>
-                <div className="text-dark-gray dark:text-gray-200 font-medium">Active Projects</div>
-              </div>
-              <div className="text-center bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 min-w-[200px]">
-                <div className="text-3xl font-bold text-primary-blue mb-2"><CountUpAnimation end={5} duration={1} /></div>
-                <div className="text-dark-gray dark:text-gray-200 font-medium">Key Sectors</div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </div>
+      <HeroStatsSection
+        title={<><span>Our </span><span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">Milestones</span></>}
+        subtitle={"Transformative numbers. Real impact. Empowered lives."}
+        stats={heroStats}
+        badge={<><Sparkles className="w-5 h-5 text-yellow-300 mr-2" /><span className="text-white font-medium">Our Impact Story</span></>}
+      />
       {/* Navigation Tabs */}
       <div className="sticky top-0 z-20 bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-4xl mx-auto px-6 py-4">

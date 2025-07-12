@@ -3,6 +3,8 @@ import ImageSlider from '../components/ui/ImageSlider';
 import Button from '../components/ui/Button';
 import ImagePlaceholder from '../components/ui/ImagePlaceholder';
 import StatsCard from '../components/ui/StatsCard';
+import HeroStatsSection from '../components/ui/HeroStatsSection';
+import { Sparkles } from 'lucide-react';
 
 const Partners: React.FC = () => {
   const partners = {
@@ -87,41 +89,28 @@ const Partners: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-12 mt-24">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-primary-blue via-primary-blue to-blue-800 rounded-2xl mb-16">
-        <div className="absolute inset-0 bg-black bg-opacity-10"></div>
-        <div className="relative z-10 px-8 py-16 md:py-24">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-8">
-              <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">
-                Strategic Partnerships
-              </span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight leading-tight">
-              Building Tomorrow
-              <span className="block text-warm-light-blue">Together</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Collaborating with industry leaders, innovative NGOs, and forward-thinking government agencies to create meaningful change and sustainable impact across communities.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/milestones">
-                <Button className="px-8 py-4 text-lg font-semibold bg-fresh-green text-white hover:bg-green-600 transition-colors">
-                  View Our Impact
-                </Button>
-              </a>
-              <a href="/getinvolved">
-                <Button className="px-8 py-4 text-lg font-semibold bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-blue transition-colors">
-                  Join Our Network
-                </Button>
-              </a>
-            </div>
-          </div>
+      <HeroStatsSection
+        title={<><span>Building Tomorrow</span><span className="block text-warm-light-blue">Together</span></>}
+        subtitle={"Collaborating with industry leaders, innovative NGOs, and forward-thinking government agencies to create meaningful change and sustainable impact across communities."}
+        stats={[]}
+        badge={<span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">Strategic Partnerships</span>}
+        backgroundClassName="bg-gradient-to-br from-primary-blue via-primary-blue to-blue-800"
+        overlayClassName="bg-black bg-opacity-10"
+        className="rounded-2xl mb-6 py-2 px-1"
+      >
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-2">
+          <a href="/milestones">
+            <Button className="px-8 py-4 text-lg font-semibold bg-fresh-green text-white">
+              View Our Impact
+            </Button>
+          </a>
+          <a href="/getinvolved">
+            <Button className="px-8 py-4 text-lg font-semibold bg-fresh-green text-white">
+              Join Our Network
+            </Button>
+          </a>
         </div>
-        
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-warm-light-blue rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-      </div>
+      </HeroStatsSection>
 
       {/* Partnership Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import HeroStatsSection from '../components/ui/HeroStatsSection';
+import { Sparkles } from 'lucide-react';
 
 const involvementWays = [
   {
@@ -297,125 +299,125 @@ const GetInvolved = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto py-12 px-4 mt-24">
+    <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 mt-24 min-h-screen transition-colors duration-300">
       {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="mb-12 text-center bg-gradient-to-br from-primary-blue to-fresh-green rounded-3xl py-10 shadow-xl"
-      >
-        <h1 className="text-5xl font-extrabold mb-4 text-white drop-shadow-lg">Get Involved</h1>
-        <p className="text-xl text-white/90 font-medium">Join our vibrant community. Flip a card to discover how you can make a difference!</p>
-      </motion.div>
+      <HeroStatsSection
+        title={<span>Get Involved</span>}
+        subtitle={"Join our vibrant community. Flip a card to discover how you can make a difference!"}
+        stats={[]}
+        className="mb-12"
+        badge={<><Sparkles className="w-5 h-5 text-yellow-300 mr-2" /><span className="text-white font-medium">Support & Empower</span></>}
+      />
+      <div className="py-8" />
+      <div className="max-w-5xl mx-auto px-2 sm:px-4">
+        {/* CardGrid with FlipCards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+          {involvementWays.map((way, idx) => (
+            <FlipCard
+              key={idx}
+              front={way.front}
+              back={way.back}
+              icon={flipIcons[idx]}
+              cta={
+                way.front === 'Volunteer' ? 'Sign Up' :
+                way.front === 'Attend an Event' ? 'See Events' :
+                way.front === 'Fundraise' ? 'Start Now' :
+                way.front === 'Spread the Word' ? 'Share' : undefined
+              }
+            />
+          ))}
+        </div>
 
-      {/* CardGrid with FlipCards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-        {involvementWays.map((way, idx) => (
-          <FlipCard
-            key={idx}
-            front={way.front}
-            back={way.back}
-            icon={flipIcons[idx]}
-            cta={
-              way.front === 'Volunteer' ? 'Sign Up' :
-              way.front === 'Attend an Event' ? 'See Events' :
-              way.front === 'Fundraise' ? 'Start Now' :
-              way.front === 'Spread the Word' ? 'Share' : undefined
-            }
-          />
-        ))}
+        {/* Volunteer Signup Form */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg rounded-2xl shadow-2xl p-10 mb-16 max-w-2xl mx-auto border border-primary-blue/20 dark:border-blue-400/30"
+        >
+          <h2 className="text-3xl font-bold mb-4 text-primary-blue dark:text-blue-300">Volunteer Signup</h2>
+          {submitted ? (
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="text-green-600 dark:text-green-400 font-semibold text-lg text-center"
+            >
+              Thank you for signing up! We'll be in touch soon.<br />
+              <a
+                href="https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-4 bg-primary-blue hover:bg-fresh-green dark:bg-blue-700 dark:hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full shadow transition-all"
+              >
+                Tell us about your experience!
+              </a>
+            </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="block text-gray-600 dark:text-gray-200 font-medium">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-600 dark:text-gray-200 font-medium">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-600 dark:text-gray-200 font-medium">Areas of Interest</label>
+                <input
+                  type="text"
+                  name="interests"
+                  value={form.interests}
+                  onChange={handleChange}
+                  placeholder="e.g. Health, Education, Events"
+                  className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-600 dark:text-gray-200 font-medium">Message (optional)</label>
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
+                  rows={3}
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 dark:from-blue-700 dark:to-green-600 text-white px-8 py-2 rounded-lg font-bold shadow-lg hover:scale-105 transition-transform"
+              >
+                Sign Up
+              </button>
+            </form>
+          )}
+        </motion.div>
+
+        {/* Carousel for Volunteer Stories */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="mb-8"
+        >
+          <h2 className="text-3xl font-bold mb-6 text-primary-blue text-center">Volunteer Stories</h2>
+          <Carousel testimonials={testimonials} />
+        </motion.div>
       </div>
-
-      {/* Volunteer Signup Form */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg rounded-2xl shadow-2xl p-10 mb-16 max-w-2xl mx-auto border border-primary-blue/20 dark:border-blue-400/30"
-      >
-        <h2 className="text-3xl font-bold mb-4 text-primary-blue dark:text-blue-300">Volunteer Signup</h2>
-        {submitted ? (
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="text-green-600 dark:text-green-400 font-semibold text-lg text-center"
-          >
-            Thank you for signing up! We'll be in touch soon.<br />
-            <a
-              href="https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-4 bg-primary-blue hover:bg-fresh-green dark:bg-blue-700 dark:hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full shadow transition-all"
-            >
-              Tell us about your experience!
-            </a>
-          </motion.div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div>
-              <label className="block text-gray-600 dark:text-gray-200 font-medium">Name</label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-600 dark:text-gray-200 font-medium">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-600 dark:text-gray-200 font-medium">Areas of Interest</label>
-              <input
-                type="text"
-                name="interests"
-                value={form.interests}
-                onChange={handleChange}
-                placeholder="e.g. Health, Education, Events"
-                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-600 dark:text-gray-200 font-medium">Message (optional)</label>
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
-                rows={3}
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 dark:from-blue-700 dark:to-green-600 text-white px-8 py-2 rounded-lg font-bold shadow-lg hover:scale-105 transition-transform"
-            >
-              Sign Up
-            </button>
-          </form>
-        )}
-      </motion.div>
-
-      {/* Carousel for Volunteer Stories */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="mb-8"
-      >
-        <h2 className="text-3xl font-bold mb-6 text-primary-blue text-center">Volunteer Stories</h2>
-        <Carousel testimonials={testimonials} />
-      </motion.div>
     </div>
   );
 };

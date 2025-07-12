@@ -9,6 +9,8 @@ import ImagePlaceholder from '../components/ui/ImagePlaceholder';
 import Button from '../components/ui/Button';
 import { useTheme } from '../shared/contexts/ThemeContext';
 import { Star, Target, Play } from 'lucide-react';
+import HeroStatsSection, { HeroStat } from '../components/ui/HeroStatsSection';
+import { Sparkles } from 'lucide-react';
 
 interface Testimonial {
   name: string;
@@ -117,6 +119,16 @@ const outcomes: Outcome[] = [
   
 ];
 
+const heroStats: HeroStat[] = [
+  {
+    label: 'Stories Shared',
+    value: testimonials.length,
+    duration: 2,
+    suffix: '+',
+    cardClassName: '',
+  },
+];
+
 const SuccessStories: React.FC = () => {
   const [selected, setSelected] = useState<Testimonial | null>(null);
   const { theme } = useTheme();
@@ -127,15 +139,12 @@ const SuccessStories: React.FC = () => {
 
   return (
     <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 mt-24 min-h-screen transition-colors duration-300">
-      <motion.div
-        className="text-center py-12 bg-gradient-to-r from-pink-100 to-indigo-100 dark:from-primary-blue dark:to-fresh-green"
-        variants={fadeIn('down', 0.1)}
-        initial="hidden"
-        animate="show"
-      >
-        <h1 className="text-4xl font-bold mb-2 text-primary-blue dark:text-primary-blue">Success Stories</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-200">Real voices from our mission – shaping lives, one story at a time.</p>
-      </motion.div>
+      <HeroStatsSection
+        title={<span>Success Stories</span>}
+        subtitle={"Real voices from our mission – shaping lives, one story at a time."}
+        stats={[]}
+        badge={<><Sparkles className="w-5 h-5 text-yellow-300 mr-2" /><span className="text-white font-medium">Real Impact</span></>}
+      />
 
       {/* Testimonials Section */}
       <motion.section

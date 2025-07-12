@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import galleryImageData from './gallery.json';
+import HeroStatsSection from '../components/ui/HeroStatsSection';
+import { Sparkles } from 'lucide-react';
 
 type GalleryImageData = {
   filename: string;
@@ -70,14 +72,15 @@ const Gallery = () => {
   return (
     <div className="container mx-auto px-4 py-12 pt-24 bg-white dark:bg-gray-900 min-h-screen">
       {/* Hero Section */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-primary-blue mb-4 tracking-tight">
-          Our Gallery
-        </h1>
-        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          A visual journey through our impact, events, and success stories.
-        </p>
-      </div>
+      <HeroStatsSection
+        title={<span>Our Gallery</span>}
+        subtitle={"A visual journey through our impact, events, and success stories."}
+        stats={[]}
+        badge={<><Sparkles className="w-5 h-5 text-yellow-300 mr-2" /><span className="text-white font-medium">Visual Journey</span></>}
+        backgroundClassName="bg-gradient-to-br from-primary-blue via-primary-blue to-blue-800"
+        overlayClassName="bg-black bg-opacity-10"
+        className="rounded-2xl mb-6 py-6 px-2"
+      />
 
       {/* Category Filter */}
       <motion.div

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import HeroStatsSection from '../components/ui/HeroStatsSection';
+import { Sparkles } from 'lucide-react';
 
 const partnerTypes = [
   {
@@ -47,17 +49,15 @@ const PartnerWithUs = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto py-12 px-4 mt-24">
-      {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="mb-12 text-center bg-gradient-to-br from-primary-blue via-blue-600 to-fresh-green rounded-3xl py-10 shadow-xl"
-      >
-        <h1 className="text-5xl font-extrabold mb-4 text-white drop-shadow-lg">Partner With Us</h1>
-        <p className="text-xl text-white/90 font-medium max-w-2xl mx-auto">Join hands with House of Humanity to create lasting impact. We welcome partnerships with corporates, NGOs, government, and community organizations.</p>
-      </motion.div>
+    <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 mt-24 min-h-screen transition-colors duration-300">
+      <HeroStatsSection
+        title={<span>Partner With Us</span>}
+        subtitle={"Join hands with House of Humanity to create lasting impact. We welcome partnerships with corporates, NGOs, government, and community organizations."}
+        stats={[]}
+        badge={<><Sparkles className="w-5 h-5 text-yellow-300 mr-2" /><span className="text-white font-medium">Collaborate for Good</span></>}
+      />
+      {/* Padding between hero and cards */}
+      <div className="py-12" />
 
       {/* Partnership Benefits */}
       <div className="mb-16 text-center">
