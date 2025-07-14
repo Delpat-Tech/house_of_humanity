@@ -67,8 +67,12 @@ const Projects: React.FC = () => {
     }`}>
 
       {/* Hero Section (from Projects) */}
-      <section className="pt-32 pb-20 px-4 md:px-20 bg-gradient-to-r from-primary-blue/10 to-fresh-green/10 dark:from-primary-blue/20 dark:to-fresh-green/20">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative overflow-hidden pt-32 pb-20 px-4 md:px-20 bg-gradient-to-r from-primary-blue/10 to-fresh-green/10 dark:from-primary-blue/20 dark:to-fresh-green/20">
+        {/* Animated gradient blobs (copied from AboutUs) */}
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary-blue opacity-20 rounded-full filter blur-3xl animate-pulse-slow z-0" />
+        <div className="absolute top-1/2 right-0 w-80 h-80 bg-fresh-green opacity-20 rounded-full filter blur-2xl animate-pulse-slower z-0" />
+        <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-primary-blue opacity-10 rounded-full filter blur-2xl animate-pulse-slow z-0" />
+        <div className="relative z-10 max-w-7xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -302,3 +306,19 @@ const Projects: React.FC = () => {
 };
 
 export default Projects;
+
+// Add custom animation styles for animated blobs
+if (typeof window !== 'undefined') {
+  const styleId = 'hoh-projects-hero-blob-animations';
+  if (!document.getElementById(styleId)) {
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.innerHTML = `
+      @keyframes pulse-slow { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.4; } }
+      .animate-pulse-slow { animation: pulse-slow 6s ease-in-out infinite; }
+      @keyframes pulse-slower { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.3; } }
+      .animate-pulse-slower { animation: pulse-slower 10s ease-in-out infinite; }
+    `;
+    document.head.appendChild(style);
+  }
+}

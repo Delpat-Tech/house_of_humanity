@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, easeOut } from "framer-motion";
 // Import project data
 import { projects } from "../../components/data/projectsData";
+import { useTheme } from '../../shared/contexts/ThemeContext';
 
 const ImpactCategories = [
   {
@@ -37,6 +38,7 @@ const FeaturedProject = {
 
 const WhatWeDo: React.FC = () => {
   const navigate = useNavigate();
+  const { theme } = useTheme();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -283,7 +285,11 @@ const WhatWeDo: React.FC = () => {
               </motion.p>
               
               <motion.button
-                className="group relative overflow-hidden px-8 py-4 bg-white text-primary-blue font-bold rounded-2xl text-lg shadow-2xl"
+                className={`group relative overflow-hidden px-8 py-4 font-bold rounded-2xl text-lg shadow-2xl ${
+                  theme === 'dark'
+                    ? 'bg-blue-900 text-white'
+                    : 'bg-white text-primary-blue'
+                }`}
                 onClick={() => navigate("/projects")}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

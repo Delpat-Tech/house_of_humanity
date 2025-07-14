@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
 import { useTheme } from "../../shared/contexts/ThemeContext";
+import Button from "../ui/Button";
 
 type Image = {
   src: string;
@@ -295,20 +296,18 @@ const ImageGallery: React.FC = () => {
 
           {/* Auto-play Toggle */}
           <div className="flex justify-center mt-6">
-            <motion.button
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+            <Button
+              onClick={() => setIsAutoPlay(!isAutoPlay)}
+              className={`text-sm font-medium transition-all duration-300 ${
                 isAutoPlay
-                  ? "bg-blue-500 text-white"
+                  ? "bg-blue-500 text-white hover:bg-blue-600"
                   : theme === "dark"
                   ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
                   : "bg-gray-200 text-gray-600 hover:bg-gray-300"
               }`}
-              onClick={() => setIsAutoPlay(!isAutoPlay)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
               {isAutoPlay ? "Pause" : "Play"} Slideshow
-            </motion.button>
+            </Button>
           </div>
 
           {/* Next Button */}
