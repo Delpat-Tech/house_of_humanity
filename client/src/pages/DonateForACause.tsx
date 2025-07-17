@@ -331,20 +331,18 @@ const DonateForACause: React.FC = () => {
       const donorPhone = formData.phone.toString();
       const purpose = selectedProgram || "General Donation";
 
-      const response = await fetch(
-        "http://localhost:3000/api/donate/create-order",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            amount: donationAmount,
-            purpose,
-            donorName,
-            donorEmail,
-            donorPhone,
-          }),
-        }
-      );
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+      const response = await fetch(`${apiBaseUrl}/api/donate/create-order`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: donationAmount,
+          purpose,
+          donorName,
+          donorEmail,
+          donorPhone,
+        }),
+      });
 
       if (!response.ok) {
         const text = await response.text();
@@ -381,8 +379,9 @@ const DonateForACause: React.FC = () => {
         order_id: orderId,
         handler: async (response: any) => {
           try {
+            const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
             const authResponse = await fetch(
-              "http://localhost:3000/api/donate/payment-auth",
+              `${apiBaseUrl}/api/donate/payment-auth`,
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
