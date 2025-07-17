@@ -1,23 +1,20 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import testRoute from "./routes/testRoute";
+import express, { Express } from 'express';
+import cors from 'cors';
+import donationRoutes from "./routes/donationRoutes";
+import dotenv from 'dotenv';
 
 dotenv.config();
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-
+const app: Express = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes
-app.use("/api/test", testRoute);
 
-app.get("/", (req, res) => {
-  res.send("Hello from TypeScript backend!");
+app.use('/api/donate', donationRoutes);
+
+app.get('/', (req, res) => {
+  res.send('Server is running!');
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+const PORT: number = parseInt(process.env.PORT || '3000', 10);
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
