@@ -235,7 +235,7 @@ const DonateForACause: React.FC = () => {
   const [submitError, setSubmitError] = useState<string>("");
   const [donateSuccess, setDonateSuccess] = useState<boolean>(false);
 
-  const amounts = ["10", "25", "50", "100", "250", "500"];
+  const amounts = ["100", "250", "500", "1000", "2500", "5000"];
 
   // Read URL parameters to prefill amount and purpose
   useEffect(() => {
