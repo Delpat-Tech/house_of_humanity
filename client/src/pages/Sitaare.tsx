@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
+import { useTheme } from '../shared/contexts/ThemeContext';
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -16,21 +17,32 @@ const fadeInUp: Variants = {
 };
 
 const Sitaare = () => {
+  const { theme } = useTheme();
   return (
     <div className={`min-h-screen transition-colors duration-300 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-800 dark:to-slate-900`}>
       {/* Hero Section  */}
-      <section className="pt-32 pb-20 px-4 md:px-20 bg-gradient-to-r from-pink-500/10 to-rose-500/10 dark:from-pink-900/80 dark:to-rose-900/80 dark:shadow-pink-900/40 dark:shadow-2xl border-b border-pink-100 dark:border-pink-900 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Subtle overlay for dark mode pop */}
-          <div className="hidden dark:block w-full h-full bg-gradient-to-br from-pink-900/40 via-rose-900/30 to-indigo-900/30" />
-        </div>
+      <section className="relative overflow-hidden pt-32 pb-20 px-4 md:px-20 bg-gradient-to-r from-pink-500/10 to-rose-500/10 dark:from-pink-900/80 dark:to-rose-900/80 dark:shadow-pink-900/40 dark:shadow-2xl border-b border-pink-100 dark:border-pink-900">
+        {/* Animated gradient blobs - color changes for dark mode */}
+        {theme === 'dark' ? (
+          <>
+            <div className="absolute -top-24 -left-24 w-96 h-96 bg-pink-600 opacity-30 rounded-full filter blur-3xl animate-pulse-slow z-0" />
+            <div className="absolute top-1/2 right-0 w-80 h-80 bg-rose-500 opacity-30 rounded-full filter blur-2xl animate-pulse-slower z-0" />
+            <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-fuchsia-500 opacity-20 rounded-full filter blur-2xl animate-pulse-slow z-0" />
+          </>
+        ) : (
+          <>
+            <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary-blue opacity-20 rounded-full filter blur-3xl animate-pulse-slow z-0" />
+            <div className="absolute top-1/2 right-0 w-80 h-80 bg-fresh-green opacity-20 rounded-full filter blur-2xl animate-pulse-slower z-0" />
+            <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-primary-blue opacity-10 rounded-full filter blur-2xl animate-pulse-slow z-0" />
+          </>
+        )}
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-h2 text-center uppercase mb-6 leading-tight dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-pink-400 dark:via-rose-400 dark:to-fuchsia-400"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-h2 text-center uppercase mb-6 leading-tight"
           >
             Project Sitaare
           </motion.h1>
@@ -40,11 +52,11 @@ const Sitaare = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-3xl lg:text-4xl font-bold text-gradient-h1 text-center mb-8 max-w-5xl mx-auto leading-relaxed dark:text-pink-200"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-gradient-h1 text-center mb-8 max-w-5xl mx-auto leading-relaxed"
           >
             Empowering dreams, one girl at a time
             <br />
-            <span className="text-pink-600 dark:text-rose-300">
+            <span className={theme === 'dark' ? 'text-rose-200' : 'text-pink-600'}>
               A home for hope, growth, and opportunity.
             </span>
           </motion.h2>
@@ -54,7 +66,7 @@ const Sitaare = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-lg md:text-xl lg:text-2xl font-medium text-slate-700 dark:text-pink-100 text-center leading-relaxed"
+            className={`max-w-4xl mx-auto text-lg md:text-xl lg:text-2xl font-medium text-center leading-relaxed ${theme === 'dark' ? 'text-white' : 'text-slate-700'}`}
           >
             Project Sitaare is a one-of-a-kind orphanage and shelter home for girls aged 6 to 18. More than just shelter—it's a place where dreams take flight. With full education, safety, and holistic development, it's the most empowering space for girls in Gujarat.
           </motion.p>
@@ -235,10 +247,26 @@ const Sitaare = () => {
             Learn More on Sitaare.org
           </a>
         </motion.div>
-      <div className="mt-16 md:mt-24" />
+        <div className="pb-16 md:pb-24" />
       </div>
     </div>
   );
 };
 
 export default Sitaare;
+
+// Add custom animation styles for animated blobs
+if (typeof window !== 'undefined') {
+  const styleId = 'hoh-sitaare-hero-blob-animations';
+  if (!document.getElementById(styleId)) {
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.innerHTML = `
+      @keyframes pulse-slow { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.4; } }
+      .animate-pulse-slow { animation: pulse-slow 6s ease-in-out infinite; }
+      @keyframes pulse-slower { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.3; } }
+      .animate-pulse-slower { animation: pulse-slower 10s ease-in-out infinite; }
+    `;
+    document.head.appendChild(style);
+  }
+}

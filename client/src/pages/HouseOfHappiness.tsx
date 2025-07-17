@@ -44,7 +44,7 @@ const HouseOfHappiness = () => {
   return (
     <div className="container mx-auto px-4 py-12 mt-24 dark:text-gray-100">
       {/* 🌈 Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-400 via-pink-500 to-red-500 rounded-2xl mb-16 dark:from-yellow-700 dark:via-pink-700 dark:to-red-700">
+      <div className="relative overflow-hidden bg-gradient-to-br from-fresh-green via-green-600 to-primary-blue rounded-2xl mb-16 dark:from-yellow-700 dark:via-pink-700 dark:to-red-700">
         <div className="absolute inset-0 bg-black bg-opacity-20 dark:bg-black dark:bg-opacity-30"></div>
         <div className="relative z-20 px-8 py-16 md:py-20">
           <div className="max-w-6xl mx-auto text-center">
