@@ -62,19 +62,42 @@ const SustainableLivelihood: React.FC = () => {
               <div>
                 <div className="mb-6">
                   <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">
-                    Sustainable Livelihoods
+                    Sustainablity for Livelihoods
                   </span>
                 </div>
-                <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
-                  Project
+                
+                <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
+                Sustainable Livelihood
                   <span className="block text-warm-light-blue text-5xl md:text-6xl">
-                    Sanskruti
+                  Initiatives
                   </span>
                 </h1>
                 <p className="text-xl text-green-100 mb-8 leading-relaxed">
-                  Empowering Women Through Sustainable Livelihoods in Halol
+                Empower communities by providing skills, resources, and opportunities for long-term economic independence and environmental stewardship.
                   Taluka
                 </p>
+                {/* Project Sanskruti Button */}
+                <div className="flex flex-wrap gap-4 mb-8">
+                  <button
+                    onClick={() => {
+                      setTimeout(() => {
+                        const element = document.getElementById("about-sanskruti");
+                        if (element) {
+                          element.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                            inline: "nearest",
+                          });
+                        }
+                      }, 100);
+                    }}
+                    className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 hover:bg-opacity-30 transition-all duration-300 hover:scale-105 cursor-pointer"
+                  >
+                    <span className="text-white font-semibold">
+                      Project Sanskruti
+                    </span>
+                  </button>
+                </div>
               </div>
               <div className="relative">
                 <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
@@ -106,7 +129,7 @@ const SustainableLivelihood: React.FC = () => {
       </div>
 
       {/* Project Overview */}
-      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
+      <div id="about-sanskruti" className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">

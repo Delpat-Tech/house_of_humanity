@@ -3,6 +3,42 @@ import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
 import HeroStatsSection from '../components/ui/HeroStatsSection';
 import { Sparkles } from 'lucide-react';
+import { useEffect } from 'react';
+
+const funFacts = [
+  "Did you know? We reply to every message!",
+  "Your words can spark change.",
+  "We love hearing from you!",
+  "Every message is read by a real human.",
+  "Your feedback helps us grow!",
+];
+
+function useRotatingFact(facts: string[], interval = 4000) {
+  const [index, setIndex] = React.useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => setIndex(i => (i + 1) % facts.length), interval);
+    return () => clearInterval(timer);
+  }, [facts, interval]);
+  return facts[index];
+}
+
+const ConfettiCheck: React.FC<{ show: boolean }> = ({ show }) => (
+  <div className="flex flex-col items-center mb-2 min-h-[32px]">
+    {show ? (
+      <motion.div
+        initial={{ scale: 0, rotate: -30 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+        className="flex items-center justify-center"
+      >
+        <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+        <span className="ml-2 text-green-500 font-semibold">Sent!</span>
+      </motion.div>
+    ) : null}
+  </div>
+);
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,8 +47,12 @@ const Contact = () => {
     subject: '',
     message: ''
   });
-  
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [step, setStep] = useState(0);
+  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState({ name: '', email: '', subject: '' });
+  const rotatingFact = useRotatingFact(funFacts);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -20,25 +60,50 @@ const Contact = () => {
       ...prev,
       [name]: value
     }));
+    setErrors(prev => ({ ...prev, [name]: '' }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleContinue = () => {
+    let hasError = false;
+    if (step === 0) {
+      if (!formData.name) {
+        setErrors(prev => ({ ...prev, name: 'Name is required' }));
+        hasError = true;
+      }
+      if (!formData.email) {
+        setErrors(prev => ({ ...prev, email: 'Email is required' }));
+        hasError = true;
+      } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+        setErrors(prev => ({ ...prev, email: 'Invalid email format' }));
+        hasError = true;
+      }
+      if (!hasError) setStep(1);
+    } else if (step === 1) {
+      if (!formData.subject) {
+        setErrors(prev => ({ ...prev, subject: 'Subject is required' }));
+        hasError = true;
+      }
+      if (!hasError) setStep(2);
+    }
+  };
+
+  const handleBack = () => {
+    if (step > 0) setStep(prev => prev - 1);
+  };
+
+  const handleSubmit = async () => {
     setIsSubmitting(true);
-    
+    setShowConfetti(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       toast.success('Your message has been sent successfully!');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
+      setSubmitted(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
       toast.error('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
+      setTimeout(() => setShowConfetti(false), 1800);
     }
   };
 
@@ -153,92 +218,141 @@ const Contact = () => {
             className="bg-warm-light-blue dark:bg-slate-800 rounded-xl shadow-lg p-8 border border-warm-light-blue dark:border-slate-700"
           >
             <h2 className="text-3xl font-bold mb-6 text-primary-blue dark:text-fresh-green">Send a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-primary-blue dark:text-slate-200 mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-warm-light-blue dark:border-slate-600 bg-off-white dark:bg-slate-900 text-dark-gray dark:text-slate-100 focus:ring-2 focus:ring-primary-blue dark:focus:ring-fresh-green focus:border-transparent transition-colors"
-                  required
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-primary-blue dark:text-slate-200 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-warm-light-blue dark:border-slate-600 bg-off-white dark:bg-slate-900 text-dark-gray dark:text-slate-100 focus:ring-2 focus:ring-primary-blue dark:focus:ring-fresh-green focus:border-transparent transition-colors"
-                  required
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-primary-blue dark:text-slate-200 mb-2">
-                  Subject
-                </label>
-                <select
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-warm-light-blue dark:border-slate-600 bg-off-white dark:bg-slate-900 text-dark-gray dark:text-slate-100 focus:ring-2 focus:ring-primary-blue dark:focus:ring-fresh-green focus:border-transparent transition-colors"
-                  required
-                >
-                  <option value="">Select a subject</option>
-                  <option value="donation">Donation Inquiry</option>
-                  <option value="sponsorship">Child Sponsorship</option>
-                  <option value="volunteer">Volunteering</option>
-                  <option value="visit">Schedule a Visit</option>
-                  <option value="partnership">Corporate Partnership</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-primary-blue dark:text-slate-200 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-warm-light-blue dark:border-slate-600 bg-off-white dark:bg-slate-900 text-dark-gray dark:text-slate-100 focus:ring-2 focus:ring-primary-blue dark:focus:ring-fresh-green focus:border-transparent transition-colors"
-                  required
-                ></textarea>
-              </div>
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-primary-blue dark:bg-fresh-green hover:bg-fresh-green dark:hover:bg-fresh-green/80 text-white font-medium py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+            {submitted ? (
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="text-green-600 dark:text-green-400 font-semibold text-lg text-center"
               >
-                {isSubmitting ? (
-                  <span className="flex items-center justify-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Sending...
-                  </span>
-                ) : (
-                  'Send Message'
+                Thank you for reaching out! We'll get back to you soon.<br />
+                <a
+                  href="https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-4 bg-primary-blue hover:bg-fresh-green dark:bg-fresh-green dark:hover:bg-primary-blue text-white font-bold py-2 px-6 rounded-full shadow transition-all"
+                >
+                  Want to leave a testimonial? Click here!
+                </a>
+              </motion.div>
+            ) : (
+              <>
+                <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded mb-8 overflow-hidden">
+                  <div
+                    className={`h-full bg-gradient-to-r from-primary-blue to-fresh-green transition-all duration-500 rounded ${step === 0 ? 'w-1/3' : step === 1 ? 'w-2/3' : 'w-full'}`}
+                  />
+                </div>
+                {step === 0 && (
+                  <div>
+                    <p className="font-bold mb-2 text-primary-blue dark:text-fresh-green">Contact Details</p>
+                    <input
+                      type="text"
+                      placeholder="Full name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-fresh-green focus:border-primary-blue dark:focus:border-blue-400 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 transition-colors"
+                    />
+                    {errors.name && <p className="text-red-600 dark:text-red-400 text-sm mb-2">{errors.name}</p>}
+                    <input
+                      type="email"
+                      placeholder="Email address"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-fresh-green focus:border-primary-blue dark:focus:border-blue-400 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 transition-colors"
+                    />
+                    {errors.email && <p className="text-red-600 dark:text-red-400 text-sm mb-2">{errors.email}</p>}
+                    <div className="flex flex-col items-center mt-4">
+                      <button
+                        type="button"
+                        onClick={handleContinue}
+                        className="w-full py-3 bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 dark:from-fresh-green dark:to-primary-blue dark:hover:from-primary-blue dark:hover:to-fresh-green text-white font-bold shadow-lg hover:scale-105 transition-transform rounded-lg mt-2"
+                      >
+                        Continue →
+                      </button>
+                      <div className="pt-8 flex flex-col items-center gap-1">
+                        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-300 font-medium">
+                          <svg className="w-4 h-4 text-primary-blue dark:text-fresh-green" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
+                          We respect your privacy. Your information will only be used to respond to your inquiry.
+                        </div>
+                        <div className="text-xs text-primary-blue dark:text-fresh-green mt-1 italic transition-opacity duration-500" key={rotatingFact}>{rotatingFact}</div>
+                      </div>
+                    </div>
+                  </div>
                 )}
-              </button>
-            </form>
+                {step === 1 && (
+                  <div>
+                    <p className="font-bold mb-2 text-primary-blue dark:text-fresh-green">Message Details</p>
+                    <select
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-fresh-green focus:border-primary-blue dark:focus:border-blue-400 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 transition-colors"
+                    >
+                      <option value="">Select a subject</option>
+                      <option value="donation">Donation Inquiry</option>
+                      <option value="volunteering">Volunteering</option>
+                      <option value="partnership">Partnership</option>
+                      <option value="general">General Query</option>
+                    </select>
+                    {errors.subject && <p className="text-red-600 dark:text-red-400 text-sm mb-2">{errors.subject}</p>}
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Your message"
+                      className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-fresh-green focus:border-primary-blue dark:focus:border-blue-400 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 transition-colors"
+                      rows={4}
+                    />
+                    <div className="flex justify-between mt-4">
+                      <button
+                        type="button"
+                        onClick={handleBack}
+                        className="text-primary-blue dark:text-fresh-green font-semibold hover:text-blue-700 dark:hover:text-fresh-green transition-colors"
+                      >
+                        ← Back
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleContinue}
+                        className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 dark:from-fresh-green dark:to-primary-blue dark:hover:from-primary-blue dark:hover:to-fresh-green text-white font-bold px-4 py-2 shadow hover:scale-105 transition-transform rounded-lg"
+                      >
+                        Continue →
+                      </button>
+                    </div>
+                  </div>
+                )}
+                {step === 2 && (
+                  <div>
+                    <p className="font-bold mb-4 text-primary-blue dark:text-fresh-green">Confirm Your Message</p>
+                    <div className="border-2 border-primary-blue/30 dark:border-blue-400/30 p-4 rounded-lg mb-4 bg-primary-blue/5 dark:bg-blue-900/10">
+                      <p><strong className="text-gray-700 dark:text-gray-200">Name:</strong> <span className="text-primary-blue dark:text-fresh-green">{formData.name}</span></p>
+                      <p><strong className="text-gray-700 dark:text-gray-200">Email:</strong> <span className="text-primary-blue dark:text-fresh-green">{formData.email}</span></p>
+                      <p><strong className="text-gray-700 dark:text-gray-200">Subject:</strong> <span className="text-primary-blue dark:text-fresh-green">{formData.subject}</span></p>
+                      {formData.message && <p><strong className="text-gray-700 dark:text-gray-200">Message:</strong> <span className="text-primary-blue dark:text-fresh-green">{formData.message}</span></p>}
+                    </div>
+                    <ConfettiCheck show={showConfetti} />
+                    <div className="flex flex-col items-center gap-1 mt-3">
+                      <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-300 font-medium">
+                        <svg className="w-4 h-4 text-primary-blue dark:text-fresh-green" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
+                        We respect your privacy. Your information will only be used to respond to your inquiry.
+                      </div>
+                      <div className="text-xs text-primary-blue dark:text-fresh-green mt-1 italic transition-opacity duration-500" key={rotatingFact}>{rotatingFact}</div>
+                    </div>
+                    <div className="flex justify-between mt-4 items-center">
+                      <button
+                        type="button"
+                        onClick={handleSubmit}
+                        disabled={isSubmitting}
+                        className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 dark:from-fresh-green dark:to-primary-blue dark:hover:from-primary-blue dark:hover:to-fresh-green text-white font-bold px-4 py-2 shadow-lg hover:scale-105 transition-transform rounded-lg disabled:opacity-60"
+                      >
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
           </motion.div>
         </div>
 

@@ -37,13 +37,47 @@ const partnerTypes = [
 const PartnerWithUs = () => {
   const [form, setForm] = useState({ name: '', org: '', email: '', type: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [step, setStep] = useState(0);
+  const [errors, setErrors] = useState({ name: '', email: '', org: '', type: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: '' });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleContinue = () => {
+    let hasError = false;
+    if (step === 0) {
+      if (!form.name) {
+        setErrors(prev => ({ ...prev, name: 'Name is required' }));
+        hasError = true;
+      }
+      if (!form.email) {
+        setErrors(prev => ({ ...prev, email: 'Email is required' }));
+        hasError = true;
+      } else if (!/^\S+@\S+\.\S+$/.test(form.email)) {
+        setErrors(prev => ({ ...prev, email: 'Invalid email format' }));
+        hasError = true;
+      }
+      if (!hasError) setStep(1);
+    } else if (step === 1) {
+      if (!form.org) {
+        setErrors(prev => ({ ...prev, org: 'Organization is required' }));
+        hasError = true;
+      }
+      if (!form.type) {
+        setErrors(prev => ({ ...prev, type: 'Type is required' }));
+        hasError = true;
+      }
+      if (!hasError) setStep(2);
+    }
+  };
+
+  const handleBack = () => {
+    if (step > 0) setStep(prev => prev - 1);
+  };
+
+  const handleSubmit = () => {
     setSubmitted(true);
     // Here you would typically send the form data to your backend or a service
   };
@@ -106,73 +140,122 @@ const PartnerWithUs = () => {
             </a>
           </motion.div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div>
-              <label className="block text-gray-600 dark:text-gray-200 font-medium">Your Name</label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
+          <>
+            <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded mb-8 overflow-hidden">
+              <div
+                className={`h-full bg-gradient-to-r from-primary-blue to-fresh-green transition-all duration-500 rounded ${step === 0 ? 'w-1/3' : step === 1 ? 'w-2/3' : 'w-full'}`}
               />
             </div>
-            <div>
-              <label className="block text-gray-600 dark:text-gray-200 font-medium">Organization</label>
-              <input
-                type="text"
-                name="org"
-                value={form.org}
-                onChange={handleChange}
-                required
-                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-600 dark:text-gray-200 font-medium">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-600 dark:text-gray-200 font-medium">Type of Partner</label>
-              <select
-                name="type"
-                value={form.type}
-                onChange={handleChange}
-                required
-                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
-              >
-                <option value="">Select...</option>
-                <option value="Corporate">Corporate</option>
-                <option value="NGO">NGO</option>
-                <option value="Government">Government</option>
-                <option value="Community">Community</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-gray-600 dark:text-gray-200 font-medium">Message (optional)</label>
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
-                rows={3}
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 dark:from-blue-700 dark:to-green-600 text-white px-8 py-2 rounded-lg font-bold shadow-lg hover:scale-105 transition-transform"
-            >
-              Submit
-            </button>
-          </form>
+            {step === 0 && (
+              <div>
+                <p className="font-bold mb-2 text-primary-blue dark:text-blue-200">Contact Details</p>
+                <input
+                  type="text"
+                  placeholder="Full name"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors"
+                />
+                {errors.name && <p className="text-red-600 dark:text-red-400 text-sm mb-2">{errors.name}</p>}
+                <input
+                  type="email"
+                  placeholder="Email address"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors"
+                />
+                {errors.email && <p className="text-red-600 dark:text-red-400 text-sm mb-2">{errors.email}</p>}
+                <button
+                  type="button"
+                  onClick={handleContinue}
+                  className="w-full py-3 bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 dark:from-fresh-green dark:to-primary-blue dark:hover:from-primary-blue dark:hover:to-fresh-green text-white font-bold shadow-lg hover:scale-105 transition-transform rounded-lg mt-2"
+                >
+                  Continue →
+                </button>
+              </div>
+            )}
+            {step === 1 && (
+              <div>
+                <p className="font-bold mb-2 text-primary-blue dark:text-blue-200">Organization Details</p>
+                <input
+                  type="text"
+                  placeholder="Organization name"
+                  name="org"
+                  value={form.org}
+                  onChange={handleChange}
+                  className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors"
+                />
+                {errors.org && <p className="text-red-600 dark:text-red-400 text-sm mb-2">{errors.org}</p>}
+                <select
+                  name="type"
+                  value={form.type}
+                  onChange={handleChange}
+                  className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors"
+                >
+                  <option value="">Type of Partner</option>
+                  <option value="Corporate">Corporate</option>
+                  <option value="NGO">NGO</option>
+                  <option value="Government">Government</option>
+                  <option value="Community">Community</option>
+                </select>
+                {errors.type && <p className="text-red-600 dark:text-red-400 text-sm mb-2">{errors.type}</p>}
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Message (optional)"
+                  className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors"
+                  rows={3}
+                />
+                <div className="flex justify-between mt-4">
+                  <button
+                    type="button"
+                    onClick={handleBack}
+                    className="text-primary-blue dark:text-blue-200 font-semibold hover:text-blue-700 dark:hover:text-fresh-green transition-colors"
+                  >
+                    ← Back
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleContinue}
+                    className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 dark:from-fresh-green dark:to-primary-blue dark:hover:from-primary-blue dark:hover:to-fresh-green text-white font-bold px-4 py-2 shadow hover:scale-105 transition-transform rounded-lg"
+                  >
+                    Continue →
+                  </button>
+                </div>
+              </div>
+            )}
+            {step === 2 && (
+              <div>
+                <p className="font-bold mb-4 text-primary-blue dark:text-blue-200">Confirm Your Details</p>
+                <div className="border-2 border-primary-blue/30 dark:border-blue-400/30 p-4 rounded-lg mb-4 bg-primary-blue/5 dark:bg-blue-900/10">
+                  <p><strong className="text-gray-700 dark:text-gray-200">Name:</strong> <span className="text-primary-blue dark:text-blue-200">{form.name}</span></p>
+                  <p><strong className="text-gray-700 dark:text-gray-200">Email:</strong> <span className="text-primary-blue dark:text-blue-200">{form.email}</span></p>
+                  <p><strong className="text-gray-700 dark:text-gray-200">Organization:</strong> <span className="text-primary-blue dark:text-blue-200">{form.org}</span></p>
+                  <p><strong className="text-gray-700 dark:text-gray-200">Type:</strong> <span className="text-primary-blue dark:text-blue-200">{form.type}</span></p>
+                  {form.message && <p><strong className="text-gray-700 dark:text-gray-200">Message:</strong> <span className="text-primary-blue dark:text-blue-200">{form.message}</span></p>}
+                </div>
+                <div className="flex justify-between mt-4 items-center">
+                  <button
+                    type="button"
+                    onClick={handleBack}
+                    className="text-primary-blue dark:text-blue-200 font-semibold hover:text-blue-700 dark:hover:text-fresh-green transition-colors"
+                  >
+                    ← Back
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleSubmit}
+                    className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 dark:from-fresh-green dark:to-primary-blue dark:hover:from-primary-blue dark:hover:to-fresh-green text-white font-bold px-4 py-2 shadow-lg hover:scale-105 transition-transform rounded-lg"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            )}
+          </>
         )}
       </motion.div>
 

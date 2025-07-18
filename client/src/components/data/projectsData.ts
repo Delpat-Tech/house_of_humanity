@@ -3,6 +3,7 @@ import { Project } from '../../types';
 export const projects: Project[] = [
   {
     title: "Project पोषण",
+    slug: "poshan",
     image: "/Gallery/image1.webp",
     content: {
       vision: "A society where no one sleeps hungry and food is a right, not a privilege.",
@@ -20,6 +21,7 @@ export const projects: Project[] = [
   },
   {
     title: "Pad House",
+    slug: "pad-house",
     image: "/Gallery/pad-house.jpg",
     content: {
       vision: "Break taboos around menstruation and empower girls through knowledge.",
@@ -37,6 +39,7 @@ export const projects: Project[] = [
   },
   {
     title: "Project Rakt Setu",
+    slug: "rakt-setu",
     image: "/Gallery/rakt.jpg",
     content: {
       vision: "Ensure no patient struggles to find a blood donor.",
@@ -54,6 +57,7 @@ export const projects: Project[] = [
   },
   {
     title: "Sahara",
+    slug: "sahara",
     image: "/Gallery/sahara.jpeg",
     content: {
       vision: "Enable physical independence through mobility and support tools.",
@@ -71,6 +75,7 @@ export const projects: Project[] = [
   },
   {
     title: "Project Maya",
+    slug: "maya",
     image: "/Gallery/maya.jpg",
     content: {
       vision: "Make hospitals a place of hope and learning for children.",
@@ -88,6 +93,7 @@ export const projects: Project[] = [
   },
   {
     title: "Project Bachpan",
+    slug: "bachpan",
     image: "/Gallery/bachpan.jpg",
     content: {
       vision: "Every child deserves a joyful and nurturing childhood.",
@@ -105,6 +111,7 @@ export const projects: Project[] = [
   },
   {
     title: "Project Raah",
+    slug: "raah",
     image: "/Gallery/raah.jpg",
     content: {
       vision: "Every child must find a path to quality education.",
@@ -122,6 +129,7 @@ export const projects: Project[] = [
   },
   {
     title: "Blanket Drive",
+    slug: "blanket-drive",
     image: "/Gallery/blanket.jpg",
     content: {
       vision: "No one should shiver in the cold due to lack of shelter.",
@@ -139,6 +147,7 @@ export const projects: Project[] = [
   },
   {
     title: "Sweet Drive",
+    slug: "sweet-drive",
     image: "/Gallery/sweetdrive.jpg",
     content: {
       vision: "Festivals should be inclusive and joyful for all.",
@@ -156,6 +165,7 @@ export const projects: Project[] = [
   },
   {
     title: "Joy of Ride",
+    slug: "joy-of-ride",
     image: "/Gallery/joy-ride.jpg",
     content: {
       vision: "Every child deserves a moment of excitement and joy.",
@@ -173,6 +183,7 @@ export const projects: Project[] = [
   },
   {
     title: "Cyclothon",
+    slug: "cyclothon",
     image: "/Gallery/cyclothon.jpg",
     content: {
       vision: "Promote health, awareness and community spirit.",
@@ -190,6 +201,7 @@ export const projects: Project[] = [
   },
   {
     title: "Marathon",
+    slug: "marathon",
     image: "/Gallery/marathon.jpg",
     content: {
       vision: "Run for dignity, health and humanity.",
@@ -207,6 +219,7 @@ export const projects: Project[] = [
   },
   {
     title: "Concerts for a Cause",
+    slug: "concerts-for-a-cause",
     image: "/Gallery/concerts.jpg",
     content: {
       vision: "Use art to inspire, uplift and fund social change.",
@@ -224,6 +237,7 @@ export const projects: Project[] = [
   },
   {
     title: "Grooming & Etiquette Drive",
+    slug: "grooming-etiquette-drive",
     image: "/Gallery/img7.webp",
     content: {
       vision: "Confidence and hygiene go hand-in-hand for every girl.",
@@ -242,6 +256,7 @@ export const projects: Project[] = [
   },
   {
     title: "Joyful Gifting",
+    slug: "joyful-gifting",
     image: "/Gallery/gifting.jpg",
     content: {
       vision: "Bring joy and Spread smiles through thoughtful giving.",
@@ -260,6 +275,7 @@ export const projects: Project[] = [
   },
   {
     title: "Project Sanskruti",
+    slug: "sanskruti",
     image: "/Gallery/SHG Training Session.jpg",
     content: {
       vision: "To revive traditional, eco-friendly farming methods by empowering rural women to adopt organic composting.",

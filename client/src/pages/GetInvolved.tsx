@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import HeroStatsSection from '../components/ui/HeroStatsSection';
 import { Sparkles } from 'lucide-react';
+import Button from '../components/ui/Button';
 
 const involvementWays = [
   {
@@ -285,11 +286,42 @@ const Carousel = ({ testimonials }: { testimonials: { quote: string; name: strin
 };
 
 const GetInvolved = () => {
-  const [form, setForm] = useState({ name: '', email: '', interests: '', message: '' });
+  const [step, setStep] = useState(0);
+  const [form, setForm] = useState({ name: '', email: '', phone: '', interests: '', message: '' });
+  const [errors, setErrors] = useState<{ name?: string; email?: string; phone?: string; interests?: string }>({});
   const [submitted, setSubmitted] = useState(false);
+
+  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validatePhone = (phone: string) => /^[0-9]{8,15}$/.test(phone);
+
+  const validateStep1 = () => {
+    const newErrors: typeof errors = {};
+    if (!form.name.trim()) newErrors.name = 'Name is required';
+    if (!form.email.trim()) newErrors.email = 'Email is required';
+    else if (!validateEmail(form.email)) newErrors.email = 'Invalid email format';
+    if (!form.phone.trim() || !validatePhone(form.phone)) newErrors.phone = 'Valid phone number (8-15 digits) required';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const validateStep2 = () => {
+    const newErrors: typeof errors = {};
+    if (!form.interests.trim()) newErrors.interests = 'Please specify your areas of interest';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleContinue = () => {
+    if (step === 0 && !validateStep1()) return;
+    if (step === 1 && !validateStep2()) return;
+    setStep((prev) => Math.min(prev + 1, 2));
+  };
+
+  const handleBack = () => setStep((prev) => Math.max(prev - 1, 0));
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setErrors((prev) => ({ ...prev, [e.target.name]: '' }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -297,6 +329,8 @@ const GetInvolved = () => {
     setSubmitted(true);
     // Here you would typically send the form data to your backend or a service
   };
+
+  const getProgress = () => (step === 0 ? 'w-1/3' : step === 1 ? 'w-2/3' : 'w-full');
 
   return (
     <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 mt-24 min-h-screen transition-colors duration-300">
@@ -308,26 +342,134 @@ const GetInvolved = () => {
         className="mb-12"
         badge={<><Sparkles className="w-5 h-5 text-yellow-300 mr-2" /><span className="text-white font-medium">Support & Empower</span></>}
       />
+      {/* Your Impact in Action Section */}
+      <div className="bg-gradient-to-br from-white via-blue-50 to-fresh-green/10 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 py-8 sm:py-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-extrabold text-primary-blue dark:text-blue-200 mb-4">
+              Your Impact in Action
+            </h2>
+            <p className="text-lg text-fresh-green dark:text-fresh-green/80 font-semibold mb-2">
+              Every act of involvement plants a seed of hope.
+            </p>
+            <p className="text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6">
+              Thanks to your generosity and participation, lives are being transformed every day. Here's how your support and involvement are making a real difference in our communities.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {[
+              {
+                stat: "+500 Women Helped",
+                title: "Health & Hygiene",
+                desc: "Provides sanitary pads, health camps, and hygiene education for women and children.",
+                icon: (
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                ),
+              },
+              {
+                stat: "120 Scholarships",
+                title: "Education",
+                desc: "Funds school supplies, scholarships, and after-school programs for underprivileged kids.",
+                icon: (
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    />
+                  </svg>
+                ),
+              },
+              {
+                stat: "10,000+ Meals Served",
+                title: "Nutrition",
+                desc: "Delivers nutritious meals and supplements to malnourished children and families.",
+                icon: (
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"
+                    />
+                  </svg>
+                ),
+              },
+              {
+                stat: "75+ Women Entrepreneurs",
+                title: "Livelihood",
+                desc: "Supports vocational training and micro-enterprise for women and youth.",
+                icon: (
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"
+                    />
+                  </svg>
+                ),
+              },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300 ring-1 ring-inset ring-fresh-green/20 hover:ring-fresh-green/40 flex flex-col items-center text-center"
+              >
+                <div className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-primary-blue to-fresh-green mb-3 shadow mt-6">
+                  <span className="text-white text-2xl">{item.icon}</span>
+                </div>
+                <div className="p-4 sm:p-6 bg-white dark:bg-gray-800 transition-colors duration-300">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-blue-200 mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <p className="text-center text-primary-blue dark:text-blue-200 font-bold mt-8 text-lg">
+            Be the change.{' '}
+            <span className="text-fresh-green">Your support matters.</span>
+          </p>
+        </div>
+      </div>
+      {/* End Your Impact in Action Section */}
       <div className="py-8" />
       <div className="max-w-5xl mx-auto px-2 sm:px-4">
-        {/* CardGrid with FlipCards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-          {involvementWays.map((way, idx) => (
-            <FlipCard
-              key={idx}
-              front={way.front}
-              back={way.back}
-              icon={flipIcons[idx]}
-              cta={
-                way.front === 'Volunteer' ? 'Sign Up' :
-                way.front === 'Attend an Event' ? 'See Events' :
-                way.front === 'Fundraise' ? 'Start Now' :
-                way.front === 'Spread the Word' ? 'Share' : undefined
-              }
-            />
-          ))}
-        </div>
-
         {/* Volunteer Signup Form */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -336,6 +478,9 @@ const GetInvolved = () => {
           className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg rounded-2xl shadow-2xl p-10 mb-16 max-w-2xl mx-auto border border-primary-blue/20 dark:border-blue-400/30"
         >
           <h2 className="text-3xl font-bold mb-4 text-primary-blue dark:text-blue-300">Volunteer Signup</h2>
+          <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded mb-8 overflow-hidden">
+            <div className={`h-full bg-gradient-to-r from-primary-blue to-fresh-green transition-all duration-500 rounded ${getProgress()}`} />
+          </div>
           {submitted ? (
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
@@ -354,59 +499,129 @@ const GetInvolved = () => {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label className="block text-gray-600 dark:text-gray-200 font-medium">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
-                />
-              </div>
-              <div>
-                <label className="block text-gray-600 dark:text-gray-200 font-medium">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
-                />
-              </div>
-              <div>
-                <label className="block text-gray-600 dark:text-gray-200 font-medium">Areas of Interest</label>
-                <input
-                  type="text"
-                  name="interests"
-                  value={form.interests}
-                  onChange={handleChange}
-                  placeholder="e.g. Health, Education, Events"
-                  className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
-                />
-              </div>
-              <div>
-                <label className="block text-gray-600 dark:text-gray-200 font-medium">Message (optional)</label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  className="w-full border-2 border-primary-blue/30 dark:border-blue-400/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-blue-400 focus:border-primary-blue dark:focus:border-blue-400 transition-colors"
-                  rows={3}
-                />
-              </div>
-              <button
-                type="submit"
-                className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 dark:from-blue-700 dark:to-green-600 text-white px-8 py-2 rounded-lg font-bold shadow-lg hover:scale-105 transition-transform"
-              >
-                Sign Up
-              </button>
+              {step === 0 && (
+                <div>
+                  <p className="font-bold mb-4 text-primary-blue">We'll never share this information with anyone.</p>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Full name"
+                    value={form.name}
+                    onChange={handleChange}
+                    className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  />
+                  {errors.name && <p className="text-red-600 text-sm mb-2">{errors.name}</p>}
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email address"
+                    value={form.email}
+                    onChange={handleChange}
+                    onBlur={(e) => {
+                      const email = e.target.value;
+                      if (!validateEmail(email)) {
+                        setErrors((prev) => ({ ...prev, email: 'Invalid email format' }));
+                      } else {
+                        setErrors((prev) => ({ ...prev, email: '' }));
+                      }
+                    }}
+                    className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  />
+                  {errors.email && <p className="text-red-600 text-sm mb-2">{errors.email}</p>}
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone number"
+                    value={form.phone}
+                    onChange={handleChange}
+                    onBlur={(e) => {
+                      const phone = e.target.value;
+                      if (!validatePhone(phone)) {
+                        setErrors((prev) => ({ ...prev, phone: 'Valid phone number (8-15 digits) required' }));
+                      } else {
+                        setErrors((prev) => ({ ...prev, phone: '' }));
+                      }
+                    }}
+                    className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  />
+                  {errors.phone && <p className="text-red-600 text-sm mb-2">{errors.phone}</p>}
+                  <Button
+                    type="button"
+                    onClick={handleContinue}
+                    className="w-full py-3 bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white font-bold shadow-lg hover:scale-105 transition-transform rounded-lg mt-2"
+                  >
+                    Continue →
+                  </Button>
+                </div>
+              )}
+              {step === 1 && (
+                <div>
+                  <p className="font-bold mb-2 text-primary-blue">Volunteer Details</p>
+                  <input
+                    type="text"
+                    name="interests"
+                    placeholder="Areas of Interest (e.g. Health, Education, Events)"
+                    value={form.interests}
+                    onChange={handleChange}
+                    className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  />
+                  {errors.interests && <p className="text-red-600 text-sm mb-2">{errors.interests}</p>}
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Tell us why you want to volunteer (optional)"
+                    className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    rows={3}
+                  />
+                  <div className="flex justify-between mt-4">
+                    <button
+                      type="button"
+                      onClick={handleBack}
+                      className="text-primary-blue font-semibold hover:text-blue-700 transition-colors"
+                    >
+                      ← Back
+                    </button>
+                    <Button
+                      type="button"
+                      onClick={handleContinue}
+                      className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white px-4 py-2 font-bold shadow hover:scale-105 transition-transform rounded-lg"
+                    >
+                      Continue →
+                    </Button>
+                  </div>
+                </div>
+              )}
+              {step === 2 && (
+                <div>
+                  <p className="font-bold mb-4 text-primary-blue">Confirm Your Details</p>
+                  <div className="border-2 border-primary-blue/30 p-4 rounded-lg mb-4 bg-primary-blue/5 dark:bg-blue-900/10">
+                    <p><strong className="text-gray-700 dark:text-gray-200">Name:</strong> <span className="text-primary-blue dark:text-blue-200">{form.name}</span></p>
+                    <p><strong className="text-gray-700 dark:text-gray-200">Email:</strong> <span className="text-primary-blue dark:text-blue-200">{form.email}</span></p>
+                    <p><strong className="text-gray-700 dark:text-gray-200">Phone:</strong> <span className="text-primary-blue dark:text-blue-200">{form.phone}</span></p>
+                    <p><strong className="text-gray-700 dark:text-gray-200">Areas of Interest:</strong> <span className="text-primary-blue dark:text-blue-200">{form.interests}</span></p>
+                    {form.message && <p><strong className="text-gray-700 dark:text-gray-200">Message:</strong> <span className="text-primary-blue dark:text-blue-200">{form.message}</span></p>}
+                  </div>
+                  <div className="flex justify-between mt-4 items-center">
+                    <button
+                      type="button"
+                      onClick={handleBack}
+                      className="text-primary-blue font-semibold hover:text-blue-700 transition-colors"
+                    >
+                      ← Back
+                    </button>
+                    <Button
+                      type="submit"
+                      className="bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white px-4 py-2 font-bold shadow-lg hover:scale-105 transition-transform rounded-lg"
+                    >
+                      Confirm & Submit
+                    </Button>
+                  </div>
+                </div>
+              )}
             </form>
           )}
         </motion.div>
-
         {/* Carousel for Volunteer Stories */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

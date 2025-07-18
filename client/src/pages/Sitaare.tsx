@@ -21,13 +21,13 @@ const Sitaare = () => {
   return (
     <div className={`min-h-screen transition-colors duration-300 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-800 dark:to-slate-900`}>
       {/* Hero Section  */}
-      <section className="relative overflow-hidden pt-32 pb-20 px-4 md:px-20 bg-gradient-to-r from-pink-500/10 to-rose-500/10 dark:from-pink-900/80 dark:to-rose-900/80 dark:shadow-pink-900/40 dark:shadow-2xl border-b border-pink-100 dark:border-pink-900">
+      <section className="relative overflow-hidden pt-32 pb-20 px-4 md:px-20 bg-gradient-to-r from-pink-500/10 to-rose-500/10 dark:from-pink-900/40 dark:to-rose-900/40 dark:shadow-none border-b border-pink-100 dark:border-pink-900">
         {/* Animated gradient blobs - color changes for dark mode */}
         {theme === 'dark' ? (
           <>
-            <div className="absolute -top-24 -left-24 w-96 h-96 bg-pink-600 opacity-30 rounded-full filter blur-3xl animate-pulse-slow z-0" />
-            <div className="absolute top-1/2 right-0 w-80 h-80 bg-rose-500 opacity-30 rounded-full filter blur-2xl animate-pulse-slower z-0" />
-            <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-fuchsia-500 opacity-20 rounded-full filter blur-2xl animate-pulse-slow z-0" />
+            <div className="absolute -top-24 -left-24 w-96 h-96 bg-pink-600 opacity-10 rounded-full filter blur-3xl animate-pulse-slow z-0" />
+            <div className="absolute top-1/2 right-0 w-80 h-80 bg-rose-500 opacity-10 rounded-full filter blur-2xl animate-pulse-slower z-0" />
+            <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-fuchsia-500 opacity-7 rounded-full filter blur-2xl animate-pulse-slow z-0" />
           </>
         ) : (
           <>
@@ -54,22 +54,14 @@ const Sitaare = () => {
             viewport={{ once: true }}
             className="text-2xl md:text-3xl lg:text-4xl font-bold text-gradient-h1 text-center mb-8 max-w-5xl mx-auto leading-relaxed"
           >
-            Empowering dreams, one girl at a time
+           Where Every Star Finds Its Sky
             <br />
             <span className={theme === 'dark' ? 'text-rose-200' : 'text-pink-600'}>
               A home for hope, growth, and opportunity.
             </span>
           </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true }}
-            className={`max-w-4xl mx-auto text-lg md:text-xl lg:text-2xl font-medium text-center leading-relaxed ${theme === 'dark' ? 'text-white' : 'text-slate-700'}`}
-          >
-            Project Sitaare is a one-of-a-kind orphanage and shelter home for girls aged 6 to 18. More than just shelter—it's a place where dreams take flight. With full education, safety, and holistic development, it's the most empowering space for girls in Gujarat.
-          </motion.p>
+          
         </div>
       </section>
       <div className="mb-12 md:mb-20" />

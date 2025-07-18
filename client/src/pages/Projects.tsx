@@ -111,10 +111,9 @@ const Projects: React.FC = () => {
           </motion.p>
         </div>
       </section>
-      <div className="mb-8" />
-
+      
    {/* Sticky Filter Button Bar */}
-<div className="sticky top-0 z-20 bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 mt-8">
+<div className="sticky top-0 z-20 bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
   <div className="max-w-6xl mx-auto px-4 py-4 sm:py-5">
     <div className="flex items-center space-x-3 overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-primary-blue/40 scrollbar-track-transparent pb-2 px-3 scroll-px-3">
       {projects.map((project, idx) => (
@@ -162,7 +161,35 @@ const Projects: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <div className="absolute -top-4 -right-4 bg-fresh-green text-white px-4 py-2 rounded-full font-semibold shadow-lg">
-                  Project {activeSection + 1}
+                  <button
+                    className="flex items-center gap-2 focus:outline-none hover:underline"
+                    onClick={() => {
+                      const slug = projects[activeSection].slug;
+                      if (slug === 'pad-house' || slug === 'rakt-setu' || slug === 'sahara') {
+                        navigate('/health-care');
+                      } else if (slug === 'bachpan' || slug === 'raah') {
+                        navigate('/education');
+                      } else if (slug === 'maya' || slug === 'poshan') {
+                        navigate('/nutrition');
+                      } else if ([
+                        'blanket-drive',
+                        'sweet-drive',
+                        'cyclothon',
+                        'marathon',
+                        'grooming-etiquette-drive',
+                        'concerts-for-a-cause',
+                        'joyful-gifting'
+                      ].includes(slug || "")) {
+                        navigate('/house-of-happiness');
+                      } else if ((slug || "") === 'sanskruti') {
+                        navigate('/sustainable-livelihood');
+                      } else {
+                        navigate(`/projects/${slug}`);
+                      }
+                    }}
+                  >
+                    Read More: {projects[activeSection].title}
+                  </button>
                 </div>
               </div>
             </motion.div>

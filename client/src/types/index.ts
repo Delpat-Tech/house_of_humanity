@@ -90,6 +90,7 @@ export interface MediaCardProps {
 // Data Types
 export interface Project {
   title: string;
+  slug?: string;
   image: string;
   onClick?: () => void;
   content: {
