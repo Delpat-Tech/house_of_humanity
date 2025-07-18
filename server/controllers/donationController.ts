@@ -2,10 +2,9 @@ import { Request, Response } from 'express';
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
 import nodemailer, { Transporter } from 'nodemailer';
-import dotenv from 'dotenv';
 import { getDonorThankYouEmail, getNGOEmail, getFailureEmail } from '../utils/emailTemplates';
+import '../config';
 
-dotenv.config();
 
 // Simple email validation regex
 const isValidEmail = (email: string): boolean => {

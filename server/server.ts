@@ -1,9 +1,8 @@
 import express, { Express } from 'express';
 import cors from 'cors';
 import donationRoutes from "./routes/donationRoutes";
-import dotenv from 'dotenv';
+import './config';
 
-dotenv.config();
 
 const app: Express = express();
 app.use(cors());
@@ -12,7 +11,7 @@ app.use(express.json());
 
 app.use('/api/donate', donationRoutes);
 
-app.get('/', (req, res) => {
+app.get('/health', (req, res) => {
   res.send('Server is running!');
 });
 
