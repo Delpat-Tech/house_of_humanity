@@ -7,29 +7,17 @@ import WaysToDonate from "./WaysToDonate";
 import { motion } from "framer-motion";
 import Button from "../components/ui/Button";
 import HeroStatsSection from "../components/ui/HeroStatsSection";
-import { Sparkles, Book, Apple, Cake, Utensils, Users, HandHeart } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
-interface FormData {
+type FormData = {
   name: string;
   email: string;
-  phone: string | number;
-}
+  phone: number | string;
+};
 
-interface FormErrors {
-  name?: string;
-  email?: string;
-  phone?: string;
-}
+import { FormErrors } from "../types";
 
-interface ProgramCard {
-  name: string;
-  purpose: string;
-  amount: number;
-  description: string;
-  icon: React.ElementType;
-  color: string;
-  highlight?: boolean;
-}
+type Errors = FormErrors;
 
 interface RazorpayWindow extends Window {
   Razorpay: any;
@@ -38,72 +26,40 @@ declare let window: RazorpayWindow;
 
 const testimonials = [
   {
-    quote: "My donation truly made a difference. I received updates and saw the impact firsthand!",
+    quote:
+      "My donation truly made a difference. I received updates and saw the impact firsthand!",
     name: "Anjali P.",
     img: "https://randomuser.me/api/portraits/women/65.jpg",
   },
   {
-    quote: "Supporting House of Humanity is the best way to give back to the community.",
+    quote:
+      "Supporting House of Humanity is the best way to give back to the community.",
     name: "Vikram S.",
     img: "https://randomuser.me/api/portraits/men/43.jpg",
   },
   {
-    quote: "I love how transparent and impactful their work is. Highly recommended!",
+    quote:
+      "I love how transparent and impactful their work is. Highly recommended!",
     name: "Sara M.",
     img: "https://randomuser.me/api/portraits/women/22.jpg",
   },
 ];
 
-const programs: ProgramCard[] = [
-  {
-    name: "Sitaare Nutrition",
-    purpose: "Sitaare Nutrition",
-    amount: 1500,
-    description: "₹1,500 supports daily meals to keep a child healthy and energized.",
-    icon: Apple,
-    color: "#2563eb",
-  },
-  {
-    name: "Sitaare Full Care",
-    purpose: "Sitaare Full Care",
-    amount: 5000,
-    description: "₹5,000 provides full care including housing, education, and health.",
-    icon: HandHeart,
-    color: "#22c55e",
-    highlight: true,
-  },
-  {
-    name: "Women Empowerment Fund",
-    purpose: "Women Empowerment Fund",
-    amount: 3000,
-    description: "₹3,000 empowers women through education and skills training.",
-    icon: Book,
-    color: "#2563eb",
-  },
-  {
-    name: "Sitaare Celebration",
-    purpose: "Sitaare Celebration",
-    amount: 2000,
-    description: "₹2,000 funds a joyful birthday or festival celebration.",
-    icon: Cake,
-    color: "#22c55e",
-  },
-  {
-    name: "Sitaare One-Time Meal",
-    purpose: "Sitaare One-Time Meal",
-    amount: 4000,
-    description: "₹4,000 sponsors a wholesome meal for all Sitaare girls.",
-    icon: Utensils,
-    color: "#2563eb",
-  },
-  {
-    name: "Sitaare Meal for Two",
-    purpose: "Sitaare Meal for Two",
-    amount: 8000,
-    description: "₹8,000 feeds two girls for an entire day with nutritious meals.",
-    icon: Users,
-    color: "#22c55e",
-  },
+const programs = [
+  { name: "Child Health and Upliftment" },
+  { name: "Women Empowerment Fund" },
+  { name: "Sustainable Livelihood" },
+  { name: "Hygiene Awareness In Girls" },
+  { name: "Community Outreach Campaigns" },
+  { name: "Women Health And Hygiene" },
+  { name: "Healthcare Fund" },
+  { name: "Sitaare Sponsor" },
+  { name: "Sitaare Nutrition" },
+  { name: "Sitaare Full Care" },
+  { name: "Sitaare One-Time Meal" },
+  { name: "Sitaare Meal for Two" },
+  { name: "Sitaare Celebration" },
+  { name: "General Donation" },
 ];
 
 const TestimonialCarousel = ({
@@ -113,7 +69,8 @@ const TestimonialCarousel = ({
 }) => {
   const [index, setIndex] = useState(0);
   const next = () => setIndex((i) => (i + 1) % testimonials.length);
-  const prev = () => setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
+  const prev = () =>
+    setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
 
   return (
     <div className="w-full max-w-4xl mx-auto">
@@ -123,8 +80,18 @@ const TestimonialCarousel = ({
           className="flex items-center justify-center bg-white hover:bg-gray-50 text-primary-blue border border-gray-200 rounded-full w-12 h-12 shadow-md hover:shadow-lg transition-all duration-200"
           aria-label="Previous testimonial"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </button>
         <motion.div
@@ -144,7 +111,9 @@ const TestimonialCarousel = ({
               <p className="text-gray-700 dark:text-gray-200 text-lg leading-relaxed mb-4 italic">
                 "{testimonials[index].quote}"
               </p>
-              <div className="text-primary-blue font-semibold">{testimonials[index].name}</div>
+              <div className="text-primary-blue font-semibold">
+                {testimonials[index].name}
+              </div>
             </div>
           </div>
         </motion.div>
@@ -153,8 +122,18 @@ const TestimonialCarousel = ({
           className="flex items-center justify-center bg-white hover:bg-gray-50 text-primary-blue border border-gray-200 rounded-full w-12 h-12 shadow-md hover:shadow-lg transition-all duration-200"
           aria-label="Next testimonial"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </button>
       </div>
@@ -176,7 +155,9 @@ const TestimonialCarousel = ({
               <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-3 italic">
                 "{testimonials[index].quote}"
               </p>
-              <div className="text-primary-blue font-semibold">{testimonials[index].name}</div>
+              <div className="text-primary-blue font-semibold">
+                {testimonials[index].name}
+              </div>
             </div>
           </div>
         </motion.div>
@@ -186,8 +167,18 @@ const TestimonialCarousel = ({
             className="flex items-center justify-center bg-white hover:bg-gray-50 text-primary-blue border border-gray-200 rounded-full w-10 h-10 shadow-md transition-all duration-200"
             aria-label="Previous testimonial"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
           </button>
           <button
@@ -195,8 +186,18 @@ const TestimonialCarousel = ({
             className="flex items-center justify-center bg-white hover:bg-gray-50 text-primary-blue border border-gray-200 rounded-full w-10 h-10 shadow-md transition-all duration-200"
             aria-label="Next testimonial"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </button>
         </div>
@@ -221,7 +222,7 @@ const loadRazorpayScript = (): Promise<boolean> => {
 
 const DonateForACause: React.FC = () => {
   const [step, setStep] = useState<number>(0);
-  const [amount, setAmount] = useState<string>("");
+  const [amount, setAmount] = useState<string>("10.00");
   const [customAmount, setCustomAmount] = useState<string>("");
   const [selectedProgram, setSelectedProgram] = useState<string>("");
   const [formData, setFormData] = useState<FormData>({
@@ -229,41 +230,43 @@ const DonateForACause: React.FC = () => {
     email: "",
     phone: "",
   });
-  const [errors, setErrors] = useState<FormErrors>({});
+  const [errors, setErrors] = useState<Errors>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<string>("");
   const [donateSuccess, setDonateSuccess] = useState<boolean>(false);
 
   const amounts = ["100", "250", "500", "1000", "2500", "5000"];
 
-  // Prefill form from URL query parameters
+  // Read URL parameters to prefill amount and purpose
   useEffect(() => {
+    console.log("DonateForACause useEffect triggered");
     const params = new URLSearchParams(window.location.search);
     const amountParam = params.get("amount");
     const purposeParam = params.get("purpose");
 
-    console.log("Query params received:", { amount: amountParam, purpose: purposeParam });
+    console.log("Query params received:", {
+      amount: amountParam,
+      purpose: purposeParam,
+    });
 
     if (amountParam) {
-      const parsedAmount = parseFloat(amountParam);
-      if (!isNaN(parsedAmount) && parsedAmount > 0) {
-        console.log("Setting amount:", parsedAmount.toString());
-        setAmount(parsedAmount.toString());
-        setCustomAmount(parsedAmount.toString());
-      }
+      console.log("Setting amount:", amountParam);
+      setAmount(amountParam);
+      setCustomAmount(amountParam);
     }
-
     if (purposeParam) {
       const decodedPurpose = decodeURIComponent(purposeParam).trim();
       console.log("Decoded purpose:", decodedPurpose);
-      const program = programs.find((p) => p.purpose === decodedPurpose);
+      const program = programs.find((p) => p.name.trim() === decodedPurpose);
       if (program) {
         console.log("Setting selectedProgram:", decodedPurpose);
         setSelectedProgram(decodedPurpose);
-        setAmount((program.amount).toString());
-        setCustomAmount("");
       } else {
         console.warn("Invalid purpose:", decodedPurpose);
+        console.log(
+          "Available programs:",
+          programs.map((p) => p.name)
+        );
       }
     }
   }, []);
@@ -284,10 +287,11 @@ const DonateForACause: React.FC = () => {
   };
 
   const validateStep1 = (): boolean => {
-    const newErrors: FormErrors = {};
+    const newErrors: Errors = {};
     if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim()) newErrors.email = "Email is required";
-    else if (!validateEmail(formData.email)) newErrors.email = "Invalid email format";
+    else if (!validateEmail(formData.email))
+      newErrors.email = "Invalid email format";
     if (!formData.phone || !validatePhone(formData.phone.toString()))
       newErrors.phone = "Valid phone number (8-15 digits) required";
     setErrors(newErrors);
@@ -303,11 +307,11 @@ const DonateForACause: React.FC = () => {
     setStep((prev) => Math.max(prev - 1, 0));
   };
 
-  const handleCardClick = (program: ProgramCard) => {
-    setSelectedProgram(program.purpose);
-    setAmount(program.amount.toString());
+  const handleProgramClick = (program: { name: string }) => {
+    setSelectedProgram(program.name);
+    setAmount("");
     setCustomAmount("");
-    setStep(1); // Move to donor details step
+    setStep(0); // Ensure the form is shown with prefilled values
   };
 
   const handleDonateWithRazorpay = async () => {
@@ -327,7 +331,8 @@ const DonateForACause: React.FC = () => {
       const donorPhone = formData.phone.toString();
       const purpose = selectedProgram || "General Donation";
 
-      const response = await fetch("http://localhost:3000/api/donation/create-order", {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+      const response = await fetch(`${apiBaseUrl}/api/donate/create-order`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -350,7 +355,16 @@ const DonateForACause: React.FC = () => {
         throw new Error(serverError || "Failed to create order.");
       }
 
-      const { orderId, amount: orderAmount, currency, keyId, donorName: responseDonorName, donorEmail: responseDonorEmail, donorPhone: responseDonorPhone, purpose: responsePurpose } = data;
+      const {
+        orderId,
+        amount: orderAmount,
+        currency,
+        keyId,
+        donorName: responseDonorName,
+        donorEmail: responseDonorEmail,
+        donorPhone: responseDonorPhone,
+        purpose: responsePurpose,
+      } = data;
 
       if (!window.Razorpay) {
         throw new Error("Razorpay SDK not loaded");
@@ -362,24 +376,27 @@ const DonateForACause: React.FC = () => {
         currency,
         name: "House of Humanity",
         description: `Donation for ${purpose}`,
-        image: "https://hoh-demo-website.web.app/logo.png",
         order_id: orderId,
         handler: async (response: any) => {
           try {
-            const authResponse = await fetch("http://localhost:3000/api/donation/payment-auth", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_signature: response.razorpay_signature,
-                donorName: responseDonorName,
-                donorEmail: responseDonorEmail,
-                donorPhone: responseDonorPhone,
-                amount: orderAmount,
-                purpose: responsePurpose,
-              }),
-            });
+            const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+            const authResponse = await fetch(
+              `${apiBaseUrl}/api/donate/payment-auth`,
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_signature: response.razorpay_signature,
+                  donorName: responseDonorName,
+                  donorEmail: responseDonorEmail,
+                  donorPhone: responseDonorPhone,
+                  amount: orderAmount,
+                  purpose: responsePurpose,
+                }),
+              }
+            );
 
             const authResult = await authResponse.json();
             if (authResult.success) {
@@ -392,18 +409,20 @@ const DonateForACause: React.FC = () => {
                   amount: (orderAmount / 100).toString(),
                   purpose: responsePurpose,
                   donorName: responseDonorName,
-                  donorEmail: responseDonorEmail || '',
-                  donorPhone: responseDonorPhone || '',
+                  donorEmail: responseDonorEmail || "",
+                  donorPhone: responseDonorPhone || "",
                   createdAt: new Date().toISOString(),
                 });
                 window.location.href = `/donation-success?${queryParams.toString()}`;
               }, 3000);
             } else {
-              throw new Error(authResult.error || 'Payment verification failed');
+              throw new Error(
+                authResult.error || "Payment verification failed"
+              );
             }
           } catch (error: any) {
-            console.error('Payment auth error:', error);
-            setSubmitError(error.message || 'Payment verification failed');
+            console.error("Payment auth error:", error);
+            setSubmitError(error.message || "Payment verification failed");
             setTimeout(() => {
               setSubmitError("");
               const queryParams = new URLSearchParams({
@@ -412,10 +431,11 @@ const DonateForACause: React.FC = () => {
                 amount: (orderAmount / 100).toString(),
                 purpose: responsePurpose,
                 donorName: responseDonorName,
-                donorEmail: responseDonorEmail || '',
-                donorPhone: responseDonorPhone || '',
+                donorEmail: responseDonorEmail || "",
+                donorPhone: responseDonorPhone || "",
                 createdAt: new Date().toISOString(),
-                errorDescription: error.message || 'Payment verification failed',
+                errorDescription:
+                  error.message || "Payment verification failed",
               });
               window.location.href = `/donation-failed?${queryParams.toString()}`;
             }, 3000);
@@ -426,7 +446,7 @@ const DonateForACause: React.FC = () => {
           email: responseDonorEmail,
           contact: responseDonorPhone,
         },
-        theme: { color: "#2563eb" },
+        theme: { color: "#BC1782" },
         modal: {
           ondismiss: () => {
             setIsSubmitting(false);
@@ -436,7 +456,7 @@ const DonateForACause: React.FC = () => {
 
       const rzp = new window.Razorpay(options);
       rzp.on("payment.failed", (response: any) => {
-        console.error('Payment failed:', response.error);
+        console.error("Payment failed:", response.error);
         setSubmitError(response.error.description || "Payment failed.");
         setTimeout(() => {
           setSubmitError("");
@@ -446,17 +466,17 @@ const DonateForACause: React.FC = () => {
             amount: (orderAmount / 100).toString(),
             purpose: responsePurpose,
             donorName: responseDonorName,
-            donorEmail: responseDonorEmail || '',
-            donorPhone: responseDonorPhone || '',
+            donorEmail: responseDonorEmail || "",
+            donorPhone: responseDonorPhone || "",
             createdAt: new Date().toISOString(),
-            errorDescription: response.error.description || 'Payment failed',
+            errorDescription: response.error.description || "Payment failed",
           });
           window.location.href = `/donation-failed?${queryParams.toString()}`;
         }, 3000);
       });
       rzp.open();
     } catch (error: any) {
-      console.error('Donation error:', {
+      console.error("Donation error:", {
         message: error.message,
         stack: error.stack,
         amount,
@@ -465,7 +485,9 @@ const DonateForACause: React.FC = () => {
         donorEmail: formData.email,
         donorPhone: formData.phone,
       });
-      setSubmitError(error.message || "Failed to process donation. Please try again.");
+      setSubmitError(
+        error.message || "Failed to process donation. Please try again."
+      );
       setIsSubmitting(false);
     }
   };
@@ -488,67 +510,6 @@ const DonateForACause: React.FC = () => {
         }
       />
       <div className="py-16" />
-      {/* Donation Cards */}
-      <motion.div
-        className="max-w-5xl mx-auto px-2 sm:px-4 mb-8 grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6 md:gap-8"
-        initial="initial"
-        animate="animate"
-        variants={{
-          initial: {},
-          animate: { transition: { staggerChildren: 0.12 } },
-        }}
-      >
-        {programs.map((item, idx) => (
-          <motion.div
-            key={idx}
-            variants={{
-              initial: { opacity: 0, y: 30, scale: 0.95 },
-              animate: {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                transition: { type: "spring", stiffness: 100 },
-              },
-            }}
-            whileHover={{
-              scale: 1.04,
-              boxShadow: "0 8px 32px rgba(37,99,235,0.12)",
-            }}
-            whileTap={{ scale: 0.97 }}
-            className={`bg-white dark:bg-gray-800 p-4 xs:p-6 md:p-8 rounded-3xl shadow-xl transition text-center relative border-2 ${
-              item.highlight ? "border-green-300" : "border-blue-100"
-            } overflow-hidden w-full max-w-xs mx-auto flex flex-col h-full`}
-          >
-            {item.highlight && (
-              <div className="absolute top-4 right-4 bg-green-300 text-green-900 font-bold px-3 py-1 rounded-full text-xs shadow-md animate-pulse z-20">
-                Most Impactful
-              </div>
-            )}
-            <div className="flex flex-col flex-grow justify-between h-full">
-              <div className="flex flex-col flex-grow">
-                <div className="flex justify-center mb-4">
-                  <item.icon className="text-3xl xs:text-4xl" style={{ color: item.color }} />
-                </div>
-                <h3 className="text-base xs:text-lg sm:text-xl font-bold text-primary-blue mb-2 break-words">
-                  {item.name}
-                </h3>
-                <p className="text-xs xs:text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 min-h-[36px] sm:min-h-[48px] break-words">
-                  {item.description}
-                </p>
-              </div>
-              <div className="mt-auto">
-                <button
-                  onClick={() => handleCardClick(item)}
-                  className="bg-primary-blue hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-md shadow-md transition text-sm xs:text-base w-full"
-                >
-                  {`Select ₹${item.amount.toLocaleString()}`}
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
-      {/* Donation Form */}
       <div className="-mt-24 max-w-5xl mx-auto px-2 sm:px-4 flex flex-col md:flex-row gap-6 md:gap-8 relative z-20 md:min-h-[520px]">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -576,25 +537,23 @@ const DonateForACause: React.FC = () => {
                 </label>
                 <select
                   id="program"
+                  key={selectedProgram} // Force re-render
                   value={selectedProgram}
                   onChange={(e) => {
-                    const selected = e.target.value;
-                    console.log("Selected program:", selected);
-                    setSelectedProgram(selected);
-                    const program = programs.find((p) => p.purpose === selected);
-                    if (program?.amount) {
-                      setAmount(program.amount.toString());
-                      setCustomAmount("");
-                    } else {
-                      setAmount("");
-                      setCustomAmount("");
-                    }
+                    console.log("Selected program:", e.target.value);
+                    setSelectedProgram(e.target.value);
+                    setAmount("");
+                    setCustomAmount("");
                   }}
                   className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-blue focus:ring-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white px-3 py-2"
                 >
                   <option value="">Select a Purpose</option>
                   {programs.map((program) => (
-                    <option key={program.purpose} value={program.purpose}>
+                    <option
+                      key={program.name}
+                      value={program.name}
+                      onClick={() => handleProgramClick(program)}
+                    >
                       {program.name}
                     </option>
                   ))}
@@ -613,7 +572,6 @@ const DonateForACause: React.FC = () => {
                       setAmount(amt);
                       setCustomAmount("");
                     }}
-                    disabled={!!programs.find((p) => p.purpose === selectedProgram)?.amount}
                   >
                     ₹{amt}
                   </button>
@@ -629,7 +587,6 @@ const DonateForACause: React.FC = () => {
                   setAmount(e.target.value);
                 }}
                 className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                disabled={!!programs.find((p) => p.purpose === selectedProgram)?.amount}
               />
               <Button
                 onClick={handleContinue}
@@ -653,7 +610,9 @@ const DonateForACause: React.FC = () => {
                 }
                 className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
-              {errors.name && <p className="text-red-600 text-sm mb-2">{errors.name}</p>}
+              {errors.name && (
+                <p className="text-red-600 text-sm mb-2">{errors.name}</p>
+              )}
               <input
                 type="email"
                 placeholder="Email address"
@@ -664,14 +623,19 @@ const DonateForACause: React.FC = () => {
                 onBlur={(e) => {
                   const email = e.target.value;
                   if (!validateEmail(email)) {
-                    setErrors((prev) => ({ ...prev, email: "Invalid email format" }));
+                    setErrors((prev) => ({
+                      ...prev,
+                      email: "Invalid email format",
+                    }));
                   } else {
                     setErrors((prev) => ({ ...prev, email: "" }));
                   }
                 }}
                 className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
-              {errors.email && <p className="text-red-600 text-sm mb-2">{errors.email}</p>}
+              {errors.email && (
+                <p className="text-red-600 text-sm mb-2">{errors.email}</p>
+              )}
               <input
                 type="tel"
                 placeholder="Phone number"
@@ -692,7 +656,9 @@ const DonateForACause: React.FC = () => {
                 }}
                 className="w-full border-2 border-primary-blue/30 rounded-lg px-4 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-primary-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
-              {errors.phone && <p className="text-red-600 text-sm mb-2">{errors.phone}</p>}
+              {errors.phone && (
+                <p className="text-red-600 text-sm mb-2">{errors.phone}</p>
+              )}
               <div className="flex justify-between mt-4">
                 <button
                   onClick={handleBack}
@@ -843,7 +809,12 @@ const DonateForACause: React.FC = () => {
                 title: "Health & Hygiene",
                 desc: "Provides sanitary pads, health camps, and hygiene education for women and children.",
                 icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -858,7 +829,12 @@ const DonateForACause: React.FC = () => {
                 title: "Education",
                 desc: "Funds school supplies, scholarships, and after-school programs for underprivileged kids.",
                 icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -873,7 +849,12 @@ const DonateForACause: React.FC = () => {
                 title: "Nutrition",
                 desc: "Delivers nutritious meals and supplements to malnourished children and families.",
                 icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -888,7 +869,12 @@ const DonateForACause: React.FC = () => {
                 title: "Livelihood",
                 desc: "Supports vocational training and micro-enterprise for women and youth.",
                 icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"

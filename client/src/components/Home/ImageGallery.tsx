@@ -68,7 +68,7 @@ const ImageGallery: React.FC = () => {
     { src: "/Gallery/sweetdrive.jpg", alt: "Sweet Drive" },
   ];
 
-  //   // Auto-play functionality
+  // Auto-play functionality
 
   useEffect(() => {
     if (isAutoPlay) {
@@ -253,7 +253,7 @@ const ImageGallery: React.FC = () => {
                     <img
                       src={image.src}
                       alt={image.alt}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover pointer-events-none"
                       loading="lazy"
                     />
 
