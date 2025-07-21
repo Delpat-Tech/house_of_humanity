@@ -75,7 +75,6 @@ const Header: React.FC = () => {
       name: "Collaborate",
       path: "/donate-for-a-cause",
       dropdown: [
-        { name: "Donate for a Cause", path: "/contact-us" },
         { name: "Donate for a Cause", path: "/donate-for-a-cause" },
         { name: "Get Involved", path: "/get-involved" },
         { name: "Partner With Us", path: "/partner-with-us" },
@@ -240,14 +239,18 @@ const Header: React.FC = () => {
             <div className="hidden lg:flex items-center space-x-2">
               {menuItems.map((item, index) => {
                 // Determine if any sub-item is active (for dropdown parents)
-                const isAnySubActive = item.dropdown && item.dropdown.some(
-                  (subItem) => location.pathname === subItem.path
-                );
+                const isAnySubActive =
+                  item.dropdown &&
+                  item.dropdown.some(
+                    (subItem) => location.pathname === subItem.path
+                  );
                 return (
                   <div
                     key={item.name}
                     className="relative"
-                    onMouseEnter={() => item.dropdown && setDropdownOpen(item.name)}
+                    onMouseEnter={() =>
+                      item.dropdown && setDropdownOpen(item.name)
+                    }
                     onMouseLeave={() => setDropdownOpen(null)}
                   >
                     <motion.div
@@ -257,7 +260,8 @@ const Header: React.FC = () => {
                     >
                       {item.dropdown ? (
                         <span
-                          className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 cursor-default select-none border ` +
+                          className={
+                            `nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 cursor-default select-none border ` +
                             (dropdownOpen === item.name || isAnySubActive
                               ? "active text-primary-blue bg-warm-light-blue dark:bg-gray-700 border-primary-blue/20"
                               : "text-dark-gray dark:text-gray-200 hover:text-primary-blue hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:border-primary-blue/20 border-transparent")
@@ -276,7 +280,8 @@ const Header: React.FC = () => {
                       ) : (
                         <Link
                           to={item.path}
-                          className={`nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 border ` +
+                          className={
+                            `nav-item flex items-center space-x-1 px-4 py-3 rounded-xl text-xs font-medium header-font transition-all duration-300 border ` +
                             (location.pathname === item.path
                               ? "active text-primary-blue bg-warm-light-blue dark:bg-gray-700 border-primary-blue/20"
                               : "text-dark-gray dark:text-gray-200 hover:text-primary-blue hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:border-primary-blue/20 border-transparent")
@@ -292,12 +297,18 @@ const Header: React.FC = () => {
                       {item.dropdown && dropdownOpen === item.name && (
                         <>
                           {/* Invisible hoverable gap to extend hover area */}
-                          <div className="absolute left-0 top-full w-full h-3 z-40" style={{ pointerEvents: 'auto' }}></div>
+                          <div
+                            className="absolute left-0 top-full w-full h-3 z-40"
+                            style={{ pointerEvents: "auto" }}
+                          ></div>
                           <motion.div
                             initial={{ opacity: 0, y: -20, scale: 0.95 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                            transition={{
+                              duration: 0.3,
+                              ease: [0.25, 0.1, 0.25, 1],
+                            }}
                             className="absolute top-full left-0 mt-2 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-warm-light-blue dark:border-gray-600 py-3 z-50 overflow-hidden"
                           >
                             <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/5 to-fresh-green/5"></div>
