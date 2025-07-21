@@ -337,6 +337,7 @@ const DonateForACause: React.FC = () => {
       const purpose = selectedProgram || "General Donation";
 
       const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+      console.log("API Base URL:", apiBaseUrl);
       const response = await fetch(`${apiBaseUrl}/api/donate/create-order`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
