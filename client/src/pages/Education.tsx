@@ -111,6 +111,46 @@ const Education: React.FC = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
       </div>
 
+      {/* Project Overview */}
+      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
+              Turning Anganwadis into <br />
+              Gateways of Growth
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
+          </div>
+
+          {/* Nutrition background */}
+
+          <div className="flex flex-col items-center justify-center">
+            <div>
+              <p className="text-lg text-dark-gray leading-relaxed mb-6 text-justify">
+                very great story begins with a strong foundation. But for many
+                children in Anganwadis across Vadodara, early learning starts
+                with a struggle—limited resources, minimal exposure, and
+                untapped creativity.
+              </p>
+              <p className="text-lg text-dark-gray leading-relaxed mb-6 text-justify">
+                Because education should not be a privilege—it is a right. And
+                through Project Raah, we are making sure that right is upheld,
+                one child at a time.
+              </p>
+              <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6 dark:bg-gray-800">
+                <p className="text-primary-blue font-semibold text-lg dark:text-gray-100">
+                  Project Raah transforms under-resourced Anganwadis into
+                  vibrant learning spaces. By nurturing creativity and curiosity
+                  early on, we help children take confident first steps toward
+                  education—ensuring every child begins their journey with
+                  dignity, opportunity, and hope.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Overall Impact */}
       <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-2xl p-8 md:p-12 mb-16">
         <div className="text-center mb-12">
@@ -132,8 +172,12 @@ const Education: React.FC = () => {
               className="text-center bg-white rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               <div className="text-2xl md:text-4xl mb-2">{stat.icon}</div>
-              <div className="text-base md:text-2xl font-bold text-primary-blue mb-1">{stat.number}</div>
-              <div className="text-xs md:text-base text-dark-gray font-medium">{stat.label}</div>
+              <div className="text-base md:text-2xl font-bold text-primary-blue mb-1">
+                {stat.number}
+              </div>
+              <div className="text-xs md:text-base text-dark-gray font-medium">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>

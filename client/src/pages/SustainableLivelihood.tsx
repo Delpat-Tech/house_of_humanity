@@ -113,10 +113,42 @@ const SustainableLivelihood: React.FC = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
+              Empowering Women Through <br/>Sustainable Livelihoods
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
+          </div>
+
+          {/* Sustainable Livelihood background */}
+
+          <div className="flex flex-col items-center justify-center">
+            <div>
+              <p className="text-lg text-dark-gray leading-relaxed mb-6 text-justify">
+           With support from Grasim Industries Limited and the Taluka Panchayat, a community-driven vermi-compost production unit was established. The initiative enables 30 women to convert organic waste into high-quality compost, which is sold to farmers and agricultural businesses. 
+              </p>
+              <p className="text-lg text-dark-gray leading-relaxed mb-6 text-justify">
+                The program is designed to be self- sustaining, allowing participants to earn an income while promoting  environmental sustainability.
+              </p>
+              <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6 dark:bg-gray-800">
+                <p className="text-primary-blue font-semibold text-lg dark:text-gray-100">
+                  Beyond economic empowerment, the project promotes environmental sustainability by reducing organic waste and enhancing soil health through natural composting methods. It stands as a model of inclusive development—combining women’s empowerment, sustainable agriculture, and circular economy principles in a single initiative.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Project Overview */}
+      <div id="about-sanskruti" className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
               About Project Sanskruti
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
           </div>
+
+          {/* About project*/}
 
           <div className="flex flex-col items-center justify-center">
             <div>

@@ -64,7 +64,8 @@ const Nutrition: React.FC = () => {
                   </span>
                 </h1>
                 <p className="text-xl text-green-100 mb-8 leading-relaxed capitalize">
-                 Transforming lives through nutrition and health support for families during medical crises
+                  Transforming lives through nutrition and health support for
+                  families during medical crises
                 </p>
                 <div className="flex flex-wrap gap-4 mb-8">
                   <button
@@ -90,14 +91,14 @@ const Nutrition: React.FC = () => {
                   <img
                     src="/Nutrition hero.jpg"
                     alt="Nutrition Programs"
-                    className="rounded-xl shadow-2xl border-4 border-white/20 object-cover w-full h-auto max-h-72 md:max-h-none"
+                    className="rounded-xl shadow-2xl border-4 border-white/20 object-cover w-full h-auto"
                   />
                 </div>
-                <div className="absolute md:-bottom-12 md:-left-12 -bottom-6 -left-4 transform -rotate-6">
+                <div className="absolute md:-bottom-12 md:-left-12 -bottom-4 -left-4 transform -rotate-6">
                   <img
                     src="/Nutrition thumbnail.png"
                     alt="Nutrition thumbnail"
-                    className="rounded-lg shadow-lg border-4 border-white/30 object-cover w-full h-full"
+                    className="rounded-lg shadow-lg border-4 border-white/30 object-cover w-2/3 h-full"
                   />
                 </div>
               </div>
@@ -110,11 +111,52 @@ const Nutrition: React.FC = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
       </div>
 
+      {/* Project Overview */}
+      <div
+        className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
+      >
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
+              Nourishing Lives: Restoring <br />
+              Hope Together
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
+          </div>
+
+          {/* Nutrition background */}
+
+          <div className="flex flex-col items-center justify-center">
+            <div>
+              <p className="text-lg text-dark-gray leading-relaxed mb-6 text-justify">
+                Nutrition is a fundamental pillar of the House of Humanity
+                Charitable Trust and has been at the core of our interventions
+                since the organization's inception.
+              </p>
+              <p className="text-lg text-dark-gray leading-relaxed mb-6 text-justify">
+                Recognizing that food insecurity remains one of the most
+                pressing challenges for underserved communities, our nutrition
+                initiatives aim to provide relief to families facing crisis
+                situations, particularly those affected by medical emergencies
+                and economic distress.
+              </p>
+              <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6 dark:bg-gray-800">
+                <p className="text-primary-blue font-semibold text-lg dark:text-gray-100">
+                  Through our projects, we have not only ensured access to
+                  nutritious meals but have also created a support system for
+                  individuals facing hardships.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Overall Impact */}
       <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-2xl p-8 md:p-12 mb-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
-            Our Nutrition Impact
+            Our Nutrition Initiatives
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
           <p className="text-lg text-dark-gray max-w-3xl mx-auto">
@@ -132,8 +174,12 @@ const Nutrition: React.FC = () => {
               className="text-center bg-white rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               <div className="text-2xl md:text-4xl mb-2">{stat.icon}</div>
-              <div className="text-base md:text-2xl font-bold text-primary-blue mb-1">{stat.number}</div>
-              <div className="text-xs md:text-base text-dark-gray font-medium">{stat.label}</div>
+              <div className="text-base md:text-2xl font-bold text-primary-blue mb-1">
+                {stat.number}
+              </div>
+              <div className="text-xs md:text-base text-dark-gray font-medium">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>

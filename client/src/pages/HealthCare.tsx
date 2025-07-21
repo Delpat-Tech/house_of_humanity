@@ -121,32 +121,28 @@ const HealthCare: React.FC = () => {
                   </span>
                 </h1>
                 <p className="text-xl text-green-100 mb-8 leading-relaxed capitalize">
-                  Making healthcare accessible for all: menstrual hygiene, emergency blood support, and medical equipment for those in need.
+                  Making healthcare accessible for all: menstrual hygiene,
+                  emergency blood support, and medical equipment for those in
+                  need.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4 mb-8">
                   <button
                     onClick={() => scrollToProject("pad-house")}
                     className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 hover:bg-opacity-30 transition-all duration-300 hover:scale-105 cursor-pointer"
                   >
-                    <span className="text-white font-semibold">
-                      Pad House
-                    </span>
+                    <span className="text-white font-semibold">Pad House</span>
                   </button>
                   <button
                     onClick={() => scrollToProject("rakt-setu")}
                     className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 hover:bg-opacity-30 transition-all duration-300 hover:scale-105 cursor-pointer"
                   >
-                    <span className="text-white font-semibold">
-                      Rakt Setu
-                    </span>
+                    <span className="text-white font-semibold">Rakt Setu</span>
                   </button>
                   <button
                     onClick={() => scrollToProject("sahara")}
                     className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 hover:bg-opacity-30 transition-all duration-300 hover:scale-105 cursor-pointer"
                   >
-                    <span className="text-white font-semibold">
-                      Sahara
-                    </span>
+                    <span className="text-white font-semibold">Sahara</span>
                   </button>
                 </div>
               </div>
@@ -156,6 +152,41 @@ const HealthCare: React.FC = () => {
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-warm-light-blue rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
+      </div>
+
+      {/* Eduaction background */}
+      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
+              Bridging Health Gaps with Dignity
+              <br />
+              for Every Life
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
+          </div>
+
+          <div className="flex flex-col items-center justify-center">
+            <div>
+              <p className="text-lg text-dark-gray leading-relaxed mb-6 text-justify">
+                Access to adequate healthcare remains a significant challenge
+                for marginalized communities, particularly for women and those
+                in rural areas. The lack of proper menstrual hygiene awareness,
+                blood donation infrastructure, and emergency healthcare support
+                further exacerbates health disparities.
+              </p>
+              <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6 dark:bg-gray-800">
+                <p className="text-primary-blue font-semibold text-lg dark:text-gray-100">
+                  Access to adequate healthcare remains a significant challenge
+                  for marginalized communities, particularly for women and those
+                  in rural areas. The lack of proper menstrual hygiene
+                  awareness, blood donation infrastructure, and emergency
+                  healthcare support further exacerbates health disparities.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Overall Impact */}

@@ -92,6 +92,41 @@ const HouseOfHappiness = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000 dark:bg-yellow-700 z-0"></div>
       </div>
 
+      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
+              The House of Happiness <br />
+              Spreading Joy
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
+          </div>
+
+          {/* Nutrition background */}
+
+          <div className="flex flex-col items-center justify-center">
+            <div>
+              <p className="text-lg text-dark-gray leading-relaxed mb-6 text-justify">
+                The House of Happiness, an initiative by the House of Humanity
+                Charitable Trust, is a heartfelt effort dedicated to spreading
+                joy, comfort, and support to those in need. In a world where
+                many individuals struggle with poverty, hunger, and deprivation,
+                our initiatives serve as a beacon of hope, ensuring that the
+                underprivileged receive essential resources, warmth, and
+                emotional upliftment.
+              </p>
+              <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6 dark:bg-gray-800">
+                <p className="text-primary-blue font-semibold text-lg dark:text-gray-100">
+                  Each project under this initiative is carefully designed to
+                  touch lives in a meaningful way, bridging gaps and bringing
+                  smiles to those who need them the most.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20  rounded-2xl p-8 md:p-12 mb-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
@@ -112,8 +147,12 @@ const HouseOfHappiness = () => {
               className="text-center bg-white rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 dark:bg-gray-900 dark:border dark:border-gray-700"
             >
               <div className="text-2xl md:text-4xl mb-2">{stat.icon}</div>
-              <div className="text-base md:text-2xl font-bold text-primary-blue mb-1">{stat.number}</div>
-              <div className="text-xs md:text-base text-dark-gray font-medium">{stat.label}</div>
+              <div className="text-base md:text-2xl font-bold text-primary-blue mb-1">
+                {stat.number}
+              </div>
+              <div className="text-xs md:text-base text-dark-gray font-medium">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
