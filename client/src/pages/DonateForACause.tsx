@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, ChangeEvent, useEffect } from "react";
 import GiftCarousel from "./GiftCarousel";
 import BhimQR from "./BhimQR";
@@ -12,6 +11,8 @@ import PhoneInput from "react-phone-input-2";
 import type { CountryData } from "react-phone-input-2";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import "react-phone-input-2/lib/style.css";
+import { useNavigate } from 'react-router-dom';
+
 
 type FormData = {
   name: string;
@@ -241,7 +242,7 @@ const DonateForACause: React.FC = () => {
   const [donateSuccess, setDonateSuccess] = useState<boolean>(false);
 
   const amounts = ["100", "250", "500", "1000", "2500", "5000"];
-
+  const navi = useNavigate()
   // Read URL parameters to prefill amount and purpose
   useEffect(() => {
     console.log("DonateForACause useEffect triggered");
@@ -384,68 +385,22 @@ const DonateForACause: React.FC = () => {
         description: `Donation for ${purpose}`,
         order_id: orderId,
         handler: async (response: any) => {
-          try {
-            const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
-            const authResponse = await fetch(
-              `${apiBaseUrl}/api/donate/payment-auth`,
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  razorpay_payment_id: response.razorpay_payment_id,
-                  razorpay_order_id: response.razorpay_order_id,
-                  razorpay_signature: response.razorpay_signature,
-                  donorName: responseDonorName,
-                  donorEmail: responseDonorEmail,
-                  donorPhone: responseDonorPhone,
-                  amount: orderAmount,
-                  purpose: responsePurpose,
-                }),
-              }
-            );
+          setDonateSuccess(true);
+          setTimeout(() => {
+            setDonateSuccess(false);
+            const queryParams = new URLSearchParams({
+              paymentId: response.razorpay_payment_id,
+              orderId: response.razorpay_order_id,
+              amount: (orderAmount / 100).toString(),
+              purpose: responsePurpose,
+              donorName: responseDonorName,
+              donorEmail: responseDonorEmail || "",
+              donorPhone: responseDonorPhone || "",
+              createdAt: new Date().toISOString(),
+            });
+            window.location.href = `/donation-success?${queryParams.toString()}`;
 
-            const authResult = await authResponse.json();
-            if (authResult.success) {
-              setDonateSuccess(true);
-              setTimeout(() => {
-                setDonateSuccess(false);
-                const queryParams = new URLSearchParams({
-                  paymentId: response.razorpay_payment_id,
-                  orderId: response.razorpay_order_id,
-                  amount: (orderAmount / 100).toString(),
-                  purpose: responsePurpose,
-                  donorName: responseDonorName,
-                  donorEmail: responseDonorEmail || "",
-                  donorPhone: responseDonorPhone || "",
-                  createdAt: new Date().toISOString(),
-                });
-                window.location.href = `/donation-success?${queryParams.toString()}`;
-              }, 3000);
-            } else {
-              throw new Error(
-                authResult.error || "Payment verification failed"
-              );
-            }
-          } catch (error: any) {
-            console.error("Payment auth error:", error);
-            setSubmitError(error.message || "Payment verification failed");
-            setTimeout(() => {
-              setSubmitError("");
-              const queryParams = new URLSearchParams({
-                paymentId: response.razorpay_payment_id,
-                orderId: response.razorpay_order_id,
-                amount: (orderAmount / 100).toString(),
-                purpose: responsePurpose,
-                donorName: responseDonorName,
-                donorEmail: responseDonorEmail || "",
-                donorPhone: responseDonorPhone || "",
-                createdAt: new Date().toISOString(),
-                errorDescription:
-                  error.message || "Payment verification failed",
-              });
-              window.location.href = `/donation-failed?${queryParams.toString()}`;
-            }, 3000);
-          }
+          }, 3000)
         },
         prefill: {
           name: responseDonorName,
@@ -569,11 +524,10 @@ const DonateForACause: React.FC = () => {
                 {amounts.map((amt) => (
                   <button
                     key={amt}
-                    className={`border-2 px-4 py-2 rounded-lg font-semibold transition-all duration-200 ${
-                      amount === amt
-                        ? "bg-gradient-to-r from-primary-blue to-fresh-green text-white shadow-lg scale-105"
-                        : "bg-white text-primary-blue border-primary-blue/30 hover:bg-primary-blue/5"
-                    }`}
+                    className={`border-2 px-4 py-2 rounded-lg font-semibold transition-all duration-200 ${amount === amt
+                      ? "bg-gradient-to-r from-primary-blue to-fresh-green text-white shadow-lg scale-105"
+                      : "bg-white text-primary-blue border-primary-blue/30 hover:bg-primary-blue/5"
+                      }`}
                     onClick={() => {
                       setAmount(amt);
                       setCustomAmount("");
@@ -725,9 +679,9 @@ const DonateForACause: React.FC = () => {
                   </span>
                 </p>
               </div>
-              <div className="border-2 border-primary-blue/30 p-4 rounded-lg mb-4 text-sm bg-primary-blue/5 dark:bg-blue-900/10">
+              {/* <div className="border-2 border-primary-blue/30 p-4 rounded-lg mb-4 text-sm bg-primary-blue/5 dark:bg-blue-900/10">
                 Donate securely with Razorpay
-              </div>
+              </div> */}
               {submitError && (
                 <div className="text-red-600 text-sm mb-4 whitespace-pre-wrap">
                   {submitError}
@@ -747,11 +701,11 @@ const DonateForACause: React.FC = () => {
                   ← Back
                 </button>
                 <Button
-                  onClick={handleDonateWithRazorpay}
+                  // onClick={handleDonateWithRazorpay}
+                  onClick={() => navi("/contact-us")}
                   disabled={isSubmitting}
-                  className={`bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white px-4 py-2 font-bold shadow-lg hover:scale-105 transition-transform rounded-lg ${
-                    isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-                  }`}
+                  className={`bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white px-4 py-2 font-bold shadow-lg hover:scale-105 transition-transform rounded-lg ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+                    }`}
                 >
                   {isSubmitting && (
                     <svg

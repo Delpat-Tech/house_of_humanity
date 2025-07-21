@@ -75,7 +75,6 @@ const Header: React.FC = () => {
       name: "Collaborate",
       path: "/donate-for-a-cause",
       dropdown: [
-        { name: "Donate for a Cause", path: "/contact-us" },
         { name: "Donate for a Cause", path: "/donate-for-a-cause" },
         { name: "Get Involved", path: "/get-involved" },
         { name: "Partner With Us", path: "/partner-with-us" },
@@ -204,11 +203,10 @@ const Header: React.FC = () => {
       <div className="progress-bar" style={{ width: `${scrollProgress}%` }} />
 
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${isScrolled
             ? "glassmorphism shadow-2xl shadow-primary-blue/10"
             : "bg-off-white/90 dark:bg-gray-900/90 backdrop-blur-sm"
-        }`}
+          }`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
@@ -305,11 +303,10 @@ const Header: React.FC = () => {
                               <div key={subItem.name}>
                                 <Link
                                   to={subItem.path}
-                                  className={`dropdown-item block px-5 py-3 text-xs font-medium header-font rounded-lg mx-2 relative z-10 transition-colors duration-200 ${
-                                    location.pathname === subItem.path
+                                  className={`dropdown-item block px-5 py-3 text-xs font-medium header-font rounded-lg mx-2 relative z-10 transition-colors duration-200 ${location.pathname === subItem.path
                                       ? "bg-primary-blue text-white dark:text-white"
                                       : "text-dark-gray dark:text-gray-200 hover:text-primary-blue hover:bg-warm-light-blue dark:hover:bg-gray-700"
-                                  }`}
+                                    }`}
                                 >
                                   {subItem.name}
                                 </Link>
@@ -410,11 +407,10 @@ const Header: React.FC = () => {
                                   dropdownOpen === item.name ? null : item.name
                                 )
                               }
-                              className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-sm font-medium header-font transition-colors duration-200 ${
-                                dropdownOpen === item.name || isAnySubActive
+                              className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-sm font-medium header-font transition-colors duration-200 ${dropdownOpen === item.name || isAnySubActive
                                   ? "bg-primary-blue text-white dark:text-white"
                                   : "text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue"
-                              }`}
+                                }`}
                             >
                               <span>{item.name}</span>
                               <motion.div
@@ -442,11 +438,10 @@ const Header: React.FC = () => {
                                   key={subItem.name}
                                   to={subItem.path}
                                   onClick={() => setIsOpen(false)}
-                                  className={`block px-3 py-2 rounded-md text-xs font-medium transition-colors duration-200 ${
-                                    location.pathname === subItem.path
+                                  className={`block px-3 py-2 rounded-md text-xs font-medium transition-colors duration-200 ${location.pathname === subItem.path
                                       ? "bg-primary-blue text-white dark:text-white"
                                       : "text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue"
-                                  }`}
+                                    }`}
                                 >
                                   {subItem.name}
                                 </Link>
@@ -459,11 +454,10 @@ const Header: React.FC = () => {
                       <Link
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className={`block px-3 py-2 rounded-md text-sm font-medium header-font transition-colors duration-200 ${
-                          location.pathname === item.path
+                        className={`block px-3 py-2 rounded-md text-sm font-medium header-font transition-colors duration-200 ${location.pathname === item.path
                             ? "bg-warm-light-blue dark:bg-gray-700 text-primary-blue"
                             : "text-dark-gray dark:text-gray-200 hover:bg-warm-light-blue dark:hover:bg-gray-700 hover:text-primary-blue"
-                        }`}
+                          }`}
                       >
                         {item.name}
                       </Link>
