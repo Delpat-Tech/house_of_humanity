@@ -15,7 +15,7 @@ const PrivacyPolicy: React.FC = () => {
           content="Privacy Policy for House of Humanity, outlining how we collect, use, and protect your personal information."
         />
       </Helmet>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-800 py-12 relative">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-800 py-16 relative">
         {/* Scroll Progress Bar */}
         <motion.div
           className="fixed top-0 left-0 right-0 h-1 bg-fresh-green z-50"
@@ -197,7 +197,7 @@ const PrivacyPolicy: React.FC = () => {
                       href="mailto:Info@houseofhumanity.in"
                       className="text-fresh-green hover:text-primary-blue transition-colors duration-200"
                     >
-                      privacy@houseofhumanity.org
+                      Info@houseofhumanity.in
                     </a>
                     <br />
                     Address: B1/44 Somdutt park, Near Rajesh tower, Gotri road, Vadodara - 390023

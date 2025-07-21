@@ -31,6 +31,8 @@ import DonationSuccess from './pages/DonationSuccess';
 import DonationFailed from './pages/DonationFailed';
 import Instagram from './pages/Instagram';
 import PrivacyPolicy from './pages/privacyPolicy';
+import CookiePolicy from './pages/CookiePolicy';
+import TermsOfService from './pages/TermsOfService';
 import FloatingActionButtons from './components/layout/FloatingActionButtons';
 
 function AppContent() {
@@ -85,6 +87,8 @@ function AppContent() {
           <Route path="/donation-failed" element={<DonationFailed />} />
           <Route path="/instagram" element={<Instagram />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
         </Routes>
       </AnimatePresence>
       <ToastContainer />

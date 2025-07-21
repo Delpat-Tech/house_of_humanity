@@ -14,8 +14,8 @@ import {
 const Footer: React.FC = () => {
   const links = [
     { href: "/privacy-policy", text: "Privacy Policy" },
-    { href: "#terms", text: "Terms of Service" },
-    { href: "#cookies", text: "Cookie Policy" },
+    { href: "/terms", text: "Terms of Service" },
+    { href: "/cookie-policy", text: "Cookie Policy" },
   ];
 
   const navigate = useNavigate();
