@@ -387,24 +387,6 @@ export const paymentAuth = async (req: Request<{}, any, PaymentAuthBody>, res: R
 
 export const webhook = async (req: Request, res: Response) => {
   try {
-    const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET as string;
-    const signature = req.headers['x-razorpay-signature'] as string;
-
-    if (!webhookSecret) {
-      console.error('RAZORPAY_WEBHOOK_SECRET is not set in .env file');
-      return res.status(500).json({ status: 'error', message: 'Webhook secret not configured' });
-    }
-
-    const generatedSignature = crypto
-      .createHmac('sha256', webhookSecret)
-      .update(JSON.stringify(req.body))
-      .digest('hex');
-
-    if (generatedSignature !== signature) {
-      console.error('Invalid webhook signature:', { signature, generatedSignature });
-      return res.status(400).json({ status: 'error', message: 'Invalid signature' });
-    }
-
     const event = req.body.event;
     console.log('Webhook event received:', { event, payload: req.body });
 
