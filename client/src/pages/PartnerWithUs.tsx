@@ -258,18 +258,6 @@ const PartnerWithUs = () => {
           </>
         )}
       </motion.div>
-
-      {/* Logo Wall */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold text-primary-blue mb-6 text-center">Our Partners</h2>
-        <div className="flex flex-wrap justify-center gap-8">
-          {[1, 2, 3, 4, 5, 6].map((n) => (
-            <div key={n} className="bg-white rounded-xl shadow p-4 flex items-center justify-center w-40 h-20 border border-primary-blue/20">
-              <img src={`https://placehold.co/120x40/0098DB/FFF?text=Logo+${n}`} alt={`Partner Logo ${n}`} className="object-contain h-12" />
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 };

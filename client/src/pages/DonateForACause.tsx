@@ -2,7 +2,6 @@
 
 import React, { useState, ChangeEvent, useEffect } from "react";
 import GiftCarousel from "./GiftCarousel";
-import BhimQR from "./BhimQR";
 import WaysToDonate from "./WaysToDonate";
 import { motion } from "framer-motion";
 import Button from "../components/ui/Button";
@@ -33,20 +32,17 @@ const testimonials = [
   {
     quote:
       "My donation truly made a difference. I received updates and saw the impact firsthand!",
-    name: "Anjali P.",
-    img: "https://randomuser.me/api/portraits/women/65.jpg",
+    name: "Anjali P."
   },
   {
     quote:
       "Supporting House of Humanity is the best way to give back to the community.",
-    name: "Vikram S.",
-    img: "https://randomuser.me/api/portraits/men/43.jpg",
+    name: "Vikram S."
   },
   {
     quote:
       "I love how transparent and impactful their work is. Highly recommended!",
-    name: "Sara M.",
-    img: "https://randomuser.me/api/portraits/women/22.jpg",
+    name: "Sara M."
   },
 ];
 
@@ -71,12 +67,11 @@ const programs = [
 const TestimonialCarousel = ({
   testimonials,
 }: {
-  testimonials: { quote: string; name: string; img: string }[];
+  testimonials: { quote: string; name: string }[];
 }) => {
   const [index, setIndex] = useState(0);
   const next = () => setIndex((i) => (i + 1) % testimonials.length);
-  const prev = () =>
-    setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
+  const prev = () => setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
 
   return (
     <div className="w-full max-w-4xl mx-auto">
@@ -107,20 +102,12 @@ const TestimonialCarousel = ({
           transition={{ duration: 0.4 }}
           className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700 flex-1 max-w-2xl"
         >
-          <div className="flex items-start gap-4">
-            <img
-              src={testimonials[index].img}
-              alt={testimonials[index].name}
-              className="w-16 h-16 rounded-full object-cover border-2 border-gray-100"
-            />
-            <div className="flex-1">
-              <p className="text-gray-7
-00 dark:text-gray-200 text-lg leading-relaxed mb-4 italic">
-                "{testimonials[index].quote}"
-              </p>
-              <div className="text-primary-blue font-semibold">
-                {testimonials[index].name}
-              </div>
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-gray-700 dark:text-gray-200 text-lg leading-relaxed mb-4 italic text-center">
+              "{testimonials[index].quote}"
+            </p>
+            <div className="text-primary-blue font-semibold text-center">
+              {testimonials[index].name}
             </div>
           </div>
         </motion.div>
@@ -152,19 +139,12 @@ const TestimonialCarousel = ({
           transition={{ duration: 0.4 }}
           className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700"
         >
-          <div className="flex items-start gap-4">
-            <img
-              src={testimonials[index].img}
-              alt={testimonials[index].name}
-              className="w-14 h-14 rounded-full object-cover border-2 border-gray-100"
-            />
-            <div className="flex-1">
-              <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-3 italic">
-                "{testimonials[index].quote}"
-              </p>
-              <div className="text-primary-blue font-semibold">
-                {testimonials[index].name}
-              </div>
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-3 italic text-center">
+              "{testimonials[index].quote}"
+            </p>
+            <div className="text-primary-blue font-semibold text-center">
+              {testimonials[index].name}
             </div>
           </div>
         </motion.div>
@@ -904,7 +884,6 @@ const DonateForACause: React.FC = () => {
       </div>
       <div className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="max-w-4xl mx-auto px-2 sm:px-4 py-8 sm:py-16">
-          <BhimQR />
           <WaysToDonate />
         </div>
       </div>

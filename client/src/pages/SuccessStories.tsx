@@ -168,11 +168,6 @@ const SuccessStories: React.FC = () => {
               transition={{ duration: 0.3 }}
             >
               <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 border border-warm-light-blue dark:border-gray-700 h-full flex flex-col">
-                {t.imageUrl ? (
-                  <img src={t.imageUrl} alt={t.name} className="w-full h-48 object-cover rounded-xl mb-4" />
-                ) : (
-                  <ImagePlaceholder text={t.name} width="100%" height="192px" className="mb-4" />
-                )}
                 <h3 className="text-xl font-bold text-primary-blue dark:text-fresh-green">{t.name}</h3>
                 <p className="text-sm text-pink-600 dark:text-fresh-green">{t.role}</p>
                 <p className="mt-4 text-gray-700 dark:text-gray-200 line-clamp-3">{t.experience}</p>
@@ -318,11 +313,6 @@ const SuccessStories: React.FC = () => {
               >
                 ✕
               </button>
-              {selected.imageUrl ? (
-                <img src={selected.imageUrl} alt={selected.name} className="w-full h-64 object-cover rounded-xl mb-4" />
-              ) : (
-                <ImagePlaceholder text={selected.name} width="100%" height="256px" className="mb-4" />
-              )}
               <h3 className="text-2xl font-bold text-primary-blue dark:text-fresh-green">{selected.name}</h3>
               <p className="text-sm text-pink-600 dark:text-fresh-green">{selected.role}</p>
               <p className="mt-4 text-gray-700 dark:text-gray-200 whitespace-pre-line">{selected.experience}</p>
