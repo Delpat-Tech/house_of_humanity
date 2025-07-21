@@ -31,57 +31,46 @@ const testimonials = [
   {
     quote: "Being part of House of Humanity has been incredibly rewarding. Their compassion and dedication to uplifting communities is truly inspiring.",
     name: "Dhwani Vyas",
-    img: "https://drive.google.com/uc?id=1tSWEU2sS2ccpoXFLzoIc5gWrpt3EUuMs",
   },
   {
     quote: "House of Humanity made my birthday special by helping me bring joy to underprivileged kids. The team is selfless and dedicated to making a difference every day!",
     name: "Rucha Shukla",
-    img: "https://drive.google.com/uc?id=1tSWEU2sS2ccpoXFLzoIc5gWrpt3EUuMs",
   },
   {
     quote: "House of Humanity gave me a new perspective and made me more empathetic. I now realize how privileged I am and want to help others more.",
     name: "SHRUTI JITENDRA PAGI",
-    img: "https://drive.google.com/uc?id=1WZRmgyMe3Y4MkSQSAiQNH0f0oVz-BnS_",
   },
   {
     quote: "HOH has given me meaningful opportunities to support underprivileged communities and grow personally.",
     name: "Rachna Suthar",
-    img: "https://drive.google.com/uc?id=1rI-oJAVdrYjcQbY8JW7NA93hLIYwGKc1",
   },
   {
     quote: "It was an amazing experience and the best till now.",
     name: "Drashti Patel",
-    img: "https://randomuser.me/api/portraits/lego/1.jpg",
   },
   {
     quote: "The HoH team is doing very appreciable work as a whole.",
     name: "Patel Zalak",
-    img: "https://randomuser.me/api/portraits/lego/2.jpg",
   },
   {
     quote: "It was a great experience overall.",
     name: "Swapnil Patil",
-    img: "https://randomuser.me/api/portraits/lego/3.jpg",
   },
   {
     quote: "Seeing children receive supplies and care through HoH has been very fulfilling. Our projects bring hope and smiles to many.",
     name: "Preeti Sharma",
-    img: "https://drive.google.com/uc?id=1Z2vTd9ALN6w51LaC3M8tcwnd0idTq7Xg",
   },
   {
     quote: "HOH is one of the best NGOs, truly caring for people and creating real change. Amazing work!",
     name: "Zeel Shah",
-    img: "https://randomuser.me/api/portraits/lego/4.jpg",
   },
   {
     quote: "Joining HOH has been a wonderful experience. The team's efforts and dedication are commendable.",
     name: "Nidhi Hitendra Pandya",
-    img: "https://drive.google.com/uc?id=1Se8YcZ12xOir7mljcSXkb6DuFqQ3F9Hv",
   },
   {
     quote: "It's been great seeing HOH achieve its goals and help the community. I hope to see it grow even more.",
     name: "Hiteshi Vaishnav",
-    img: "https://randomuser.me/api/portraits/lego/5.jpg",
   },
 ];
 
@@ -174,7 +163,7 @@ const FlipCard = ({ front, back, icon, cta }: { front: string; back: string; ico
   );
 };
 
-const Carousel = ({ testimonials }: { testimonials: { quote: string; name: string; img: string }[] }) => {
+const Carousel = ({ testimonials }: { testimonials: { quote: string; name: string }[] }) => {
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [direction, setDirection] = useState(1); // 1 for next, -1 for prev
@@ -225,7 +214,6 @@ const Carousel = ({ testimonials }: { testimonials: { quote: string; name: strin
         >
           {/* Decorative Quote Icon */}
           <svg className="absolute top-6 left-6 w-10 h-10 text-primary-blue/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h.01M15 7h.01M7 11a5 5 0 015-5h0a5 5 0 015 5v1a5 5 0 01-5 5h-1a5 5 0 01-5-5v-1z" /></svg>
-          <img src={testimonials[index].img} alt={testimonials[index].name} className="w-20 h-20 rounded-full mb-4 border-4 border-primary-blue shadow-lg ring-4 ring-primary-blue/30" />
           <p className="italic text-2xl text-primary-blue font-serif mb-4 text-center leading-relaxed z-10 max-h-28 overflow-hidden line-clamp-3">"{testimonials[index].quote}"</p>
           <div className="mt-2 text-primary-blue/90 font-bold text-lg z-10">— {testimonials[index].name}</div>
         </motion.div>
@@ -256,7 +244,6 @@ const Carousel = ({ testimonials }: { testimonials: { quote: string; name: strin
           className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-2xl flex flex-col items-center relative overflow-hidden w-full border-2 border-primary-blue/10"
         >
           <svg className="absolute top-6 left-6 w-10 h-10 text-primary-blue/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h.01M15 7h.01M7 11a5 5 0 015-5h0a5 5 0 015 5v1a5 5 0 01-5 5h-1a5 5 0 01-5-5v-1z" /></svg>
-          <img src={testimonials[index].img} alt={testimonials[index].name} className="w-20 h-20 rounded-full mb-4 border-4 border-primary-blue shadow-lg ring-4 ring-primary-blue/30" />
           <p className="italic text-2xl text-primary-blue font-serif mb-4 text-center leading-relaxed z-10 max-h-28 overflow-hidden line-clamp-3">"{testimonials[index].quote}"</p>
           <div className="mt-2 text-primary-blue/90 font-bold text-lg z-10">— {testimonials[index].name}</div>
         </motion.div>
