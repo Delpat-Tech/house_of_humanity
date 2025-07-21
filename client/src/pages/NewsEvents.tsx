@@ -24,9 +24,11 @@ import MediaWithText from '../components/ui/MediaWithText';
 import EventCard from '../components/ui/EventCard';
 import MediaCard from '../components/ui/MediaCard';
 import { fadeIn, staggerContainer } from '../utils/motion';
+import Instagram from './Instagram';
+import { Instagram as InstagramIcon } from 'lucide-react';
 
 const NewsAndEvents: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('media');
+  const [activeTab, setActiveTab] = useState('instagram');
   const [selectedNews, setSelectedNews] = useState<any>(null);
 
   const houseOfHumanityNews = [
@@ -298,6 +300,19 @@ const NewsAndEvents: React.FC = () => {
 
               {/* Interactive Tab Navigation */}
               <div className="flex flex-col md:flex-row gap-4 justify-center mb-8">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setActiveTab('instagram')}
+                  className={`px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center gap-2 ${
+                    activeTab === 'instagram'
+                      ? 'bg-white text-primary-blue shadow-lg transform scale-105'
+                      : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
+                  }`}
+                >
+                  <InstagramIcon size={20} />
+                  Instagram Feed
+                </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -586,6 +601,16 @@ const NewsAndEvents: React.FC = () => {
             </div>
           </div>
           */}
+        </motion.div>
+      )}
+
+      {/* Instagram Feed Section */}
+      {activeTab === 'instagram' && (
+        <motion.div
+          className="bg-white rounded-2xl shadow-xl overflow-hidden"
+          variants={fadeIn('up', 0.4)}
+        >
+          <Instagram />
         </motion.div>
       )}
 

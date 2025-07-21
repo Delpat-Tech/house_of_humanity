@@ -5,7 +5,6 @@ import WhatWeDo from "../components/Home/WhatWeDo";
 import ImageGallery from "../components/Home/ImageGallery";
 import ImpactCarousel from "../components/Home/ImpactCarousel";
 import DonateNow from "../components/Home/DonateNow";
-import Instagram from "./Instagram";
 import Loader from "../components/ui/Loader";
 import gsap from "gsap";
 
@@ -45,7 +44,6 @@ const Home: React.FC<HomeProps> = ({ showLoader, loaderGone, onFadeOut }) => {
         <WhatWeDo />
         <ImageGallery />
         <ImpactCarousel />
-        <Instagram />
         <DonateNow />
       </div>
     </>
