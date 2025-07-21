@@ -22,8 +22,8 @@ if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
   process.exit(1);
 }
 
-if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
-  console.error('RAZORPAY_KEY_ID or RAZORPAY_KEY_SECRET is not set in .env file');
+if (!process.env.RAZORPAY_KEY_ID) {
+  console.error('RAZORPAY_KEY_ID is not set in .env file');
   process.exit(1);
 }
 
@@ -63,7 +63,7 @@ interface CreateOrderBody {
 interface RazorpayOrder {
   id: string;
   entity: string;
-  amount:string | number;
+  amount: string | number;
   amount_paid: number;
   amount_due: number;
   currency: string;
@@ -139,10 +139,13 @@ export const testEmail = async (req: Request, res: Response) => {
 export const createOrder = async (req: Request<{}, any, CreateOrderBody>, res: Response) => {
   try {
     const { amount, purpose, donorName, donorEmail, donorPhone } = req.body;
-
+    if (!donorPhone || !donorEmail || !donorName) {
+      console.error('Missing required fields');
+      return res.status(400).json({ success: false, error: 'Phone , Name and Email are required' });
+    }
     // Validate input
     if (!amount || !purpose) {
-      console.error('Missing required fields:', { amount, purpose });
+      console.error('Missing required fields: amount, purpose ');
       return res.status(400).json({ success: false, error: 'Amount and purpose are required' });
     }
 
@@ -163,9 +166,9 @@ export const createOrder = async (req: Request<{}, any, CreateOrderBody>, res: R
       receipt,
       notes: {
         purpose,
-        donorName: donorName || '',
-        donorEmail: donorEmail || '',
-        donorPhone: donorPhone || '',
+        donorName: donorName,
+        donorEmail: donorEmail,
+        donorPhone: donorPhone,
       },
     });
 
@@ -224,7 +227,7 @@ export const createOrder = async (req: Request<{}, any, CreateOrderBody>, res: R
 };
 
 export const webhook = async (req: Request, res: Response) => {
-  try { 
+  try {
     const event = req.body.event;
     console.log('Webhook event received:', { event, payload: req.body });
 
@@ -245,14 +248,15 @@ export const webhook = async (req: Request, res: Response) => {
 
       const amountInINR = payment.amount / 100;
       const notes = order?.notes || {};
-      const donorName = notes.donorName || '';
+      const donorName = notes.donorName;
       const donorEmail = notes.donorEmail;
       const donorPhone = notes.donorPhone;
       const purpose = notes.purpose;
       const paymentId = payment.id;
-
-
-
+      if (!donorPhone || !donorEmail || !donorName || !purpose) {
+        console.error('Missing required fields');
+        return res.status(400).json({ success: false, error: 'Phone , Name and Email are required' });
+      }
       // Verify payment status
       const paymentDetails = await fetchPaymentWithRetry(paymentId);
        if (!paymentDetails || paymentDetails.status !== 'captured') {
@@ -384,3 +388,5 @@ export const webhook = async (req: Request, res: Response) => {
     res.status(500).json({ status: 'error', message: 'Webhook processing failed' });
   }
 };
+
+
