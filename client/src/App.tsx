@@ -29,6 +29,8 @@ import ContactUs from './pages/ContactUs';
 import Home from './pages/Home';
 import DonationSuccess from './pages/DonationSuccess';
 import DonationFailed from './pages/DonationFailed';
+import Instagram from './pages/Instagram';
+import FloatingActionButtons from './components/layout/FloatingActionButtons';
 
 function AppContent() {
   const [showLoader, setShowLoader] = useState(true);
@@ -55,6 +57,7 @@ function AppContent() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 overflow-x-hidden">
       {loaderGone && <Header />}
+      {loaderGone && <FloatingActionButtons />}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home showLoader={showLoader} loaderGone={loaderGone} onFadeOut={handleFadeOut} />} />
@@ -79,6 +82,7 @@ function AppContent() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/donation-success" element={<DonationSuccess />} />
           <Route path="/donation-failed" element={<DonationFailed />} />
+          <Route path="/instagram" element={<Instagram />} />
         </Routes>
       </AnimatePresence>
       <ToastContainer />

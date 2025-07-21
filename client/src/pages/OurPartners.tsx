@@ -104,7 +104,7 @@ const Partners: React.FC = () => {
               View Our Impact
             </Button>
           </a>
-          <a href="/getinvolved">
+          <a href="/get-involved">
             <Button className="px-8 py-4 text-lg font-semibold bg-fresh-green text-white">
               Join Our Network
             </Button>
@@ -113,35 +113,39 @@ const Partners: React.FC = () => {
       </HeroStatsSection>
 
       {/* Partnership Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        <StatsCard count="50+" label="Active Partners" />
-        <StatsCard count="15+" label="Countries Reached" />
+      <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-16">
+        <StatsCard count="15+" label="Active Partners" />
         <StatsCard count="1M+" label="Lives Impacted" />
       </div>
 
       {/* Corporate Partners */}
       <PartnerSection
-        title="Corporate Partners"
+        title="Partners"
         partners={partners.corporate}
         description="Leading corporations that support our mission through CSR initiatives, employee volunteering, and strategic partnerships."
         accent="bg-gradient-to-r from-primary-blue to-blue-600"
       />
 
-      {/* NGO Partners */}
-      <PartnerSection
-        title="NGO Partners"
-        partners={partners.ngo}
-        description="Non-profit organizations working alongside us to amplify our impact and reach more communities in need."
-        accent="bg-gradient-to-r from-fresh-green to-green-600"
-      />
-
-      {/* Government Partners */}
-      <PartnerSection
-        title="Government Partners"
-        partners={partners.government}
-        description="Government agencies and departments that collaborate with us to implement social welfare programs and initiatives."
-        accent="bg-gradient-to-r from-dark-gray to-gray-600"
-      />
+      {/* Become a Partner Section */}
+      <section className="mt-20 text-center">
+        <div className="bg-white rounded-2xl shadow-xl p-12 border border-warm-light-blue/20">
+          <div className="relative z-10">
+            
+            <h2 className="text-4xl font-bold text-dark-gray mt-4 mb-3">
+              Become a Partner
+            </h2>
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              Join hands with House of Humanity to forge a path of compassion and change. Your partnership can amplify our impact and help us write new stories of hope.
+            </p>
+            <a href="/partner-with-us">
+              <Button className="px-10 py-4 text-lg font-semibold bg-fresh-green text-white hover:bg-green-700 transition-colors duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                Become One Now
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
+     
     </div>
   );
 };

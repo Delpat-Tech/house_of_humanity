@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     title: "Project पोषण",
     slug: "poshan",
-    image: "/Gallery/image1.webp",
+    image: "/images/poshan.jpg",
     content: {
       vision: "A society where no one sleeps hungry and food is a right, not a privilege.",
       mission: "To ensure daily nutritious meals to patient caretakers who are often overlooked.",
@@ -40,7 +40,7 @@ export const projects: Project[] = [
   {
     title: "Project Rakt Setu",
     slug: "rakt-setu",
-    image: "/Gallery/rakt.jpg",
+    image: "/images/RaktSetu.jpg",
     content: {
       vision: "Ensure no patient struggles to find a blood donor.",
       mission: "To build a strong volunteer registry and conduct timely blood donation drives.",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
   {
     title: "Sahara",
     slug: "sahara",
-    image: "/Gallery/sahara.jpeg",
+    image: "/images/Sahara.png",
     content: {
       vision: "Enable physical independence through mobility and support tools.",
       mission: "Provide low-cost physiotherapy devices to patients in need.",
@@ -76,7 +76,7 @@ export const projects: Project[] = [
   {
     title: "Project Maya",
     slug: "maya",
-    image: "/Gallery/maya.jpg",
+    image: "/images/Maya.jpg",
     content: {
       vision: "Make hospitals a place of hope and learning for children.",
       mission: "Support pediatric wards with education and play-based engagement.",
@@ -276,7 +276,7 @@ export const projects: Project[] = [
   {
     title: "Project Sanskruti",
     slug: "sanskruti",
-    image: "/Gallery/SHG Training Session.jpg",
+    image: "/images/Sanskruti.png",
     content: {
       vision: "To revive traditional, eco-friendly farming methods by empowering rural women to adopt organic composting.",
       mission: "To promote sustainable agriculture and reduce harmful farming practices by enabling women-led environmental action.",

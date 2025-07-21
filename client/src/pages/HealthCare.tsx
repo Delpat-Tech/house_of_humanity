@@ -107,7 +107,7 @@ const HealthCare: React.FC = () => {
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="relative z-10 px-8 py-16 md:py-24">
           <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="text-center">
               <div>
                 <div className="mb-6">
                   <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">
@@ -123,7 +123,7 @@ const HealthCare: React.FC = () => {
                 <p className="text-xl text-green-100 mb-8 leading-relaxed capitalize">
                   Making healthcare accessible for all: menstrual hygiene, emergency blood support, and medical equipment for those in need.
                 </p>
-                <div className="flex flex-wrap gap-4 mb-8">
+                <div className="flex flex-wrap justify-center gap-4 mb-8">
                   <button
                     onClick={() => scrollToProject("pad-house")}
                     className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 hover:bg-opacity-30 transition-all duration-300 hover:scale-105 cursor-pointer"
@@ -148,22 +148,6 @@ const HealthCare: React.FC = () => {
                       Sahara
                     </span>
                   </button>
-                </div>
-              </div>
-              <div className="relative">
-                <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                  <img
-                    src="/medical-equipment-donate.jpeg"
-                    alt="Healthcare Initiatives"
-                    className="rounded-xl shadow-2xl border-4 border-white/20 object-cover w-full h-auto max-h-72 md:max-h-none"
-                  />
-                </div>
-                <div className="absolute md:-bottom-12 md:-left-12 -bottom-6 -left-4 transform -rotate-6">
-                  <img
-                    src="/medical-equipment.jpg"
-                    alt="Healthcare thumbnail"
-                    className="rounded-lg shadow-lg border-4 border-white/30 object-cover w-44 h-28 md:w-56 md:h-36"
-                  />
                 </div>
               </div>
             </div>

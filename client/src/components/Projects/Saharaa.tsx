@@ -69,20 +69,11 @@ const Saharaa: React.FC = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                <img
-                  src="/medical-equipment.jpg"
-                  alt="Sahara equipment delivery"
-                  className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-20 -left-16 transform -rotate-6">
-                <img
-                  src="/medical-equipment-donate.jpeg"
-                  alt="Equipment in use"
-                  className="rounded-lg shadow-lg border-4 border-white/30 object-cover h-36"
-                />
-              </div>
+              <img
+                src="/images/Sahara.png"
+                alt="Project Sahara"
+                className="rounded-xl shadow-2xl border-4 border-white/20 object-cover w-72 h-72 md:w-80 md:h-80 mx-auto"
+              />
             </div>
           </div>
         </div>
@@ -101,41 +92,29 @@ const Saharaa: React.FC = () => {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
           </div>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-6">
-                Affordable Recovery Support
-              </span>
-              <p className="text-lg text-dark-gray leading-relaxed mb-6">
-                Sahara addresses a critical gap in healthcare: access to
-                recovery equipment. Many patients avoid getting what they need
-                due to cost or lack of awareness. We provide wheelchairs,
-                walkers, and beds at minimal charges to ease their journey.
-                <br />
-                Beyond affordability, Sahara promotes dignity during recovery.
-                By ensuring access to mobility aids, we not only support
-                physical healing but also restore independence and confidence
-                for individuals in need—especially those who may otherwise feel
-                helpless or overlooked.
+          <div className="flex flex-col items-center justify-center">
+            <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-6">
+              Affordable Recovery Support
+            </span>
+            <p className="text-lg text-dark-gray leading-relaxed mb-6 max-w-2xl text-center">
+              Sahara addresses a critical gap in healthcare: access to
+              recovery equipment. Many patients avoid getting what they need
+              due to cost or lack of awareness. We provide wheelchairs,
+              walkers, and beds at minimal charges to ease their journey.
+              <br />
+              Beyond affordability, Sahara promotes dignity during recovery.
+              By ensuring access to mobility aids, we not only support
+              physical healing but also restore independence and confidence
+              for individuals in need—especially those who may otherwise feel
+              helpless or overlooked.
+            </p>
+            <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6 max-w-xl text-center">
+              <h4 className="font-semibold  mb-2">Our Mission</h4>
+              <p className="text-dark-gray font-semibold text-lg">
+                To ensure everyone has access to necessary recovery equipment,
+                enhancing comfort, dignity, and healing during difficult
+                times.
               </p>
-              <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6">
-                <h4 className="font-semibold  mb-2">Our Mission</h4>
-                <p className="text-dark-gray font-semibold text-lg">
-                  To ensure everyone has access to necessary recovery equipment,
-                  enhancing comfort, dignity, and healing during difficult
-                  times.
-                </p>
-              </div>
-            </div>
-            <div className="relative">
-              <img
-                src="/medical-equipment-1.jpg"
-                alt="Sahara beneficiaries"
-                className="rounded-xl shadow-lg w-[42rem] h-[20rem]"
-              />
-              <div className="absolute -top-4 -right-4 bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                Affordable Access
-              </div>
             </div>
           </div>
         </div>
