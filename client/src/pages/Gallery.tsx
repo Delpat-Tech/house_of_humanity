@@ -17,9 +17,7 @@ const Gallery = () => {
 
   const categories = [
     { id: 'all', name: 'All' },
-    { id: 'events', name: 'Events' },
-    { id: 'programs', name: 'Programs' },
-    { id: 'success-stories', name: 'Success Stories' }
+    { id: 'programs', name: 'Programs' }
   ];
 
   const years = ['all', '2025', '2024', '2023', '2022'];
