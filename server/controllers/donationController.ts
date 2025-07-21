@@ -229,204 +229,57 @@ export const createOrder = async (req: Request<{}, any, CreateOrderBody>, res: R
   }
 };
 
-export const paymentAuth = async (req: Request<{}, any, PaymentAuthBody>, res: Response) => {
-  try {
-    const { razorpay_payment_id, razorpay_order_id, razorpay_signature, donorName, donorEmail, donorPhone, amount, purpose } = req.body;
-
-    // Validate input
-    if (!razorpay_payment_id || !razorpay_order_id || !razorpay_signature) {
-      console.error('Missing payment verification fields:', { razorpay_payment_id, razorpay_order_id, razorpay_signature });
-      return res.status(400).json({ success: false, error: 'Missing payment verification details' });
-    }
-
-    // Verify payment signature
-    const generatedSignature = crypto
-      .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET as string)
-      .update(`${razorpay_order_id}|${razorpay_payment_id}`)
-      .digest('hex');
-
-    if (generatedSignature !== razorpay_signature) {
-      console.error('Invalid payment signature:', { razorpay_payment_id, razorpay_order_id });
-      if (donorEmail && isValidEmail(donorEmail)) {
-        try {
-          await transporter.sendMail({
-            from: process.env.EMAIL_USER as string,
-            to: donorEmail,
-            subject: 'Donation Payment Failed - House of Humanity',
-            html: getFailureEmail(donorName || 'Donor', amount, purpose, 'Invalid payment signature'),
-          });
-          console.log('Failure email sent to:', donorEmail);
-        } catch (emailError) {
-          console.error('Error sending failure email:', emailError);
-        }
-      } else {
-        console.warn('No valid donor email for failure email:', donorEmail);
-      }
-
-      return res.status(400).json({ success: false, error: 'Invalid payment signature' });
-    }
-
-    // Fetch payment details from Razorpay
-    const payment = await fetchPaymentWithRetry(razorpay_payment_id);
-    console.log('Razorpay payment fetch response:', {
-      paymentId: razorpay_payment_id,
-      status: payment?.status,
-      details: payment,
-    });
-    if (!payment || payment.status !== 'captured') {
-      console.error('Payment not captured:', {
-        paymentId: razorpay_payment_id,
-        status: payment?.status,
-        errorDescription: payment?.error_description,
-      });
-      if (donorEmail && isValidEmail(donorEmail)) {
-        try {
-          await transporter.sendMail({
-            from: process.env.EMAIL_USER as string,
-            to: donorEmail,
-            subject: 'Donation Payment Failed - House of Humanity',
-            html: getFailureEmail(donorName || 'Donor', amount, purpose, payment?.error_description || 'Payment not captured'),
-          });
-          console.log('Failure email sent to:', donorEmail);
-        } catch (emailError) {
-          console.error('Error sending failure email:', emailError);
-        }
-      } else {
-        console.warn('No valid donor email for failure email:', donorEmail);
-      }
-
-      return res.status(400).json({
-        success: false,
-        error: 'Payment not captured',
-        details: payment?.error_description || 'Payment not captured',
-      });
-    }
-
-    // Validate email addresses for success emails
-    const donorEmailValid = donorEmail && isValidEmail(donorEmail);
-    if (!donorEmailValid) {
-      console.warn('Invalid or missing donor email:', donorEmail);
-    }
-    const ngoEmailValid = process.env.NGO_EMAIL && isValidEmail(process.env.NGO_EMAIL);
-    if (!ngoEmailValid) {
-      console.warn('Invalid or missing NGO email:', process.env.NGO_EMAIL);
-    }
-
-    // Prepare email promises
-    const emailPromises: Promise<any>[] = [];
-
-    if (donorEmailValid) {
-      emailPromises.push(
-        transporter.sendMail({
-          from: process.env.EMAIL_USER as string,
-          to: donorEmail,
-          subject: 'Thank You for Your Donation - House of Humanity',
-          html: getDonorThankYouEmail(donorName || 'Anonymous', amount, purpose),
-        })
-      );
-    }
-    if (ngoEmailValid) {
-      emailPromises.push(
-        transporter.sendMail({
-          from: process.env.EMAIL_USER as string,
-          to: process.env.NGO_EMAIL,
-          subject: 'New Donation Received - House of Humanity',
-          html: getNGOEmail(donorName || 'Anonymous', donorEmail || 'Not provided', donorPhone || 'Not provided', amount, purpose),
-        })
-      );
-    }
-
-    if (emailPromises.length > 0) {
-      try {
-        await Promise.all(emailPromises);
-        console.log('Emails sent successfully:', {
-          donorEmail: donorEmailValid ? donorEmail : 'Not sent (invalid)',
-          ngoEmail: ngoEmailValid ? process.env.NGO_EMAIL : 'Not sent (invalid)',
-        });
-      } catch (emailError) {
-        console.error('Error sending emails:', emailError);
-      }
-    } else {
-      console.warn('No emails sent due to lack of valid recipients:', {
-        donorEmail,
-        ngoEmail: process.env.NGO_EMAIL,
-      });
-    }
-
-    console.log('Payment successful:', {
-      paymentId: razorpay_payment_id,
-      orderId: razorpay_order_id,
-      amount: amount / 100,
-      purpose,
-      donorName,
-      donorEmail,
-      donorPhone,
-    });
-
-    res.json({
-      success: true,
-      data: {
-        paymentId: razorpay_payment_id,
-        orderId: razorpay_order_id,
-        amount: amount / 100,
-        purpose,
-        donorName,
-        donorEmail,
-        donorPhone,
-        createdAt: new Date().toISOString(),
-      },
-    });
-  } catch (error: any) {
-    console.error('Payment auth error:', {
-      message: error.message,
-      stack: error.stack,
-    });
-    res.status(500).json({ success: false, error: 'Payment verification failed', details: error.message });
-  }
-};
-
 export const webhook = async (req: Request, res: Response) => {
   try {
     const event = req.body.event;
     console.log('Webhook event received:', { event, payload: req.body });
 
     if (event === 'payment.captured') {
-      const { payment, order } = req.body.payload;
-      const amountInINR = typeof order.entity.amount === 'string' ? parseFloat(order.entity.amount) / 100 : order.entity.amount / 100;
-      const donorName = order.entity.notes.donorName || 'Anonymous';
-      const donorEmail = order.entity.notes.donorEmail;
-      const donorPhone = order.entity.notes.donorPhone;
-      const purpose = order.entity.notes.purpose || 'General Donation';
-      const paymentId = payment.entity.id;
-      const orderId = order.entity.id;
+      const payment = req.body.payload.payment.entity;
+      const orderId = payment.order_id;
+
+      let order = null;
+      if (orderId) {
+        try {
+          order = await razorpay.orders.fetch(orderId);
+        } catch (fetchError) {
+          console.error('Failed to fetch order:', fetchError);
+          res.status(404).json({ status: 'error', message: 'Order not defined' });
+
+        }
+      }
+
+      const amountInINR = payment.amount / 100;
+      const notes = order?.notes || {};
+      const donorName = notes.donorName || 'Anonymous';
+      const donorEmail = notes.donorEmail;
+      const donorPhone = notes.donorPhone;
+      const purpose = notes.purpose || 'General Donation';
+      const paymentId = payment.id;
 
       const donorEmailValid = donorEmail && isValidEmail(donorEmail);
-      if (!donorEmailValid) {
-        console.warn('Invalid or missing donor email:', donorEmail);
-      }
       const ngoEmailValid = process.env.NGO_EMAIL && isValidEmail(process.env.NGO_EMAIL);
-      if (!ngoEmailValid) {
-        console.warn('Invalid or missing NGO email:', process.env.NGO_EMAIL);
-      }
 
       const emailPromises: Promise<any>[] = [];
+
       if (donorEmailValid) {
         emailPromises.push(
           transporter.sendMail({
             from: process.env.EMAIL_USER,
             to: donorEmail,
             subject: 'Thank You for Your Donation - House of Humanity',
-            html: getDonorThankYouEmail(donorName, amountInINR * 100, purpose),
+            html: getDonorThankYouEmail(donorName, payment.amount, purpose),
           })
         );
       }
+
       if (ngoEmailValid) {
         emailPromises.push(
           transporter.sendMail({
             from: process.env.EMAIL_USER,
             to: process.env.NGO_EMAIL,
             subject: 'New Donation Received - House of Humanity',
-            html: getNGOEmail(donorName, donorEmail || 'Not provided', donorPhone || 'Not provided', amountInINR * 100, purpose),
+            html: getNGOEmail(donorName, donorEmail || 'Not provided', donorPhone || 'Not provided', payment.amount, purpose),
           })
         );
       }
@@ -434,67 +287,75 @@ export const webhook = async (req: Request, res: Response) => {
       if (emailPromises.length > 0) {
         try {
           await Promise.all(emailPromises);
-          console.log('Webhook emails sent successfully:', {
-            donorEmail: donorEmailValid ? donorEmail : 'Not sent (invalid)',
-            ngoEmail: ngoEmailValid ? process.env.NGO_EMAIL : 'Not sent (invalid)',
-          });
+          console.log('Webhook emails sent successfully');
         } catch (emailError) {
-          console.error('Webhook email error:', emailError);
+          console.error('Error sending webhook emails:', emailError);
         }
-      } else {
-        console.warn('No webhook emails sent due to lack of valid recipients:', {
-          donorEmail,
-          ngoEmail: process.env.NGO_EMAIL,
-        });
       }
 
       console.log('Payment captured:', {
-        paymentId: payment.entity.id,
-        orderId: order.entity.id,
-        amount: isNaN(amountInINR) ? 'Invalid amount' : amountInINR,
-        receipt: order.entity.receipt || 'Not provided',
+        paymentId,
+        orderId: order?.id || 'Not available',
+        amount: amountInINR,
+        receipt: order?.receipt || 'Not provided',
         purpose,
         donorName,
         donorEmail,
-        donorPhone: order.entity.notes.donorPhone,
+        donorPhone,
       });
-    } else if (event === 'payment.failed') {
-      const { payment, order } = req.body.payload;
-      const amountInINR = typeof order.entity.amount === 'string' ? parseFloat(order.entity.amount) / 100 : order.entity.amount / 100;
-      const donorName = order.entity.notes.donorName || 'Anonymous';
-      const donorEmail = order.entity.notes.donorEmail;
-      const purpose = order.entity.notes.purpose || 'General Donation';
+    }
+
+    else if (event === 'payment.failed') {
+      const payment = req.body.payload.payment.entity;
+      const orderId = payment.order_id;
+
+      let order = null;
+      if (orderId) {
+        try {
+          order = await razorpay.orders.fetch(orderId);
+        } catch (fetchError) {
+          console.error('Failed to fetch order for failed payment:', fetchError);
+        }
+      }
+
+      const amountInINR = payment.amount / 100;
+      const notes = order?.notes || {};
+      const donorName = notes.donorName || 'Anonymous';
+      const donorEmail = notes.donorEmail;
+      const purpose = notes.purpose || 'General Donation';
 
       if (donorEmail && isValidEmail(donorEmail)) {
         try {
           await transporter.sendMail({
-            from: process.env.EMAIL_USER as string,
+            from: process.env.EMAIL_USER!,
             to: donorEmail,
             subject: 'Donation Payment Failed - House of Humanity',
-            html: getFailureEmail(donorName, amountInINR * 100, purpose, payment.entity.error_description || 'Payment failed'),
+            html: getFailureEmail(
+              donorName,
+              payment.amount,
+              purpose,
+              payment.error_description || 'Payment failed'
+            ),
           });
-          console.log('Webhook failure email sent to:', donorEmail);
+          console.log('Failure email sent to donor');
         } catch (emailError) {
-          console.error('Error sending webhook failure email:', emailError);
+          console.error('Error sending failure email:', emailError);
         }
-      } else {
-        console.warn('No valid donor email for webhook failure email:', donorEmail);
       }
 
       console.log('Payment failed:', {
-        paymentId: payment.entity.id,
-        orderId: order.entity.id,
-        amount: isNaN(amountInINR) ? 'Invalid amount' : amountInINR,
-        receipt: order.entity.receipt || 'Not provided',
-        errorDescription: payment.entity.error_description || 'Payment failed',
+        paymentId: payment.id,
+        orderId: order?.id || 'Not available',
+        amount: amountInINR,
+        receipt: order?.receipt || 'Not available',
+        errorDescription: payment.error_description || 'N/A',
         purpose,
         donorName,
         donorEmail,
-        donorPhone: order.entity.notes.donorPhone,
       });
     }
 
-    res.json({ status: 'success' });
+    res.status(200).json({ status: 'success' });
   } catch (error: any) {
     console.error('Webhook error:', {
       message: error.message,
