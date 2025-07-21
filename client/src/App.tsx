@@ -30,6 +30,7 @@ import Home from './pages/Home';
 import DonationSuccess from './pages/DonationSuccess';
 import DonationFailed from './pages/DonationFailed';
 import Instagram from './pages/Instagram';
+import PrivacyPolicy from './pages/privacyPolicy';
 import FloatingActionButtons from './components/layout/FloatingActionButtons';
 
 function AppContent() {
@@ -83,6 +84,7 @@ function AppContent() {
           <Route path="/donation-success" element={<DonationSuccess />} />
           <Route path="/donation-failed" element={<DonationFailed />} />
           <Route path="/instagram" element={<Instagram />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
       </AnimatePresence>
       <ToastContainer />

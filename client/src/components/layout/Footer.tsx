@@ -1,5 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import PrivacyPolicy from "../../pages/privacyPolicy";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Facebook,
   Instagram,
@@ -10,7 +11,13 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const Footer = () => {
+const Footer: React.FC = () => {
+  const links = [
+    { href: "/privacy-policy", text: "Privacy Policy" },
+    { href: "#terms", text: "Terms of Service" },
+    { href: "#cookies", text: "Cookie Policy" },
+  ];
+
   const navigate = useNavigate();
   return (
     <footer className="bg-dark-gray dark:bg-gray-900 text-off-white dark:text-gray-200 relative overflow-hidden transition-colors duration-300">
@@ -186,19 +193,25 @@ const Footer = () => {
             © 2025 House of Humanity. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            {[
-              { href: "#privacy", text: "Privacy Policy" },
-              { href: "#terms", text: "Terms of Service" },
-              { href: "#cookies", text: "Cookie Policy" },
-            ].map((link, index) => (
-              <a
-                key={index}
-                href={link.href}
-                className="text-fresh-green hover:text-primary-blue text-sm transition-colors duration-200"
-              >
-                {link.text}
-              </a>
-            ))}
+            {links.map((link, index) =>
+              link.href === "/privacy-policy" ? (
+                <Link
+                  key={index}
+                  to={link.href}
+                  className="text-fresh-green hover:text-primary-blue text-sm transition-colors duration-200"
+                >
+                  {link.text}
+                </Link>
+              ) : (
+                <a
+                  key={index}
+                  href={link.href}
+                  className="text-fresh-green hover:text-primary-blue text-sm transition-colors duration-200"
+                >
+                  {link.text}
+                </a>
+              )
+            )}
           </div>
         </div>
       </div>
