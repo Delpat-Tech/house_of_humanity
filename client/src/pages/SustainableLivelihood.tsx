@@ -58,7 +58,7 @@ const SustainableLivelihood: React.FC = () => {
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="relative z-10 px-8 py-16 md:py-24">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="text-center">
               <div>
                 <div className="mb-6">
                   <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">
@@ -77,7 +77,7 @@ const SustainableLivelihood: React.FC = () => {
                   Taluka
                 </p>
                 {/* Project Sanskruti Button */}
-                <div className="flex flex-wrap gap-4 mb-8">
+                <div className="flex flex-wrap justify-center gap-4 mb-8">
                   <button
                     onClick={() => {
                       setTimeout(() => {
@@ -99,26 +99,6 @@ const SustainableLivelihood: React.FC = () => {
                   </button>
                 </div>
               </div>
-              <div className="relative">
-                <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                  <img
-                    src="/Gallery/vermi-compost unit.jpg"
-                    alt="Women working in vermi-compost unit"
-                    width="100%"
-                    height="300px"
-                    className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
-                  />
-                </div>
-                <div className="absolute -bottom-6 -left-6 transform -rotate-6">
-                  <img
-                    src="/Gallery/SHG Training Session.jpg"
-                    alt="SHG Training Session"
-                    width="200px"
-                    height="150px"
-                    className="rounded-lg shadow-lg border-4 border-white/30 object-cover"
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -138,7 +118,7 @@ const SustainableLivelihood: React.FC = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col items-center justify-center">
             <div>
               <p className="text-lg text-dark-gray leading-relaxed mb-6 text-justify">
                 Project Sanskruti is an initiative focused on empowering women
@@ -162,18 +142,6 @@ const SustainableLivelihood: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="relative">
-              <img
-                src="/Gallery/Project Sanskruti Impact.jpg"
-                alt="Project Sanskruti Impact"
-                width="100%"
-                height="350px"
-                className="rounded-xl shadow-lg object-cover"
-              />
-              <div className="absolute -top-4 -right-4 bg-fresh-green text-white px-4 py-2 rounded-full text-sm font-semibold">
-                30 Women Empowered
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -187,25 +155,6 @@ const SustainableLivelihood: React.FC = () => {
           <p className="text-white/90 mb-6">
             In collaboration with Taluka Panchayat, Halol
           </p>
-          <div className="flex flex-wrap justify-center gap-8">
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
-              <img
-                src="/Gallery/Grasim Industries Logo.jpeg"
-                alt="Grasim Industries Logo"
-                width="150px"
-                height="80px"
-                className="rounded-md"
-              />
-            </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
-              <ImagePlaceholder
-                text="Taluka Panchayat Logo"
-                width="150px"
-                height="80px"
-                className="rounded-md"
-              />
-            </div>
-          </div>
         </div>
       </div>
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
   Newspaper, 
   Monitor, 
@@ -79,30 +80,6 @@ const NewsAndEvents: React.FC = () => {
       }
     },
     {
-      id: 3,
-      title: "Holistic Development Programs for Underprivileged Children",
-      publication: "Indian Express",
-      date: "October 20, 2024",
-      excerpt: "The trust works tirelessly for the holistic development of children in various slum areas of the city...",
-      image: "newspaper-child-development",
-      icon: <BookOpen className="w-5 h-5" />,
-      category: "Education & Development",
-      fullContent: {
-        headline: "Initiatives for Underprivileged Children and Animal Care",
-        details: [
-          "The trust works dedicatedly for the holistic development of children in various slum areas across the city.",
-          "They organize educational visits to different places of interest to enhance children's knowledge and broaden their perspectives.",
-          "The organization firmly believes that today's children are tomorrow's future, and youth must actively participate in their development.",
-          "The trust provides educational materials and sports equipment to children in underserved communities.",
-          "Regular skill development workshops are conducted to prepare children for future opportunities.",
-          "The organization also demonstrates compassion for animals by feeding stray dogs with milk, roti, and pedigree.",
-          "Medical care and other necessary support are provided for injured and sick animals in the community.",
-          "The trust organizes awareness programs about animal welfare and responsible pet ownership.",
-          "Community engagement programs help build stronger relationships between volunteers and beneficiaries."
-        ]
-      }
-    },
-    {
       id: 4,
       title: "Menstrual Hygiene Awareness Reaches 5,000+ Women",
       publication: "Gujarat Guardian",
@@ -178,48 +155,26 @@ const NewsAndEvents: React.FC = () => {
 
   const upcomingEvents = [
     {
-      title: "Annual Charity Gala 2025",
-      date: "March 15, 2025",
-      time: "7:00 PM - 11:00 PM",
-      location: "Vadodara Club, Race Course",
-      type: "Fundraising Event",
-      status: "Registration Open",
-      description: "Join us for an evening of celebration and fundraising to support our ongoing initiatives for children, healthcare, and community development.",
-      image: "charity-gala-2025",
-      attendees: "500+"
+      title: "Project Poshan",
+      date: "Ongoing Daily",
+      time: "6:00 PM",
+      location: "SSG Hospital, Vadodara",
+      type: "Nutrition Drive",
+      status: "Ongoing",
+      description: "Join us in our daily effort to provide nutritious meals to patients' families and those in need at SSG Hospital.",
+      image: "/Poshan-hero-1.jpg",
+      attendees: "250+ Daily"
     },
     {
-      title: "Project Bachpan - Summer Camp",
-      date: "April 10-15, 2025",
-      time: "9:00 AM - 4:00 PM",
-      location: "Multiple Venues, Vadodara",
-      type: "Children's Program",
-      status: "Registration Starting Soon",
-      description: "6-day summer camp for mentally and physically challenged children with activities, learning, and fun experiences.",
-      image: "summer-camp-2025",
-      attendees: "100+"
-    },
-    {
-      title: "Healthcare Workers Appreciation Day",
-      date: "May 12, 2025",
-      time: "10:00 AM - 2:00 PM",
-      location: "SSG Hospital",
-      type: "Recognition Event",
-      status: "Open to All",
-      description: "Honoring healthcare workers and volunteers who serve tirelessly. Includes meal distribution and appreciation ceremony.",
-      image: "healthcare-appreciation-2025",
-      attendees: "300+"
-    },
-    {
-      title: "Women's Hygiene Awareness Drive",
-      date: "June 5, 2025",
-      time: "9:00 AM - 5:00 PM",
-      location: "Rural Areas, Vadodara District",
-      type: "Awareness Campaign",
-      status: "Volunteers Needed",
-      description: "Large-scale awareness campaign and sanitary pad distribution in rural areas with medical consultations.",
-      image: "hygiene-drive-2025",
-      attendees: "1000+"
+      title: "Project Maya",
+      date: "Ongoing Daily",
+      time: "6:00 PM",
+      location: "SSG Hospital, Vadodara",
+      type: "Community Support",
+      status: "Ongoing",
+      description: "Providing essential support and care to the most vulnerable members of our community at SSG Hospital.",
+      image: "/maya-hero.jpg",
+      attendees: "Varies"
     }
   ];
 
@@ -489,12 +444,21 @@ const NewsAndEvents: React.FC = () => {
                     className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
                   >
                     <div className="relative">
-                      <ImagePlaceholder 
-                        width="100%" 
-                        height="200px" 
-                        text={event.image}
-                        className="w-full h-48 object-cover"
-                      />
+                      {event.image && event.image.startsWith('/') ? (
+                        <img
+                          src={event.image}
+                          alt={event.title}
+                          className="w-full"
+                          style={{ width: '100%', height: '200px', objectFit: 'contain', backgroundColor: '#f0f0f0' }}
+                        />
+                      ) : (
+                        <ImagePlaceholder 
+                          width="100%" 
+                          height="200px" 
+                          text={event.image}
+                          className="w-full h-48 object-cover"
+                        />
+                      )}
                       <div className="absolute top-4 left-4">
                         <span className="px-3 py-1 bg-fresh-green text-white rounded-full text-xs font-semibold">
                           {event.type}
@@ -535,14 +499,16 @@ const NewsAndEvents: React.FC = () => {
                         {event.description}
                       </p>
                       
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="w-full bg-fresh-green hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
-                      >
-                        <Calendar size={16} />
-                        Register Now
-                      </motion.button>
+                      <Link to="/contact-us" className="w-full">
+                        <motion.button
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="w-full bg-fresh-green hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
+                        >
+                          <Users size={16} />
+                          Participate
+                        </motion.button>
+                      </Link>
                     </div>
                   </motion.div>
                 ))}
@@ -551,6 +517,7 @@ const NewsAndEvents: React.FC = () => {
           </div>
 
           {/* Past Events */}
+          {/*
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div className="bg-gradient-to-r from-dark-gray to-gray-600 px-8 py-6">
               <div className="flex items-center gap-3">
@@ -618,6 +585,7 @@ const NewsAndEvents: React.FC = () => {
               </div>
             </div>
           </div>
+          */}
         </motion.div>
       )}
 

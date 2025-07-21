@@ -29,6 +29,7 @@ import ContactUs from './pages/ContactUs';
 import Home from './pages/Home';
 import DonationSuccess from './pages/DonationSuccess';
 import DonationFailed from './pages/DonationFailed';
+import Instagram from './pages/Instagram';
 
 function AppContent() {
   const [showLoader, setShowLoader] = useState(true);
@@ -79,6 +80,7 @@ function AppContent() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/donation-success" element={<DonationSuccess />} />
           <Route path="/donation-failed" element={<DonationFailed />} />
+          <Route path="/instagram" element={<Instagram />} />
         </Routes>
       </AnimatePresence>
       <ToastContainer />
