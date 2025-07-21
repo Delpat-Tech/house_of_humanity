@@ -7,27 +7,27 @@ import HeroStatsSection from '../components/ui/HeroStatsSection';
 import { Sparkles } from 'lucide-react';
 
 const Partners: React.FC = () => {
-  const partners = {
-    corporate: [
-      { name: "Corporate Partner 1", logo: null },
-      { name: "Corporate Partner 2", logo: null },
-      { name: "Corporate Partner 3", logo: null },
-      { name: "Corporate Partner 4", logo: null },
-      { name: "Corporate Partner 5", logo: null },
-      { name: "Corporate Partner 6", logo: null }
-    ],
-    ngo: [
-      { name: "NGO Partner 1", logo: null },
-      { name: "NGO Partner 2", logo: null },
-      { name: "NGO Partner 3", logo: null },
-      { name: "NGO Partner 4", logo: null }
-    ],
-    government: [
-      { name: "Government Partner 1", logo: null },
-      { name: "Government Partner 2", logo: null },
-      { name: "Government Partner 3", logo: null }
-    ]
-  };
+  // const partners = {
+  //   corporate: [
+  //     { name: "Corporate Partner 1", logo: null },
+  //     { name: "Corporate Partner 2", logo: null },
+  //     { name: "Corporate Partner 3", logo: null },
+  //     { name: "Corporate Partner 4", logo: null },
+  //     { name: "Corporate Partner 5", logo: null },
+  //     { name: "Corporate Partner 6", logo: null }
+  //   ],
+  //   ngo: [
+  //     { name: "NGO Partner 1", logo: null },
+  //     { name: "NGO Partner 2", logo: null },
+  //     { name: "NGO Partner 3", logo: null },
+  //     { name: "NGO Partner 4", logo: null }
+  //   ],
+  //   government: [
+  //     { name: "Government Partner 1", logo: null },
+  //     { name: "Government Partner 2", logo: null },
+  //     { name: "Government Partner 3", logo: null }
+  //   ]
+  // };
 
   const PartnerSection: React.FC<{
     title: string;
@@ -87,13 +87,13 @@ const Partners: React.FC = () => {
   );
 
   return (
-    <div className="container mx-auto px-4 py-12 mt-24">
+    <div className="container mx-auto px-4 mt-24">
       {/* Hero Section */}
       <HeroStatsSection
         title={<><span>Building Tomorrow</span><span className="block text-warm-light-blue">Together</span></>}
         subtitle={"Collaborating with industry leaders, innovative NGOs, and forward-thinking government agencies to create meaningful change and sustainable impact across communities."}
         stats={[]}
-        badge={<span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">Strategic Partnerships</span>}
+        badge={<span className="inline-block px-4 py-2 rounded-full text-white text-sm font-semibold tracking-wide uppercase">Strategic Partnerships</span>}
         backgroundClassName="bg-gradient-to-br from-primary-blue via-primary-blue to-blue-800"
         overlayClassName="bg-black bg-opacity-10"
         className="rounded-2xl mb-6 py-2 px-1"
@@ -113,21 +113,23 @@ const Partners: React.FC = () => {
       </HeroStatsSection>
 
       {/* Partnership Stats */}
-      <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-16">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-8">
         <StatsCard count="15+" label="Active Partners" />
         <StatsCard count="1M+" label="Lives Impacted" />
       </div>
 
       {/* Corporate Partners */}
+      {/*
       <PartnerSection
         title="Partners"
         partners={partners.corporate}
         description="Leading corporations that support our mission through CSR initiatives, employee volunteering, and strategic partnerships."
         accent="bg-gradient-to-r from-primary-blue to-blue-600"
       />
+      */}
 
       {/* Become a Partner Section */}
-      <section className="mt-20 text-center">
+      <section className="text-center">
         <div className="bg-white rounded-2xl shadow-xl p-12 border border-warm-light-blue/20">
           <div className="relative z-10">
             
