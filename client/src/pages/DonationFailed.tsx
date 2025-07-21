@@ -95,7 +95,7 @@ const DonationFailed: React.FC = () => {
             Try Again
           </button>
           <button
-            onClick={() => navigate(isSitaare ? 'https://sitaare.vercel.app' : '/')}
+            onClick={() => navigate(isSitaare ? 'https://hoh-demo-website.web.app' : '/')}
             className="bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all duration-300 nghi"
           >
             Back to Home

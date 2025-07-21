@@ -76,7 +76,7 @@ const Header: React.FC = () => {
       path: "/donate-for-a-cause",
       dropdown: [
         { name: "Donate for a Cause", path: "/contact-us" },
-        // { name: "Donate for a Cause", path: "/donate-for-a-cause" },
+        { name: "Donate for a Cause", path: "/donate-for-a-cause" },
         { name: "Get Involved", path: "/get-involved" },
         { name: "Partner With Us", path: "/partner-with-us" },
         { name: "Contribute Materials", path: "/contribute-materials" },

@@ -8,7 +8,7 @@ const config = {
   },
   RAZORPAY: {
     NAME: 'House of Humanity',
-    THEME_COLOR: '#BC1782',
+    THEME_COLOR: '#3B82F6',
   },
 };
 

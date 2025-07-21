@@ -83,12 +83,12 @@
    
    # Start server (from server directory, in new terminal)
    cd server
-   npm run dev
+   npm run start
    ```
 
 5. **Open your browser**
    - Client: http://localhost:5173
-   - Server: http://localhost:5000
+   - Server: http://localhost:3000
 
 ## Project Structure
 

@@ -111,7 +111,7 @@ const DonationSuccess: React.FC = () => {
             A confirmation email and receipt have been sent to {donationDetails.donorEmail || 'the provided email'}. Thank you for supporting our mission!
           </p>
           <button
-            onClick={() => navigate(isSitaare ? 'https://sitaare.vercel.app' : '/')}
+            onClick={() => navigate(isSitaare ? 'https://hoh-demo-website.web.app' : '/')}
             className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Back to Home
