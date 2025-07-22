@@ -1,7 +1,5 @@
-
 import { Request, Response } from 'express';
 import Razorpay from 'razorpay';
-import crypto from 'crypto';
 import nodemailer, { Transporter } from 'nodemailer';
 import { getDonorThankYouEmail, getNGOEmail, getFailureEmail } from '../utils/emailTemplates';
 import '../config';
@@ -97,27 +95,6 @@ const allowedPurposes = [
   'Sitaare Celebration',
   'General Donation',
 ];
-
-// Retry mechanism for Razorpay payment fetch
-const fetchPaymentWithRetry = async (paymentId: string, retries = 3, delay = 1000): Promise<any> => {
-  for (let i = 0; i < retries; i++) {
-    try {
-      const payment = await razorpay.payments.fetch(paymentId);
-      return payment;
-    } catch (error) {
-      if (error instanceof Error) {
-        console.warn(`Retry ${i + 1} for payment fetch:`, error.message);
-      } else {
-        console.warn(`Retry ${i + 1} for payment fetch:`, error);
-      }
-      if (i < retries - 1) {
-        await new Promise((resolve) => setTimeout(resolve, delay));
-      } else {
-        throw error;
-      }
-    }
-  }
-};
 
 // Test email endpoint
 export const testEmail = async (req: Request, res: Response) => {
@@ -255,62 +232,29 @@ export const webhook = async (req: Request, res: Response) => {
       const paymentId = payment.id;
       if (!donorPhone || !donorEmail || !donorName || !purpose) {
         console.error('Missing required fields');
-        return res.status(400).json({ success: false, error: 'Phone , Name and Email are required' });
+        return res.status(400).json({ success: false, error: 'Phone , Name ,Purpose and Email are required' });
       }
-      // Verify payment status
-      const paymentDetails = await fetchPaymentWithRetry(paymentId);
-       if (!paymentDetails || paymentDetails.status !== 'captured') {
-        console.error('Payment not captured:', {
-          paymentId,
-          status: paymentDetails?.status,
-          errorDescription: paymentDetails?.error_description,
-        });
-        if (donorEmail && isValidEmail(donorEmail)) {
-          try {
-            await transporter.sendMail({
-              from: process.env.EMAIL_USER!,
-              to: donorEmail,
-              subject: 'Donation Payment Failed - House of Humanity',
-              html: getFailureEmail(donorName, amountInINR, purpose, paymentDetails?.error_description || 'Payment not captured'),
-            });
-            console.log('Webhook failure email sent to:', donorEmail);
-          } catch (emailError) {
-            console.error('Error sending webhook failure email:', emailError);
-          }
-        }
-        return res.status(400).json({
-          status: 'error',
-          message: 'Payment not captured',
-          details: paymentDetails?.error_description || 'Payment not captured',
-        });
-      }
-
-      const donorEmailValid = donorEmail && isValidEmail(donorEmail);
-      const ngoEmailValid = process.env.NGO_EMAIL && isValidEmail(process.env.NGO_EMAIL);
 
       const emailPromises: Promise<any>[] = [];
 
-      if (donorEmailValid) {
-        emailPromises.push(
-          transporter.sendMail({
-            from: process.env.EMAIL_USER!,
-            to: donorEmail,
-            subject: 'Thank You for Your Donation - House of Humanity',
-            html: getDonorThankYouEmail(donorName, amountInINR, purpose),
-          })
-        );
-      }
+      emailPromises.push(
+        transporter.sendMail({
+          from: process.env.EMAIL_USER,
+          to: donorEmail,
+          subject: 'Thank You for Your Donation - House of Humanity',
+          html: getDonorThankYouEmail(donorName, amountInINR, purpose),
+        })
+      );
 
-      if (ngoEmailValid) {
-        emailPromises.push(
-          transporter.sendMail({
-            from: process.env.EMAIL_USER!,
-            to: process.env.NGO_EMAIL!,
-            subject: 'New Donation Received - House of Humanity',
-            html: getNGOEmail(donorName, donorEmail || 'Not provided', donorPhone || 'Not provided', amountInINR, purpose),
-          })
-        );
-      }
+
+      emailPromises.push(
+        transporter.sendMail({
+          from: process.env.EMAIL_USER,
+          to: process.env.NGO_EMAIL,
+          subject: 'New Donation Received - House of Humanity',
+          html: getNGOEmail(donorName, donorEmail, donorPhone, amountInINR, purpose),
+        })
+      );
 
       if (emailPromises.length > 1) {
         try {
@@ -346,11 +290,14 @@ export const webhook = async (req: Request, res: Response) => {
 
       const amountInINR = payment.amount / 100;
       const notes = order?.notes || {};
-      const donorName = notes.donorName || '';
-      const donorEmail = notes.donorEmail || '';
-      const donorPhone = notes.donorPhone || '';
-      const purpose = notes.purpose || '';
-
+      const donorName = notes.donorName;
+      const donorEmail = notes.donorEmail;
+      const donorPhone = notes.donorPhone;
+      const purpose = notes.purpose;
+      if (!donorPhone || !donorEmail || !donorName || !purpose) {
+        console.error('Missing required fields');
+        return res.status(400).json({ success: false, error: 'Phone , Name ,Purpose and Email are required' });
+      }
       if (donorEmail && isValidEmail(donorEmail)) {
         try {
           await transporter.sendMail({
@@ -367,9 +314,9 @@ export const webhook = async (req: Request, res: Response) => {
 
       console.log('Payment failed:', {
         paymentId: payment.id,
-        orderId: order?.id || 'Not available',
+        orderId: order?.id,
         amount: amountInINR,
-        receipt: order?.receipt || 'Not available',
+        receipt: order?.receipt,
         errorDescription: payment.error_description || 'N/A',
         purpose,
         donorName,
@@ -388,5 +335,3 @@ export const webhook = async (req: Request, res: Response) => {
     res.status(500).json({ status: 'error', message: 'Webhook processing failed' });
   }
 };
-
-
