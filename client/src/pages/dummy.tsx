@@ -2,7 +2,6 @@
 
 import React, { useState, ChangeEvent, useEffect } from "react";
 import GiftCarousel from "./GiftCarousel";
-import BhimQR from "./BhimQR";
 import WaysToDonate from "./WaysToDonate";
 import { motion } from "framer-motion";
 import Button from "../components/ui/Button";
@@ -915,7 +914,6 @@ const DonateForACause: React.FC = () => {
       </div>
       <div className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="max-w-4xl mx-auto px-2 sm:px-4 py-8 sm:py-16">
-          <BhimQR />
           <WaysToDonate />
         </div>
       </div>

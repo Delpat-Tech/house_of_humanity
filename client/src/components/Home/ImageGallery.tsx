@@ -23,7 +23,7 @@ const ImageGallery: React.FC = () => {
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const imageList: Image[] = [
     { src: "/Gallery/bachpan.jpg", alt: "Bachpan" },

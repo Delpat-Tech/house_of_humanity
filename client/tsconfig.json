@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["react-helmet"],
+    "types": ["react-helmet", "node"],
     "target": "ES2022",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
