@@ -3,9 +3,13 @@ import ImagePlaceholder from "../ui/ImagePlaceholder";
 
 const Concerts: React.FC = () => {
   const stats = [
-    { number: "7,000+", label: "Audience Reached", icon: "🎤" },
-    { number: "3", label: "Concert Events", icon: "🎶" },
-    { number: "150+", label: "Slum Kids Sponsored", icon: "🧒" },
+    { number: "7,000+ ", label: "Attendees at Garba Night", icon: "🎤" },
+    {
+      number: "Music for All",
+      label: "Ensuring music remains Truly universal, not privilege",
+      icon: "🎶",
+    },
+    { number: "150+", label: "Slum Kids at Live Concert", icon: "🧒" },
   ];
 
   const whatWeDo = [
@@ -20,6 +24,39 @@ const Concerts: React.FC = () => {
       description:
         "Sponsor slum children and families to attend major cultural events.",
       icon: "🎫",
+    },
+    {
+      title: "Inclusive Cultural Celebrations",
+      description:
+        "Organize and support concerts ensuring everyone can participate regardless of financial status.",
+      icon: "🎉",
+    },
+    {
+      title: "Spreading Happiness",
+      description:
+        "Through these events we uplift spirits and foster a sense of belonging across communities.",
+      icon: "🎵",
+    },
+  ];
+
+  const impact = [
+    {
+      title: "7,000+ Attendees at Garba Night",
+      description:
+        "Brought people together in celebration while promoting community spirit and inclusivity through free entries.",
+      icon: "🪔",
+    },
+    {
+      title: "150 Slum Children at Live Concert",
+      description:
+        "Gave children their first live concert experience, fostering excitement, joy, and a sense of inclusion.",
+      icon: "👧🏽👦🏽",
+    },
+    {
+      title: "Music Without Barriers",
+      description:
+        "Continued commitment to ensuring music remains a universal experience, not a privilege.",
+      icon: "🎶",
     },
   ];
 

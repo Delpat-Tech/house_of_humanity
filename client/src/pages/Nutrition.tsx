@@ -112,9 +112,7 @@ const Nutrition: React.FC = () => {
       </div>
 
       {/* Project Overview */}
-      <div
-        className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
-      >
+      <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
@@ -271,45 +269,16 @@ const Nutrition: React.FC = () => {
       <div className="mb-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
-            Get Involved
+          Nourish to Flourish
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
-          <p className="text-lg text-dark-gray max-w-2xl mx-auto">
+          <p className="text-lg text-dark-gray max-w-4xl mx-auto">
             Join us in creating a healthier future where every child and mother
             has access to proper nutrition and healthcare.
-          </p>
-        </div>
+            Through targeted interventions, community outreach, and consistent support,
+             we aim to break the cycle of malnutrition and improve overall well-being for generations to come.
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {getInvolvedOptions.map((option, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 p-4 md:p-6"
-            >
-              <div className={`bg-gradient-to-r ${option.accent} p-6`}>
-                <h3 className="text-base md:text-xl font-bold text-white mb-2">
-                  {option.title}
-                </h3>
-              </div>
-              <div className="p-4 md:p-6">
-                <p className="text-sm md:text-base text-dark-gray leading-relaxed mb-4 md:mb-6">
-                  {option.description}
-                </p>
-                <Button
-                  className={`w-full py-2 md:py-3 text-sm md:text-lg font-semibold bg-gradient-to-r ${option.accent} text-white hover:shadow-lg hover:scale-105 hover:brightness-110 transition-all duration-300 transform`}
-                  onClick={() => {
-                    if (option.buttonText === "Become a Partner") {
-                      navigate("/partner-with-us");
-                    } else if (option.buttonText === "Join as Volunteer") {
-                      navigate("/get-involved");
-                    }
-                  }}
-                >
-                  {option.buttonText}
-                </Button>
-              </div>
-            </div>
-          ))}
+          </p>
         </div>
       </div>
     </div>

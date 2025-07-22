@@ -202,13 +202,6 @@ const Raah: React.FC = () => {
                         className="rounded-xl shadow-2xl w-[32rem object-cover"
                       />
                     </div>
-                    <div className="absolute -bottom-8 md:-left-32 -left-4 transform -rotate-6">
-                      <img
-                        src="/education-thumbnail.webp"
-                        alt="Educational support activities"
-                        className="rounded-xl shadow-2xl md:h-[10rem] md:w-[15rem] h-[6rem] w-[10rem] object-cover"
-                      />
-                    </div>
                   </div>
                 </div>
               </div>

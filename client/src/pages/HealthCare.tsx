@@ -291,62 +291,12 @@ const HealthCare: React.FC = () => {
             Every Life Matters
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-pink-500 to-blue-600 mx-auto mb-6"></div>
-          <p className="text-lg text-dark-gray max-w-3xl mx-auto">
+          <p className="text-lg text-dark-gray max-w-4xl mx-auto">
             Join us in making healthcare accessible to all. From menstrual
             hygiene to life-saving blood donations and recovery support - your
             involvement can make healthcare accessible to those who need it
             most.
           </p>
-        </div>
-        <div className="grid grid:cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Volunteer",
-              description:
-                "Join our healthcare initiatives as a volunteer. Help with counseling, blood drives, or equipment distribution.",
-              buttonText: "Become a Volunteer",
-              color: "from-pink-500 to-rose-600",
-              route: "/get-involved",
-            },
-            {
-              title: "Donate",
-              description:
-                "Support our healthcare projects with monetary donations, medical equipment, or sanitary products.",
-              buttonText: "Make a Donation",
-              color: "from-red-500 to-red-600",
-              route: "/donate-for-a-cause",
-            },
-            {
-              title: "Partner",
-              description:
-                "Partner with us to expand our healthcare reach and impact more lives in underserved communities.",
-              buttonText: "Partner With Us",
-              color: "from-blue-500 to-blue-600",
-              route: "/partner-with-us",
-            },
-          ].map((option, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <div className={`bg-gradient-to-r ${option.color} p-6`}>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {option.title}
-                </h3>
-              </div>
-              <div className="p-6">
-                <p className="text-dark-gray leading-relaxed mb-6">
-                  {option.description}
-                </p>
-                <Button
-                  className={`w-full py-3 text-lg font-semibold bg-gradient-to-r ${option.color} text-white hover:shadow-lg hover:scale-105 hover:brightness-110 transition-all duration-300 transform`}
-                  onClick={() => handleNavigation(option.route)}
-                >
-                  {option.buttonText}
-                </Button>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>

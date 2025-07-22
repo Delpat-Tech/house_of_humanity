@@ -30,8 +30,6 @@ const Saharaa: React.FC = () => {
     },
   ];
 
- ;
-
   return (
     <section id="sahara" className="mb-24">
       {/* Hero Section */}
@@ -69,11 +67,13 @@ const Saharaa: React.FC = () => {
               </div>
             </div>
             <div className="relative">
-              <img
-                src="/images/Sahara.png"
-                alt="Project Sahara"
-                className="rounded-xl shadow-2xl border-4 border-white/20 object-cover w-72 h-72 md:w-80 md:h-80 mx-auto"
-              />
+              <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                <img
+                  src="/sahara-hero.jpg"
+                  alt="Project Sahara"
+                  className="rounded-xl shadow-2xl border-4 border-white/20 object-cover w-72 h-72 md:w-80 md:h-80 mx-auto"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -97,23 +97,22 @@ const Saharaa: React.FC = () => {
               Affordable Recovery Support
             </span>
             <p className="text-lg text-dark-gray leading-relaxed mb-6 max-w-2xl text-center">
-              Sahara addresses a critical gap in healthcare: access to
-              recovery equipment. Many patients avoid getting what they need
-              due to cost or lack of awareness. We provide wheelchairs,
-              walkers, and beds at minimal charges to ease their journey.
+              Sahara addresses a critical gap in healthcare: access to recovery
+              equipment. Many patients avoid getting what they need due to cost
+              or lack of awareness. We provide wheelchairs, walkers, and beds at
+              minimal charges to ease their journey.
               <br />
-              Beyond affordability, Sahara promotes dignity during recovery.
-              By ensuring access to mobility aids, we not only support
-              physical healing but also restore independence and confidence
-              for individuals in need—especially those who may otherwise feel
+              Beyond affordability, Sahara promotes dignity during recovery. By
+              ensuring access to mobility aids, we not only support physical
+              healing but also restore independence and confidence for
+              individuals in need—especially those who may otherwise feel
               helpless or overlooked.
             </p>
             <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6 max-w-xl text-center">
               <h4 className="font-semibold  mb-2">Our Mission</h4>
               <p className="text-dark-gray font-semibold text-lg">
                 To ensure everyone has access to necessary recovery equipment,
-                enhancing comfort, dignity, and healing during difficult
-                times.
+                enhancing comfort, dignity, and healing during difficult times.
               </p>
             </div>
           </div>
@@ -145,7 +144,9 @@ const Saharaa: React.FC = () => {
               <h4 className="text-lg md:text-xl font-bold text-blue-700 mb-2 md:mb-4">
                 {item.title}
               </h4>
-              <p className="text-sm md:text-base text-dark-gray text-justify">{item.description}</p>
+              <p className="text-sm md:text-base text-dark-gray text-justify">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
@@ -171,13 +172,16 @@ const Saharaa: React.FC = () => {
               className="text-center bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               <div className="text-2xl md:text-3xl mb-2">{stat.icon}</div>
-              <div className="text-base md:text-lg font-bold text-primary-blue mb-1">{stat.number}</div>
-              <div className="text-xs md:text-base text-dark-gray font-medium">{stat.label}</div>
+              <div className="text-base md:text-lg font-bold text-primary-blue mb-1">
+                {stat.number}
+              </div>
+              <div className="text-xs md:text-base text-dark-gray font-medium">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
       </div>
-
     </section>
   );
 };

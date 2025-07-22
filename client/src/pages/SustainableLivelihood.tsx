@@ -340,47 +340,16 @@ const SustainableLivelihood: React.FC = () => {
       <div className="mb-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
-            Get Involved
+           Women Leading Change, Sustainably
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
-          <p className="text-lg text-dark-gray max-w-2xl mx-auto">
+          <p className="text-lg text-dark-gray max-w-4xl mx-auto">
             Join us in creating a future where women in rural communities are
-            empowered to lead sustainable livelihoods.
+            empowered to lead sustainable livelihoods. Through initiatives like community-led vermi-compost units, women transform local resources into income opportunities—promoting economic independence while protecting the environment.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {getInvolvedOptions.map((option, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <div className={`bg-gradient-to-r ${option.accent} p-6`}>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  {option.title}
-                </h3>
-              </div>
-              <div className="p-6">
-                <p className="text-dark-gray leading-relaxed mb-6">
-                  {option.description}
-                </p>
-                <Button
-                  className={`w-full py-3 text-lg font-semibold bg-gradient-to-r ${option.accent} text-white hover:shadow-lg hover:scale-105 hover:brightness-110 transition-all duration-300 transform`}
-                  onClick={() => {
-                    if (option.buttonText === "Become a Partner") {
-                      navigate("/partner-with-us");
-                    } else if (option.buttonText === "Join as Volunteer") {
-                      navigate("/get-involved");
-                    }
-                  }}
-                >
-                  {option.buttonText}
-                </Button>
-              </div>
             </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 };

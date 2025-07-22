@@ -16,7 +16,7 @@ const overallImpact = [
 
 const projects = [
   { name: "Blanket Drive", id: "blanket-drive" },
-  { name: "Sweet Distribution", id: "sweet-distribution" },
+  { name: "It's Sweet Distribution Drive", id: "sweet-distribution" },
   { name: "Cyclothon", id: "cyclothon" },
   { name: "Marathon", id: "marathon" },
   { name: "Grooming", id: "grooming" },
@@ -188,62 +188,10 @@ const HouseOfHappiness = () => {
             Be a Part of the Happiness
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-pink-500 mx-auto mb-6 dark:from-yellow-700 dark:to-pink-700"></div>
-          <p className="text-lg text-dark-gray max-w-3xl mx-auto font-medium dark:text-gray-200">
+          <p className="text-lg text-dark-gray max-w-4xl mx-auto font-medium dark:text-gray-200">
             Join us in creating joy-filled experiences — volunteer, donate gifts
             or sweets, or sponsor a celebration. Every act of kindness counts.
           </p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Volunteer",
-              description:
-                "Help organize events, distribute sweets, or assist at concerts and gifting drives.",
-              buttonText: "Become a Volunteer",
-              color:
-                "from-yellow-400 to-orange-500 dark:from-yellow-700 dark:to-orange-700",
-              route: "/get-involved",
-            },
-            {
-              title: "Donate Gifts or Food",
-              description:
-                "Contribute new toys, sweets, or festival items to bring smiles to children and families.",
-              buttonText: "Donate Now",
-              color: "from-pink-500 to-red-500",
-              route: "/donate-for-a-cause",
-            },
-            {
-              title: "Sponsor a Celebration",
-              description:
-                "Support a full-scale concert, gifting drive, or festive event for underprivileged communities.",
-              buttonText: "Sponsor Now",
-              color:
-                "from-purple-500 to-pink-500 dark:from-purple-700 dark:to-pink-700",
-              route: "/partner-with-us",
-            },
-          ].map((option, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 dark:bg-gray-900 dark:border dark:border-gray-700"
-            >
-              <div className={`bg-gradient-to-r ${option.color} p-6`}>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {option.title}
-                </h3>
-              </div>
-              <div className="p-6">
-                <p className="text-dark-gray leading-relaxed mb-6 dark:text-gray-200">
-                  {option.description}
-                </p>
-                <button
-                  onClick={() => (window.location.href = option.route)}
-                  className={`w-full py-3 text-lg font-semibold bg-gradient-to-r ${option.color} text-white hover:shadow-lg hover:scale-105 hover:brightness-110 transition-all duration-300 transform rounded-lg`}
-                >
-                  {option.buttonText}
-                </button>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>

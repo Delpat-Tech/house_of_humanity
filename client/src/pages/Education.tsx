@@ -91,7 +91,7 @@ const Education: React.FC = () => {
                   <img
                     src="/education-hero.jpg"
                     alt="Education Programs"
-                    className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
+                    className="h-[30rem] rounded-xl shadow-2xl border-4 border-white/20 object-cover"
                   />
                 </div>
                 <div className="absolute -bottom-4 -left-4 md:-bottom-12 md:-left-16 transform -rotate-6">
@@ -122,7 +122,7 @@ const Education: React.FC = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
           </div>
 
-          {/* Nutrition background */}
+          {/* Education background */}
 
           <div className="flex flex-col items-center justify-center">
             <div>
@@ -269,48 +269,16 @@ const Education: React.FC = () => {
       <div className="mb-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
-            Get Involved
+            Bridging Gaps, Building Futures
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
-          <p className="text-lg text-dark-gray dark:text-gray-200 leading-relaxed">
+          <p className="max-w-4xl mx-auto text-lg text-dark-gray dark:text-gray-200 leading-relaxed">
             Join us in supporting migrant children's education. Together, we can
             ensure no child is left behind due to geographical mobility.
             Together we can create a brighter futrue where every child has
             access to quality education and opportunities for creative
             development.
           </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {getInvolvedOptions.map((option, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <div className={`bg-gradient-to-r ${option.accent} p-6`}>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  {option.title}
-                </h3>
-              </div>
-              <div className="p-6">
-                <p className="text-dark-gray leading-relaxed mb-6">
-                  {option.description}
-                </p>
-                <Button
-                  className={`w-full py-3 text-lg font-semibold bg-gradient-to-r ${option.accent} text-white hover:shadow-lg hover:scale-105 hover:brightness-110 transition-all duration-300 transform`}
-                  onClick={() => {
-                    if (option.buttonText === "Become a Partner") {
-                      navigate("/partner-with-us");
-                    } else if (option.buttonText === "Join as Volunteer") {
-                      navigate("/get-involved");
-                    }
-                  }}
-                >
-                  {option.buttonText}
-                </Button>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>
