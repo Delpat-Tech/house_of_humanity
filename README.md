@@ -311,6 +311,11 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
 ---
 
 <div align="center">
-  <p>Made with love by the House of Humanity Team</p>
+ <p style="text-align: center; font-size: 0.9em; color: #555;">
+  Made with ❤️ by the 
+  <a href="https://delpat-llp.web.app/" target="_blank" rel="noopener noreferrer">
+    Delpat
+  </a>
+</p>
   <p>Building a Better World, One Project at a Time</p>
 </div>
