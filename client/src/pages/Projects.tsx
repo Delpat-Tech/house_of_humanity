@@ -178,7 +178,8 @@ const Projects: React.FC = () => {
                         'marathon',
                         'grooming-etiquette-drive',
                         'concerts-for-a-cause',
-                        'joyful-gifting'
+                        'joyful-gifting',
+                        'joy-of-ride'
                       ].includes(slug || "")) {
                         navigate('/house-of-happiness');
                       } else if ((slug || "") === 'sanskruti') {
