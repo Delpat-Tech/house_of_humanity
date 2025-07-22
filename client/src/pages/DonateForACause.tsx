@@ -1,5 +1,5 @@
 "use client";
-
+import { useNavigate } from "react-router-dom";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import GiftCarousel from "./GiftCarousel";
 import WaysToDonate from "./WaysToDonate";
@@ -32,17 +32,17 @@ const testimonials = [
   {
     quote:
       "My donation truly made a difference. I received updates and saw the impact firsthand!",
-    name: "Anjali P."
+    name: "Anjali P.",
   },
   {
     quote:
       "Supporting House of Humanity is the best way to give back to the community.",
-    name: "Vikram S."
+    name: "Vikram S.",
   },
   {
     quote:
       "I love how transparent and impactful their work is. Highly recommended!",
-    name: "Sara M."
+    name: "Sara M.",
   },
 ];
 
@@ -71,7 +71,8 @@ const TestimonialCarousel = ({
 }) => {
   const [index, setIndex] = useState(0);
   const next = () => setIndex((i) => (i + 1) % testimonials.length);
-  const prev = () => setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
+  const prev = () =>
+    setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
 
   return (
     <div className="w-full max-w-4xl mx-auto">
@@ -221,6 +222,7 @@ const DonateForACause: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<string>("");
   const [donateSuccess, setDonateSuccess] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const amounts = ["100", "250", "500", "1000", "2500", "5000"];
 
@@ -396,8 +398,7 @@ const DonateForACause: React.FC = () => {
                 donorEmail: responseDonorEmail || "",
                 donorPhone: responseDonorPhone || "",
                 createdAt: new Date().toISOString(),
-                errorDescription:
-                  error.message || "Payment processing failed",
+                errorDescription: error.message || "Payment processing failed",
               });
               window.location.href = `/donation-failed?${queryParams.toString()}`;
             }, 3000);
@@ -452,6 +453,14 @@ const DonateForACause: React.FC = () => {
       );
       setIsSubmitting(false);
     }
+  };
+
+  const handleRedirectToContact = () => {
+    setIsSubmitting(true);
+    setTimeout(() => {
+      navigate("/contact-us");
+      setIsSubmitting(false);
+    }, 1000); // 1-second delay to show spinner
   };
 
   const getProgress = (): string => {
@@ -703,7 +712,8 @@ const DonateForACause: React.FC = () => {
                   ← Back
                 </button>
                 <Button
-                  onClick={handleDonateWithRazorpay}
+                  onClick={handleRedirectToContact}
+                  // onClick={handleDonateWithRazorpay}
                   disabled={isSubmitting}
                   className={`bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white px-4 py-2 font-bold shadow-lg hover:scale-105 transition-transform rounded-lg ${
                     isSubmitting ? "opacity-70 cursor-not-allowed" : ""
