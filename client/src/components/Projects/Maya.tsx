@@ -9,8 +9,8 @@ const Maya: React.FC = () => {
   const mayaStats = [
     { number: "200+", label: "Children Supported Daily", icon: "👶" },
     { number: "100%", label: "Government Hospitals", icon: "🏥" },
-    { number: "365", label: "Days of Care", icon: "📅" },
-    { number: "∞", label: "Hope & Healing", icon: "💫" },
+    { number: "5,00,000+", label: "Meals Provided to Hospitalized children", icon: "📅" },
+    { number: "Stronger caregiver", label: "Helping families give better care and nutrition.", icon: "💫" },
   ];
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {

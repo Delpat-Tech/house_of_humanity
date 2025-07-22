@@ -35,28 +35,28 @@ const Raah: React.FC = () => {
     },
     whatWeDo: [
       {
-        title: "School Adoption Program",
+        title: "Adopting Schools",
         description:
-          "Comprehensive support to schools in migrant-heavy areas including infrastructure, learning materials, and teacher training.",
+          "Supporting two schools for migrant children by providing a structured and stable learning environment.",
         icon: "🏫",
       },
       {
-        title: "Educational Support",
+        title: "Bicycles for Accessibility",
         description:
-          "Personalized learning support, school kits, and academic assistance to help children catch up and stay on track.",
-        icon: "📖",
+          "Providing bicycles so children can travel to school safely and regularly, overcoming distance barriers.",
+        icon: "🚲",
       },
       {
-        title: "Language Integration",
+        title: "Essential School Kits",
         description:
-          "Specialized programs to help children adapt to local language and cultural contexts while maintaining their identity.",
-        icon: "🗣️",
+          "Distributing books, uniforms, and stationery to remove financial burdens and support joyful learning.",
+        icon: "🎒",
       },
       {
-        title: "Family Engagement",
+        title: "Personalized Academic Support",
         description:
-          "Working with migrant families to emphasize the importance of education and provide necessary support systems.",
-        icon: "👨‍👩‍👧‍👦",
+          "Working with teachers to track student progress and offer tailored guidance for academic success.",
+        icon: "📘",
       },
     ],
     vision: {

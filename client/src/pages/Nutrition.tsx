@@ -21,7 +21,7 @@ const Nutrition: React.FC = () => {
 
   const overallImpact = [
     { number: "800+", label: "Lives Impacted", icon: "❤️" },
-    { number: "25", label: "Communities Served", icon: "🌍" },
+    { number: "3,000,000+", label: "Meals Distributed to those in need", icon: "🌍" },
     { number: "350", label: "Women Empowered", icon: "👩‍🌾" },
     { number: "2", label: "Major Projects", icon: "🎯" },
   ];

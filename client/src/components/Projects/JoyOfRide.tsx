@@ -1,37 +1,34 @@
 import React from "react";
 
-const BlanketDrive: React.FC = () => {
+const JoyOfRide: React.FC = () => {
   const stats = [
-    { number: "3,000+", label: "Individuals Reached", icon: "🧣" },
-    { number: "3", label: "Years of Operation", icon: "📅" },
-    { number: "7", label: "Nights of Giving (Dec 25–31)", icon: "🌙" },
+    { number: "12", label: "Joyrides Conducted", icon: "🚗" },
+    { number: "8", label: "Slums Reached", icon: "🏘️" },
+    { number: "600+", label: "Children Impacted", icon: "👧🏽👦🏽" },
   ];
 
   return (
-    <section
-      id="blanket-drive"
-      className="mb-24 dark:text-gray-100"
-    >
+    <section id="joy-of-ride" className="mb-24 dark:text-gray-100">
       {/* Hero */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-700 via-orange-500 to-red-600 rounded-2xl mb-16">
+      <div className="relative overflow-hidden bg-gradient-to-br from-pink-600 via-red-400 to-yellow-300 rounded-2xl mb-16">
         <div className="absolute inset-0" />
         <div className="relative z-10 px-8 py-16 md:py-20">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="mb-6">
                 <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold uppercase backdrop-blur-sm dark:bg-gray-800 dark:bg-opacity-40">
-                  Winter Relief Drive
+                  Joy of Ride
                 </span>
               </div>
               <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight dark:text-yellow-200">
                 Project
                 <span className="block text-yellow-100 text-5xl md:text-6xl mt-2 dark:text-orange-200">
-                  Blanket Drive
+                  Joy of Ride
                 </span>
               </h1>
               <p className="text-xl text-yellow-100 mb-8 leading-relaxed">
-                Spreading warmth and dignity to Vadodara’s homeless during the
-                coldest nights of the year.
+                Bringing smiles and new experiences to slum children—one joyful
+                ride at a time.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
                 {stats.map((s, i) => (
@@ -49,9 +46,8 @@ const BlanketDrive: React.FC = () => {
             <div className="relative">
               <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
                 <img
-                  src="/blanket-hero.jpg"
-                  alt="Blanket distribution"
-                  width="100%"
+                  src="/joyride-hero.jpg"
+                  alt="Joy of Ride"
                   className="rounded-xl shadow-2xl border-4 border-white/20 object-cover"
                 />
               </div>
@@ -65,51 +61,49 @@ const BlanketDrive: React.FC = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
-              About Project Blanket Drive
+              About Joy of Ride
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-pink-400 to-red-400 mx-auto mb-6"></div>
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
             <div>
               <div className="mb-6">
-                <span className="inline-block px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold">
-                  Running for 3 Years
+                <span className="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-semibold">
+                  Creating Joyful Moments
                 </span>
               </div>
               <p className="text-lg text-dark-gray leading-relaxed mb-6">
-                At House of Humanity, our mission is simple: to ensure that no
-                one sleeps cold during the harsh winter nights. Every year from
-                December 25th to 31st, our volunteers become Santa for the
-                night, distributing blankets to those sleeping on the streets of
-                Vadodara. We believe in a community where kindness and care
-                thrive, ensuring that the most vulnerable are not forgotten.
+                Joy of Ride is a heartfelt initiative designed to give children
+                from Vadodara's slums a unique and memorable experience. What
+                starts as a simple car ride turns into an inspiring
+                journey—through city streets, fast food spots, and moments of
+                joy.
               </p>
               <p className="text-lg text-dark-gray leading-relaxed mb-6">
-                For the past three years, we've reached over 1,000 people
-                annually, providing warmth and hope between 12:00 AM and 2:00 AM
-                each night, spreading comfort and dignity to those who need it
-                most.
+                Each ride includes a convoy of 15 cars, volunteer-driven, giving
+                50–60 children a chance to feel seen, included, and celebrated.
+                These rides not only introduce them to new environments but also
+                spark dreams and build confidence.
               </p>
-              <div className="bg-gradient-to-r from-orange-100/50 to-red-100/30 rounded-lg p-6">
+              <div className="bg-gradient-to-r from-yellow-100/50 to-red-100/30 rounded-lg p-6">
                 <h4 className="font-bold mb-2 text-primary-blue dark:text-warm-light-blue">
                   Our Mission
                 </h4>
                 <p className="text-dark-gray font-semibold text-lg">
-                  To ensure that no one sleeps cold during winter nights by
-                  providing blankets and spreading warmth, comfort, and hope to
-                  Vadodara's most vulnerable during the coldest time of the
-                  year.
+                  To inspire, uplift, and include underprivileged children
+                  through new experiences that broaden their horizons and ignite
+                  hope.
                 </p>
               </div>
             </div>
             <div className="relative">
               <img
-                src="/blanket.jpg"
-                alt="Blanket distribution to homeless individuals"
+                src="/joyride.jpg"
+                alt="Children enjoying Joy of Ride"
                 className="rounded-xl shadow-lg w-full object-cover"
               />
-              <div className="absolute -top-4 -right-4 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                3,000+ People Reached
+              <div className="absolute -top-4 -right-4 bg-pink-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                12 Rides, 8 Slums
               </div>
             </div>
           </div>
@@ -122,27 +116,27 @@ const BlanketDrive: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
             What We Do
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
+          <div className="w-24 h-1 bg-gradient-to-r from-pink-400 to-yellow-400 mx-auto mb-6" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {[
             {
-              title: "Blanket Distribution",
+              title: "City Joyrides",
               description:
-                "Provide blankets to those sleeping on the streets during winter nights.",
-              icon: "🧤",
+                "Volunteer-led convoys give slum children their first experience of riding through the city.",
+              icon: "🚗",
             },
             {
-              title: "Volunteer Engagement",
+              title: "Cafe & Resort Visits",
               description:
-                "Volunteers act as Santas, spreading festive cheer and warmth.",
-              icon: "🎅",
+                "Children visit popular spots like McDonald’s or resorts for meals and fun.",
+              icon: "🍔",
             },
             {
-              title: "Focus on Vulnerable",
+              title: "Building Confidence",
               description:
-                "Identify and reach the most exposed and vulnerable across the city.",
-              icon: "❤️",
+                "Every ride inspires dreams and creates lasting memories of joy and belonging.",
+              icon: "🌟",
             },
           ].map((item, idx) => (
             <div
@@ -162,15 +156,16 @@ const BlanketDrive: React.FC = () => {
       </div>
 
       {/* Impact */}
-      <div className="bg-gradient-to-br from-warm-light-blue/20 to-fresh-green/20 rounded-2xl p-8 md:p-12 mb-8">
+      <div className="bg-gradient-to-br from-pink-100/50 to-yellow-100/40 rounded-2xl p-8 md:p-12 mb-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
             Our Impact
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
+          <div className="w-24 h-1 bg-gradient-to-r from-pink-400 to-yellow-400 mx-auto mb-6" />
           <p className="text-lg text-dark-gray max-w-3xl mx-auto">
-            Over 3,000 individuals reached in 3 years, receiving not just
-            blankets but dignity and care during cold nights.
+            Joy of Ride has touched hundreds of lives—bringing joy, new
+            experiences, and a sense of inclusion to children from 8 slums
+            across Vadodara.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
@@ -180,8 +175,12 @@ const BlanketDrive: React.FC = () => {
               className="text-center bg-white rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 dark:bg-gray-900 dark:border dark:border-gray-700"
             >
               <div className="text-2xl md:text-3xl mb-2">{stat.icon}</div>
-              <div className="text-base md:text-2xl font-bold text-primary-blue mb-1">{stat.number}</div>
-              <div className="text-xs md:text-base text-dark-gray font-medium">{stat.label}</div>
+              <div className="text-base md:text-2xl font-bold text-primary-blue mb-1">
+                {stat.number}
+              </div>
+              <div className="text-xs md:text-base text-dark-gray font-medium">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
@@ -190,4 +189,4 @@ const BlanketDrive: React.FC = () => {
   );
 };
 
-export default BlanketDrive;
+export default JoyOfRide;

@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../components/ui/Button";
 import ImagePlaceholder from "../components/ui/ImagePlaceholder";
 import Bachpan from "../components/Projects/Bachpan";
 import Raah from "../components/Projects/Raah";
@@ -21,28 +20,12 @@ const Education: React.FC = () => {
 
   const overallImpact = [
     { number: "1000+", label: "Children Reached", icon: "👶" },
-    { number: "100", label: "Anganwadis Served", icon: "🏠" },
+    { number: "98", label: "Anganwadis Served", icon: "🏠" },
     { number: "200+", label: "Teachers Trained", icon: "👩‍🏫" },
     { number: "2", label: "Major Projects", icon: "🎯" },
   ];
 
-  const getInvolvedOptions = [
-    {
-      title: "Support Education",
-      description:
-        "Partner with us to expand our educational programs and empower more children through quality education and creative development.",
-      buttonText: "Become a Partner",
-      accent: "from-fresh-green to-green-600",
-    },
-    {
-      title: "Volunteer with Us",
-      description:
-        "Join our educational volunteers to provide direct support in teaching, mentoring, and creative activities for children in need.",
-      buttonText: "Join as Volunteer",
-      accent: "from-primary-blue to-blue-600",
-    },
-  ];
-
+ 
   return (
     <div className="container mx-auto px-4 py-12 mt-24">
       {/* Hero Section */}

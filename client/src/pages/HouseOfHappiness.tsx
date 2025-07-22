@@ -6,6 +6,7 @@ import Marathon from "../components/Projects/Marathon";
 import Grooming from "../components/Projects/Grooming";
 import Concerts from "../components/Projects/Concerts";
 import GiftingToy from "../components/Projects/GiftingToy";
+import JoyOfRide from "../components/Projects/JoyOfRide";
 
 const overallImpact = [
   { number: "10,000+", label: "Smiles Shared", icon: "😊" },
@@ -16,6 +17,7 @@ const overallImpact = [
 
 const projects = [
   { name: "Blanket Drive", id: "blanket-drive" },
+  { name: "Joy Of Ride", id: "joy-of-ride" },
   { name: "It's Sweet Distribution Drive", id: "sweet-distribution" },
   { name: "Cyclothon", id: "cyclothon" },
   { name: "Marathon", id: "marathon" },
@@ -162,6 +164,9 @@ const HouseOfHappiness = () => {
       <section id="blanket-drive" className="scroll-mt-24">
         <BlanketDrive />
       </section>
+       <section id="gifting-toy" className="scroll-mt-24">
+        <JoyOfRide />
+      </section>
       <section id="sweet-distribution" className="scroll-mt-24">
         <SweetDistribution />
       </section>
@@ -180,6 +185,7 @@ const HouseOfHappiness = () => {
       <section id="gifting-toy" className="scroll-mt-24">
         <GiftingToy />
       </section>
+     
 
       {/* 🤝 Get Involved Section */}
       <div className="p-8 md:p-12 my-16">

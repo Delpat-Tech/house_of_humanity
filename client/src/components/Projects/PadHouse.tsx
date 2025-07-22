@@ -5,8 +5,8 @@ const PadHouse: React.FC = () => {
   const padHouseStats = [
     { number: "75+", label: "Government Schools", icon: "🏫" },
     { number: "8,000+", label: "Households Reached", icon: "🏠" },
-    { number: "28,000+", label: "Girls Helped", icon: "👧" },
-    { number: "70%", label: "Adoption Rate", icon: "📈" },
+    { number: "28,000+", label: "sanitary Napkins Distributed,", icon: "👧" },
+    { number: "50,000+", label: "Adoption Rate", icon: "📈" },
   ];
 
   return (

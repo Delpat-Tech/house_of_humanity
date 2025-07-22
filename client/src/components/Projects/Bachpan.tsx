@@ -1,16 +1,22 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../ui/Button";
-import ImagePlaceholder from "../ui/ImagePlaceholder";
 
 const Bachpan: React.FC = () => {
   const navigate = useNavigate();
 
   const bachpanStats = [
     { number: "98", label: "Anganwadis Reached", icon: "🏠" },
-    { number: "950+", label: "Children Touched", icon: "👶" },
+    {
+      number: "200+",
+      label: "Children Enrolled in Educatinal Programs",
+      icon: "👶",
+    },
     { number: "1000", label: "Target Students", icon: "🎯" },
-    { number: "2022", label: "Started Year", icon: "📅" },
+    {
+      number: "1550+",
+      label: "Young minds ignited with inspiration.",
+      icon: "📅",
+    },
   ];
 
   const bachpanData = {
@@ -35,30 +41,25 @@ const Bachpan: React.FC = () => {
     },
     whatWeDo: [
       {
-        title: "Educational Kits Distribution",
+        title: "Treasure Chests for Tiny Explorers",
         description:
-          "Comprehensive kits containing books, stationery, puzzles, and learning aids designed to enhance foundational learning skills.",
-        icon: "📚",
+          "Kits with books, art supplies, and playful tools to spark curiosity and early learning.",
+        icon: "🧸",
       },
       {
-        title: "Creative Development Programs",
+        title: "Superheroes in Training",
         description:
-          "Art supplies, creative games, and hands-on activities that encourage self-expression and artistic exploration.",
-        icon: "🎨",
+          "Interactive workshops for Anganwadi teachers to make learning engaging and fun.",
+        icon: "🦸‍♀️",
       },
       {
-        title: "Teacher Training",
+        title: "Building a Playground for the Mind",
         description:
-          "Capacity building workshops for Anganwadi workers to enhance their teaching methodologies and child engagement techniques.",
-        icon: "👩‍🏫",
-      },
-      {
-        title: "Progress Monitoring",
-        description:
-          "Regular assessments and tracking of children's development to ensure effective learning outcomes.",
-        icon: "📊",
+          "Storytelling and creative activities that build confidence and a lifelong love for learning.",
+        icon: "🧠",
       },
     ],
+
     vision: {
       title: "Our Vision for Bachpan",
       content:
@@ -228,7 +229,7 @@ const Bachpan: React.FC = () => {
               childhood education in Anganwadis.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 text-center">
+          <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-8 text-center">
             {bachpanData.whatWeDo.map((activity, index) => (
               <div
                 key={index}
@@ -306,11 +307,11 @@ const Bachpan: React.FC = () => {
 
         {/* Journey Section */}
         <div className="md:mb-36 mb-20">
-          <div className="max-w-6xl mx-auto">
+          <div className="mx-auto">
             <h3 className="text-3xl font-bold text-primary-blue mb-12 text-center">
               {bachpanData.journey.title}
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-4 lg:grid-cols-4 gap-4">
               {bachpanData.journey.milestones.map((milestone, index) => (
                 <div
                   key={index}
@@ -323,7 +324,7 @@ const Bachpan: React.FC = () => {
                   <h4 className="text-lg font-semibold text-primary-blue dark:text-white mb-3">
                     {milestone.title}
                   </h4>
-                  <p className="text-dark-gray dark:text-gray-300 text-sm leading-relaxed text-justify">
+                  <p className="text-dark-gray dark:text-gray-300 text-sm leading-relaxed">
                     {milestone.description}
                   </p>
                 </div>

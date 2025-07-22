@@ -30,7 +30,7 @@ const SustainableLivelihood: React.FC = () => {
   const impactStats = [
     { number: "30", label: "Women Empowered", icon: "👩‍🌾" },
     { number: "1", label: "Taluka Covered", icon: "🏘️" },
-    { number: "100%", label: "Sustainable Practices", icon: "♻️" },
+    { number: "250+", label: "Women trained in vocational skills & financial literacy", icon: "♻️" },
     { number: "1", label: "Vermi-Compost Unit", icon: "🌿" },
   ];
 

@@ -21,6 +21,12 @@ const Marathon: React.FC = () => {
         "Encourage Vadodara’s citizens to embrace fitness and community participation through public runs.",
       icon: "🏙️",
     },
+     {
+    title: "15+ Youth Sports Programs",
+    description:
+      "Organize sports initiatives to foster engagement, teamwork, and healthy lifestyles among the youth.",
+    icon: "⚽",
+  },
   ];
 
   return (
@@ -115,7 +121,7 @@ const Marathon: React.FC = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6" />
         </div>
-        <div className="grid md:grid-cols-2 gap-8 text-center">
+        <div className="grid md:grid-cols-3 gap-8 text-center">
           {whatWeDo.map((item, idx) => (
             <div
               key={idx}
