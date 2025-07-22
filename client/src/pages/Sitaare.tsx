@@ -236,12 +236,12 @@ const Sitaare = () => {
             <span className="bg-teal-100 dark:bg-teal-900/30 px-3 py-1 rounded-full">Life Skills</span>
           </div>
           <a
-            href="https://sitaare.vercel.app/"
+            href="https://sitaare.in/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white dark:text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
-            Learn More on Sitaare.org
+            Learn More on Sitaare.in
           </a>
         </motion.div>
         <div className="pb-16 md:pb-24" />
