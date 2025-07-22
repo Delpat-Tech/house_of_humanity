@@ -110,6 +110,12 @@ const Footer: React.FC = () => {
                 { to: "/gallery", text: "Gallery" },
                 { to: "/contact-us", text: "Contact Us" },
                 {
+                  to: "https://drive.google.com/file/d/10gVeAvEsarmdduuS1kO00Eq6gQx9I3II/view",
+                  text: "HOH Brochure",
+                  external: true,
+                },
+                
+                {
                   to: "https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true",
                   text: "Share Your Experience",
                   external: true,

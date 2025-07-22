@@ -2,6 +2,7 @@ import React from 'react';
 import type { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
 import { useTheme } from '../shared/contexts/ThemeContext';
+import logo from '../assets/Maya/cc9f25f9-80e7-45e0-908d-123235f1c6b2.jpg'; // Use your actual logo path here
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -16,59 +17,33 @@ const fadeInUp: Variants = {
   }),
 };
 
+const SitaareLogoBlink = () => (
+  <motion.div
+    initial={{ opacity: 0.5 }}
+    animate={{ opacity: [0.5, 1, 0.5] }}
+    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+    className="relative w-56 h-36 sm:w-72 sm:h-44 mx-auto mb-8"
+  >
+    <div className="absolute inset-0 bg-gradient-to-br from-[#BC1782] to-[#D61A91] rounded-3xl opacity-20 animate-pulse"></div>
+    <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+      <img 
+        src={logo} 
+        alt="Project Sitaare Logo" 
+        className="w-full h-full object-contain"
+      />
+    </div>
+  </motion.div>
+);
+
 const Sitaare = () => {
   const { theme } = useTheme();
   return (
     <div className={`min-h-screen transition-colors duration-300 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-800 dark:to-slate-900`}>
-      {/* Hero Section  */}
-      <section className="relative overflow-hidden pt-32 pb-20 px-4 md:px-20 bg-gradient-to-r from-pink-500/10 to-rose-500/10 dark:from-pink-900/40 dark:to-rose-900/40 dark:shadow-none border-b border-pink-100 dark:border-pink-900">
-        {/* Animated gradient blobs - color changes for dark mode */}
-        {theme === 'dark' ? (
-          <>
-            <div className="absolute -top-24 -left-24 w-96 h-96 bg-pink-600 opacity-10 rounded-full filter blur-3xl animate-pulse-slow z-0" />
-            <div className="absolute top-1/2 right-0 w-80 h-80 bg-rose-500 opacity-10 rounded-full filter blur-2xl animate-pulse-slower z-0" />
-            <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-fuchsia-500 opacity-7 rounded-full filter blur-2xl animate-pulse-slow z-0" />
-          </>
-        ) : (
-          <>
-            <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary-blue opacity-20 rounded-full filter blur-3xl animate-pulse-slow z-0" />
-            <div className="absolute top-1/2 right-0 w-80 h-80 bg-fresh-green opacity-20 rounded-full filter blur-2xl animate-pulse-slower z-0" />
-            <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-primary-blue opacity-10 rounded-full filter blur-2xl animate-pulse-slow z-0" />
-          </>
-        )}
-        <div className="max-w-7xl mx-auto relative z-10">
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-h2 text-center uppercase mb-6 leading-tight"
-          >
-            Project Sitaare
-          </motion.h1>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-2xl md:text-3xl lg:text-4xl font-bold text-gradient-h1 text-center mb-8 max-w-5xl mx-auto leading-relaxed"
-          >
-           Where Every Star Finds Its Sky
-            <br />
-            <span className={theme === 'dark' ? 'text-rose-200' : 'text-pink-600'}>
-              A home for hope, growth, and opportunity.
-            </span>
-          </motion.h2>
-
-          
-        </div>
-      </section>
+      {/* Blinking Logo at the Top */}
+      <SitaareLogoBlink />
       <div className="mb-12 md:mb-20" />
       {/* The rest of the Sitaare content remains unchanged */}
-        <div className="max-w-6xl mx-auto">
-        
-
+      <div className="max-w-6xl mx-auto">
         {/* Main Content Grid */}
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           {/* About Section */}
@@ -85,7 +60,6 @@ const Sitaare = () => {
               More than just shelter—it's a place where dreams take flight. With full education,
               safety, and holistic development, it's the most empowering space for girls in Gujarat.
             </p>
-            
             <div className="space-y-4">
               <h5 className="text-lg font-medium text-pink-600 dark:text-pink-400 flex items-center">
                 <span className="w-2 h-2 bg-pink-500 rounded-full mr-3"></span>
