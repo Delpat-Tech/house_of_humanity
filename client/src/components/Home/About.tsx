@@ -6,14 +6,14 @@ const About = () => {
   const { theme } = useTheme();
 
   const stats = [
-    { number: "180+", label: "Volunteers Empowered", icon: "🙌" },
+    { number: "250+", label: "Women Empowered", icon: "🙌" },
     {
-      number: "200+",
+      number: "3M+",
       label: "Meals Served Daily (COVID-19 Start)",
       icon: "🍛",
     },
-    { number: "6+", label: "Key Focus Areas", icon: "🎯" },
-    { number: "1", label: "Cancer Wellness Center Dream", icon: "🎗️" },
+    { number: "200+", label: "Children Educated", icon: "📖" },
+    { number: "15K+", label: "Lives Uplifted", icon: "🫧" },
   ];
 
   return (
