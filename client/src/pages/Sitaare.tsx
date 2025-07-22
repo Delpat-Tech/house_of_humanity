@@ -2,7 +2,7 @@ import React from 'react';
 import type { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
 import { useTheme } from '../shared/contexts/ThemeContext';
-import logo from '../assets/Maya/cc9f25f9-80e7-45e0-908d-123235f1c6b2.jpg'; // Use your actual logo path here
+import logo from '../assets/logo.png'; 
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -38,11 +38,9 @@ const SitaareLogoBlink = () => (
 const Sitaare = () => {
   const { theme } = useTheme();
   return (
-    <div className={`min-h-screen transition-colors duration-300 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-800 dark:to-slate-900`}>
-      {/* Blinking Logo at the Top */}
-      <SitaareLogoBlink />
+    <div className={`min-h-screen pt-24 transition-colors duration-300 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-800 dark:to-slate-900`}>
+    <SitaareLogoBlink />
       <div className="mb-12 md:mb-20" />
-      {/* The rest of the Sitaare content remains unchanged */}
       <div className="max-w-6xl mx-auto">
         {/* Main Content Grid */}
         <div className="grid md:grid-cols-2 gap-12 mb-16">
