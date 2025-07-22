@@ -58,30 +58,32 @@ const SustainableLivelihood: React.FC = () => {
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="relative z-10 px-8 py-16 md:py-24">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
                 <div className="mb-6">
                   <span className="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-white text-sm font-semibold tracking-wide uppercase backdrop-blur-sm">
                     Sustainablity for Livelihoods
                   </span>
                 </div>
-                
+
                 <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
-                Sustainable Livelihood
+                  Sustainable Livelihood
                   <span className="block text-warm-light-blue text-5xl md:text-6xl">
-                  Initiatives
+                    Initiatives
                   </span>
                 </h1>
                 <p className="text-xl text-green-100 mb-8 leading-relaxed">
-                Empower communities by providing skills, resources, and opportunities for long-term economic independence and environmental stewardship.
-                  Taluka
+                  Empower communities by providing skills, resources, and
+                  opportunities for long-term economic independence and
+                  environmental stewardship. Taluka
                 </p>
                 {/* Project Sanskruti Button */}
-                <div className="flex flex-wrap justify-center gap-4 mb-8">
+                <div className="">
                   <button
                     onClick={() => {
                       setTimeout(() => {
-                        const element = document.getElementById("about-sanskruti");
+                        const element =
+                          document.getElementById("about-sanskruti");
                         if (element) {
                           element.scrollIntoView({
                             behavior: "smooth",
@@ -99,6 +101,15 @@ const SustainableLivelihood: React.FC = () => {
                   </button>
                 </div>
               </div>
+              <div className="relative">
+                <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                  <img
+                    src="/solar-power.jpg"
+                    alt="Education Programs"
+                    className="w-[36rem] h-[22rem] rounded-xl shadow-2xl border-4 border-white/20"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -109,11 +120,15 @@ const SustainableLivelihood: React.FC = () => {
       </div>
 
       {/* Project Overview */}
-      <div id="about-sanskruti" className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
+      <div
+        id="about-sanskruti"
+        className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
+      >
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
-              Empowering Women Through <br/>Sustainable Livelihoods
+              Empowering Women Through <br />
+              Sustainable Livelihoods
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
           </div>
@@ -123,14 +138,25 @@ const SustainableLivelihood: React.FC = () => {
           <div className="flex flex-col items-center justify-center">
             <div>
               <p className="text-lg text-dark-gray leading-relaxed mb-6 text-justify">
-           With support from Grasim Industries Limited and the Taluka Panchayat, a community-driven vermi-compost production unit was established. The initiative enables 30 women to convert organic waste into high-quality compost, which is sold to farmers and agricultural businesses. 
+                With support from Grasim Industries Limited and the Taluka
+                Panchayat, a community-driven vermi-compost production unit was
+                established. The initiative enables 30 women to convert organic
+                waste into high-quality compost, which is sold to farmers and
+                agricultural businesses.
               </p>
               <p className="text-lg text-dark-gray leading-relaxed mb-6 text-justify">
-                The program is designed to be self- sustaining, allowing participants to earn an income while promoting  environmental sustainability.
+                The program is designed to be self- sustaining, allowing
+                participants to earn an income while promoting environmental
+                sustainability.
               </p>
               <div className="bg-gradient-to-r from-warm-light-blue/20 to-fresh-green/20 rounded-lg p-6 dark:bg-gray-800">
                 <p className="text-primary-blue font-semibold text-lg dark:text-gray-100">
-                  Beyond economic empowerment, the project promotes environmental sustainability by reducing organic waste and enhancing soil health through natural composting methods. It stands as a model of inclusive development—combining women’s empowerment, sustainable agriculture, and circular economy principles in a single initiative.
+                  Beyond economic empowerment, the project promotes
+                  environmental sustainability by reducing organic waste and
+                  enhancing soil health through natural composting methods. It
+                  stands as a model of inclusive development—combining women’s
+                  empowerment, sustainable agriculture, and circular economy
+                  principles in a single initiative.
                 </p>
               </div>
             </div>
@@ -139,7 +165,10 @@ const SustainableLivelihood: React.FC = () => {
       </div>
 
       {/* Project Overview */}
-      <div id="about-sanskruti" className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
+      <div
+        id="about-sanskruti"
+        className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
+      >
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
@@ -340,16 +369,18 @@ const SustainableLivelihood: React.FC = () => {
       <div className="mb-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue mb-6">
-           Women Leading Change, Sustainably
+            Women Leading Change, Sustainably
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-fresh-green to-primary-blue mx-auto mb-6"></div>
           <p className="text-lg text-dark-gray max-w-4xl mx-auto">
             Join us in creating a future where women in rural communities are
-            empowered to lead sustainable livelihoods. Through initiatives like community-led vermi-compost units, women transform local resources into income opportunities—promoting economic independence while protecting the environment.
+            empowered to lead sustainable livelihoods. Through initiatives like
+            community-led vermi-compost units, women transform local resources
+            into income opportunities—promoting economic independence while
+            protecting the environment.
           </p>
         </div>
-
-            </div>
+      </div>
     </div>
   );
 };
