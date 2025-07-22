@@ -227,7 +227,7 @@ const Milestones: React.FC = () => {
     <div className={`min-h-screen transition-colors duration-300 pt-32 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50'}`}>
       {/* Hero Section */}
       <HeroStatsSection
-        title={<><span>Our </span><span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">Milestones</span></>}
+        title={<><span>Our </span><span className="text-white">Milestones</span></>}
         subtitle={"Transformative numbers. Real impact. Empowered lives."}
         stats={heroStats}
         badge={<><Sparkles className="w-5 h-5 text-yellow-300 mr-2" /><span className="text-white font-medium">Our Impact Story</span></>}

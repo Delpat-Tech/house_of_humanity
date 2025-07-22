@@ -343,7 +343,7 @@ const Header: React.FC = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link to="/sitaare">
+                <Link to="https://sitaare.in/">
                   <TrapeziumButton
                     label="SITAARE"
                     variant="sitaare"

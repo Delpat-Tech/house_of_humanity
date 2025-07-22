@@ -2,7 +2,7 @@ import React from 'react';
 import type { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
 import { useTheme } from '../shared/contexts/ThemeContext';
-import logo from '../assets/Maya/cc9f25f9-80e7-45e0-908d-123235f1c6b2.jpg'; // Use your actual logo path here
+import logo from '../assets/logo.png'; 
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -22,14 +22,14 @@ const SitaareLogoBlink = () => (
     initial={{ opacity: 0.5 }}
     animate={{ opacity: [0.5, 1, 0.5] }}
     transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-    className="relative w-56 h-36 sm:w-72 sm:h-44 mx-auto mb-8"
+    className="relative w-full h-full mx-auto"
   >
-    <div className="absolute inset-0 bg-gradient-to-br from-[#BC1782] to-[#D61A91] rounded-3xl opacity-20 animate-pulse"></div>
-    <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#BC1782] to-[#D61A91] rounded-2xl opacity-20 animate-pulse"></div>
+    <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-[#e7b6d1] bg-opacity-80">
       <img 
-        src={logo} 
+        src="/images/logo.png" 
         alt="Project Sitaare Logo" 
-        className="w-full h-full object-contain"
+        className="w-full h-full object-contain p-2"
       />
     </div>
   </motion.div>
@@ -38,11 +38,42 @@ const SitaareLogoBlink = () => (
 const Sitaare = () => {
   const { theme } = useTheme();
   return (
-    <div className={`min-h-screen transition-colors duration-300 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-800 dark:to-slate-900`}>
-      {/* Blinking Logo at the Top */}
-      <SitaareLogoBlink />
-      <div className="mb-12 md:mb-20" />
-      {/* The rest of the Sitaare content remains unchanged */}
+    <div className="min-h-screen transition-colors duration-300 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-800 dark:to-slate-900">
+      {/* Hero Section (matching Projects) */}
+      <section className="relative overflow-hidden pt-24 pb-12 px-4 md:px-20 bg-gradient-to-r from-pink-100 via-pink-50 to-rose-50 dark:from-pink-900/30 dark:via-rose-900/20 dark:to-pink-900/30">
+        {/* Animated gradient blobs */}
+        <div className="absolute -top-16 -left-16 w-72 h-72 bg-pink-400 opacity-20 rounded-full filter blur-3xl animate-pulse-slow z-0" />
+        <div className="absolute top-1/2 right-0 w-64 h-64 bg-rose-300 opacity-20 rounded-full filter blur-2xl animate-pulse-slower z-0" />
+        <div className="absolute bottom-0 left-1/2 w-56 h-56 bg-pink-300 opacity-10 rounded-full filter blur-2xl animate-pulse-slow z-0" />
+        <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center justify-center text-center">
+          {/* Sitaare Logo Card with Blink Animation */}
+          <div className="w-52 h-32 mb-6 mt-16">
+            <SitaareLogoBlink />
+          </div>
+          {/* Headings with animation and gradients */}
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-2 leading-tight"
+            style={{color: '#1e7c6b'}}
+          >
+            Where Every Star Finds Its Sky
+          </motion.h1>
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-xl md:text-2xl lg:text-3xl font-bold text-center mb-6 max-w-3xl mx-auto leading-relaxed"
+            style={{color: '#d61a91'}}
+          >
+            A home for hope, growth, and opportunity.
+          </motion.h2>
+        </div>
+      </section>
+      <div className="h-24 md:h-32"/> {/* Added spacing after hero section */}
       <div className="max-w-6xl mx-auto">
         {/* Main Content Grid */}
         <div className="grid md:grid-cols-2 gap-12 mb-16">
@@ -205,12 +236,12 @@ const Sitaare = () => {
             <span className="bg-teal-100 dark:bg-teal-900/30 px-3 py-1 rounded-full">Life Skills</span>
           </div>
           <a
-            href="https://sitaare.vercel.app/"
+            href="https://sitaare.in/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white dark:text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
-            Learn More on Sitaare.org
+            Learn More on Sitaare.in
           </a>
         </motion.div>
         <div className="pb-16 md:pb-24" />

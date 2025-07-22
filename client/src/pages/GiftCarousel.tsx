@@ -25,7 +25,7 @@ const CARD_GAP = 0; // px (no gap needed for single card)
 
 const GiftCarousel: React.FC = () => {
   const [current, setCurrent] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isPaused, setIsPaused] = useState(false);
 
   const goNext = () => setCurrent((prev) => (prev + 1) % slides.length);
