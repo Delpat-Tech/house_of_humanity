@@ -534,11 +534,10 @@ const DonateForACause: React.FC = () => {
                 {amounts.map((amt) => (
                   <button
                     key={amt}
-                    className={`border-2 px-4 py-2 rounded-lg font-semibold transition-all duration-200 ${
-                      amount === amt
-                        ? "bg-gradient-to-r from-primary-blue to-fresh-green text-white shadow-lg scale-105"
-                        : "bg-white text-primary-blue border-primary-blue/30 hover:bg-primary-blue/5"
-                    }`}
+                    className={`border-2 px-4 py-2 rounded-lg font-semibold transition-all duration-200 ${amount === amt
+                      ? "bg-gradient-to-r from-primary-blue to-fresh-green text-white shadow-lg scale-105"
+                      : "bg-white text-primary-blue border-primary-blue/30 hover:bg-primary-blue/5"
+                      }`}
                     onClick={() => {
                       setAmount(amt);
                       setCustomAmount("");
@@ -690,9 +689,9 @@ const DonateForACause: React.FC = () => {
                   </span>
                 </p>
               </div>
-              <div className="border-2 border-primary-blue/30 p-4 rounded-lg mb-4 text-sm bg-primary-blue/5 dark:bg-blue-900/10">
-                Donate securely with Razorpay
-              </div>
+              {/* <div className="border-2 border-primary-blue/30 p-4 rounded-lg mb-4 text-sm bg-primary-blue/5 dark:bg-blue-900/10">
+                  Donate securely with Razorpay
+                </div> */}
               {submitError && (
                 <div className="text-red-600 text-sm mb-4 whitespace-pre-wrap">
                   {submitError}
@@ -715,9 +714,8 @@ const DonateForACause: React.FC = () => {
                   onClick={handleRedirectToContact}
                   // onClick={handleDonateWithRazorpay}
                   disabled={isSubmitting}
-                  className={`bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white px-4 py-2 font-bold shadow-lg hover:scale-105 transition-transform rounded-lg ${
-                    isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-                  }`}
+                  className={`bg-gradient-to-r from-primary-blue to-fresh-green hover:from-blue-700 hover:to-green-600 text-white px-4 py-2 font-bold shadow-lg hover:scale-105 transition-transform rounded-lg ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+                    }`}
                 >
                   {isSubmitting && (
                     <svg

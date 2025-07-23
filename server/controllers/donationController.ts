@@ -33,11 +33,16 @@ const razorpay = new Razorpay({
 
 // Initialize Nodemailer
 const transporter: Transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: process.env.SMTP_HOST, // e.g., mail.houseofhumanity.in
+  port: Number(process.env.SMTP_PORT), // e.g., 465
+  // secure: process.env.MAIL_SECURE === 'true', // SSL: true for 465
   auth: {
     user: process.env.EMAIL_USER as string,
     pass: process.env.EMAIL_PASS as string,
   },
+  // tls: {
+  //   rejectUnauthorized: false, // Optional: prevent cert errors on shared hosts
+  // },
 });
 
 // Verify SMTP connection
@@ -96,22 +101,6 @@ const allowedPurposes = [
   'General Donation',
 ];
 
-// Test email endpoint
-export const testEmail = async (req: Request, res: Response) => {
-  try {
-    await transporter.verify();
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.NGO_EMAIL!,
-      subject: 'Test Email from House of Humanity',
-      text: 'This is a test email to verify Nodemailer configuration.',
-    });
-    res.json({ success: true, message: 'Test email sent successfully' });
-  } catch (error) {
-    const errMsg = error instanceof Error ? error.message : String(error);
-    res.status(500).json({ success: false, error: 'Failed to send test email', details: errMsg });
-  }
-};
 
 export const createOrder = async (req: Request<{}, any, CreateOrderBody>, res: Response) => {
   try {
@@ -223,7 +212,7 @@ export const webhook = async (req: Request, res: Response) => {
         }
       }
 
-      const amountInINR = payment.amount / 100;
+      const amountInINR = payment.amount;
       const notes = order?.notes || {};
       const donorName = notes.donorName;
       const donorEmail = notes.donorEmail;
@@ -268,7 +257,7 @@ export const webhook = async (req: Request, res: Response) => {
       console.log('Payment captured:', {
         paymentId,
         orderId: order?.id || 'Not available',
-        amount: amountInINR,
+        amount: amountInINR / 100,
         receipt: order?.receipt || 'Not provided',
         purpose,
         donorName,
@@ -288,7 +277,7 @@ export const webhook = async (req: Request, res: Response) => {
         }
       }
 
-      const amountInINR = payment.amount / 100;
+      const amountInINR = payment.amount;
       const notes = order?.notes || {};
       const donorName = notes.donorName;
       const donorEmail = notes.donorEmail;
@@ -315,7 +304,7 @@ export const webhook = async (req: Request, res: Response) => {
       console.log('Payment failed:', {
         paymentId: payment.id,
         orderId: order?.id,
-        amount: amountInINR,
+        amount: amountInINR / 100,
         receipt: order?.receipt,
         errorDescription: payment.error_description || 'N/A',
         purpose,
