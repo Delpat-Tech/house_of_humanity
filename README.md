@@ -4,7 +4,6 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.9.5-blue.svg)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.1-38B2AC.svg)](https://tailwindcss.com/)
 [![Vite](https://img.shields.io/badge/Vite-7.0.0-646CFF.svg)](https://vitejs.dev/)
-[![Firebase](https://img.shields.io/badge/Firebase-Hosting-FFCA28.svg)](https://firebase.google.com/)
 [![License](https://img.shields.io/badge/License-ISC-green.svg)](LICENSE)
 
 > **Building a Better World** - A comprehensive web platform for House of Humanity, an NGO dedicated to creating positive change through education, healthcare, and sustainable development.
@@ -121,7 +120,7 @@ house-of-humanity/
 │   │   ├── routes/           # API routes
 │   │   └── config/           # Configuration files
 │   └── package.json
-├── firebase.json             # Firebase hosting config
+
 └── README.md
 ```
 
@@ -151,8 +150,8 @@ house-of-humanity/
 - **React Testing Library** - Component testing
 
 ### Deployment
-- **Firebase Hosting** - Static site hosting
-- **Vercel** - Alternative hosting option
+- **Vercel** - Static site hosting
+- **Netlify** - Alternative hosting option
 
 ## Key Features Explained
 
@@ -189,7 +188,7 @@ import { formatCurrency, validateEmail } from '../shared/utils';
 
 ## Deployment
 
-### Firebase Hosting
+### Vercel Hosting
 
 1. **Build the application**
    ```bash
@@ -197,9 +196,9 @@ import { formatCurrency, validateEmail } from '../shared/utils';
    npm run build
    ```
 
-2. **Deploy to Firebase**
+2. **Deploy to Vercel**
    ```bash
-   firebase deploy
+   vercel --prod
    ```
 
 ### Environment Variables
@@ -209,7 +208,6 @@ Create `.env` files with the following variables:
 **Client (.env)**
 ```env
 VITE_API_URL=http://localhost:5000/api
-VITE_FIREBASE_CONFIG=your_firebase_config
 ```
 
 **Server (.env)**
@@ -291,7 +289,7 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
 - **React Team** - For the amazing framework
 - **Tailwind CSS** - For the utility-first CSS framework
 - **Framer Motion** - For smooth animations
-- **Firebase** - For hosting and backend services
+- **Vercel** - For hosting and deployment
 - **All Contributors** - For their valuable contributions
 
 ## Project Status
