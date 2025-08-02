@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import Razorpay from 'razorpay';
 import nodemailer, { Transporter } from 'nodemailer';
 import { getDonorThankYouEmail, getNGOEmail, getFailureEmail } from '../utils/emailTemplates';
+import logger from '../utils/logger';
 import '../config';
 
 // Simple email validation regex
@@ -106,22 +107,22 @@ export const createOrder = async (req: Request<{}, any, CreateOrderBody>, res: R
   try {
     const { amount, purpose, donorName, donorEmail, donorPhone } = req.body;
     if (!donorPhone || !donorEmail || !donorName) {
-      console.error('Missing required fields');
+      logger.error('Missing required fields for donation', { donorPhone, donorEmail, donorName });
       return res.status(400).json({ success: false, error: 'Phone , Name and Email are required' });
     }
     // Validate input
     if (!amount || !purpose) {
-      console.error('Missing required fields: amount, purpose ');
+      logger.error('Missing required fields for donation', { amount, purpose });
       return res.status(400).json({ success: false, error: 'Amount and purpose are required' });
     }
 
     if (typeof amount !== 'number' || amount <= 0) {
-      console.error('Invalid amount:', amount);
+      logger.error('Invalid amount for donation', { amount });
       return res.status(400).json({ success: false, error: 'Invalid amount' });
     }
 
     if (!allowedPurposes.includes(purpose)) {
-      console.error('Invalid purpose:', purpose);
+      logger.error('Invalid purpose for donation', { purpose, allowedPurposes });
       return res.status(400).json({ success: false, error: 'Invalid donation purpose' });
     }
 
@@ -140,26 +141,26 @@ export const createOrder = async (req: Request<{}, any, CreateOrderBody>, res: R
 
     // Validate order response
     if (!order || !order.id) {
-      console.error('Razorpay order creation failed:', { order });
+      logger.error('Razorpay order creation failed', { order });
       throw new Error('Invalid order response from Razorpay');
     }
 
     // Validate receipt
     if (typeof order.receipt !== 'string') {
-      console.error('Invalid receipt in order response:', { order });
+      logger.error('Invalid receipt in order response', { order });
       throw new Error('Receipt not found in Razorpay order response');
     }
 
     // Convert amount to number if it's a string
     const amountInPaise = typeof order.amount === 'string' ? parseFloat(order.amount) : order.amount;
     if (isNaN(amountInPaise) || amountInPaise <= 0) {
-      console.error('Invalid amount in order response:', { order });
+      logger.error('Invalid amount in order response', { order });
       throw new Error('Invalid amount in Razorpay order response');
     }
 
     const amountInINR = amountInPaise / 100; // Convert paise to INR for logging
 
-    console.log('Order created successfully:', {
+    logger.info('Order created successfully', {
       orderId: order.id,
       amount: amountInINR,
       receipt: order.receipt,
@@ -183,7 +184,7 @@ export const createOrder = async (req: Request<{}, any, CreateOrderBody>, res: R
       },
     });
   } catch (error: any) {
-    console.error('Order creation error:', {
+    logger.error('Order creation error', {
       message: error.message,
       stack: error.stack,
       requestBody: req.body,
@@ -195,7 +196,7 @@ export const createOrder = async (req: Request<{}, any, CreateOrderBody>, res: R
 export const webhook = async (req: Request, res: Response) => {
   try {
     const event = req.body.event;
-    console.log('Webhook event received:', { event, payload: req.body });
+    logger.info('Webhook event received', { event, payload: req.body });
 
     if (event === 'payment.captured') {
       const payment = req.body.payload.payment.entity;
@@ -206,7 +207,7 @@ export const webhook = async (req: Request, res: Response) => {
         try {
           order = await razorpay.orders.fetch(orderId);
         } catch (fetchError) {
-          console.error('Failed to fetch order:', fetchError);
+          logger.error('Failed to fetch order', { fetchError, orderId });
           res.status(404).json({ status: 'error', message: 'Order not defined' });
           return; // Added return to prevent further execution
         }
@@ -220,7 +221,7 @@ export const webhook = async (req: Request, res: Response) => {
       const purpose = notes.purpose;
       const paymentId = payment.id;
       if (!donorPhone || !donorEmail || !donorName || !purpose) {
-        console.error('Missing required fields');
+        logger.error('Missing required fields in webhook payment captured', { donorPhone, donorEmail, donorName, purpose });
         return res.status(400).json({ success: false, error: 'Phone , Name ,Purpose and Email are required' });
       }
 
@@ -248,13 +249,13 @@ export const webhook = async (req: Request, res: Response) => {
       if (emailPromises.length > 1) {
         try {
           await Promise.all(emailPromises);
-          console.log('Webhook emails sent successfully');
+          logger.info('Webhook emails sent successfully');
         } catch (emailError) {
-          console.error('Error sending webhook emails:', emailError);
+          logger.error('Error sending webhook emails', { emailError });
         }
       }
 
-      console.log('Payment captured:', {
+      logger.info('Payment captured successfully', {
         paymentId,
         orderId: order?.id || 'Not available',
         amount: amountInINR / 100,
@@ -273,7 +274,7 @@ export const webhook = async (req: Request, res: Response) => {
         try {
           order = await razorpay.orders.fetch(orderId);
         } catch (fetchError) {
-          console.error('Failed to fetch order for failed payment:', fetchError);
+          logger.error('Failed to fetch order for failed payment', { fetchError, orderId });
         }
       }
 
@@ -284,7 +285,7 @@ export const webhook = async (req: Request, res: Response) => {
       const donorPhone = notes.donorPhone;
       const purpose = notes.purpose;
       if (!donorPhone || !donorEmail || !donorName || !purpose) {
-        console.error('Missing required fields');
+        logger.error('Missing required fields in webhook payment failed', { donorPhone, donorEmail, donorName, purpose });
         return res.status(400).json({ success: false, error: 'Phone , Name ,Purpose and Email are required' });
       }
       if (donorEmail && isValidEmail(donorEmail)) {
@@ -295,13 +296,13 @@ export const webhook = async (req: Request, res: Response) => {
             subject: 'Donation Payment Failed - House of Humanity',
             html: getFailureEmail(donorName, amountInINR, purpose, payment.error_description || 'Payment failed'),
           });
-          console.log('Failure email sent to donor');
+          logger.info('Failure email sent to donor');
         } catch (emailError) {
-          console.error('Error sending failure email:', emailError);
+          logger.error('Error sending failure email', { emailError });
         }
       }
 
-      console.log('Payment failed:', {
+      logger.info('Payment failed', {
         paymentId: payment.id,
         orderId: order?.id,
         amount: amountInINR / 100,
@@ -316,7 +317,7 @@ export const webhook = async (req: Request, res: Response) => {
 
     res.status(200).json({ status: 'webhook call success' });
   } catch (error: any) {
-    console.error('Webhook error:', {
+    logger.error('Webhook error', {
       message: error.message,
       stack: error.stack,
       event: req.body?.event,

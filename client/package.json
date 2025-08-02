@@ -18,6 +18,8 @@
     "framer-motion": "^12.23.0",
     "gsap": "^3.13.0",
     "libphonenumber-js": "^1.12.10",
+    "loglevel": "^1.9.2",
+    "loglevel-plugin-remote": "^0.6.8",
     "lucide-react": "^0.525.0",
     "razorpay": "^2.9.6",
     "react": "^19.1.0",

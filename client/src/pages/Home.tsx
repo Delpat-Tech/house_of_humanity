@@ -7,6 +7,8 @@ import ImpactCarousel from "../components/Home/ImpactCarousel";
 import DonateNow from "../components/Home/DonateNow";
 import Loader from "../components/ui/Loader";
 import gsap from "gsap";
+import logger from '../utils/logger';
+import { trackUserActivity } from '../utils/activityLogger';
 
 interface HomeProps {
   showLoader: boolean;
@@ -26,6 +28,10 @@ const Home: React.FC<HomeProps> = ({ showLoader, loaderGone, onFadeOut }) => {
       );
     }
   }, [loaderGone]);
+
+  // Add this line to test logging
+  logger.info('Home page loaded successfully');
+  trackUserActivity('page_view', { page: 'home' });
 
   return (
     <>
