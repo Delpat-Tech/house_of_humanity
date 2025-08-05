@@ -1,8 +1,7 @@
-import dotenv from "dotenv";
-dotenv.config();
 import express, { Express } from 'express';
 import cors from 'cors';
 import donationRoutes from "./routes/donationRoutes";
+import { config } from './config'; 
 
 
 const app: Express = express();
@@ -17,4 +16,4 @@ app.get('/health', (req, res) => {
 });
 
 const PORT: number = parseInt(process.env.PORT || '3000', 10);
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(config.port, () => console.log(`Server running on port ${config.port}`));
