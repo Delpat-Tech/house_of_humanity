@@ -198,7 +198,7 @@ export const webhook = async (req: Request, res: Response) => {
     console.log('Webhook event received:', { event, payload: req.body });
 
     if (event === 'payment.captured') {
-      const payment = req.body.payload.payment.entity;
+      const payment = req.body.payload?.payment?.entity;
       const orderId = payment.order_id;
 
       let order: RazorpayOrder | null = null;

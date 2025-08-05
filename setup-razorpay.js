@@ -9,7 +9,7 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-console.log('🚀 Razorpay Integration Setup for Project Sitaare\n');
+console.log('🚀 Razorpay Integration Setup for Project HOH\n');
 
 const questions = [
   {
@@ -32,12 +32,7 @@ const questions = [
     message: 'Enter server port (default: 5000): ',
     default: '5000'
   },
-  {
-    name: 'jwtSecret',
-    message: 'Enter JWT secret (or press enter for auto-generated): ',
-    default: () => Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-  }
-];
+ ];
 
 let answers = {};
 
@@ -71,12 +66,8 @@ function createEnvFile() {
 RAZORPAY_KEY_ID=${answers.razorpayKeyId}
 RAZORPAY_KEY_SECRET=${answers.razorpayKeySecret}
 
-# Database Configuration
-MONGO_URI=${answers.mongoUri}
-
 # Server Configuration
 PORT=${answers.port}
-JWT_SECRET=${answers.jwtSecret}
 
 # Optional: Enable debug logging
 # DEBUG=razorpay:*

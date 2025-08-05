@@ -1,0 +1,72 @@
+{
+  "info": {
+    "name": "Donation API - Corrected",
+    "_postman_id": "donation-api-collection-id",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": 500,\n  \"purpose\": \"Women Empowerment\",\n  \"donorName\": \"Jyoti Singh\",\n  \"donorEmail\": \"jyoti@example.com\",\n  \"donorPhone\": \"9876543210\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/donate/create-order",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "donate", "create-order"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Webhook - Payment Captured",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "X-Razorpay-Signature", "value": "your-signature-here" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event\": \"payment.captured\",\n  \"payload\": {\n    \"payment\": {\n      \"entity\": {\n        \"id\": \"pay_test_id\",\n        \"order_id\": \"order_R1M29uAfftiScn\",\n        \"amount\": 50000\n      }\n    }\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/donate/webhook",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "donate", "webhook"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Webhook - Payment Failed",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "X-Razorpay-Signature", "value": "your-signature-here" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event\": \"payment.failed\",\n  \"payload\": {\n    \"payment\": {\n      \"entity\": {\n        \"id\": \"pay_failed_id\",\n        \"order_id\": \"order_R1M29uAfftiScn\",\n        \"amount\": 30000,\n        \"error_description\": \"Insufficient funds\"\n      }\n    }\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/donate/webhook",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "donate", "webhook"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
