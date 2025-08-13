@@ -5,7 +5,7 @@ import path from 'path';
 // Load environment-specific .env file
 const envFile = `.env.${process.env.NODE_ENV || 'development'}`;
 dotenv.config({ path: path.resolve(__dirname, envFile) });
-console.log
+console.log(`Loaded environment variables from ${envFile}`);
 
 if (!process.env.NGO_EMAIL) {
     console.error("Missing NGO_EMAIL in .env");

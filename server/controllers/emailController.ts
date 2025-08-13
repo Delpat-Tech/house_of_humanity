@@ -14,18 +14,19 @@ if (!process.env.NGO_EMAIL || !isValidEmail(process.env.NGO_EMAIL)) {
   process.exit(1);
 }
 
-if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-  console.error('EMAIL_USER or EMAIL_PASS is not set in .env file');
+if (!process.env.NGO_EMAIL_PASS) {
+  console.error('NGO_EMAIL_PASS is not set in .env file');
   process.exit(1);
 }
+
 
 // Initialize Nodemailer
 const transporter: Transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: Number(process.env.SMTP_PORT || "587"),
   auth: {
-    user: process.env.EMAIL_USER as string,
-    pass: process.env.EMAIL_PASS as string,
+    user: process.env.NGO_EMAIL as string,
+    pass: process.env.NGO_EMAIL_PASS as string,
   },
 });
 
@@ -56,16 +57,14 @@ export const sendContactEmail = async (req: Request, res: Response): Promise<voi
     return;
   } 
   // Sanitize inputs to prevent XSS
-
   const sanitize = (input: string) => input.replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const safeName = sanitize(name);
   const safeEmail = sanitize(email);
   const safeSubject = sanitize(subject);
   const safeMessage = sanitize(message).replace(/\n/g, '<br>');
 
-    const recipient = process.env.NODE_ENV === 'production' ? process.env.NGO_EMAIL : 'jyotisingh0249@gmail.com'; // Default to NGO email
+    
   const timestamp = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
-
   // Log timestamp for debugging
   console.log('Generated timestamp:', timestamp);
 
@@ -80,15 +79,14 @@ export const sendContactEmail = async (req: Request, res: Response): Promise<voi
 
   try {
     console.log('Preparing to send email:', {
-      to: recipient,
-      from: process.env.EMAIL_USER,
-      sender: `${safeName} <${safeEmail}>`,
+      to: process.env.NGO_EMAIL,
+      from: `${safeName} <${safeEmail}>`,
       subject: `New Inquiry from ${safeName}`,
     });
 
     const info = await transporter.sendMail({
-      from: `"Website Inquiry" <${process.env.EMAIL_USER}>`,
-      to: recipient,
+      from: `${safeName} <${safeEmail}>`,
+      to: process.env.NGO_EMAIL,
       replyTo: safeEmail,
       subject: `New Inquiry from ${safeName}`,
       text: `
