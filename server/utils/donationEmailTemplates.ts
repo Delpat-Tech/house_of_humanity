@@ -10,7 +10,7 @@ export function getDonorThankYouEmail(donorName: string, amount: number, purpose
       <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f4f4;">
         <div style="max-width: 600px; margin: 32px auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
           <div style="background: linear-gradient(90deg, #2563eb 0%, #22c55e 100%); padding: 24px; text-align: center; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-            <img src="https://hoh-demo-website.web.app/logo192.png" alt="House of Humanity Logo" style="max-width: 180px; height: auto;" />
+            <img src="https://houseofhumanity.org/logo192.png" alt="House of Humanity Logo" style="max-width: 180px; height: auto;" />
             <h1 style="color: #ffffff; font-size: 24px; margin: 8px 0;">House of Humanity</h1>
           </div>
           <div style="padding: 24px; color: #333333;">
@@ -24,7 +24,7 @@ export function getDonorThankYouEmail(donorName: string, amount: number, purpose
             <p style="margin: 0;">© ${new Date().getFullYear()} House of Humanity. All rights reserved. 🎉</p>
             <p style="margin: 8px 0;">
               <a href="mailto:info@houseofhumanity.in" style="color: #2563eb; text-decoration: none;">Contact Us</a> | 
-              <a href="https://hoh-demo-website.web.app" style="color: #2563eb; text-decoration: none;">Visit Our Website</a>
+              <a href="https://houseofhumanity.org" style="color: #2563eb; text-decoration: none;">Visit Our Website</a>
             </p>
           </div>
         </div>
@@ -45,7 +45,7 @@ export function getNGOEmail(donorName: string, donorEmail: string, donorPhone: s
       <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f4f4;">
         <div style="max-width: 600px; margin: 32px auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
           <div style="background: linear-gradient(90deg, #2563eb 0%, #22c55e 100%); padding: 24px; text-align: center; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-            <img src="https://hoh-demo-website.web.app/logo192.png" alt="House of Humanity Logo" style="max-width: 180px; height: auto;" />
+            <img src="https://houseofhumanity.org/logo192.png" alt="House of Humanity Logo" style="max-width: 180px; height: auto;" />
             <h1 style="color: #ffffff; font-size: 24px; margin: 8px 0;">House of Humanity</h1>
           </div>
           <div style="padding: 24px; color: #333333;">
@@ -83,7 +83,7 @@ export function getNGOEmail(donorName: string, donorEmail: string, donorPhone: s
             <p style="margin: 0;">© ${new Date().getFullYear()} House of Humanity. All rights reserved. 🎉</p>
             <p style="margin: 8px 0;">
               <a href="mailto:info@houseofhumanity.in" style="color: #2563eb; text-decoration: none;">Contact Us</a> | 
-              <a href="https://hoh-demo-website.web.app" style="color: #2563eb; text-decoration: none;">Visit Our Website</a>
+              <a href="https://houseofhumanity.org" style="color: #2563eb; text-decoration: none;">Visit Our Website</a>
             </p>
           </div>
         </div>
@@ -104,7 +104,7 @@ export function getFailureEmail(donorName: string, amount: number, purpose: stri
       <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f4f4;">
         <div style="max-width: 600px; margin: 32px auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
           <div style="background: linear-gradient(90deg, #2563eb 0%, #22c55e 100%); padding: 24px; text-align: center; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-            <img src="https://hoh-demo-website.web.app/logo192.png" alt="House of Humanity Logo" style="max-width: 180px; height: auto;" />
+            <img src="https://houseofhumanity.org/logo192.png" alt="House of Humanity Logo" style="max-width: 180px; height: auto;" />
             <h1 style="color: #ffffff; font-size: 24px; margin: 8px 0;">House of Humanity</h1>
           </div>
           <div style="padding: 24px; color: #333333;">
@@ -118,7 +118,7 @@ export function getFailureEmail(donorName: string, amount: number, purpose: stri
             <p style="margin: 0;">© ${new Date().getFullYear()} House of Humanity. All rights reserved. 🎉</p>
             <p style="margin: 8px 0;">
               <a href="mailto:info@houseofhumanity.in" style="color: #2563eb; text-decoration: none;">Contact Us</a> | 
-              <a href="https://hoh-demo-website.web.app" style="color: #2563eb; text-decoration: none;">Visit Our Website</a>
+              <a href="https://houseofhumanity.org" style="color: #2563eb; text-decoration: none;">Visit Our Website</a>
             </p>
           </div>
         </div>

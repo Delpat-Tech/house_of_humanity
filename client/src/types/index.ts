@@ -6,7 +6,21 @@ export interface ButtonProps {
   disabled?: boolean;
   className?: string;
 }
-
+export interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+export interface Errors {
+  name: string;
+  email: string;
+  subject: string;
+  submit: string;
+}
+export interface ConfettiCheckProps {
+  show: boolean;
+}
 export interface CardProps {
   icon: string;
   count: string;

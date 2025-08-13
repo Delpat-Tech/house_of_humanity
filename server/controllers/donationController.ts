@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import Razorpay from 'razorpay';
 import nodemailer, { Transporter } from 'nodemailer';
-import { getDonorThankYouEmail, getNGOEmail, getFailureEmail } from '../utils/emailTemplates';
+import { getDonorThankYouEmail, getNGOEmail, getFailureEmail } from '../utils/donationEmailTemplates';
 import '../config';
 
 // Simple email validation regex
@@ -45,7 +45,7 @@ const transporter: Transporter = nodemailer.createTransport({
   // },
 });
 
-// Verify SMTP connection
+// Verify SMTP connection 
 transporter.verify((error, success) => {
   if (error) {
     console.error('Nodemailer SMTP configuration error:', error);
