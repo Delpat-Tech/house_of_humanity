@@ -10,12 +10,12 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": ["./node_modules/@types", "./types"],
+    "typeRoots": ["./node_modules/@types", "src/types/types"],
     "resolveJsonModule": true,
 
     // "allowImportingTsExtensions": true,
     // "verbatimModuleSyntax": true,
     "noEmit": true
   },
-  "include": ["src"]
+  "include": ["src", "types"]
 }

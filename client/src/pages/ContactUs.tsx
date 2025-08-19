@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 import HeroStatsSection from '../components/ui/HeroStatsSection';
-import { ConfettiCheckProps, Errors, FormData } from '../types';
+import { FormData, Errors, ConfettiCheckProps } from '../types';
 
 const funFacts = [
   "Did you know? We reply to every message!",
@@ -52,6 +52,7 @@ const ContactUs: React.FC = () => {
   const [step, setStep] = useState<number>(0);
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
+
   const rotatingFact = useRotatingFact(funFacts);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -93,11 +94,9 @@ const ContactUs: React.FC = () => {
     setIsSubmitting(true);
     setShowConfetti(true);
     try {
-      const response = await fetch('http://localhost:3000/api/send-email', {
+      const response = await fetch('http://localhost:3000/api/email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
@@ -129,11 +128,9 @@ const ContactUs: React.FC = () => {
         badge={<><Sparkles className="w-5 h-5 text-yellow-300 mr-2" /><span className="text-white font-medium">Let's Connect</span></>}
       />
       <div className="py-12" />
-
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Contact Information & Social Media */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -207,9 +204,7 @@ const ContactUs: React.FC = () => {
               </div>
               <div className="mt-8 flex flex-col items-start">
                 <a
-                  href="https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/testimonial"
                   className="w-full sm:w-auto block text-center bg-primary-blue hover:bg-fresh-green text-white dark:text-white dark:hover:text-white font-bold py-3 px-4 sm:px-6 rounded-full shadow transition-all mt-4"
                 >
                   Want to leave a testimonial? Click here!
@@ -217,15 +212,12 @@ const ContactUs: React.FC = () => {
               </div>
             </div>
           </motion.div>
-
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             className="bg-warm-light-blue dark:bg-slate-800 rounded-xl shadow-lg p-8 border border-warm-light-blue dark:border-slate-700"
           >
-            <h2 className="text-3xl font-bold mb-6 text-primary-blue dark:text-fresh-green">Send a Message</h2>
             {submitted ? (
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -234,16 +226,15 @@ const ContactUs: React.FC = () => {
               >
                 Thank you for reaching out! We'll get back to you soon.<br />
                 <a
-                  href="https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/testimonial"
                   className="inline-block mt-4 bg-primary-blue hover:bg-fresh-green dark:bg-fresh-green dark:hover:bg-primary-blue text-white font-bold py-2 px-6 rounded-full shadow transition-all"
                 >
-                  Want to leave a testimonial? Click here!
+                  Share a Testimonial
                 </a>
               </motion.div>
             ) : (
               <>
+                <h2 className="text-3xl font-bold mb-6 text-primary-blue dark:text-fresh-green">Send a Message</h2>
                 <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded mb-8 overflow-hidden">
                   <div
                     className={`h-full bg-gradient-to-r from-primary-blue to-fresh-green transition-all duration-500 rounded ${step === 0 ? 'w-1/3' : step === 1 ? 'w-2/3' : 'w-full'}`}
@@ -367,12 +358,18 @@ const ContactUs: React.FC = () => {
                     {errors.submit && <p className="text-red-600 dark:text-red-400 text-sm mt-2 text-center">{errors.submit}</p>}
                   </div>
                 )}
+                <div className="mt-4 text-center">
+                  <a
+                    href="/testimonial"
+                    className="text-primary-blue dark:text-fresh-green font-semibold hover:text-blue-700 dark:hover:text-fresh-green transition-colors"
+                  >
+                    Want to share a testimonial instead?
+                  </a>
+                </div>
               </>
             )}
           </motion.div>
         </div>
-
-        {/* Map Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

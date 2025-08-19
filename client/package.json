@@ -15,6 +15,7 @@
     "@types/react-helmet": "^6.1.11",
     "axios": "^1.10.0",
     "classnames": "^2.5.1",
+    "form-data": "^4.0.4",
     "framer-motion": "^12.23.0",
     "gsap": "^3.13.0",
     "libphonenumber-js": "^1.12.10",

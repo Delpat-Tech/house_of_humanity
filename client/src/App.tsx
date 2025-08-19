@@ -26,6 +26,7 @@ import ContributeMaterials from './pages/ContributeMaterials';
 import NewsEvents from './pages/NewsEvents';
 import Gallery from './pages/Gallery';
 import ContactUs from './pages/ContactUs';
+import Testimonial from './pages/Testimonial';
 import Home from './pages/Home';
 import DonationSuccess from './pages/DonationSuccess';
 import DonationFailed from './pages/DonationFailed';
@@ -83,6 +84,7 @@ function AppContent() {
           <Route path="/news-events" element={<NewsEvents />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/testimonial" element={<Testimonial />} />
           <Route path="/donation-success" element={<DonationSuccess />} />
           <Route path="/donation-failed" element={<DonationFailed />} />
           <Route path="/instagram" element={<Instagram />} />

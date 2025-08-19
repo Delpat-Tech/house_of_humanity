@@ -18,6 +18,33 @@ export interface Errors {
   subject: string;
   submit: string;
 }
+export interface TestimonialFormData {
+  name: string;
+  email: string;
+  interactionType: string;
+  otherInteraction: string;
+  rating: string;
+  experience: string;
+  impact: string;
+  recommendation: string;
+  otherRecommendation: string;
+  permission: string;
+  suggestions: string;
+  files: File[];
+}
+export interface TestimonialErrors {
+  name: string;
+  email: string;
+  interactionType: string;
+  rating: string;
+  experience: string;
+  impact: string;
+  recommendation: string;
+  permission: string;
+  files: string;
+  submit: string;
+}
+
 export interface ConfettiCheckProps {
   show: boolean;
 }
