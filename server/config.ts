@@ -18,7 +18,7 @@ export const config = {
   port: process.env.PORT || 3000,
   email: process.env.NGO_EMAIL,
   emailUser: process.env.EMAIL_USER,
-  emailPass: process.env.EMAIL_PASS,
+  ngoEmailPass: process.env.NGO_EMAIL_PASS,
   razorpayKeyId: process.env.RAZORPAY_KEY_ID,
   razorpayKeySecret: process.env.RAZORPAY_KEY_SECRET,
 };
