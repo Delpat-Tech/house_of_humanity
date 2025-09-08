@@ -29,7 +29,7 @@ const FloatingActionButtons = () => {
   ];
 
   return (
-    <div className="fixed left-4 bottom-4 z-50 flex flex-col gap-3">
+    <div className="hidden lg:flex fixed left-4 bottom-4 z-50 flex-col gap-3">
       {buttons.map((button, index) => (
         <Link to={button.link} key={index} title={button.label}>
           <motion.button

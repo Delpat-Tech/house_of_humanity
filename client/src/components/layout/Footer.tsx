@@ -105,7 +105,7 @@ const Footer: React.FC = () => {
               {[
                 { to: "/sitaare", text: "Our Programs" },
                 { to: "/news-events", text: "Events" },
-                { to: "/ways-to-donate", text: "Ways to Donate" },
+                { to: "/donate-for-a-cause", text: "Ways to Donate" },
                 { to: "/milestones", text: "Impact" },
                 { to: "/gallery", text: "Gallery" },
                 { to: "/contact-us", text: "Contact Us" },
