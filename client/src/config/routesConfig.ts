@@ -100,6 +100,11 @@ export const routesConfig = [
     description: 'Get in touch with House of Humanity for inquiries or support.',
   },
   {
+    path: '/testimonial',
+    title: 'Testimonials - House of Humanity',
+    description: 'Hear from volunteers, donors, and community members about their experience with House of Humanity.',
+  },
+  {
     path: '/donation-success',
     title: 'Donation Success - House of Humanity',
     description: 'Thank you for your donation to House of Humanity!',
