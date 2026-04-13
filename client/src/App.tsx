@@ -35,12 +35,55 @@ import PrivacyPolicy from './pages/privacyPolicy';
 import CookiePolicy from './pages/CookiePolicy';
 import TermsOfService from './pages/TermsOfService';
 import FloatingActionButtons from './components/layout/FloatingActionButtons';
+import SeoHead from './components/seo/SeoHead';
+import StructuredData from './components/seo/StructuredData';
+import { getSeoConfig } from './components/seo/routeSeoConfig';
 
 function AppContent() {
   const [showLoader, setShowLoader] = useState(true);
   const [loaderGone, setLoaderGone] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const siteUrl = import.meta.env.VITE_SITE_URL || 'https://houseofhumanity.org';
+  const normalizedSiteUrl = siteUrl.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl;
+  const seoConfig = getSeoConfig(location.pathname);
+
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'NGO',
+    name: 'House Of Humanity Charitable Trust',
+    alternateName: 'HoH Trust',
+    url: normalizedSiteUrl,
+    logo: `${normalizedSiteUrl}/images/logo.png`,
+    description:
+      'House of Humanity is a youth-led charitable trust dedicated to empowering communities through education, healthcare, nutrition, and sustainable livelihood programs across India.',
+    foundingDate: '2020',
+    email: 'houseofhumanity2020@gmail.com',
+    sameAs: [
+      'https://www.instagram.com/houseofhumanity_trust/',
+      'https://www.linkedin.com/company/house-of-humanity',
+    ],
+    areaServed: {
+      '@type': 'Country',
+      name: 'India',
+    },
+    nonprofitStatus: 'Nonprofit501c3',
+  };
+
+  const webSiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'House Of Humanity Charitable Trust',
+    url: normalizedSiteUrl,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${normalizedSiteUrl}/?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
 
   useEffect(() => {
     if (isHomePage) {
@@ -60,6 +103,9 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 overflow-x-hidden">
+      <SeoHead config={seoConfig} siteUrl={normalizedSiteUrl} />
+      <StructuredData schema={organizationSchema} />
+      <StructuredData schema={webSiteSchema} />
       {loaderGone && <Header />}
       {loaderGone && <FloatingActionButtons />}
       <AnimatePresence mode="wait">

@@ -1,3 +1,6 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /donation-success
+Disallow: /donation-failed
+
+Sitemap: https://houseofhumanity.org/sitemap.xml
