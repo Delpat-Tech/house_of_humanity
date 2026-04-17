@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 const CookiePolicy: React.FC = () => {
@@ -8,13 +7,6 @@ const CookiePolicy: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Cookie Policy - House of Humanity</title>
-        <meta
-          name="description"
-          content="Cookie Policy for House of Humanity, explaining how we use cookies and tracking technologies on our website."
-        />
-      </Helmet>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-800 py-16 relative">
         <motion.div
           className="fixed top-0 left-0 right-0 h-1 bg-fresh-green z-50"

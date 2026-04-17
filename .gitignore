@@ -27,7 +27,7 @@ coverage/
 .env.development.local
 .env.test.local
 .env.production.local
-
+.env*
 # misc system files
 .DS_Store
 

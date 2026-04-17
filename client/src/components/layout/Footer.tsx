@@ -1,5 +1,4 @@
 import React from "react";
-import PrivacyPolicy from "../../pages/privacyPolicy";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Facebook,
@@ -16,6 +15,24 @@ const Footer: React.FC = () => {
     { href: "/privacy-policy", text: "Privacy Policy" },
     { href: "/terms", text: "Terms of Service" },
     { href: "/cookie-policy", text: "Cookie Policy" },
+  ];
+  const quickLinks = [
+    { to: "/sitaare", text: "Our Programs" },
+    { to: "/news-events", text: "Events" },
+    { to: "/donate-for-a-cause", text: "Ways to Donate" },
+    { to: "/milestones", text: "Impact" },
+    { to: "/gallery", text: "Gallery" },
+    { to: "/contact-us", text: "Contact Us" },
+    {
+      to: "https://drive.google.com/file/d/10gVeAvEsarmdduuS1kO00Eq6gQx9I3II/view",
+      text: "HOH Brochure",
+      external: true,
+    },
+    {
+      to: "https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true",
+      text: "Share Your Experience",
+      external: true,
+    },
   ];
 
   const navigate = useNavigate();
@@ -48,13 +65,13 @@ const Footer: React.FC = () => {
               opportunity for all.
             </p>
             <div className="pt-4">
-              <a
-                href="donate-for-a-cause"
+              <Link
+                to="/donate-for-a-cause"
                 className="inline-flex items-center bg-primary-blue text-white dark:text-gray-200 px-8 py-3 rounded-full font-semibold text-sm dark:hover:text-dark-gray hover:bg-fresh-green hover:text-dark-gray hover:shadow-lg transform hover:scale-105 transition-all duration-300 group"
               >
                 <span className="!text-white">DONATE NOW</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200 !text-white group-hover:text-dark-gray dark:group-hover:text-white" />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -102,35 +119,27 @@ const Footer: React.FC = () => {
               <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary-blue rounded-full mt-2"></div>
             </h3>
             <ul className="space-y-3">
-              {[
-                { to: "/sitaare", text: "Our Programs" },
-                { to: "/news-events", text: "Events" },
-                { to: "/donate-for-a-cause", text: "Ways to Donate" },
-                { to: "/milestones", text: "Impact" },
-                { to: "/gallery", text: "Gallery" },
-                { to: "/contact-us", text: "Contact Us" },
-                {
-                  to: "https://drive.google.com/file/d/10gVeAvEsarmdduuS1kO00Eq6gQx9I3II/view",
-                  text: "HOH Brochure",
-                  external: true,
-                },
-                
-                {
-                  to: "https://docs.google.com/forms/d/1X1Eoz5_7tHHQplR1hf7VWQOU9U3kFsLvcyyhLL3jiD0/viewform?edit_requested=true",
-                  text: "Share Your Experience",
-                  external: true,
-                },
-              ].map((link, index) => (
+              {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.to}
-                    className="flex items-center space-x-2 text-off-white hover:text-primary-blue transition-all duration-200 text-sm group hover:translate-x-1"
-                    target={link.external ? "_blank" : undefined}
-                    rel={link.external ? "noopener noreferrer" : undefined}
-                  >
-                    <ArrowRight className="w-3 h-3 text-fresh-green dark:text-fresh-green group-hover:text-primary-blue transition-colors duration-200" />
-                    <span>{link.text}</span>
-                  </a>
+                  {link.external ? (
+                    <a
+                      href={link.to}
+                      className="flex items-center space-x-2 text-off-white hover:text-primary-blue transition-all duration-200 text-sm group hover:translate-x-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ArrowRight className="w-3 h-3 text-fresh-green dark:text-fresh-green group-hover:text-primary-blue transition-colors duration-200" />
+                      <span>{link.text}</span>
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.to}
+                      className="flex items-center space-x-2 text-off-white hover:text-primary-blue transition-all duration-200 text-sm group hover:translate-x-1"
+                    >
+                      <ArrowRight className="w-3 h-3 text-fresh-green dark:text-fresh-green group-hover:text-primary-blue transition-colors duration-200" />
+                      <span>{link.text}</span>
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -199,25 +208,15 @@ const Footer: React.FC = () => {
             © 2025 House of Humanity. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            {links.map((link, index) =>
-              link.href === "/privacy-policy" ? (
-                <Link
-                  key={index}
-                  to={link.href}
-                  className="text-fresh-green hover:text-primary-blue text-sm transition-colors duration-200"
-                >
-                  {link.text}
-                </Link>
-              ) : (
-                <a
-                  key={index}
-                  href={link.href}
-                  className="text-fresh-green hover:text-primary-blue text-sm transition-colors duration-200"
-                >
-                  {link.text}
-                </a>
-              )
-            )}
+            {links.map((link, index) => (
+              <Link
+                key={index}
+                to={link.href}
+                className="text-fresh-green hover:text-primary-blue text-sm transition-colors duration-200"
+              >
+                {link.text}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

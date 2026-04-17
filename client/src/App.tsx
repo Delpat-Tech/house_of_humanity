@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { lazy, Suspense, useState, useEffect, useCallback, type ReactElement } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { ToastContainer } from 'react-toastify';
@@ -7,37 +7,38 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import { ThemeProvider } from './shared/contexts/ThemeContext';
 import { ScrollToTop } from './shared/components/ScrollToTop';
-import AboutUs from './pages/AboutUs';
-import OurTeam from './pages/OurTeam';
-import Projects from './pages/Projects';
-import Sitaare from './pages/Sitaare';
-import HealthCare from './pages/HealthCare';
-import SustainableLivelihood from './pages/SustainableLivelihood';
-import Education from './pages/Education';
-import Nutrition from './pages/Nutrition';
-import HouseOfHappiness from './pages/HouseOfHappiness';
-import Milestones from './pages/Milestones';
-import SuccessStories from './pages/SuccessStories';
-import OurPartners from './pages/OurPartners';
-import DonateForACause from './pages/DonateForACause';
-import GetInvolved from './pages/GetInvolved';
-import PartnerWithUs from './pages/PartnerWithUs';
-import ContributeMaterials from './pages/ContributeMaterials';
-import NewsEvents from './pages/NewsEvents';
-import Gallery from './pages/Gallery';
-import ContactUs from './pages/ContactUs';
-import Testimonial from './pages/Testimonial';
-import Home from './pages/Home';
-import DonationSuccess from './pages/DonationSuccess';
-import DonationFailed from './pages/DonationFailed';
-import Instagram from './pages/Instagram';
-import PrivacyPolicy from './pages/privacyPolicy';
-import CookiePolicy from './pages/CookiePolicy';
-import TermsOfService from './pages/TermsOfService';
 import FloatingActionButtons from './components/layout/FloatingActionButtons';
 import SeoHead from './components/seo/SeoHead';
 import StructuredData from './components/seo/StructuredData';
 import { getSeoConfig } from './components/seo/routeSeoConfig';
+
+const Home = lazy(() => import('./pages/Home'));
+const AboutUs = lazy(() => import('./pages/AboutUs'));
+const OurTeam = lazy(() => import('./pages/OurTeam'));
+const Projects = lazy(() => import('./pages/Projects'));
+const Sitaare = lazy(() => import('./pages/Sitaare'));
+const HealthCare = lazy(() => import('./pages/HealthCare'));
+const SustainableLivelihood = lazy(() => import('./pages/SustainableLivelihood'));
+const Education = lazy(() => import('./pages/Education'));
+const Nutrition = lazy(() => import('./pages/Nutrition'));
+const HouseOfHappiness = lazy(() => import('./pages/HouseOfHappiness'));
+const Milestones = lazy(() => import('./pages/Milestones'));
+const SuccessStories = lazy(() => import('./pages/SuccessStories'));
+const OurPartners = lazy(() => import('./pages/OurPartners'));
+const DonateForACause = lazy(() => import('./pages/DonateForACause'));
+const GetInvolved = lazy(() => import('./pages/GetInvolved'));
+const PartnerWithUs = lazy(() => import('./pages/PartnerWithUs'));
+const ContributeMaterials = lazy(() => import('./pages/ContributeMaterials'));
+const NewsEvents = lazy(() => import('./pages/NewsEvents'));
+const Gallery = lazy(() => import('./pages/Gallery'));
+const ContactUs = lazy(() => import('./pages/ContactUs'));
+const Testimonial = lazy(() => import('./pages/Testimonial'));
+const DonationSuccess = lazy(() => import('./pages/DonationSuccess'));
+const DonationFailed = lazy(() => import('./pages/DonationFailed'));
+const Instagram = lazy(() => import('./pages/Instagram'));
+const PrivacyPolicy = lazy(() => import('./pages/privacyPolicy'));
+const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 
 function AppContent() {
   const [showLoader, setShowLoader] = useState(true);
@@ -47,10 +48,12 @@ function AppContent() {
   const siteUrl = import.meta.env.VITE_SITE_URL || 'https://houseofhumanity.org';
   const normalizedSiteUrl = siteUrl.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl;
   const seoConfig = getSeoConfig(location.pathname);
+  const organizationId = `${normalizedSiteUrl}/#organization`;
 
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'NGO',
+    '@id': organizationId,
     name: 'House Of Humanity Charitable Trust',
     alternateName: 'HoH Trust',
     url: normalizedSiteUrl,
@@ -67,23 +70,34 @@ function AppContent() {
       '@type': 'Country',
       name: 'India',
     },
-    nonprofitStatus: 'Nonprofit501c3',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'customer support',
+        email: 'houseofhumanity2020@gmail.com',
+        telephone: '+91-99741-91811',
+        areaServed: 'IN',
+        availableLanguage: ['English', 'Hindi'],
+      },
+    ],
   };
 
   const webSiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': `${normalizedSiteUrl}/#website`,
     name: 'House Of Humanity Charitable Trust',
     url: normalizedSiteUrl,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${normalizedSiteUrl}/?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
+    publisher: {
+      '@id': organizationId,
     },
   };
+
+  const routeElement = (element: ReactElement) => (
+    <Suspense fallback={<div className="min-h-screen bg-white dark:bg-gray-900" />}>
+      {element}
+    </Suspense>
+  );
 
   useEffect(() => {
     if (isHomePage) {
@@ -110,33 +124,33 @@ function AppContent() {
       {loaderGone && <FloatingActionButtons />}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home showLoader={showLoader} loaderGone={loaderGone} onFadeOut={handleFadeOut} />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/our-team" element={<OurTeam />} />
-          <Route path="/sitaare" element={<Sitaare />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/health-care" element={<HealthCare />} />
-          <Route path="/sustainable-livelihood" element={<SustainableLivelihood />} />
-          <Route path="/education" element={<Education />} />
-          <Route path="/nutrition" element={<Nutrition />} />
-          <Route path="/house-of-happiness" element={<HouseOfHappiness />} />
-          <Route path="/milestones" element={<Milestones />} />
-          <Route path="/success-stories" element={<SuccessStories />} />
-          <Route path="/our-partners" element={<OurPartners />} />
-          <Route path="/donate-for-a-cause" element={<DonateForACause />} />
-          <Route path="/get-involved" element={<GetInvolved />} />
-          <Route path="/partner-with-us" element={<PartnerWithUs />} />
-          <Route path="/contribute-materials" element={<ContributeMaterials />} />
-          <Route path="/news-events" element={<NewsEvents />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/testimonial" element={<Testimonial />} />
-          <Route path="/donation-success" element={<DonationSuccess />} />
-          <Route path="/donation-failed" element={<DonationFailed />} />
-          <Route path="/instagram" element={<Instagram />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/cookie-policy" element={<CookiePolicy />} />
-          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/" element={routeElement(<Home showLoader={showLoader} loaderGone={loaderGone} onFadeOut={handleFadeOut} />)} />
+          <Route path="/about-us" element={routeElement(<AboutUs />)} />
+          <Route path="/our-team" element={routeElement(<OurTeam />)} />
+          <Route path="/sitaare" element={routeElement(<Sitaare />)} />
+          <Route path="/projects" element={routeElement(<Projects />)} />
+          <Route path="/health-care" element={routeElement(<HealthCare />)} />
+          <Route path="/sustainable-livelihood" element={routeElement(<SustainableLivelihood />)} />
+          <Route path="/education" element={routeElement(<Education />)} />
+          <Route path="/nutrition" element={routeElement(<Nutrition />)} />
+          <Route path="/house-of-happiness" element={routeElement(<HouseOfHappiness />)} />
+          <Route path="/milestones" element={routeElement(<Milestones />)} />
+          <Route path="/success-stories" element={routeElement(<SuccessStories />)} />
+          <Route path="/our-partners" element={routeElement(<OurPartners />)} />
+          <Route path="/donate-for-a-cause" element={routeElement(<DonateForACause />)} />
+          <Route path="/get-involved" element={routeElement(<GetInvolved />)} />
+          <Route path="/partner-with-us" element={routeElement(<PartnerWithUs />)} />
+          <Route path="/contribute-materials" element={routeElement(<ContributeMaterials />)} />
+          <Route path="/news-events" element={routeElement(<NewsEvents />)} />
+          <Route path="/gallery" element={routeElement(<Gallery />)} />
+          <Route path="/contact-us" element={routeElement(<ContactUs />)} />
+          <Route path="/testimonial" element={routeElement(<Testimonial />)} />
+          <Route path="/donation-success" element={routeElement(<DonationSuccess />)} />
+          <Route path="/donation-failed" element={routeElement(<DonationFailed />)} />
+          <Route path="/instagram" element={routeElement(<Instagram />)} />
+          <Route path="/privacy-policy" element={routeElement(<PrivacyPolicy />)} />
+          <Route path="/cookie-policy" element={routeElement(<CookiePolicy />)} />
+          <Route path="/terms" element={routeElement(<TermsOfService />)} />
         </Routes>
       </AnimatePresence>
       <ToastContainer />

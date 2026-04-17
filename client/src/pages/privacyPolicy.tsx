@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 const PrivacyPolicy: React.FC = () => {
@@ -8,13 +7,6 @@ const PrivacyPolicy: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Privacy Policy - House of Humanity</title>
-        <meta
-          name="description"
-          content="Privacy Policy for House of Humanity, outlining how we collect, use, and protect your personal information."
-        />
-      </Helmet>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-800 py-16 relative">
         {/* Scroll Progress Bar */}
         <motion.div

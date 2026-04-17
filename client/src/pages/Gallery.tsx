@@ -4,6 +4,50 @@ import galleryImageData from './gallery.json';
 import HeroStatsSection from '../components/ui/HeroStatsSection';
 import { Sparkles } from 'lucide-react';
 
+const galleryLabels: Record<string, string> = {
+  'bachpan.jpg': 'Children participating in the Bachpan education program',
+  'blanket.jpg': 'Blanket Drive outreach for families in need',
+  'concerts.jpg': 'Concerts for a Cause fundraiser event',
+  'cyclothon.jpg': 'Cyclothon awareness event',
+  'donateNow.webp': 'Donate for a Cause campaign visual',
+  'gifting.jpg': 'Gift distribution drive',
+  'image1.webp': 'Bachpan classroom activity',
+  'image12.webp': 'Project Poshan meal support',
+  'image13.webp': 'Nutrition support activity',
+  'image14.webp': 'Project Maya community activity',
+  'image17.webp': 'Project Poshan meal service',
+  'image18.webp': 'Project Maya educational session',
+  'image19.webp': 'Project Sanskruti activity',
+  'image20.webp': 'Self-help group training session',
+  'image4.webp': 'Joy Ride event for children',
+  'image6.webp': 'Volunteer support activity',
+  'image7.webp': 'House of Humanity volunteer team',
+  'image8.webp': 'Community outreach activity',
+  'img11.webp': 'House of Humanity team gathering',
+  'img14.webp': 'Sweet Drive distribution event',
+  'img15.webp': 'Sweet Drive community celebration',
+  'img16.webp': 'Nutrition program support',
+  'img2.webp': 'Project Poshan meal preparation',
+  'img3.webp': 'Children receiving gifts',
+  'img4.webp': 'Project Maya support session',
+  'img5.png': 'Joy Ride outing',
+  'img7.webp': 'Pad House menstrual hygiene initiative',
+  'joy-ride.jpg': 'Joy Ride community event',
+  'marathon.jpg': 'Marathon awareness event',
+  'maya.jpg': 'Project Maya program activity',
+  'pad-house.jpg': 'Pad House awareness session',
+  'Project Sanskruti Impact.jpg': 'Project Sanskruti impact event',
+  'raah.jpg': 'Project Raah mentoring activity',
+  'rakt.jpg': 'Rakt Setu blood donation initiative',
+  'sahara.jpeg': 'Project Sahara support program',
+  'SHG Training Session.jpg': 'Self-help group training workshop',
+  'sweetdrive.jpg': 'Sweet Drive celebration event',
+};
+
+function labelForFilename(filename: string): string {
+  return galleryLabels[filename] ?? 'House of Humanity gallery image';
+}
+
 type GalleryImageData = {
   filename: string;
   year: string;
@@ -51,7 +95,7 @@ const Gallery = () => {
     id: idx + 1,
     category: 'gallery', // default category
     src: `/Gallery/${data.filename}`,
-    title: data.filename,
+    title: labelForFilename(data.filename),
     description: '',
     year: data.year,
     month: data.month,
@@ -168,7 +212,7 @@ const Gallery = () => {
               <div className="relative h-48 group">
                 <img
                   src={image.src}
-                  alt={`Gallery image ${image.id}`}
+                  alt={image.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 group-hover:brightness-75"
                 />
               </div>

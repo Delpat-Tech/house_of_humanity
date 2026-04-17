@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 const TermsOfService: React.FC = () => {
@@ -8,13 +7,6 @@ const TermsOfService: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Terms of Service - House of Humanity</title>
-        <meta
-          name="description"
-          content="Terms of Service for House of Humanity, outlining the rules and guidelines for using our website and services."
-        />
-      </Helmet>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-800 py-16 relative">
         <motion.div
           className="fixed top-0 left-0 right-0 h-1 bg-fresh-green z-50"
